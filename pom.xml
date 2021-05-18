@@ -144,14 +144,11 @@
                 <!-- The Javadoc plugin uses the Javadoc tool to generate javadocs for the project -->
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <!-- We only want to generate javadocs for the implementation and not for the tests, so we manually exclude the test-javadoc report -->
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
+                <!-- Assume the source code is Java 8 to ignore module definitions -->
+                <configuration>
+                  <source>8</source>
+                  <detectJavaApiLink>false</detectJavaApiLink>
+                </configuration>
             </plugin>
             <plugin>
                 <!-- The JaCoCo plugin runs JaCoCo to compute coverage of the test cases -->
