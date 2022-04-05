@@ -1,4 +1,4 @@
-package chess.gui;
+package dhl.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

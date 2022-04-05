@@ -1,4 +1,4 @@
-package chess.model;
+package dhl.model;
 
 /**
  * Example model class which should be replaced with your actual implementation.

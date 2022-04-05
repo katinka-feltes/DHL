@@ -1,4 +1,4 @@
-package chess.cli;
+package dhl.cli;
 
 /**
  * Starting point of the command line interface
