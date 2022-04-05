@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- the id of the project's group -->
-    <groupId>chess</groupId>
+    <groupId>dhl</groupId>
     <!-- the id of the artifact (project) -->
-    <artifactId>chess</artifactId>
+    <artifactId>dhl</artifactId>
     <!-- the version of the artifact under the specified group -->
     <version>0.1-SNAPSHOT</version>
 
@@ -101,13 +101,13 @@
                     <!-- Removes the man directory in the resulting runtime image -->
                     <noManPages>true</noManPages>
                     <!-- Adds a launcher script with the given name -->
-                    <launcher>chess</launcher>
+                    <launcher>dhl</launcher>
                     <!-- The name of the folder with the resulting runtime image -->
-                    <jlinkImageName>chess</jlinkImageName>
+                    <jlinkImageName>dhl</jlinkImageName>
                     <!-- Create a zip of the resulting runtime image -->
-                    <jlinkZipName>chess</jlinkZipName>
+                    <jlinkZipName>dhl</jlinkZipName>
                     <!-- The main class, fully qualified name -->
-                    <mainClass>chess/chess.Main</mainClass>
+                    <mainClass>dhl/dhl.Main</mainClass>
                     <!-- Make command line arguments setable with -Dargs="" -->
                     <commandlineArgs>${args}</commandlineArgs>
                 </configuration>
@@ -136,7 +136,7 @@
                     <includeTests>true</includeTests>
                     <rulesets>
                         <!-- We are using a custom PMD rule set -->
-                        <ruleset>https://projects.isp.uni-luebeck.de/isp/pmd/-/raw/master/rules.xml</ruleset>
+                        <ruleset>https://projects.isp.uni-luebeck.de/isp2022/pmd/-/raw/master/rules.xml</ruleset>
                     </rulesets>
                 </configuration>
             </plugin>
@@ -176,9 +176,9 @@
                 <configuration>
                     <excludes>
                         <!-- Ignore GUI classes for coverage -->
-                        <exclude>chess/cli/**/*</exclude>
-                        <exclude>chess/gui/**/*</exclude>
-                        <exclude>chess/Main.class</exclude>
+                        <exclude>dhl/cli/**/*</exclude>
+                        <exclude>dhl/gui/**/*</exclude>
+                        <exclude>dhl/Main.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>
