@@ -1,4 +1,4 @@
-package chess.model;
+package dhl.model;
 
 import org.junit.jupiter.api.Test;
 

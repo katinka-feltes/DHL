@@ -1,7 +1,7 @@
-package chess;
+package dhl;
 
-import chess.cli.Cli;
-import chess.gui.Gui;
+import dhl.cli.Cli;
+import dhl.gui.Gui;
 
 import java.util.Arrays;
 
