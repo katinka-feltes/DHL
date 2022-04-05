@@ -1,4 +1,4 @@
-# Schach
+# DHL - Dire Horror Land
 
 Bitte hier eine sinnvolle Dokumentation ergänzen!
 
