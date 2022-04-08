@@ -26,28 +26,44 @@ public class Game {
     }
 
 
-    /* Carl what is this?
+    public Field[] getFields() { return fields;}
 
-    public Field[] getFields() {
-        return fields;
+    public void putCardOnDiscardingPile(Card card, Player player) {
+        player.getHand().remove(card);
+        switch (card.getColor()) {
+            case 'r': discardingPileRed.add(card);
+                break;
+            case 'g': discardingPileGreen.add(card);
+                break;
+            case 'b': discardingPileBlue.add(card);
+                break;
+            case 'p': discardingPilePurple.add(card);
+                break;
+            case 'o': discardingPileOrange.add(card);
+                break;
+        }
     }
 
-    public Card getDiscardingPileRed() {
-        return discardingPileRed.remove(0);
+    public List<Card> getDiscardingPileBlue() {
+        return discardingPileBlue;
     }
-    public Card getDiscardingPileBlue() {
-        return discardingPileBlue.remove(0);
+
+    public List<Card> getDiscardingPileRed() {
+        return discardingPileRed;
     }
-    public Card getDiscardingPileGreen() {
-        return discardingPileGreen.remove(0);
+
+    public List<Card> getDiscardingPileGreen() {
+        return discardingPileGreen;
     }
-    public Card getDiscardingPilePurple() {
-        return discardingPilePurple.remove(0);
+
+    public List<Card> getDiscardingPilePurple() {
+        return discardingPilePurple;
     }
-    public Card getDiscardingPileOrange() {
-        return discardingPileOrange.remove(0);
+
+    public List<Card> getDiscardingPileOrange() {
+        return discardingPileOrange;
     }
-    */
+
 
     /**
      * Gets the top card of the Drawing Pile and removes it
