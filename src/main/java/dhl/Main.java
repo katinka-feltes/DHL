@@ -2,6 +2,7 @@ package dhl;
 
 import dhl.cli.Cli;
 import dhl.gui.Gui;
+import dhl.model.Game;
 
 import java.util.Arrays;
 
@@ -15,6 +16,7 @@ public class Main {
      * @param args The command line arguments passed to the application.
      */
     public static void main(String[] args) {
+
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {
             Cli.main(args);
