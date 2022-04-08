@@ -17,12 +17,19 @@ public class Game {
     private List<Player> players = new ArrayList<>();
 
 
-
+    /**
+     * Constructor for Game with given amount of players (2-4)
+     * @param playerAmount the amount of players that will play the game as an int
+     */
     public Game (int playerAmount){
+        //maybe check if playerAmount is between 2 and 4
+        //add player sto the players-list
         for(int i = 1; i <= playerAmount; i++){
             players.add(new Player("Player" + i));
             System.out.println(players.get(i-1).getName());
         }
+
+        createDrawingPile();
     }
 
 
@@ -100,6 +107,19 @@ public class Game {
         temp[34] = new Field(7, 'b');
         temp[35] = new LargeField(10, 'b', 1);
         return temp;
+    }
+
+    /**
+     * Creates the drawing pile with the 110 cards
+     * (numbers 0-10 for each color twice)
+     */
+    private void createDrawingPile(){
+        char[] colors2x = {'r', 'g', 'b', 'p', 'o', 'r', 'g', 'b', 'p', 'o'};
+        for (char color : colors2x){
+            for(int i = 0; i <= 10; i++) {
+                drawingPile.add(new Card(i, color));
+            }
+        }
     }
 
 }
