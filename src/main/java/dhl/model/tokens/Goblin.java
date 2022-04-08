@@ -1,6 +1,6 @@
 package dhl.model.tokens;
 
-public class Cobold implements Token {
+public class Goblin implements Token {
 
     @Override
     public boolean collectable() {

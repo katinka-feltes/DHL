@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.model.tokens.Cobold;
+import dhl.model.tokens.Goblin;
 
 public class Card {
     private final int number;
@@ -34,7 +34,7 @@ public class Card {
 
     public static void main(String[] args) {
         Field[] field = {new Field(0,'r')};
-        field[0].setToken(new Cobold());
+        field[0].setToken(new Goblin());
         System.out.println(field[0].getToken().getName());
     }
 }

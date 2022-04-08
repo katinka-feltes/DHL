@@ -38,6 +38,6 @@ public class LargeField extends Field {
             super.setToken(null);
             return temp;
         }
-       else return null;
+       return null;
     }
 }
