@@ -36,7 +36,6 @@ In diesem Dokument sollen die grundsätzlichen Ideen hinter der gewählten Archi
 ```plantuml
 left to right direction
 skinparam classAttributeIconSize 0
-!theme plain
 
 
 class Game {
