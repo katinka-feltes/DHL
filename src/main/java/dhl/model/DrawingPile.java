@@ -32,6 +32,4 @@ public class DrawingPile {
     public boolean isEmpty() {
         return cards.isEmpty();
     }
-
-
 }

@@ -27,6 +27,7 @@ public class Player {
         playedCardsPurple = new ArrayList<>();
         playedCardsOrange = new ArrayList<>();
         hand = new ArrayList<>();
+        int position = 0;
         //need to draw cards here and maybe initialize the lists here as well
 
     }
