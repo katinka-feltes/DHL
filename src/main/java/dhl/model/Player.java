@@ -7,33 +7,38 @@ public class Player {
 
     private String name;
 
-    private List<Card> playedCardsRed = new ArrayList<>();
-    private List<Card> playedCardsBlue = new ArrayList<>();
-    private List<Card> playedCardsGreen = new ArrayList<>();
-    private List<Card> playedCardsPurple = new ArrayList<>();
-    private List<Card> playedCardsOrange = new ArrayList<>();
+    private List<Card> playedCardsRed;
+    private List<Card> playedCardsBlue;
+    private List<Card> playedCardsGreen;
+    private List<Card> playedCardsPurple;
+    private List<Card> playedCardsOrange;
 
-    private List<Card> hand = new ArrayList<>();
-
-    private boolean goblinSpecialPlayed = false;
-
-    private int victoryPoints = 0;
+    private List<Card> hand;
 
     // figures, collected tokens and color need to be added
 
-
     public Player(String name){
         this.name = name;
+        boolean goblinSpecialPlayed = false;
+        int victoryPoints = 0;
+        playedCardsRed = new ArrayList<>();
+        playedCardsBlue = new ArrayList<>();
+        playedCardsGreen = new ArrayList<>();
+        playedCardsPurple = new ArrayList<>();
+        playedCardsOrange = new ArrayList<>();
+        hand = new ArrayList<>();
+        //need to draw cards here and maybe initialize the lists here as well
+
     }
 
     /**
      * fills the hand up to eight cards
-     * @param game The game which the player currently plays
+     * @param drawingPile the global drawingPile
      */
-    public void drawCardsUpToEight (Game game) {
-        if (game != null){
+    public void drawCardsUpToEight (DrawingPile drawingPile) {
+        if (drawingPile != null){
             while (hand.size() < 8) {
-                hand.add(game.draw()); //draws one card and adds it to the hand
+                hand.add(drawingPile.draw()); //draws one card and adds it to the hand
             }
         }
     }
