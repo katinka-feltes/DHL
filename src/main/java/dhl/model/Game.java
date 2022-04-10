@@ -1,7 +1,6 @@
 package dhl.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     public static final Field[] FIELDS = {
@@ -51,7 +50,7 @@ public class Game {
 
     private DrawingPile drawingPile;
 
-    private List<Player> players;
+    private ArrayList<Player> players;
 
 
     /**
@@ -70,8 +69,7 @@ public class Game {
 
         //add player to the players-list
         for(int i = 1; i <= playerAmount; i++){
-            players.add(new Player("Player" + i));
-            System.out.println(players.get(i-1).getName());
+            players.add(new Player("P" + i));
         }
     }
 
@@ -109,6 +107,18 @@ public class Game {
 
     public DiscardPile getDiscardingPileOrange() {
         return discardingPileOrange;
+    }
+
+    public ArrayList<Player> getPlayers (){
+        return players;
+    }
+
+    /**
+     * returns the amount of the players in the game
+     * @return the size of the players-list
+     */
+    public int getPlayerAmount(){
+        return players.size();
     }
 
 }

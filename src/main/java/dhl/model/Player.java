@@ -1,31 +1,34 @@
 package dhl.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
 
     private String name;
 
-    private List<Card> playedCardsRed;
-    private List<Card> playedCardsBlue;
-    private List<Card> playedCardsGreen;
-    private List<Card> playedCardsPurple;
-    private List<Card> playedCardsOrange;
+    private DirectionDiscardPile playedCardsRed;
+    private DirectionDiscardPile playedCardsBlue;
+    private DirectionDiscardPile playedCardsGreen;
+    private DirectionDiscardPile playedCardsPurple;
+    private DirectionDiscardPile playedCardsOrange;
 
-    private List<Card> hand;
+    private ArrayList<Card> hand;
+
+    int victoryPoints;
+    boolean goblinSpecialPlayed;
+
 
     // figures, collected tokens and color need to be added
 
     public Player(String name){
         this.name = name;
-        boolean goblinSpecialPlayed = false;
-        int victoryPoints = 0;
-        playedCardsRed = new ArrayList<>();
-        playedCardsBlue = new ArrayList<>();
-        playedCardsGreen = new ArrayList<>();
-        playedCardsPurple = new ArrayList<>();
-        playedCardsOrange = new ArrayList<>();
+        goblinSpecialPlayed = false;
+        victoryPoints = 0;
+        playedCardsRed = new DirectionDiscardPile('r');
+        playedCardsBlue = new DirectionDiscardPile('g');
+        playedCardsGreen = new DirectionDiscardPile('b');
+        playedCardsPurple = new DirectionDiscardPile('p');
+        playedCardsOrange = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
         int position = 0;
         //need to draw cards here and maybe initialize the lists here as well
@@ -50,7 +53,16 @@ public class Player {
     public void setName(String name){
         this.name = name;
     }
-    public List<Card> getHand() {
+    public ArrayList<Card> getHand() {
         return hand;
+    }
+    public int getVictoryPoints(){
+        return victoryPoints;
+    }
+    public void setVictoryPoints (int victoryPoints){
+        this.victoryPoints = victoryPoints;
+    }
+    public boolean isGoblinSpecialPlayed(){
+        return goblinSpecialPlayed;
     }
 }
