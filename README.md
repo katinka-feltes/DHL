@@ -5,7 +5,6 @@
 ## Anwendungsfalldiagramm
 
 ```plantuml
-@startuml
 left to right direction
 actor Player
 rectangle System {
@@ -20,7 +19,6 @@ Player -- (draw Card)
 (draw Card) <|-- (from Discardingpile)
 Player -- (make Goblin-Specialaction)
 }
-@enduml
 ```
 
 # Bedienungsanleitung
@@ -37,15 +35,17 @@ In diesem Dokument sollen die grundsätzlichen Ideen hinter der gewählten Archi
 left to right direction
 skinparam classAttributeIconSize 0
 
-
 class Game {
     - FIELDS : Field[]
     - players : List<Player>
-    - discardingPileJeFarbe : List<Card>
-    - drawingPile : List<Card>
+    - discardingPileRed : DiscardPile
+    - discardingPileBlue : DiscardPile
+    - discardingPileGreen : DiscardPile
+    - discardingPilePurple : DiscardPile
+    - discardingPileOrange : DiscardPile
+    - drawingPile : DrawingPile
     
-    + Game (playerAmount:int)
-    
+    + Game(playerAmount:int)
 }
 note right of Game::playerAmount  
     Player im Konstruktor mitgeben?
@@ -56,10 +56,13 @@ class Player {
     - hand : List<Card>
     - victoryPoints : int
     - goblinSpecialPlayed : boolean 
-    - playedCardsJeFarbeUndObAufAbsteigend : List<Card>
+    - discardingPileRed : DirectionDiscardPile
+    - discardingPileBlue : DirectionDiscardPile
+    - discardingPileGreen : DirectionDiscardPile
+    - discardingPilePurple : DirectionDiscardPile
+    - discardingPileOrange : DirectionDiscardPile
     
-    + Player (name:String)
-    
+    + Player(name:String)
 }
 
 class Card {
@@ -67,8 +70,7 @@ class Card {
     - number : int
     - oracleNumber : int
     
-    + Card (color : char, number : int)
-    + Card (color : char, number : int, oracleNumber : int)
+    + Card(color : char, number : int, oracleNumber : int)
 }
 
 class Field {
@@ -76,27 +78,59 @@ class Field {
     - points : int
     - token : Token
 }
+
 class LargeField extends Field {
     -tokenTwo : Token
     
     + LargeField(points:int, color:char, wishingStoneAmount:int)
 }
+
 interface Token {
     + {abstract} collectable() : boolean
     + {abstract} getName() : String
     + {abstract} action()
 }
+
 class Goblin implements Token {
     + collectable() : boolean
     + getName() : String
     + action()
 }
+
 class WishingStone implements Token {
     + collectable() : boolean
     + getName() : String
     + action()
 }
 
+class DrawingPile {
+    - pile : Stack<Card>
+    + DrawingPile()
+    + draw(): Card
+    + isEmpty() : boolean
+}
+
+class DiscardPile {
+    - pile : List<Card>
+    - color : char
+    
+    + DiscardPile(color: char)
+    + addCard(Card)
+    + getTop() : Card
+    + getAndRemoveTop() : Card
+}
+
+class DirectionDiscardPile extends DiscardPile{
+    - direction : int
+    + DirectionDiscardPile(color: ssssschar)
+    + cardFitsToPile(Card) : boolean
+}
+
+Game "1" -- "2..4" Player
+Game "1" -- "1" DrawingPile
+Game "1" -- "36" Field
+Player "1" -- "0..8" Card
+Player "1" -- "5" DirectionDiscardPile
 ```
 
 # Maven
