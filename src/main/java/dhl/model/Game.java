@@ -43,11 +43,11 @@ public class Game {
             new LargeField(10, 'b', 1)
     };
 
-    private List<Card> discardingPileRed;
-    private List<Card> discardingPileBlue;
-    private List<Card> discardingPileGreen;
-    private List<Card> discardingPilePurple;
-    private List<Card> discardingPileOrange;
+    private DiscardPile discardingPileRed;
+    private DiscardPile discardingPileBlue;
+    private DiscardPile discardingPileGreen;
+    private DiscardPile discardingPilePurple;
+    private DiscardPile discardingPileOrange ;
 
     private DrawingPile drawingPile;
 
@@ -59,16 +59,16 @@ public class Game {
      * @param playerAmount the amount of players that will play the game as an int
      */
     public Game (int playerAmount){
-        //maybe check if playerAmount is between 2 and 4
-        //add player sto the players-list
-        discardingPileRed = new ArrayList<>();
-        discardingPileBlue = new ArrayList<>();
-        discardingPileGreen = new ArrayList<>();
-        discardingPilePurple = new ArrayList<>();
-        discardingPileOrange = new ArrayList<>();
+        //initializing discard piles and the players list
+        discardingPileRed = new DiscardPile('r');
+        discardingPileBlue = new DiscardPile('b');
+        discardingPileGreen = new DiscardPile('g');
+        discardingPilePurple = new DiscardPile('p');
+        discardingPileOrange = new DiscardPile('o');
         drawingPile = new DrawingPile();
         players = new ArrayList<>();
 
+        //add player to the players-list
         for(int i = 1; i <= playerAmount; i++){
             players.add(new Player("Player" + i));
             System.out.println(players.get(i-1).getName());
@@ -91,23 +91,23 @@ public class Game {
         }
     }
 
-    public List<Card> getDiscardingPileBlue() {
+    public DiscardPile getDiscardingPileBlue() {
         return discardingPileBlue;
     }
 
-    public List<Card> getDiscardingPileRed() {
+    public DiscardPile getDiscardingPileRed() {
         return discardingPileRed;
     }
 
-    public List<Card> getDiscardingPileGreen() {
+    public DiscardPile getDiscardingPileGreen() {
         return discardingPileGreen;
     }
 
-    public List<Card> getDiscardingPilePurple() {
+    public DiscardPile getDiscardingPilePurple() {
         return discardingPilePurple;
     }
 
-    public List<Card> getDiscardingPileOrange() {
+    public DiscardPile getDiscardingPileOrange() {
         return discardingPileOrange;
     }
 
