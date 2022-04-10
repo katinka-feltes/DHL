@@ -18,7 +18,7 @@ public class LargeField extends Field {
         if (wishingStoneAmount > 0) {
             super.setToken(new WishingStone());
             if (wishingStoneAmount == 2) {
-                tokenTwo = new WishingStone();
+                tokenTwo = new WishingStone                                                                                                                        ();
             }
         }
     }
