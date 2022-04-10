@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private static final Field[] FIELDS = {
+    public static final Field[] FIELDS = {
             new LargeField(0,'w', 0),
             new Field(-4, 'p'),
             new Field(-4, 'o'),
@@ -74,9 +74,6 @@ public class Game {
             System.out.println(players.get(i-1).getName());
         }
     }
-
-
-    public Field[] getFields() { return FIELDS;}
 
     public void putCardOnDiscardingPile(Card card, Player player) {
         player.getHand().remove(card);

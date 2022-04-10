@@ -37,7 +37,7 @@ public class Player {
      */
     public void drawCardsUpToEight (DrawingPile drawingPile) {
         if (drawingPile != null){
-            while (hand.size() < 8) {
+            while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
             }
         }

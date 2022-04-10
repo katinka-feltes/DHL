@@ -37,5 +37,44 @@ public class Cli {
 
         Game game = new Game(playerAmount);
 
+        printFields();
+
+    }
+
+    private static void printFields(){
+        // print points of the fields 0-11
+        for (int i = 0; i < 12; i++){
+            System.out.print(Game.FIELDS[i].getPoints() + "    ");
+        }
+        System.out.println();
+        // print colors of the fields 0-11
+        for (int i = 0; i < 12; i++){
+            System.out.print(Game.FIELDS[i].getColor() + "     ");
+        }
+        System.out.println();
+        //Print figures of the players
+        System.out.println();
+        // print points of the fields 12-23
+        for (int i = 12; i < 24; i++){
+            System.out.print(Game.FIELDS[i].getPoints() + "     ");
+        }
+        System.out.println();
+        System.out.print("  ");
+        // print colors of the fields 12-23
+        for (int i = 12; i < 24; i++){
+            System.out.print(Game.FIELDS[i].getColor() + "     ");
+        }
+        System.out.println();
+        //Print figures of the players
+        System.out.println();
+        // print points of the fields 24-35
+        for (int i = 24; i < 36; i++){
+            System.out.print(Game.FIELDS[i].getPoints() + "     ");
+        }
+        System.out.println(" ");
+        // print colors of the fields 24-35
+        for (int i = 24; i < 36; i++){
+            System.out.print(Game.FIELDS[i].getColor() + "     ");
+        }
     }
 }
