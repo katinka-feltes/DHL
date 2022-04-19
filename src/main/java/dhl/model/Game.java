@@ -46,7 +46,7 @@ public class Game {
     private DiscardPile discardingPileBlue;
     private DiscardPile discardingPileGreen;
     private DiscardPile discardingPilePurple;
-    private DiscardPile discardingPileOrange ;
+    private DiscardPile discardingPileOrange;
 
     private DrawingPile drawingPile;
 
@@ -70,6 +70,26 @@ public class Game {
         //add player to the players-list
         for(int i = 1; i <= playerAmount; i++){
             players.add(new Player("P" + i));
+        }
+    }
+
+    /**
+     * Constructor for Game with given amount of players (2-4)
+     * @param playerNames the List of all player Names
+     */
+    public Game (String[] playerNames){
+        //initializing discard piles and the players list
+        discardingPileRed = new DiscardPile('r');
+        discardingPileBlue = new DiscardPile('b');
+        discardingPileGreen = new DiscardPile('g');
+        discardingPilePurple = new DiscardPile('p');
+        discardingPileOrange = new DiscardPile('o');
+        drawingPile = new DrawingPile();
+        players = new ArrayList<>();
+
+        //add player to the players-list
+        for (String playerName : playerNames) {
+            players.add(new Player(playerName));
         }
     }
 

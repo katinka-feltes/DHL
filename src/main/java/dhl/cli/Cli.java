@@ -4,8 +4,8 @@ import dhl.model.Game;
 import dhl.model.Player;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 /**
@@ -32,6 +32,10 @@ public class Cli {
                     playerAmount = scanner.nextInt();
                 }
                     inputValid = true;
+
+                //Get names of the players
+
+
             } catch (InputMismatchException e){
                 System.out.println("Input must be an integer!");
                 scanner.nextLine();
@@ -48,6 +52,8 @@ public class Cli {
 
         ArrayList<Player> players = game.getPlayers();
 
+        //legend for player-symbols
+        System.out.println();
         // print points of the fields 0-11
         for (int i = 0; i < 12; i++){
             System.out.print(Game.FIELDS[i].getPoints() + "    ");
@@ -59,7 +65,20 @@ public class Cli {
         }
         System.out.println();
         //Print figures of the players
-        System.out.println();
+        for (Player p: players) {
+            for (int i = 0; i < 12; i++){
+                if (i == p.getFigure1().getPos() && i == p.getFigure2().getPos() && i == p.getFigure3().getPos()){
+                    System.out.print("3x" + p.getName() + "  ");
+                } else if ((i == p.getFigure1().getPos() && i == p.getFigure2().getPos()) ||
+                        (i == p.getFigure2().getPos()&& i == p.getFigure3().getPos()) ||
+                        (i == p.getFigure1().getPos() && i == p.getFigure3().getPos())){
+                    System.out.print("2x" + p.getName() + "  ");
+                } else if (i == p.getFigure1().getPos() || i == p.getFigure2().getPos() || i == p.getFigure3().getPos()){
+                    System.out.print( p.getName() + "    ");
+                }
+            }
+            System.out.println();
+        }
 
         // print points of the fields 12-23
         for (int i = 12; i < 24; i++){

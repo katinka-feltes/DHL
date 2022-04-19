@@ -17,6 +17,10 @@ public class Player {
     int victoryPoints;
     boolean goblinSpecialPlayed;
 
+    private Figure figure1;
+    private Figure figure2;
+    private Figure figure3;
+
 
     // figures, collected tokens and color need to be added
 
@@ -30,7 +34,10 @@ public class Player {
         playedCardsPurple = new DirectionDiscardPile('p');
         playedCardsOrange = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
-        int position = 0;
+        figure1 = new Figure('b'); //muss noch irgendwie farbe übergeben werden
+        figure2 = new Figure('b'); //muss noch irgendwie farbe übergeben werden
+        figure3 = new Figure('b'); //muss noch irgendwie farbe übergeben werden
+
         //need to draw cards here and maybe initialize the lists here as well
 
     }
@@ -45,6 +52,18 @@ public class Player {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
             }
         }
+    }
+
+    public Figure getFigure1() {
+        return figure1;
+    }
+
+    public Figure getFigure2() {
+        return figure2;
+    }
+
+    public Figure getFigure3() {
+        return figure3;
     }
 
     public String getName() {

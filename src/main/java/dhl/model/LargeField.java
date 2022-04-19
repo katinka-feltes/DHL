@@ -12,6 +12,7 @@ public class LargeField extends Field {
      * @param points the points of the field.
      * @param color  the color of the field. (r, g, b, p, o, w) r = red, g = green, b = blue, p = purple, o = orange,
      *               w = white
+     * @param wishingStoneAmount how many wishing points the large field has
      */
     public LargeField(int points, char color, int wishingStoneAmount) {
         super(points, color);

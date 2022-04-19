@@ -21,4 +21,7 @@ public class Figure {
         return steps;
     }
 
+    public int getPos() {
+        return pos;
+    }
 }
