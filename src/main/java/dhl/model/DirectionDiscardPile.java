@@ -39,7 +39,7 @@ public class DirectionDiscardPile extends DiscardPile{
      * @param card the given card
      * @return the boolean if the card fits or not
      */
-    public boolean cardFitsToPile(int direction, Card card){ //color and direction are needed to be correct
+    public boolean cardFitsToPile(Card card){ //color and direction are needed to be correct
         switch(direction){
             case(0):
                 return getTop().getColor() == getColor();

@@ -18,6 +18,18 @@ public class Cli {
      * @param args The command line arguments passed to the application
      */
     public static void main(String[] args) {
+
+        Game game = new Game(inputPlayersNames(inputPlayerAmount()));
+
+        printCurrentBoard(game);
+
+    }
+
+    /** This method ask how many players are going to play.
+     *
+     * @return playerAmount an integer which says how many players are going to play.
+     */
+    public static int inputPlayerAmount(){
         System.out.println("How many players? (2, 3 or 4)");
         Scanner scanner = new Scanner(System.in);
         int playerAmount = 0; //initializing the variable playerAmount
@@ -31,23 +43,43 @@ public class Cli {
                     System.out.println("Please enter a number between 2 and 4.");
                     playerAmount = scanner.nextInt();
                 }
-                    inputValid = true;
-
-                //Get names of the players
-
-
+                inputValid = true;
             } catch (InputMismatchException e){
                 System.out.println("Input must be an integer!");
                 scanner.nextLine();
             }
         }
-
-        Game game = new Game(playerAmount);
-
-        printCurrentBoard(game);
-
+        return playerAmount;
     }
 
+    /** This method allows the player to choose their name as long it is not longer than 16 characters.
+     *
+     * @param playerAmount the amount of players that will compete at the game
+     * @return playersNames a String Array filled with the Names of the Players
+     */
+    public static String[] inputPlayersNames(int playerAmount){
+        Scanner scanner = new Scanner(System.in);
+        String [] playersNames = new String[playerAmount];
+        int nameLength = 16;
+        String playerName = "";
+
+        for(int i = 0; i < playerAmount; i++) {
+            int j = i + 1;
+            System.out.println("Please enter the name of player " + j + ":");
+            playerName = scanner.next();
+            boolean toLong = false;
+            while (!toLong) { // checks if the players name has the right length
+                if (playerName.length() <= nameLength && !playerName.isEmpty()) {
+                    playersNames[i] = (playerName);
+                    toLong = true;
+                } else {
+                    System.out.println("Name can't be empty and only be " + nameLength + " characters long. Try again!");
+                    playerName = scanner.next();
+                }
+            }
+        }
+        return playersNames;
+    }
     private static void printCurrentBoard(Game game){
 
         ArrayList<Player> players = game.getPlayers();

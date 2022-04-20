@@ -68,8 +68,26 @@ public class Game {
         players = new ArrayList<>();
 
         //add player to the players-list
+        //other symbols
+        //♛ \u265B BLACK CHESS QUEEN
+        //♜ \u265C BLACK CHESS ROOK
+        //♝ \u265D BLACK CHESS BISHOP
+        //♞ \u265E BLACK CHESS KNIGHT
         for(int i = 1; i <= playerAmount; i++){
-            players.add(new Player("P" + i));
+            if(i == 1){
+                // unicode for the BLACK SPADE SUIT
+                players.add(new Player(Character.toString('\u2660')));
+            } else if (i == 2) {
+                // unicode for the BLACK CLUB SUIT
+                players.add(new Player(Character.toString('\u2663')));
+            } else if (i == 3) {
+                // unicode for the BLACK HEART SUIT
+                players.add(new Player(Character.toString('\u2665')));
+            } else if (i == 4) {
+                // unicode for the BLACK DIAMOND SUIT
+                players.add(new Player(Character.toString('\u2666')));
+            }
+
         }
     }
 
@@ -77,7 +95,8 @@ public class Game {
      * Constructor for Game with given amount of players (2-4)
      * @param playerNames the List of all player Names
      */
-    public Game (String[] playerNames){
+    public Game(String[] playerNames){
+
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
