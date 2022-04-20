@@ -33,4 +33,6 @@ public class Figure {
     public int getPos() {
         return pos;
     }
+
+    public char getColor() {return color; }
 }

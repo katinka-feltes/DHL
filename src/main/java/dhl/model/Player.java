@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
+    private char symbol;
 
     private DirectionDiscardPile playedCardsRed;
     private DirectionDiscardPile playedCardsBlue;
@@ -22,10 +23,11 @@ public class Player {
     private Figure figure3;
 
 
-    // figures, collected tokens and color need to be added
+    // collected tokens and color need to be added
 
-    public Player(String name){
+    public Player(String name, char symbol){
         this.name = name;
+        this.symbol = symbol;
         goblinSpecialPlayed = false;
         victoryPoints = 0;
         playedCardsRed = new DirectionDiscardPile('r');
@@ -54,6 +56,33 @@ public class Player {
         }
     }
 
+    /**
+     * adds the card to the correctly colored directionDiscardPile
+     * then player can place a figure or the oracle
+     * @param card card the player wants to play
+     */
+    public void playCard (Card card) {
+        switch(card.getColor()) {
+            case('r'): playedCardsRed.add(card);
+            case('g'): playedCardsGreen.add(card);
+            case('b'): playedCardsBlue.add(card);
+            case('p'): playedCardsPurple.add(card);
+            case('o'): playedCardsOrange.add(card);
+        }
+
+        // choice between placing figure and placing oracle needs to be added
+        // call placeFigure by getting chosenFigure (somehow)
+    }
+
+    /**
+     * places the figure to the next correctly colored field
+     * @param cardColor color of the played card
+     * @param chosenFigure figure the player wants to move forward
+     */
+    public void placeFigure(char cardColor, Figure chosenFigure) {
+        chosenFigure.move(cardColor);
+    }
+
     public Figure getFigure1() {
         return figure1;
     }
@@ -72,6 +101,14 @@ public class Player {
     public void setName(String name){
         this.name = name;
     }
+
+    public char getSymbol() {
+        return symbol;
+    }
+    public void setSymbol(char symbol) {
+        this.symbol = symbol;
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 /**
  * Starting point of the command line interface
  */
@@ -91,6 +90,12 @@ public class Cli {
         ArrayList<Player> players = game.getPlayers();
 
         //legend for player-symbols
+        //player 1: C, player 2: H, player 3: K, player 4: M
+        for (Player p : players){
+            System.out.print(p.getName() + ":" + p.getSymbol() + "    ");
+        }
+
+
         System.out.println();
         // print points of the fields 0-11
         for (int i = 0; i < 12; i++){
@@ -106,13 +111,13 @@ public class Cli {
         for (Player p: players) {
             for (int i = 0; i < 12; i++){
                 if (i == p.getFigure1().getPos() && i == p.getFigure2().getPos() && i == p.getFigure3().getPos()){
-                    System.out.print("3x" + p.getName() + "  ");
+                    System.out.print("3x" + p.getSymbol() + "  ");
                 } else if ((i == p.getFigure1().getPos() && i == p.getFigure2().getPos()) ||
                         (i == p.getFigure2().getPos()&& i == p.getFigure3().getPos()) ||
                         (i == p.getFigure1().getPos() && i == p.getFigure3().getPos())){
-                    System.out.print("2x" + p.getName() + "  ");
+                    System.out.print("2x" + p.getSymbol() + "  ");
                 } else if (i == p.getFigure1().getPos() || i == p.getFigure2().getPos() || i == p.getFigure3().getPos()){
-                    System.out.print( p.getName() + "    ");
+                    System.out.print( p.getSymbol() + "    ");
                 }
             }
             System.out.println();

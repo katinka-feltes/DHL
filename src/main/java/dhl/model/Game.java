@@ -73,21 +73,14 @@ public class Game {
         //♜ \u265C BLACK CHESS ROOK
         //♝ \u265D BLACK CHESS BISHOP
         //♞ \u265E BLACK CHESS KNIGHT
+        //our symbols
+        //♠ \u2660 BLACK SPADE SUIT
+        //♣ \u2663 BLACK CLUB SUIT
+        //♥ \u2665 BLACK HEART SUIT
+        //♦ \u2666 BLACK DIAMOND SUIT
+        char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
         for(int i = 1; i <= playerAmount; i++){
-            if(i == 1){
-                // unicode for the BLACK SPADE SUIT
-                players.add(new Player(Character.toString('\u2660')));
-            } else if (i == 2) {
-                // unicode for the BLACK CLUB SUIT
-                players.add(new Player(Character.toString('\u2663')));
-            } else if (i == 3) {
-                // unicode for the BLACK HEART SUIT
-                players.add(new Player(Character.toString('\u2665')));
-            } else if (i == 4) {
-                // unicode for the BLACK DIAMOND SUIT
-                players.add(new Player(Character.toString('\u2666')));
-            }
-
+            players.add(new Player("P" + i, symbols[i-1]));
         }
     }
 
@@ -107,8 +100,9 @@ public class Game {
         players = new ArrayList<>();
 
         //add player to the players-list
-        for (String playerName : playerNames) {
-            players.add(new Player(playerName));
+        char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+        for(int i = 0; i < playerNames.length; i++){
+            players.add(new Player(playerNames[i], symbols[i]));
         }
     }
 
