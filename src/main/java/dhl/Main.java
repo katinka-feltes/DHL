@@ -2,7 +2,6 @@ package dhl;
 
 import dhl.cli.Cli;
 import dhl.gui.Gui;
-import dhl.model.Game;
 
 import java.util.Arrays;
 

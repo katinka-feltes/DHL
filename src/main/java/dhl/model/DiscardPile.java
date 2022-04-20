@@ -3,8 +3,8 @@ package dhl.model;
 import java.util.ArrayList;
 
 public class DiscardPile {
-    private ArrayList<Card> pile;
-    private char color;
+    protected ArrayList<Card> pile;
+    protected char color;
 
 
     /**

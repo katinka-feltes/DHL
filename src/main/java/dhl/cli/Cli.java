@@ -61,7 +61,7 @@ public class Cli {
         Scanner scanner = new Scanner(System.in);
         String [] playersNames = new String[playerAmount];
         int nameLength = 16;
-        String playerName = "";
+        String playerName;
 
         for(int i = 0; i < playerAmount; i++) {
             int j = i + 1;
@@ -80,6 +80,12 @@ public class Cli {
         }
         return playersNames;
     }
+
+
+    /**
+     * Prints out the current state of the board to the console
+     * @param game the currently running game
+     */
     private static void printCurrentBoard(Game game){
 
         ArrayList<Player> players = game.getPlayers();

@@ -8,6 +8,7 @@ public class DrawingPile {
     private Stack<Card> cards;
 
     /**
+     * Constructor of the class
      * creates a new drawing pile
      */
     public DrawingPile() {
@@ -29,6 +30,11 @@ public class DrawingPile {
         return cards.pop();
     }
 
+
+    /**
+     * Checks if the drawing pile is empty
+     * @return true if the cards list is empty
+     */
     public boolean isEmpty() {
         return cards.isEmpty();
     }

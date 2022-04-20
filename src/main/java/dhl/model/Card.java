@@ -1,7 +1,5 @@
 package dhl.model;
 
-import dhl.model.tokens.Goblin;
-
 public class Card {
     private final int number;
     private final char color;
@@ -42,11 +40,5 @@ public class Card {
 
     public char getColor() {
         return color;
-    }
-
-    public static void main(String[] args) {
-        Field[] field = {new Field(0,'r')};
-        field[0].setToken(new Goblin());
-        System.out.println(field[0].getToken().getName());
     }
 }

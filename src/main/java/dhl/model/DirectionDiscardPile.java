@@ -2,7 +2,7 @@ package dhl.model;
 
 public class DirectionDiscardPile extends DiscardPile{
 
-    private int direction;
+    private int direction; //-1 if decreasing, 0 if not set and 1 if increasing
 
     /**
      * The constructor for DiscardPile
@@ -35,11 +35,10 @@ public class DirectionDiscardPile extends DiscardPile{
     /**
      * Checks if the given card fits to the pile. The color and the direction are needed to be correct to achieve a true
      *
-     * @param direction of the discard pile
      * @param card the given card
      * @return the boolean if the card fits or not
      */
-    public boolean cardFitsToPile(Card card){ //color and direction are needed to be correct
+    public boolean cardFitsToPile(Card card){ //color are needed to be correct
         switch(direction){
             case(0):
                 return getTop().getColor() == getColor();
@@ -50,5 +49,33 @@ public class DirectionDiscardPile extends DiscardPile{
             default:
                 return false;
         }
+    }
+
+
+    /**
+     * adds card to top (end) of the pile if the color and direction fit
+     * updates the direction if not set yet
+     * @param card the card that is added
+     */
+    @Override
+    public void add(Card card){
+        //check if card exists and fits
+        if (card == null || card.getColor()!=color || cardFitsToPile(card)){
+            System.out.println("Card is null, a different color than the pile or doesn't fit the direction(for your info carl)");
+            return;
+        }
+        // set direction if needed
+        if (direction == 0){
+            int difference = card.getNumber() - super.getTop().getNumber();
+            //difference between card to add and top card of pile, larger 0 if added card is higher
+            if(difference > 0){
+                direction = 1;
+            } else if(difference < 0){
+                direction = -1;
+            }
+        }
+
+        //add card to pile
+        super.getPile().add(card);
     }
 }
