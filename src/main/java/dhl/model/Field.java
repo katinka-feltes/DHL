@@ -31,7 +31,7 @@ public class Field {
      * @return the Token of the field or null if there is no token on the field.
      */
     public Token getToken() {
-        if(token != null && token.collectable()) {
+        if(token != null && token.isCollectable()) {
             Token temp = token;
             token = null;
             return temp;

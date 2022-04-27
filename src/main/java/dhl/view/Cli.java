@@ -22,21 +22,21 @@ public class Cli implements View {
 
     /** This method ask how many players are going to play.
      *
-     * @return playerAmount an integer which says how many players are going to play.
+     * @return result an integer which says how many players are going to play.
      */
-    public int inputPlayerAmount(){
-        System.out.println("How many players? (2, 3 or 4)");
+    public int promptInt(int start, int end, String prompt) {
+        System.out.println(prompt);
         Scanner scanner = new Scanner(System.in);
-        int playerAmount = 0; //initializing the variable playerAmount
+        int result = 0;
         boolean inputValid = false; //initializing the variable inputValid
 
         while(!inputValid){ //checks if the input is an integer and if it is inbound
             try{
-                playerAmount = scanner.nextInt();
+                result = scanner.nextInt();
                 // check if the number is inbound
-                while (playerAmount < 2 || playerAmount > 4) {
-                    System.out.println("Please enter a number between 2 and 4.");
-                    playerAmount = scanner.nextInt();
+                while (result < start || result > end) {
+                    System.out.println("Please enter a number between " + start + " and " + end + ".");
+                    result = scanner.nextInt();
                 }
                 inputValid = true;
             } catch (InputMismatchException e){
@@ -44,7 +44,7 @@ public class Cli implements View {
                 scanner.nextLine();
             }
         }
-        return playerAmount;
+        return result;
     }
 
 

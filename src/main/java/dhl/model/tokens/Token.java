@@ -1,10 +1,13 @@
 package dhl.model.tokens;
 
+import dhl.model.Game;
+import dhl.model.Player;
+
 public interface Token {
     /**
      * @return true if the token will be collected, false otherwise
      */
-    boolean collectable();
+    boolean isCollectable();
 
     /**
      * @return the token's name as a string
@@ -14,5 +17,6 @@ public interface Token {
     /**
      * executes the token's action
      */
-    void action();
+    void action(Game game, Player player);
 }
+

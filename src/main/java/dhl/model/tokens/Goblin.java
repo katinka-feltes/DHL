@@ -1,9 +1,12 @@
 package dhl.model.tokens;
 
+import dhl.model.Game;
+import dhl.model.Player;
+
 public class Goblin implements Token {
 
     @Override
-    public boolean collectable() {
+    public boolean isCollectable() {
         return false;
     }
 
@@ -14,7 +17,9 @@ public class Goblin implements Token {
     }
 
     @Override
-    public void action() {
+    public void action(Game game, Player player) {
 
     }
+
+
 }

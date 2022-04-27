@@ -3,7 +3,7 @@ package dhl.model.tokens;
 import dhl.model.Game;
 import dhl.model.Player;
 
-public class WishingStone implements Token{
+public class Mirror implements Token {
 
     @Override
     public boolean isCollectable() {
@@ -12,12 +12,12 @@ public class WishingStone implements Token{
 
     @Override
     public String getName() {
-        return null;
+        String[] temp = this.getClass().toString().split("\\.");
+        return temp[temp.length-1];
     }
 
     @Override
     public void action(Game game, Player player) {
 
     }
-
 }
