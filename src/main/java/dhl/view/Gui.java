@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Starting point of the JavaFX GUI
  */
-public class Gui extends Application {
+public class Gui extends Application{
     /**
      * This method is called by the Application to start the GUI.
      *

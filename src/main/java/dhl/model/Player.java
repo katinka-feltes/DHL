@@ -60,6 +60,7 @@ public class Player {
      * @param card card the player wants to play
      */
     public void playCard (Card card) {
+        //remove card from hand and first check if it is there
         switch(card.getColor()) {
             case('r'): playedCardsRed.add(card);
             case('g'): playedCardsGreen.add(card);
@@ -67,9 +68,10 @@ public class Player {
             case('p'): playedCardsPurple.add(card);
             case('o'): playedCardsOrange.add(card);
         }
-
         // choice between placing figure and placing oracle needs to be added
+
         // call placeFigure by getting chosenFigure (somehow)
+
     }
 
     /**

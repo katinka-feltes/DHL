@@ -1,6 +1,5 @@
 package dhl.view;
 
-import dhl.controller.Controller;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -11,7 +10,7 @@ import java.util.Scanner;
 /**
  * Starting point of the command line interface
  */
-public class Cli {
+public class Cli implements View {
     /**
      * The entry point of the CLI application.
      *
@@ -19,17 +18,13 @@ public class Cli {
      */
     public static void main(String[] args) {
 
-        Controller controller = new Controller();
-
-        controller.startGame(inputPlayersNames(inputPlayerAmount()));
-
     }
 
     /** This method ask how many players are going to play.
      *
      * @return playerAmount an integer which says how many players are going to play.
      */
-    public static int inputPlayerAmount(){
+    public int inputPlayerAmount(){
         System.out.println("How many players? (2, 3 or 4)");
         Scanner scanner = new Scanner(System.in);
         int playerAmount = 0; //initializing the variable playerAmount
@@ -52,12 +47,14 @@ public class Cli {
         return playerAmount;
     }
 
+
     /** This method allows the player to choose their name as long it is not longer than 16 characters.
      *
      * @param playerAmount the amount of players that will compete at the game
      * @return playersNames a String Array filled with the Names of the Players
      */
-    public static String[] inputPlayersNames(int playerAmount){
+    @Override
+    public String[] inputPlayersNames(int playerAmount){
         Scanner scanner = new Scanner(System.in);
         String [] playersNames = new String[playerAmount];
         int nameLength = 16;
@@ -95,69 +92,62 @@ public class Cli {
         for (Player p : players){
             System.out.print(p.getName() + ":" + p.getSymbol() + "    ");
         }
-
-
-        System.out.println();
-        // print points of the fields 0-11
-        for (int i = 0; i < 12; i++){
-            System.out.print(Game.FIELDS[i].getPoints() + "    ");
-        }
-        System.out.println();
-        // print colors of the fields 0-11
-        for (int i = 0; i < 12; i++){
-            System.out.print(Game.FIELDS[i].getColor() + "     ");
-        }
-        System.out.println();
-        //Print figures of the players
-        for (Player p: players) {
-            for (int i = 0; i < 12; i++){
-                if (i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos() && i == p.getFigures()[2].getPos()){
-                    System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + " ");
-                } else if ((i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos()) ||
-                        (i == p.getFigures()[1].getPos()&& i == p.getFigures()[2].getPos()) ||
-                        (i == p.getFigures()[0].getPos() && i == p.getFigures()[2].getPos())){
-                    System.out.print(p.getSymbol() + " " + p.getSymbol() + "   ");
-                } else if (i == p.getFigures()[0].getPos() || i == p.getFigures()[1].getPos() || i == p.getFigures()[2].getPos()){
-                    System.out.print( p.getSymbol() + "     ");
-                }
-                else {
-                    System.out.print("      ");
-                }
-            }
-            System.out.println();
-        }
-
-        // print points of the fields 12-23
-        for (int i = 12; i < 24; i++){
-            System.out.print(Game.FIELDS[i].getPoints() + "     ");
-        }
-        System.out.println();
-        System.out.print("  ");
-        // print colors of the fields 12-23
-        for (int i = 12; i < 24; i++){
-            System.out.print(Game.FIELDS[i].getColor() + "     ");
-        }
-        System.out.println();
-        //Print figures of the players
         System.out.println();
 
-        // print points of the fields 24-35
-        for (int i = 24; i < 36; i++){
-            System.out.print(Game.FIELDS[i].getPoints() + "     ");
-        }
-        System.out.println();
-        // print colors of the fields 24-35
-        for (int i = 24; i < 36; i++){
-            System.out.print(Game.FIELDS[i].getColor() + "     ");
-        }
-        //Print figures of the players
-        System.out.println();
-        System.out.println();
+        //print the boards first row (from 0-11)
+        printBoardPart(0,11, players);
+        //print the boards first row (from 12-23)
+        printBoardPart(12,23, players);
+        //print the boards first row (from 24-35)
+        printBoardPart(24,35, players);
 
         //print points
         System.out.println("Points:");
         for (Player p: players) {
             System.out.print(p.getName() + " " + p.getVictoryPoints() +"   ");
+        }
+    }
+
+    /**
+     * @param rowStart the first field of the board that will be printed
+     * @param rowEnd the last field of the board that will be printed
+     * @param players the players of the game
+     */
+    private void printBoardPart(int rowStart, int rowEnd, ArrayList<Player> players){
+        // print index
+        for (int i = rowStart; i <= rowEnd; i++){
+            System.out.print(("(" + i + ")    ").substring(0,7));
+        }
+        System.out.println();
+
+        // print points of the fields
+        for (int i = rowStart; i <= rowEnd; i++){
+            System.out.print((Game.FIELDS[i].getPoints() + "      ").substring(0,7));
+        }
+        System.out.println();
+
+        // print colors of the fields
+        for (int i = rowStart; i <= rowEnd; i++){
+            System.out.print(Game.FIELDS[i].getColor() + "      ");
+        }
+        System.out.println();
+        //Print figures of the players
+        for (Player p: players) {
+            for (int i = rowStart; i <= rowEnd; i++){
+                if (i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos() && i == p.getFigures()[2].getPos()){
+                    System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
+                } else if ((i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos()) ||
+                        (i == p.getFigures()[1].getPos()&& i == p.getFigures()[2].getPos()) ||
+                        (i == p.getFigures()[0].getPos() && i == p.getFigures()[2].getPos())){
+                    System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
+                } else if (i == p.getFigures()[0].getPos() || i == p.getFigures()[1].getPos() || i == p.getFigures()[2].getPos()){
+                    System.out.print( p.getSymbol() + "      ");
+                }
+                else {
+                    System.out.print("       ");
+                }
+            }
+            System.out.println();
         }
 
     }

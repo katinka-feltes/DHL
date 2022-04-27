@@ -1,5 +1,6 @@
 package dhl;
 
+import dhl.controller.Controller;
 import dhl.view.Cli;
 import dhl.view.Gui;
 
@@ -16,11 +17,15 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        Controller c = new Controller();
+
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {
-            Cli.main(args);
+            c.setView(new Cli());
         } else {
             Gui.main(args);
+            //c.setView(new Gui());
         }
+        c.startGame();
     }
 }
