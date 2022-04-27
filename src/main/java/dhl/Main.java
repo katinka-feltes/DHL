@@ -1,7 +1,7 @@
 package dhl;
 
-import dhl.cli.Cli;
-import dhl.gui.Gui;
+import dhl.view.Cli;
+import dhl.view.Gui;
 
 import java.util.Arrays;
 

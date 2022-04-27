@@ -1,4 +1,4 @@
-package dhl.gui;
+package dhl.view;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

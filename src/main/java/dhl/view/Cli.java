@@ -1,5 +1,6 @@
-package dhl.cli;
+package dhl.view;
 
+import dhl.controller.Controller;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -18,14 +19,9 @@ public class Cli {
      */
     public static void main(String[] args) {
 
-        Game game = new Game(inputPlayersNames(inputPlayerAmount()));
+        Controller controller = new Controller();
 
-        // game.getPlayers().get(0).getFigures()[0].move('r');
-        //game.getPlayers().get(0).getFigures()[1].move('b');
-        //game.getPlayers().get(0).getFigures()[2].move('o');
-        //game.getPlayers().get(1).getFigures()[1].move('o');
-
-        printCurrentBoard(game);
+        controller.startGame(inputPlayersNames(inputPlayerAmount()));
 
     }
 
@@ -90,7 +86,7 @@ public class Cli {
      * Prints out the current state of the board to the console
      * @param game the currently running game
      */
-    private static void printCurrentBoard(Game game){
+    public void printCurrentBoard(Game game){
 
         ArrayList<Player> players = game.getPlayers();
 

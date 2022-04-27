@@ -5,5 +5,5 @@ module dhl {
     requires javafx.controls;
     requires transitive javafx.graphics;
     
-    exports dhl.gui;
+    exports dhl.view;
 }
