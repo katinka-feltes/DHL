@@ -14,20 +14,16 @@ public class Figure {
     }
 
     /**
-     *
+     * moves this figure to the next correctly colored field
      * @param color the color of the field that the figure should move to
-     * @return the amount of steps that the figure will move to get to the colored field as an int
      */
-    public int move(char color) {
+    public void move(char color) {
         int steps = 1;
-        while (true) {
-            if (Game.FIELDS[pos + steps].getColor() != color) {
-                steps++;
-            }else {
-                break;
-            }
+        while (Game.FIELDS[pos + steps].getColor() != color) {
+            System.out.println(Game.FIELDS[pos + steps].getColor());
+            steps++;
         }
-        return steps;
+        pos+=steps; //move this figure the calculated amount of steps forward
     }
 
     public int getPos() {

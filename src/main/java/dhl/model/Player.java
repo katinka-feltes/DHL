@@ -83,6 +83,7 @@ public class Player {
         chosenFigure.move(cardColor);
     }
 
+
     public Figure getFigure1() {
         return figure1;
     }

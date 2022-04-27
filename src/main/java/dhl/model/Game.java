@@ -109,7 +109,7 @@ public class Game {
     /**
      * Adds the given card to the matching discard pile and removes it from the players hand
      * @param card the card to be discarded
-     * @param player the player that removes card 
+     * @param player the player that removes card
      */
     public void putCardOnDiscardingPile(Card card, Player player) {
         player.getHand().remove(card);

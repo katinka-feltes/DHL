@@ -20,6 +20,11 @@ public class Cli {
 
         Game game = new Game(inputPlayersNames(inputPlayerAmount()));
 
+        game.getPlayers().get(0).getFigure1().move('r');
+        game.getPlayers().get(0).getFigure2().move('b');
+        game.getPlayers().get(0).getFigure2().move('o');
+        game.getPlayers().get(1).getFigure1().move('o');
+
         printCurrentBoard(game);
 
     }
@@ -111,13 +116,16 @@ public class Cli {
         for (Player p: players) {
             for (int i = 0; i < 12; i++){
                 if (i == p.getFigure1().getPos() && i == p.getFigure2().getPos() && i == p.getFigure3().getPos()){
-                    System.out.print("3x" + p.getSymbol() + "  ");
+                    System.out.print("3x" + p.getSymbol() + "   ");
                 } else if ((i == p.getFigure1().getPos() && i == p.getFigure2().getPos()) ||
                         (i == p.getFigure2().getPos()&& i == p.getFigure3().getPos()) ||
                         (i == p.getFigure1().getPos() && i == p.getFigure3().getPos())){
-                    System.out.print("2x" + p.getSymbol() + "  ");
+                    System.out.print("2x" + p.getSymbol() + "   ");
                 } else if (i == p.getFigure1().getPos() || i == p.getFigure2().getPos() || i == p.getFigure3().getPos()){
-                    System.out.print( p.getSymbol() + "    ");
+                    System.out.print( p.getSymbol() + "     ");
+                }
+                else {
+                    System.out.print("      ");
                 }
             }
             System.out.println();
