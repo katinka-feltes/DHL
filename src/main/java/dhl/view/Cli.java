@@ -2,6 +2,7 @@ package dhl.view;
 
 
 import dhl.controller.Controller;
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -61,6 +62,18 @@ public class Cli implements View {
     @Override
     public void error(String str) {
         System.err.println(str);
+    }
+
+    /**
+     * @param player the player whose hand cards to show
+     */
+    @Override
+    public void printHand(Player player) {
+        System.out.println("Active Player's (" + player.getName() + ") Hand Cards:");
+        for (Card card : player.getHand()){
+            System.out.print(Character.toString(card.getColor())+ card.getNumber() +"   ");
+        }
+        System.out.println();
     }
 
 
@@ -169,4 +182,6 @@ public class Cli implements View {
         }
 
     }
+
+
 }

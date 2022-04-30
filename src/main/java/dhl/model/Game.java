@@ -83,6 +83,10 @@ public class Game {
         for(int i = 1; i <= playerAmount; i++){
             players.add(new Player("P" + i, symbols[i-1]));
         }
+        // all players draw 8 cards
+        for (Player p: players) {
+            p.drawCardsUpToEight(drawingPile);
+        }
     }
 
     /**
@@ -104,6 +108,11 @@ public class Game {
         char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
         for(int i = 0; i < playerNames.length; i++){
             players.add(new Player(playerNames[i], symbols[i]));
+        }
+
+        // all players draw 8 cards
+        for (Player p: players) {
+            p.drawCardsUpToEight(drawingPile);
         }
     }
 
@@ -130,10 +139,12 @@ public class Game {
         }
     }
 
+    public DrawingPile getDrawingPile() {
+        return drawingPile;
+    }
     public DiscardPile getDiscardingPileBlue() {
         return discardingPileBlue;
     }
-
     public DiscardPile getDiscardingPileRed() {
         return discardingPileRed;
     }

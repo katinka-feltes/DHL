@@ -5,6 +5,8 @@ import dhl.model.Game;
 import dhl.model.Player;
 import dhl.view.View;
 
+import java.util.Scanner;
+
 
 public class Controller {
     View view;
@@ -14,46 +16,57 @@ public class Controller {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
         view.printCurrentBoard(model);
+        view.printHand(model.getPlayers().get(0));
 
-        playCard(model.getPlayers().get(0), "r3");
-        view.printCurrentBoard(model);
-        playCard(model.getPlayers().get(0), "r5");
-        view.printCurrentBoard(model);
-        playCard(model.getPlayers().get(0), "r2");
+        playCard(model.getPlayers().get(0));
         view.printCurrentBoard(model);
     }
 
-    public void playCard(Player player, String cardString){
+    public void playCard(Player player){
 
-        //eig card von players hand bekommen
-        char[] cardValue = cardString.toCharArray();
-        Card card = new Card(Character.getNumericValue(cardValue[1]), cardValue[0]);
+        Card card;
 
-        // oracle or figure?
-
-        //choose a figure
+        // choose a card from hand and place it on matching playedCardsPile
         while (true) {
             try {
-                player.playCard(card, view.promptInt(0, 35, "Which figure do you want to move?"));
+                // get card as string and check type with view method !!!
+                System.out.println("What card?");
+                Scanner scanner = new Scanner(System.in);
+                String cardAsString = scanner.next();
+                card = player.getCardFromHand(cardAsString); //number 10 needs to be added
+                player.addCardToPlayedCards(card);
                 break;
             } catch (Exception e) {
                 view.error(e.getMessage());
             }
         }
-    }
-
-    public void takeTurn() {
-        // play a card
 
         // oracle or figure
-
         //oracle: which number
 
         //figure: which field
+        while (true) {
+            try {
+                player.placeFigure(card.getColor(), view.promptInt(0, 35,
+                        "Which figure do you want to move? (Type the index of the field)"));
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
 
         //special action field / special action oracle
 
         //**rare** if 3 Goblin
+
+    }
+
+    public void takeTurn(Player player) {
+
+        // play or discard a card
+
+        // draw cards up to eight again
+
     }
 
     public void setView(View view) {

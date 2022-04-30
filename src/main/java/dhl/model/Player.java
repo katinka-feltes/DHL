@@ -24,7 +24,7 @@ public class Player {
 
     // collected tokens and color need to be added
 
-    public Player(String name, char symbol){
+    public Player(String name, char symbol) {
         this.name = name;
         this.symbol = symbol;
         goblinSpecialPlayed = false;
@@ -38,17 +38,15 @@ public class Player {
         figures[0] = new Figure(symbol);
         figures[1] = new Figure(symbol);
         figures[2] = new Figure(symbol);
-
-        //need to draw cards here and maybe initialize the lists here as well
-
     }
 
     /**
      * fills the hand up to eight cards
+     *
      * @param drawingPile the global drawingPile
      */
-    public void drawCardsUpToEight (DrawingPile drawingPile) {
-        if (drawingPile != null){
+    public void drawCardsUpToEight(DrawingPile drawingPile) {
+        if (drawingPile != null) {
             while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
             }
@@ -57,63 +55,75 @@ public class Player {
 
     /**
      * adds the card to the correctly colored directionDiscardPile
-     * and then places the chosen figure
+     *
      * @param card card the player wants to play
-     * @param figurePos the position of the figure to move
      */
-    public void playCard (Card card, int figurePos) {
+    public void addCardToPlayedCards(Card card) throws Exception {
         //remove card from hand and first check if it is there
-        switch(card.getColor()) {
-            case('r'): playedCardsRed.add(card);
-            break;
-            case('g'): playedCardsGreen.add(card);
-            break;
-            case('b'): playedCardsBlue.add(card);
-            break;
-            case('p'): playedCardsPurple.add(card);
-            break;
-            case('o'): playedCardsOrange.add(card);
-            break;
-            default:
-                System.out.println("Card color does not exist");
-        }
-        placeFigure(card.getColor(), getFigureOnField(figurePos));
-    }
 
+        switch (card.getColor()) {
+            case ('r'):
+                playedCardsRed.add(card);
+                break;
+            case ('g'):
+                playedCardsGreen.add(card);
+                break;
+            case ('b'):
+                playedCardsBlue.add(card);
+                break;
+            case ('p'):
+                playedCardsPurple.add(card);
+                break;
+            case ('o'):
+                playedCardsOrange.add(card);
+                break;
+            default:
+                throw new Exception("Card color does not exist");
+        }
+    }
 
     /**
      * places the figure to the next correctly colored field
+     *
      * @param cardColor color of the played card
-     * @param chosenFigure figure the player wants to move forward
+     * @param figurePos the position of the figure to move
      */
-    public void placeFigure(char cardColor, Figure chosenFigure) {
-        chosenFigure.move(cardColor);
+    public void placeFigure(char cardColor, int figurePos) throws Exception {
+        getFigureOnField(figurePos).move(cardColor);
     }
 
     /**
-     *
      * @param fieldIndex the index of the field to get the figure from
      * @return the figure on the field or null if there is none
      */
-    public Figure getFigureOnField(int fieldIndex){
-        for (Figure f : figures){
-            if (f.getPos() == fieldIndex){
+    public Figure getFigureOnField(int fieldIndex) throws Exception {
+        for (Figure f : figures) {
+            if (f.getPos() == fieldIndex) {
                 return f;
             }
         }
-        System.out.println("No figure on this field.");
-        return null;
+        throw new Exception("No figure on this field.");
+    }
+
+    public Card getCardFromHand(String cardAsString) throws Exception {
+
+        char[] cardValue = cardAsString.toCharArray();
+        for (Card handCard : hand) {
+            if (handCard.getColor() == Character.getNumericValue(cardValue[0]) && handCard.getNumber() == cardValue[1]) {
+                return handCard;
+            }
+        }
+        throw new Exception("Card is not in Hand.");
     }
 
     /**
-     *
      * @param fieldIndex the index of the field to get the figure-amount from
      * @return the amount of figures on the field as an int
      */
-    public int getFigureAmountOnField(int fieldIndex){
+    public int getFigureAmountOnField(int fieldIndex) {
         int amount = 0;
-        for (Figure f : figures){
-            if (f.getPos() == fieldIndex){
+        for (Figure f : figures) {
+            if (f.getPos() == fieldIndex) {
                 amount++;
             }
         }
@@ -128,13 +138,15 @@ public class Player {
     public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 
     public char getSymbol() {
         return symbol;
     }
+
     public void setSymbol(char symbol) {
         this.symbol = symbol;
     }
@@ -142,13 +154,16 @@ public class Player {
     public List<Card> getHand() {
         return hand;
     }
-    public int getVictoryPoints(){
+
+    public int getVictoryPoints() {
         return victoryPoints;
     }
-    public void setVictoryPoints (int victoryPoints){
+
+    public void setVictoryPoints(int victoryPoints) {
         this.victoryPoints = victoryPoints;
     }
-    public boolean isGoblinSpecialPlayed(){
+
+    public boolean isGoblinSpecialPlayed() {
         return goblinSpecialPlayed;
     }
 }
