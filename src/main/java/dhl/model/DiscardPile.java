@@ -20,10 +20,9 @@ public class DiscardPile {
      * adds card to top (end) of the pile if the color is the same
      * @param card the card that is added
      */
-    public void add(Card card){
+    public void add(Card card) throws Exception {
         if (card == null || card.getColor()!=color){
-            System.out.println("Card is null or a different color than the pile (for your info carl");
-            return;
+            throw new Exception("Card is null or a different color than the pile.");
         }
         pile.add(card);
     }
@@ -32,7 +31,10 @@ public class DiscardPile {
      * returns the top card (at the end of the list)
      * @return the Card at the top of the Pile
      */
-    public Card getTop(){
+    public Card getTop() throws Exception {
+        if (pile.isEmpty()){
+            throw new Exception("Card pile is empty.");
+        }
         return pile.get(pile.size()-1);
     }
 
@@ -40,7 +42,10 @@ public class DiscardPile {
      * returns and removes the top card (from the end of the list)
      * @return the Card that was removed from the top of the Pile
      */
-    public Card getAndRemoveTop(){
+    public Card getAndRemoveTop() throws Exception {
+        if (pile.isEmpty()){
+            throw new Exception("Card pile is empty.");
+        }
         return pile.remove(pile.size()-1);
     }
 

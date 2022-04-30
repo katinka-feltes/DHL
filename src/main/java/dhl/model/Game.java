@@ -116,7 +116,7 @@ public class Game {
      * @param card the card to be discarded
      * @param player the player that removes card
      */
-    public void putCardOnDiscardingPile(Card card, Player player) {
+    public void putCardOnDiscardingPile(Card card, Player player) throws Exception {
         player.getHand().remove(card);
         switch (card.getColor()) {
             case 'r': discardingPileRed.add(card);
@@ -130,7 +130,7 @@ public class Game {
             case 'o': discardingPileOrange.add(card);
                 break;
             default:
-                System.out.println("Color of the card doesn't exist.");
+                throw new Exception("Color of the card doesn't exist.");
         }
     }
 

@@ -61,7 +61,7 @@ public class Player {
      * @param card card the player wants to play
      * @param figurePos the position of the figure to move
      */
-    public void playCard (Card card, int figurePos) {
+    public void playCard (Card card, int figurePos) throws Exception {
         //remove card from hand and first check if it is there
         switch(card.getColor()) {
             case('r'): playedCardsRed.add(card);
@@ -75,7 +75,7 @@ public class Player {
             case('o'): playedCardsOrange.add(card);
             break;
             default:
-                System.out.println("Card color does not exist");
+                throw new Exception("Card color does not exist");
         }
         placeFigure(card.getColor(), getFigureOnField(figurePos));
     }
@@ -101,7 +101,7 @@ public class Player {
                 return f;
             }
         }
-        System.out.println("No figure on this field.");
+        throw new Exception("No figure on this field.");
         return null;
     }
 

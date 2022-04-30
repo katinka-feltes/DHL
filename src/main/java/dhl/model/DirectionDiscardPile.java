@@ -15,24 +15,6 @@ public class DirectionDiscardPile extends DiscardPile{
     }
 
     /**
-     * The setter of the direction for one discard pile
-     *
-     * @param dir the set direction
-     */
-    public void setDirection(int dir) {
-        this.direction = dir;
-    }
-
-    /**
-     * The getter of the discard piles direction
-     *
-     * @return direction
-     */
-    public int getDirection(){
-        return direction;
-    }
-
-    /**
      * Checks if the given card fits to the pile. The color and the direction are needed to be correct to achieve a true
      *
      * @param card the given card
@@ -61,11 +43,10 @@ public class DirectionDiscardPile extends DiscardPile{
      * @param card the card that is added
      */
     @Override
-    public void add(Card card){
+    public void add(Card card) throws Exception {
         //check if card exists and fits
         if (card == null || card.getColor()!=color || !cardFitsToPile(card)){
-            System.out.println("Card is null, a different color than the pile or doesn't fit the direction(for your info carl)");
-            return;
+            throw new Exception("Card is null, a different color than the pile or doesn't fit the direction(for your info carl)");
         }
         // set direction if needed
         if (direction == 0 && !pile.isEmpty()){
@@ -80,5 +61,14 @@ public class DirectionDiscardPile extends DiscardPile{
 
         //add card to pile
         super.getPile().add(card);
+    }
+
+
+    public void setDirection(int dir) {
+        this.direction = dir;
+    }
+
+    public int getDirection(){
+        return direction;
     }
 }
