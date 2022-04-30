@@ -12,7 +12,7 @@ public class Controller {
 
     public void startGame() {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
-        model = new Game(playerName, view);
+        model = new Game(playerName);
         view.printCurrentBoard(model);
 
         playCard(model.getPlayers().get(0), "r3");
@@ -32,7 +32,28 @@ public class Controller {
         // oracle or figure?
 
         //choose a figure
-        player.playCard(card, view.promptInt(0, 35, "Which figure do you want to move?"));
+        while (true) {
+            try {
+                player.playCard(card, view.promptInt(0, 35, "Which figure do you want to move?"));
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+    }
+
+    public void takeTurn() {
+        // play a card
+
+        // oracle or figure
+
+        //oracle: which number
+
+        //figure: which field
+
+        //special action field / special action oracle
+
+        //**rare** if 3 Goblin
     }
 
     public void setView(View view) {

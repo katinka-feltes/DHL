@@ -1,5 +1,7 @@
 package dhl.view;
 
+
+import dhl.controller.Controller;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -11,6 +13,12 @@ import java.util.Scanner;
  * Starting point of the command line interface
  */
 public class Cli implements View {
+
+    private final Controller controller;
+
+    public Cli(Controller controller){
+        this.controller = controller;
+    }
     /**
      * The entry point of the CLI application.
      *
@@ -45,6 +53,14 @@ public class Cli implements View {
             }
         }
         return result;
+    }
+
+    /**
+     * @param str Error Message
+     */
+    @Override
+    public void error(String str) {
+        System.err.println(str);
     }
 
 
@@ -122,7 +138,7 @@ public class Cli implements View {
         System.out.println();
 
         // print points of the fields
-        for (int i = rowStart; i <= rowEnd; i++){
+        for (int i = rowStart; i <= rowEnd; i++) {
             System.out.print((Game.FIELDS[i].getPoints() + "      ").substring(0,7));
         }
         System.out.println();
@@ -137,16 +153,16 @@ public class Cli implements View {
             for (int i = rowStart; i <= rowEnd; i++){
                 switch (p.getFigureAmountOnField(i)){
                     case (3):
-                    System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
-                    break;
-                    case(2):
-                    System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
-                    break;
+                        System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
+                        break;
+                    case (2):
+                        System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
+                        break;
                     case (1):
-                    System.out.print( p.getSymbol() + "      ");
-                    break;
+                        System.out.print( p.getSymbol() + "      ");
+                        break;
                     default:
-                    System.out.print("       ");
+                        System.out.print("       ");
                 }
             }
             System.out.println();

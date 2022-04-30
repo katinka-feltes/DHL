@@ -21,7 +21,7 @@ public class Main {
 
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {
-            c.setView(new Cli());
+            c.setView(new Cli(c));
         } else {
             Gui.main(args);
             //c.setView(new Gui());
