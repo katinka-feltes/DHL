@@ -106,6 +106,7 @@ public class Cli implements View {
         for (Player p: players) {
             System.out.print(p.getName() + " " + p.getVictoryPoints() +"   ");
         }
+        System.out.println();
     }
 
     /**
@@ -134,16 +135,17 @@ public class Cli implements View {
         //Print figures of the players
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){
-                if (i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos() && i == p.getFigures()[2].getPos()){
+                switch (p.getFigureAmountOnField(i)){
+                    case (3):
                     System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
-                } else if ((i == p.getFigures()[0].getPos() && i == p.getFigures()[1].getPos()) ||
-                        (i == p.getFigures()[1].getPos()&& i == p.getFigures()[2].getPos()) ||
-                        (i == p.getFigures()[0].getPos() && i == p.getFigures()[2].getPos())){
+                    break;
+                    case(2):
                     System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
-                } else if (i == p.getFigures()[0].getPos() || i == p.getFigures()[1].getPos() || i == p.getFigures()[2].getPos()){
+                    break;
+                    case (1):
                     System.out.print( p.getSymbol() + "      ");
-                }
-                else {
+                    break;
+                    default:
                     System.out.print("       ");
                 }
             }

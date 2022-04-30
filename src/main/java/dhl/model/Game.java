@@ -1,5 +1,7 @@
 package dhl.model;
 
+import dhl.view.View;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -52,12 +54,14 @@ public class Game {
 
     private ArrayList<Player> players;
 
+    private View view;
+
 
     /**
      * Constructor for Game with given amount of players (2-4)
      * @param playerAmount the amount of players that will play the game as an int
      */
-    public Game (int playerAmount){
+    public Game (int playerAmount, View view){
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
@@ -87,8 +91,9 @@ public class Game {
     /**
      * Constructor for Game with given amount of players (2-4)
      * @param playerNames the List of all player Names
+     * @param view the View of this game
      */
-    public Game(String[] playerNames){
+    public Game(String[] playerNames, View view){
 
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
@@ -124,6 +129,8 @@ public class Game {
                 break;
             case 'o': discardingPileOrange.add(card);
                 break;
+            default:
+                System.out.println("Color of the card doesn't exist.");
         }
     }
 
@@ -149,6 +156,10 @@ public class Game {
 
     public ArrayList<Player> getPlayers (){
         return players;
+    }
+
+    public View getView() {
+        return view;
     }
 
     /**

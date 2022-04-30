@@ -41,6 +41,9 @@ public class DirectionDiscardPile extends DiscardPile{
     public boolean cardFitsToPile(Card card){ //color are needed to be correct
         switch(direction){
             case(0):
+                if(pile.isEmpty()) {
+                    return true;
+                }
                 return getTop().getColor() == getColor();
             case(1):
                 return (getTop().getColor() == getColor() && getTop().getNumber() <= card.getNumber());
@@ -60,12 +63,12 @@ public class DirectionDiscardPile extends DiscardPile{
     @Override
     public void add(Card card){
         //check if card exists and fits
-        if (card == null || card.getColor()!=color || cardFitsToPile(card)){
+        if (card == null || card.getColor()!=color || !cardFitsToPile(card)){
             System.out.println("Card is null, a different color than the pile or doesn't fit the direction(for your info carl)");
             return;
         }
         // set direction if needed
-        if (direction == 0){
+        if (direction == 0 && !pile.isEmpty()){
             int difference = card.getNumber() - super.getTop().getNumber();
             //difference between card to add and top card of pile, larger 0 if added card is higher
             if(difference > 0){

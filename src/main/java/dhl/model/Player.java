@@ -1,6 +1,7 @@
 package dhl.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -56,23 +57,29 @@ public class Player {
 
     /**
      * adds the card to the correctly colored directionDiscardPile
-     * then player can place a figure or the oracle
+     * and then places the chosen figure
      * @param card card the player wants to play
+     * @param figurePos the position of the figure to move
      */
-    public void playCard (Card card) {
+    public void playCard (Card card, int figurePos) {
         //remove card from hand and first check if it is there
         switch(card.getColor()) {
             case('r'): playedCardsRed.add(card);
+            break;
             case('g'): playedCardsGreen.add(card);
+            break;
             case('b'): playedCardsBlue.add(card);
+            break;
             case('p'): playedCardsPurple.add(card);
+            break;
             case('o'): playedCardsOrange.add(card);
+            break;
+            default:
+                System.out.println("Card color does not exist");
         }
-        // choice between placing figure and placing oracle needs to be added
-
-        // call placeFigure by getting chosenFigure (somehow)
-
+        placeFigure(card.getColor(), getFigureOnField(figurePos));
     }
+
 
     /**
      * places the figure to the next correctly colored field
@@ -81,6 +88,36 @@ public class Player {
      */
     public void placeFigure(char cardColor, Figure chosenFigure) {
         chosenFigure.move(cardColor);
+    }
+
+    /**
+     *
+     * @param fieldIndex the index of the field to get the figure from
+     * @return the figure on the field or null if there is none
+     */
+    public Figure getFigureOnField(int fieldIndex){
+        for (Figure f : figures){
+            if (f.getPos() == fieldIndex){
+                return f;
+            }
+        }
+        System.out.println("No figure on this field.");
+        return null;
+    }
+
+    /**
+     *
+     * @param fieldIndex the index of the field to get the figure-amount from
+     * @return the amount of figures on the field as an int
+     */
+    public int getFigureAmountOnField(int fieldIndex){
+        int amount = 0;
+        for (Figure f : figures){
+            if (f.getPos() == fieldIndex){
+                amount++;
+            }
+        }
+        return amount;
     }
 
 
@@ -102,7 +139,7 @@ public class Player {
         this.symbol = symbol;
     }
 
-    public ArrayList<Card> getHand() {
+    public List<Card> getHand() {
         return hand;
     }
     public int getVictoryPoints(){
