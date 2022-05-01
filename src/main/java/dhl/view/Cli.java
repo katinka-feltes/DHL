@@ -38,24 +38,47 @@ public class Cli implements View {
     public int promptInt(int start, int end, String prompt) {
         System.out.println(prompt);
         Scanner scanner = new Scanner(System.in);
-        int result = 0;
-        boolean inputValid = false; //initializing the variable inputValid
 
-        while(!inputValid){ //checks if the input is an integer and if it is inbound
+        while(true){ //checks if the input is an integer and if it is inbound
             try{
-                result = scanner.nextInt();
+                int result = scanner.nextInt();
                 // check if the number is inbound
                 while (result < start || result > end) {
-                    System.out.println("Please enter a number between " + start + " and " + end + ".");
+                    error("Please enter a number between " + start + " and " + end + ".");
                     result = scanner.nextInt();
                 }
-                inputValid = true;
+                return result;
             } catch (InputMismatchException e){
-                System.out.println("Input must be an integer!");
+                error("Input must be an integer!");
                 scanner.nextLine();
             }
         }
-        return result;
+    }
+
+    @Override
+    public String promptCardString(String prompt){
+        System.out.println(prompt);
+        Scanner scanner = new Scanner(System.in);
+
+        while(true) { //checks if the input is an integer and if it is inbound
+            try {
+                String result = scanner.next();
+                char[] resultChars = result.toCharArray();
+                if (resultChars.length >= 2 && "rgbop".contains(Character.toString(resultChars[0])) && "123456789".contains(Character.toString(resultChars[1]))) {
+                    if (resultChars.length == 3 && resultChars[2] != '0' && resultChars[1] == '1') {
+                        throw new Exception("There is no card greater than 10");
+                    } else if (resultChars.length > 3) {
+                        throw new Exception("Please enter one of the options above (max. length 3)");
+                    }
+                    return result;
+                } else {
+                    error("Please enter one of the options above");
+                }
+            } catch (Exception e) {
+                error(e.getMessage());
+                scanner.nextLine();
+            }
+        }
     }
 
     /**
@@ -116,19 +139,17 @@ public class Cli implements View {
         Scanner scanner = new Scanner(System.in);
         String [] playersNames = new String[playerAmount];
         int nameLength = 16;
-        String playerName;
 
         for(int i = 0; i < playerAmount; i++) {
             int j = i + 1;
             System.out.println("Please enter the name of player " + j + ":");
-            playerName = scanner.next();
-            boolean toLong = false;
-            while (!toLong) { // checks if the players name has the right length
+            String playerName = scanner.next();
+            while (true) { // checks if the players name has the right length
                 if (playerName.length() <= nameLength && !playerName.isEmpty()) {
                     playersNames[i] = (playerName);
-                    toLong = true;
+                    break;
                 } else {
-                    System.out.println("Name can't be empty and only be " + nameLength + " characters long. Try again!");
+                    error("Name can't be empty and only be " + nameLength + " characters long. Try again!");
                     playerName = scanner.next();
                 }
             }

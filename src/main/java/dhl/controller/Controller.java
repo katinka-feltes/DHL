@@ -5,8 +5,6 @@ import dhl.model.Game;
 import dhl.model.Player;
 import dhl.view.View;
 
-import java.util.Scanner;
-
 
 public class Controller {
     View view;
@@ -30,10 +28,8 @@ public class Controller {
         // choose a card from hand and place it on matching playedCardsPile
         while (true) {
             try {
-                // get card as string and check type with view method !!!
-                System.out.println("What card?");
-                Scanner scanner = new Scanner(System.in);
-                String cardAsString = scanner.next();
+                // get card as string and check type with view method
+                String cardAsString = view.promptCardString("What card do you want to play?");
                 card = player.getCardFromHand(cardAsString); //number 10 needs to be added
                 player.addCardToPlayedCards(card);
                 break;

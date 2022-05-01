@@ -24,7 +24,7 @@ public class Player {
 
     // collected tokens and color need to be added
 
-    public Player(String name, char symbol) {
+    public Player(String name, char symbol){
         this.name = name;
         this.symbol = symbol;
         goblinSpecialPlayed = false;
@@ -42,7 +42,6 @@ public class Player {
 
     /**
      * fills the hand up to eight cards
-     *
      * @param drawingPile the global drawingPile
      */
     public void drawCardsUpToEight(DrawingPile drawingPile) {
