@@ -10,4 +10,5 @@ public interface View {
     int promptInt(int start, int end, String promt);
     void error(String str);
     void printHand(Player player);
+    void printTopCards(Player player);
 }

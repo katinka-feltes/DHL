@@ -109,7 +109,7 @@ public class Player {
 
         char[] cardValue = cardAsString.toCharArray();
         for (Card handCard : hand) {
-            if (handCard.getColor() == Character.getNumericValue(cardValue[0]) && handCard.getNumber() == cardValue[1]) {
+            if (handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1])) {
                 return handCard;
             }
         }

@@ -33,6 +33,7 @@ public class Cli implements View {
      *
      * @return result an integer which says how many players are going to play.
      */
+    @Override
     public int promptInt(int start, int end, String prompt) {
         System.out.println(prompt);
         Scanner scanner = new Scanner(System.in);
@@ -76,6 +77,14 @@ public class Cli implements View {
         System.out.println();
     }
 
+    /**
+     * @param player the active player whose top cards to show
+     */
+    @Override
+    public void printTopCards(Player player) {
+        System.out.println("Active Player's (" + player.getName() + ") Top Cards:");
+    }
+
 
     /** This method allows the player to choose their name as long it is not longer than 16 characters.
      *
@@ -112,6 +121,7 @@ public class Cli implements View {
      * Prints out the current state of the board to the console
      * @param game the currently running game
      */
+    @Override
     public void printCurrentBoard(Game game){
 
         ArrayList<Player> players = game.getPlayers();
