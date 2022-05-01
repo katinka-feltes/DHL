@@ -130,7 +130,6 @@ public class Player {
         return amount;
     }
 
-
     public Figure[] getFigures() {
         return figures;
     }
@@ -149,6 +148,22 @@ public class Player {
 
     public void setSymbol(char symbol) {
         this.symbol = symbol;
+    }
+
+    public DirectionDiscardPile getPlayedCardsRed() {
+        return playedCardsRed;
+    }
+    public DirectionDiscardPile getPlayedCardsBlue() {
+        return playedCardsBlue;
+    }
+    public DirectionDiscardPile getPlayedCardsGreen() {
+        return playedCardsGreen;
+    }
+    public DirectionDiscardPile getPlayedCardsPurple() {
+        return playedCardsPurple;
+    }
+    public DirectionDiscardPile getPlayedCardsOrange() {
+        return playedCardsOrange;
     }
 
     public List<Card> getHand() {

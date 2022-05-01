@@ -1,8 +1,8 @@
 package dhl.view;
 
-
 import dhl.controller.Controller;
 import dhl.model.Card;
+import dhl.model.DirectionDiscardPile;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -20,6 +20,7 @@ public class Cli implements View {
     public Cli(Controller controller){
         this.controller = controller;
     }
+
     /**
      * The entry point of the CLI application.
      *
@@ -31,7 +32,7 @@ public class Cli implements View {
 
     /** This method ask how many players are going to play.
      *
-     * @return result an integer which says how many players are going to play.
+     * @return result an Integer which says how many players are going to play.
      */
     @Override
     public int promptInt(int start, int end, String prompt) {
@@ -66,13 +67,13 @@ public class Cli implements View {
     }
 
     /**
-     * @param player the player whose hand cards to show
+     * @param player the active player whose hand cards to show
      */
     @Override
     public void printHand(Player player) {
         System.out.println("Active Player's (" + player.getName() + ") Hand Cards:");
         for (Card card : player.getHand()){
-            System.out.print(Character.toString(card.getColor())+ card.getNumber() +"   ");
+            System.out.print(Character.toString(card.getColor())+ card.getNumber() + "   ");
         }
         System.out.println();
     }
@@ -82,9 +83,28 @@ public class Cli implements View {
      */
     @Override
     public void printTopCards(Player player) {
-        System.out.println("Active Player's (" + player.getName() + ") Top Cards:");
+        System.out.println("Active Player's (" + player.getName() + ") Top Card:");
+        System.out.print("r" + player.getPlayedCardsRed().getTop().getNumber() + printDirection(player.getPlayedCardsRed()) + "   ");
+        System.out.print("b" + player.getPlayedCardsBlue().getTop().getNumber() + printDirection(player.getPlayedCardsBlue()) + "   ");
+        System.out.print("g" + player.getPlayedCardsGreen().getTop().getNumber() + printDirection(player.getPlayedCardsGreen()) + "   ");
+        System.out.print("p" + player.getPlayedCardsPurple().getTop().getNumber() + printDirection(player.getPlayedCardsPurple()) + "   ");
+        System.out.print("o" + player.getPlayedCardsOrange().getTop().getNumber() + printDirection(player.getPlayedCardsOrange()) + "   ");
+        System.out.println();
     }
 
+    /**
+     * @param pile pile whose direction to print
+     * @return direction as a String
+     */
+    private String printDirection(DirectionDiscardPile pile) {
+        if (pile.getDirection() == 0) {
+            return "+-";
+        } else if (pile.getDirection() == 1) {
+            return "+";
+        } else {
+            return "-";
+        }
+    }
 
     /** This method allows the player to choose their name as long it is not longer than 16 characters.
      *
@@ -143,7 +163,7 @@ public class Cli implements View {
         //print points
         System.out.println("Points:");
         for (Player p: players) {
-            System.out.print(p.getName() + " " + p.getVictoryPoints() +"   ");
+            System.out.print(p.getName() + " " + p.getVictoryPoints() + "   ");
         }
         System.out.println();
     }
@@ -190,8 +210,5 @@ public class Cli implements View {
             }
             System.out.println();
         }
-
     }
-
-
 }

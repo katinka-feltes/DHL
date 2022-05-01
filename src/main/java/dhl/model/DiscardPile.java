@@ -32,7 +32,11 @@ public class DiscardPile {
      * @return the Card at the top of the Pile
      */
     public Card getTop() {
-        return pile.get(pile.size()-1);
+        if(pile.size() != 0) {
+            return pile.get(pile.size() - 1);
+        } else {
+            return new Card(0, 'w');
+        }
     }
 
     /**

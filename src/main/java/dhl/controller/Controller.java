@@ -16,6 +16,7 @@ public class Controller {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
         view.printCurrentBoard(model);
+        view.printTopCards(model.getPlayers().get(0));
         view.printHand(model.getPlayers().get(0));
 
         playCard(model.getPlayers().get(0));
