@@ -157,6 +157,33 @@ public class Cli implements View {
         return playersNames;
     }
 
+    /** this method enables the player to take a choice.
+     *
+     * @param prompt the question the player is asked.
+     * @return a boolean that transfers to yes(true) and no(false).
+     * @throws Exception if the input is yes nor no.
+     */
+    public boolean promptPlayersChoice(String prompt) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+
+        while(true){
+            try {
+                String input = scanner.next();
+                if (input.equals("yes")) {
+                    return true;
+                } else if (input.equals("no")) {
+                    return false;
+                } else {
+                    throw new Exception("Please enter either yes or no.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+                scanner.nextLine();
+            }
+        }
+    }
 
     /**
      * Prints out the current state of the board to the console
