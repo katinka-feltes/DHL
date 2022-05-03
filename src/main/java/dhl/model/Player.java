@@ -104,11 +104,19 @@ public class Player {
         throw new Exception("No figure on this field.");
     }
 
+    /**
+     * Get a card from hand
+     * @param cardAsString the card to get from the hand as a string
+     * @return the Card
+     * @throws Exception if card is not in Hand
+     */
     public Card getCardFromHand(String cardAsString) throws Exception {
 
         char[] cardValue = cardAsString.toCharArray();
         for (Card handCard : hand) {
-            if (handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1])) {
+            // if number and color match current card from hand (if the length of value is 3, the number always is 10)
+            if ((cardValue.length == 2 && handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1])) ||
+                    (cardValue.length == 3 && handCard.getNumber() == 10)) {
                 return handCard;
             }
         }

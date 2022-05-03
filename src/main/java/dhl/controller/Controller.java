@@ -31,7 +31,7 @@ public class Controller {
             try {
                 // get card as string and check type with view method
                 String cardAsString = view.promptCardString("What card do you want to play?");
-                card = player.getCardFromHand(cardAsString); //number 10 needs to be added
+                card = player.getCardFromHand(cardAsString);
                 player.addCardToPlayedCards(card);
                 break;
             } catch (Exception e) {

@@ -99,6 +99,7 @@ public class Cli implements View {
             System.out.print(Character.toString(card.getColor())+ card.getNumber() + "   ");
         }
         System.out.println();
+        System.out.println();
     }
 
     /**
@@ -107,12 +108,26 @@ public class Cli implements View {
     @Override
     public void printTopCards(Player player) {
         System.out.println("Active Player's (" + player.getName() + ") Top Card:");
-        System.out.print("r" + player.getPlayedCardsRed().getTop().getNumber() + printDirection(player.getPlayedCardsRed()) + "   ");
-        System.out.print("b" + player.getPlayedCardsBlue().getTop().getNumber() + printDirection(player.getPlayedCardsBlue()) + "   ");
-        System.out.print("g" + player.getPlayedCardsGreen().getTop().getNumber() + printDirection(player.getPlayedCardsGreen()) + "   ");
-        System.out.print("p" + player.getPlayedCardsPurple().getTop().getNumber() + printDirection(player.getPlayedCardsPurple()) + "   ");
-        System.out.print("o" + player.getPlayedCardsOrange().getTop().getNumber() + printDirection(player.getPlayedCardsOrange()) + "   ");
+        printTop(player.getPlayedCardsRed());
+        printTop(player.getPlayedCardsBlue());
+        printTop(player.getPlayedCardsGreen());
+        printTop(player.getPlayedCardsPurple());
+        printTop(player.getPlayedCardsOrange());
         System.out.println();
+        System.out.println();
+    }
+
+    /**
+     * @param pile the pile which color, top card and direction to print
+     */
+    private void printTop( DirectionDiscardPile pile ){
+        String color = Character.toString(pile.getColor());
+        if (pile.isEmpty()){
+            System.out.print(color + printDirection(pile) + "    ");
+        }
+        else {
+            System.out.print(color + pile.getTop().getNumber() + printDirection(pile) + "   ");
+        }
     }
 
     /**
@@ -182,10 +197,11 @@ public class Cli implements View {
         printBoardPart(24,35, players);
 
         //print points
-        System.out.println("Points:");
+        System.out.print("Points: ");
         for (Player p: players) {
             System.out.print(p.getName() + " " + p.getVictoryPoints() + "   ");
         }
+        System.out.println();
         System.out.println();
     }
 

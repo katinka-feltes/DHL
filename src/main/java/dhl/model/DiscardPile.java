@@ -32,11 +32,7 @@ public class DiscardPile {
      * @return the Card at the top of the Pile
      */
     public Card getTop() {
-        if(pile.size() != 0) {
-            return pile.get(pile.size() - 1);
-        } else {
-            return new Card(0, 'w');
-        }
+        return pile.get(pile.size() - 1);
     }
 
     /**
@@ -53,5 +49,12 @@ public class DiscardPile {
 
     public ArrayList<Card> getPile (){
         return pile;
+    }
+
+    /**
+     * @return true if the pile is empty
+     */
+    public boolean isEmpty(){
+        return pile.isEmpty();
     }
 }
