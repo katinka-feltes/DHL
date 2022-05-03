@@ -13,12 +13,13 @@ public class Controller {
     public void startGame() {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
-        view.printCurrentBoard(model);
-        view.printTopCards(model.getPlayers().get(0));
-        view.printHand(model.getPlayers().get(0));
 
-        playCard(model.getPlayers().get(0));
-        view.printCurrentBoard(model);
+        for (int i = 0; i<10; i++){
+            for (Player activeP : model.getPlayers()){
+                takeTurn(activeP);
+            }
+        }
+
     }
 
     public void playCard(Player player){
@@ -60,10 +61,17 @@ public class Controller {
 
     public void takeTurn(Player player) {
 
+        //maybe all prints into one method in view?
+        System.out.println(player.getName() + "'s Turn!"); // view needs to do this !!
+        view.printCurrentBoard(model);
+        view.printTopCards(player);
+        view.printHand(player);
+
         // play or discard a card
+        playCard(player);
 
         // draw cards up to eight again
-
+        player.drawCardsUpToEight(model.getDrawingPile());
     }
 
     public void setView(View view) {

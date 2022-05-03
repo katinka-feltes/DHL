@@ -20,7 +20,6 @@ public class Figure {
     public void move(char color) {
         int steps = 1;
         while (Game.FIELDS[pos + steps].getColor() != color) {
-            System.out.println(Game.FIELDS[pos + steps].getColor());
             steps++;
         }
         pos+=steps; //move this figure the calculated amount of steps forward

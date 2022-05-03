@@ -53,12 +53,12 @@ public class Player {
     }
 
     /**
-     * adds the card to the correctly colored directionDiscardPile
+     * adds the card to the correctly colored directionDiscardPile and removes it from hand
      *
      * @param card card the player wants to play
      */
     public void addCardToPlayedCards(Card card) throws Exception {
-        //remove card from hand and first check if it is there
+        hand.remove(card);
 
         switch (card.getColor()) {
             case ('r'):

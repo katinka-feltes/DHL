@@ -64,7 +64,7 @@ public class Cli implements View {
             try {
                 String result = scanner.next();
                 char[] resultChars = result.toCharArray();
-                if (resultChars.length >= 2 && "rgbop".contains(Character.toString(resultChars[0])) && "123456789".contains(Character.toString(resultChars[1]))) {
+                if (resultChars.length >= 2 && "rgbop".contains(Character.toString(resultChars[0])) && "0123456789".contains(Character.toString(resultChars[1]))) {
                     if (resultChars.length == 3 && resultChars[2] != '0' && resultChars[1] == '1') {
                         throw new Exception("There is no card greater than 10");
                     } else if (resultChars.length > 3) {
