@@ -21,5 +21,4 @@ public class Goblin implements Token {
 
     }
 
-
 }

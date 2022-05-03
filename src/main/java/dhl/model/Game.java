@@ -117,6 +117,18 @@ public class Game {
     }
 
     /**
+     * checks if drawing pile is empty
+     * or if 5 figures are in the finish area
+     * or if one player has all figures in the finish area
+     * @return true if one of the conditions to end the game true
+     */
+    public boolean gameOver (){
+        return drawingPile.isEmpty()  // drawing pile is empty
+                || figuresInFinishArea() >= 5 // 5 figures are in finish area
+                || allFiguresOfOneInFinishArea(); // or one person has all figures in the finish area
+    }
+
+    /**
      * Adds the given card to the matching discard pile and removes it from the players hand
      * @param card the card to be discarded
      * @param player the player that removes card
@@ -137,6 +149,29 @@ public class Game {
             default:
                 throw new Exception("Color of the card doesn't exist.");
         }
+    }
+
+    /**
+     * @return the amount of figures in the finish area as an int
+     */
+    private int figuresInFinishArea(){
+        int amount = 0;
+        for (Player p : players){
+            amount += p.getFigureAmountInFinishArea();
+        }
+        return amount;
+    }
+
+    /**
+     * @return true if one player has all his figures in the finish area
+     */
+    private boolean allFiguresOfOneInFinishArea() {
+        for (Player p : players) {
+            if (p.getFigureAmountInFinishArea()==3){
+                return true;
+            }
+        }
+        return false;
     }
 
     public DrawingPile getDrawingPile() {

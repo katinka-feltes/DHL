@@ -14,7 +14,7 @@ public class Controller {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
 
-        for (int i = 0; i<10; i++){
+        while(!model.gameOver()){ //round should not be finished
             for (Player activeP : model.getPlayers()){
                 takeTurn(activeP);
             }
@@ -53,7 +53,7 @@ public class Controller {
             }
         }
 
-        //special action field / special action oracle
+        //special action field / special action oracle (only when game is not over!)
 
         //**rare** if 3 Goblin
 

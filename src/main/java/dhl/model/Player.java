@@ -136,6 +136,14 @@ public class Player {
         }
         return amount;
     }
+    public int getFigureAmountInFinishArea(){
+        int amount = 0;
+        for(int field = 4; field <= 35; field++){ //should be 22 but for better testing 4
+            amount += getFigureAmountOnField(field);
+        }
+        return amount;
+    }
+
 
     public Figure[] getFigures() {
         return figures;
