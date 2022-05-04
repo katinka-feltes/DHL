@@ -4,7 +4,7 @@ import dhl.model.tokens.*;
 
 import java.util.ArrayList;
 
-public class Game<tokens> {
+public class Game {
     public static final Field[] FIELDS = {
             new LargeField(0,'w', 0),
             new Field(-4, 'p'),

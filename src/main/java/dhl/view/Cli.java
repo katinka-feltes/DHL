@@ -94,8 +94,8 @@ public class Cli implements View {
      */
     @Override
     public void printHand(Player player) {
-        System.out.println("Active Player's (" + player.getName() + ") Hand Cards:");
-        for (Card card : player.getHand()){
+        System.out.println(player.getName() + "'s Hand Cards:");
+        for (Card card : player.getSortedHand()){
             System.out.print(Character.toString(card.getColor())+ card.getNumber() + "   ");
         }
         System.out.println();
@@ -107,12 +107,12 @@ public class Cli implements View {
      */
     @Override
     public void printTopCards(Player player) {
-        System.out.println("Active Player's (" + player.getName() + ") Top Card:");
-        printTop(player.getPlayedCardsRed());
+        System.out.println(player.getName() + "'s Top Card:");
         printTop(player.getPlayedCardsBlue());
         printTop(player.getPlayedCardsGreen());
-        printTop(player.getPlayedCardsPurple());
         printTop(player.getPlayedCardsOrange());
+        printTop(player.getPlayedCardsPurple());
+        printTop(player.getPlayedCardsRed());
         System.out.println();
         System.out.println();
     }
@@ -131,7 +131,7 @@ public class Cli implements View {
     }
 
     /**
-     * @param pile pile whose direction to print
+     * @param pile pile which direction to print
      * @return direction as a String
      */
     private String printDirection(DirectionDiscardPile pile) {
