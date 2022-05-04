@@ -1,7 +1,6 @@
 package dhl.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
 
@@ -30,8 +29,8 @@ public class Player {
         goblinSpecialPlayed = false;
         victoryPoints = 0;
         playedCardsRed = new DirectionDiscardPile('r');
-        playedCardsBlue = new DirectionDiscardPile('g');
-        playedCardsGreen = new DirectionDiscardPile('b');
+        playedCardsBlue = new DirectionDiscardPile('b');
+        playedCardsGreen = new DirectionDiscardPile('g');
         playedCardsPurple = new DirectionDiscardPile('p');
         playedCardsOrange = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
@@ -156,6 +155,58 @@ public class Player {
     }
 
     /**
+     * sorts the hand of the player by number and color
+     * @return hand sorted by number and color as an ArrayList
+     */
+    public ArrayList<Card> getSortedHand() {
+        ArrayList<Card> unsortedHand = getHand();
+        ArrayList<Card> blueCards = new ArrayList<>();
+        ArrayList<Card> greenCards = new ArrayList<>();
+        ArrayList<Card> orangeCards = new ArrayList<>();
+        ArrayList<Card> purpleCards = new ArrayList<>();
+        ArrayList<Card> redCards = new ArrayList<>();
+        ArrayList<Card> sortedHand = new ArrayList<>();
+
+        for(Card card: unsortedHand) {
+            if(card.getColor() == 'b') {
+                blueCards.add(card);
+            } else if(card.getColor() == 'g') {
+                greenCards.add(card);
+            } else if(card.getColor() == 'o') {
+                orangeCards.add(card);
+            } else if(card.getColor() == 'p') {
+                purpleCards.add(card);
+            } else if(card.getColor() == 'r') {
+                redCards.add(card);
+            }
+        }
+        sortedHand.addAll(sortColorList(blueCards));
+        sortedHand.addAll(sortColorList(greenCards));
+        sortedHand.addAll(sortColorList(orangeCards));
+        sortedHand.addAll(sortColorList(purpleCards));
+        sortedHand.addAll(sortColorList(redCards));
+
+        return sortedHand;
+    }
+
+    /**
+     * sorts given ArrayList by number
+     * @param colorList list of cards already sorted by color
+     * @return cards of a specific color sorted by number as an ArrayList
+     */
+    public ArrayList<Card> sortColorList(ArrayList<Card> colorList) {
+        ArrayList<Card> sortedColorList = new ArrayList<>();
+        for(int i=0; i<=10; i++) {
+            for(Card card: colorList) {
+                if (card.getNumber() == i) {
+                    sortedColorList.add(card);
+                }
+            }
+        }
+        return sortedColorList;
+    }
+
+    /**
      * @param fieldIndex the index of the field to get the figure-amount from
      * @return the amount of figures on the field as an int
      */
@@ -175,7 +226,6 @@ public class Player {
         }
         return amount;
     }
-
 
     public Figure[] getFigures() {
         return figures;
@@ -213,7 +263,7 @@ public class Player {
         return playedCardsOrange;
     }
 
-    public List<Card> getHand() {
+    public ArrayList<Card> getHand() {
         return hand;
     }
 
