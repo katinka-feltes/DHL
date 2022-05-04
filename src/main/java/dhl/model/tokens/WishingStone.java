@@ -5,7 +5,7 @@ import dhl.model.Player;
 
 public class WishingStone implements Token{
 
-    //public static final char SYMBOL =
+    public static final char SYMBOL = 'W';
 
     @Override
     public boolean isCollectable() {
@@ -30,6 +30,11 @@ public class WishingStone implements Token{
     @Override
     public int getFieldIndex() {
         return 0;
+    }
+
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
     }
 
 }

@@ -19,7 +19,6 @@ public class Controller {
                 takeTurn(activeP);
             }
         }
-
     }
 
     public void playCard(Player player){

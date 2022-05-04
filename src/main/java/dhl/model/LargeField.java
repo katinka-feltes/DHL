@@ -29,16 +29,17 @@ public class LargeField extends Field {
      * @return either the first or the second token or null.
      */
     @Override
-    public Token getToken() {
+    public Token collectToken() {
         if (tokenTwo != null) {
             Token temp = tokenTwo;
             tokenTwo = null;
             return temp;
-        } else if (super.getToken() != null) {
-            Token temp = super.getToken();
+        } else if (super.collectToken() != null) {
+            Token temp = super.collectToken();
             super.setToken(null);
             return temp;
         }
        return null;
     }
+
 }

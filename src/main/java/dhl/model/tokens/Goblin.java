@@ -5,7 +5,7 @@ import dhl.model.Player;
 
 public class Goblin implements Token {
 
-    //public static final char SYMBOL =
+    public static final char SYMBOL = 'G';
 
     @Override
     public boolean isCollectable() {
@@ -31,6 +31,11 @@ public class Goblin implements Token {
     @Override
     public int getFieldIndex() {
         return 0;
+    }
+
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
     }
 
 }

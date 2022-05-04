@@ -5,7 +5,7 @@ import dhl.model.tokens.Token;
 public class Field {
     private final int points;
     private final char color;
-    private Token token = null;
+    private Token token;
 
     /**
      * Constructor for Field.
@@ -30,12 +30,15 @@ public class Field {
      * Returns the Token of the Field and removes it if it is collectable.
      * @return the Token of the field or null if there is no token on the field.
      */
-    public Token getToken() {
+    public Token collectToken() {
         if(token != null && token.isCollectable()) {
             Token temp = token;
             token = null;
             return temp;
         }
+        return token;
+    }
+    public Token getToken() {
         return token;
     }
 

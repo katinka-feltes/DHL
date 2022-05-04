@@ -5,7 +5,7 @@ import dhl.model.Player;
 
 public class Mirror implements Token {
 
-    //public static final char SYMBOL = 'M';
+    public static final char SYMBOL = 'M';
 
     @Override
     public boolean isCollectable() {
@@ -31,5 +31,10 @@ public class Mirror implements Token {
     @Override
     public int getFieldIndex() {
         return 0;
+    }
+
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
     }
 }

@@ -255,6 +255,15 @@ public class Cli implements View {
             System.out.print(Game.FIELDS[i].getColor() + "      ");
         }
         System.out.println();
+        // print tokens of the fields
+        for (int i = rowStart; i <= rowEnd; i++){
+            if(Game.FIELDS[i].getToken() != null) {
+                System.out.print(Game.FIELDS[i].getToken().getSymbol() + "      ");
+            }else {
+                System.out.print("       ");
+            }
+        }
+        System.out.println();
         //Print figures of the players
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){

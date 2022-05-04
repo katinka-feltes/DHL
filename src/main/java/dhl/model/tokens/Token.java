@@ -25,5 +25,7 @@ public interface Token {
     void setFieldIndex(int fieldIndex);
 
     int getFieldIndex();
+
+    char getSymbol();
 }
 

@@ -3,8 +3,9 @@ package dhl.model;
 import dhl.model.tokens.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Game<tokens> {
+public class Game {
     public static final Field[] FIELDS = {
             new LargeField(0,'w', 0),
             new Field(-4, 'p'),
@@ -86,14 +87,15 @@ public class Game<tokens> {
         for (int i = 1; i <= 16; i++) {
             if (i <= 4) {
                 tokens.add(new Skullpoints(1));
-            } else if (i > 4 && i <= 10) {
+            } else if (i >= 5 && i <= 10) {
                 tokens.add(new Skullpoints(2));
-            } else if (i > 10 && i <= 13) {
+            } else if (i >= 11 && i <= 13) {
                 tokens.add(new Skullpoints(3));
             } else {
                 tokens.add(new Skullpoints(4));
             }
         }
+        placeTokens();
         //add player to the players-list
         //other symbols
         //♛ \u265B BLACK CHESS QUEEN
@@ -129,6 +131,30 @@ public class Game<tokens> {
         discardingPileOrange = new DiscardPile('o');
         drawingPile = new DrawingPile();
         players = new ArrayList<>();
+
+        tokens = new ArrayList<>();
+
+        for (int i = 1; i <= 3; i++){
+            tokens.add(new Goblin());
+            tokens.add(new Spiral());
+            tokens.add(new Mirror());
+        }
+        for (int i = 1; i <= 5; i++){
+            tokens.add(new SpiderWeb());
+        }
+        for (int i = 1; i <= 16; i++) {
+            if (i <= 4) {
+                tokens.add(new Skullpoints(1));
+            } else if (i >= 5 && i <= 10) {
+                tokens.add(new Skullpoints(2));
+            } else if (i >= 11 && i <= 13) {
+                tokens.add(new Skullpoints(3));
+            } else {
+                tokens.add(new Skullpoints(4));
+            }
+        }
+
+        placeTokens();
 
         //add player to the players-list
         char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
@@ -198,6 +224,20 @@ public class Game<tokens> {
             }
         }
         return false;
+    }
+
+    /**
+     * this method randomises the order of the tokens and places them on the fields
+     */
+    public void placeTokens() {
+        Collections.shuffle(this.tokens);
+        int i = 0;
+            for (Field field : FIELDS){
+                if (!(field instanceof LargeField)){
+                    field.setToken(this.tokens.get(i));
+                    i++;
+                }
+            }
     }
 
     public DrawingPile getDrawingPile() {

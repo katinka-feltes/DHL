@@ -5,7 +5,8 @@ import dhl.model.Player;
 
 public class SpiderWeb implements Token {
 
-    //public static final char SYMBOL =
+    public static final char SYMBOL = '\u25A9';
+
 
     @Override
     public boolean isCollectable() {
@@ -32,6 +33,11 @@ public class SpiderWeb implements Token {
     @Override
     public int getFieldIndex() {
         return 0;
+    }
+
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
     }
 
 }

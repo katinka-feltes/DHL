@@ -5,7 +5,7 @@ import dhl.model.Player;
 
 public class Skullpoints implements Token{
 
-    //public static final char SYMBOL =
+    public static final char SYMBOL = '\u2620';
 
     private int points;
 
@@ -44,6 +44,11 @@ public class Skullpoints implements Token{
     @Override
     public int getFieldIndex() {
         return 0;
+    }
+
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
     }
 
     public int getPoints(){
