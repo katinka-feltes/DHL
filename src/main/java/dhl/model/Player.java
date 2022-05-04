@@ -58,7 +58,6 @@ public class Player {
      * @param card card the player wants to play
      */
     public void addCardToPlayedCards(Card card) throws Exception {
-        hand.remove(card);
 
         switch (card.getColor()) {
             case ('r'):
@@ -79,16 +78,49 @@ public class Player {
             default:
                 throw new Exception("Card color does not exist");
         }
+        hand.remove(card);
     }
 
     /**
      * places the figure to the next correctly colored field
      *
      * @param cardColor color of the played card
-     * @param figurePos the position of the figure to move
+     * @param figure the position of the figure to move (1, 2 or 3)
      */
-    public void placeFigure(char cardColor, int figurePos) throws Exception {
-        getFigureOnField(figurePos).move(cardColor);
+    public void placeFigure(char cardColor, int figure) throws Exception {
+        getFigureByPos(figure).move(cardColor);
+    }
+
+    /**
+     * @param figurePos 1 for the figure first on the board, 2 or 3
+     * @return the figure on the field or null if there is none
+     */
+    public Figure getFigureByPos(int figurePos) {
+        Figure chosen = figures[0];
+        switch(figurePos){
+            case(1):
+                for(Figure f : figures){
+                    if (f.getPos() > chosen.getPos()){
+                        chosen = f;
+                    }
+                }
+                break;
+            case(2):
+                for(Figure f : figures){
+                    if (f != getFigureByPos(1) && f != getFigureByPos(3)){
+                        chosen = f;
+                    }
+                }
+                break;
+            case(3):
+                for(Figure f : figures){
+                    if (f.getPos() < chosen.getPos()){
+                        chosen = f;
+                    }
+                }
+                break;
+        }
+        return chosen;
     }
 
     /**

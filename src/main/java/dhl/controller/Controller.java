@@ -46,7 +46,7 @@ public class Controller {
         while (true) {
             try {
                 player.placeFigure(card.getColor(), view.promptInt(0, 35,
-                        "Which figure do you want to move? (Type the index of the field)"));
+                        "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)"));
                 break;
             } catch (Exception e) {
                 view.error(e.getMessage());
