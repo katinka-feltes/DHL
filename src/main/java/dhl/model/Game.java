@@ -1,8 +1,10 @@
 package dhl.model;
 
+import dhl.model.tokens.*;
+
 import java.util.ArrayList;
 
-public class Game {
+public class Game<tokens> {
     public static final Field[] FIELDS = {
             new LargeField(0,'w', 0),
             new Field(-4, 'p'),
@@ -42,6 +44,8 @@ public class Game {
             new LargeField(10, 'b', 1)
     };
 
+
+
     private DiscardPile discardingPileRed;
     private DiscardPile discardingPileBlue;
     private DiscardPile discardingPileGreen;
@@ -49,8 +53,9 @@ public class Game {
     private DiscardPile discardingPileOrange;
 
     private DrawingPile drawingPile;
-
     private ArrayList<Player> players;
+
+    private ArrayList<Token> tokens;
 
 
     /**
@@ -68,6 +73,27 @@ public class Game {
         drawingPile = new DrawingPile();
         players = new ArrayList<>();
 
+        tokens = new ArrayList<>();
+
+        for (int i = 1; i <= 3; i++){
+            tokens.add(new Goblin());
+            tokens.add(new Spiral());
+            tokens.add(new Mirror());
+        }
+        for (int i = 1; i <= 5; i++){
+            tokens.add(new SpiderWeb());
+        }
+        for (int i = 1; i <= 16; i++) {
+            if (i <= 4) {
+                tokens.add(new Skullpoints(1));
+            } else if (i > 4 && i <= 10) {
+                tokens.add(new Skullpoints(2));
+            } else if (i > 10 && i <= 13) {
+                tokens.add(new Skullpoints(3));
+            } else {
+                tokens.add(new Skullpoints(4));
+            }
+        }
         //add player to the players-list
         //other symbols
         //♛ \u265B BLACK CHESS QUEEN

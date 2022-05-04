@@ -5,6 +5,8 @@ import dhl.model.Player;
 
 public class SpiderWeb implements Token {
 
+    //public static final char SYMBOL =
+
     @Override
     public boolean isCollectable() {
         return false;
@@ -19,6 +21,17 @@ public class SpiderWeb implements Token {
     @Override
     public void action(Game game, Player player) {
 
+    }
+
+    @Override
+    public void setFieldIndex(int fieldIndex) {
+
+
+    }
+
+    @Override
+    public int getFieldIndex() {
+        return 0;
     }
 
 }

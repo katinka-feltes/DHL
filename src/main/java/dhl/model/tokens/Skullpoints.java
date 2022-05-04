@@ -5,6 +5,8 @@ import dhl.model.Player;
 
 public class Skullpoints implements Token{
 
+    //public static final char SYMBOL =
+
     private int points;
 
     public Skullpoints(int points){
@@ -32,6 +34,16 @@ public class Skullpoints implements Token{
     public void action(Game game, Player player) {
         player.setVictoryPoints(player.getVictoryPoints() + points);
         //game.counting stone...update()
+    }
+
+    @Override
+    public void setFieldIndex(int fieldIndex) {
+
+    }
+
+    @Override
+    public int getFieldIndex() {
+        return 0;
     }
 
     public int getPoints(){

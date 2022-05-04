@@ -4,6 +4,9 @@ import dhl.model.Game;
 import dhl.model.Player;
 
 public interface Token {
+
+    // symbol
+
     /**
      * @return true if the token will be collected, false otherwise
      */
@@ -18,5 +21,9 @@ public interface Token {
      * executes the token's action
      */
     void action(Game game, Player player);
+
+    void setFieldIndex(int fieldIndex);
+
+    int getFieldIndex();
 }
 

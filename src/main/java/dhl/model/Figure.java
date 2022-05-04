@@ -2,6 +2,7 @@ package dhl.model;
 
 public class Figure {
     private int pos;
+    private int latestPos;
     private char color;
 
     /**
@@ -22,6 +23,7 @@ public class Figure {
         while (Game.FIELDS[pos + steps].getColor() != color) {
             steps++;
         }
+        latestPos = pos;
         pos+=steps; //move this figure the calculated amount of steps forward
     }
 
@@ -29,5 +31,13 @@ public class Figure {
         return pos;
     }
 
+    public void setPos(int pos){
+        this.pos = pos;
+    }
+
     public char getColor() {return color; }
+
+    public int getLatestPos() {
+        return latestPos;
+    }
 }
