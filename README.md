@@ -18,6 +18,10 @@ In diesem Dokument sollen die grundsätzlichen Ideen hinter der gewählten Archi
 
 https://md.isp.uni-luebeck.de/NtSg37ifQ2yYPsb06Ve10Q?both
 
+## Zustandsdiagramm
+
+https://md.isp.uni-luebeck.de/Y3-Xzz5kTii3JAN-Yl34tA?view
+
 # Maven
 
 Kurzübersicht nützlicher Maven-Befehle. Weitere Informationen finden sich im Tutorial:
