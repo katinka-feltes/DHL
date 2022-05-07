@@ -17,7 +17,12 @@ public class Controller {
 
         while(!model.gameOver()){ //round should not be finished
             for (Player activeP: model.getPlayers()){
-                takeTurn(activeP);
+                if(!model.gameOver()) {
+                    takeTurn(activeP);
+                }
+                else {
+                    view.printResults(model);
+                }
             }
         }
     }
@@ -45,7 +50,7 @@ public class Controller {
         //figure: which field
         while (true) {
             try {
-                player.placeFigure(card.getColor(), view.promptInt(0, 35,
+                player.placeFigure(card.getColor(), view.promptInt(1, 3,
                         "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)"));
                 break;
             } catch (Exception e) {
@@ -67,7 +72,7 @@ public class Controller {
         try{
             boolean startTurn = false;
             while (!startTurn) {
-                if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play? (yes/no)")) {
+                if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play?")) {
                     startTurn = true;
                 }
             }
@@ -82,10 +87,64 @@ public class Controller {
         view.printHand(player);
 
         // play or discard a card
-        playCard(player);
+        boolean playCard;
+        while (true) {
+            try {
+                playCard = view.promptPlayersChoice("Do you want to play a card? (if no you trash one)");
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+        Card trashCard = null;
+        if (playCard){ // TO DO: check if player even can play (player.canPlay() &&)
+            playCard(player);
+        } else {
+            while (true) {
+                try {
+                    String cardAsString = view.promptCardString("What card do you want to trash?");
+                    trashCard = player.getCardFromHand(cardAsString);
+                    model.putCardOnDiscardingPile(trashCard, player);
+                    break;
+                } catch (Exception e) {
+                    view.error(e.getMessage());
+                }
+            }
+        }
 
-        // draw cards up to eight again
-        player.drawCardsUpToEight(model.getDrawingPile());
+        // draw cards up to eight again either from one discarding or from drawing pile
+        view.printDiscardingPiles(model);
+        if(view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
+            char color = view.promptColor("From what colored pile do you want to draw?");
+
+            while (true) {
+                try {
+                    switch (color) {
+                        case ('r'):
+                            player.drawFromDiscardingPile(model.getDiscardingPileRed(), trashCard);
+                            break;
+                        case ('g'):
+                            player.drawFromDiscardingPile(model.getDiscardingPileGreen(), trashCard);
+                            break;
+                        case ('b'):
+                            player.drawFromDiscardingPile(model.getDiscardingPileBlue(), trashCard);
+                            break;
+                        case ('p'):
+                            player.drawFromDiscardingPile(model.getDiscardingPilePurple(), trashCard);
+                            break;
+                        case ('o'):
+                            player.drawFromDiscardingPile(model.getDiscardingPileOrange(), trashCard);
+                            break;
+                    }
+                    break;
+                } catch (Exception e){
+                    view.error(e.getMessage());
+                    color = view.promptColor("From what colored pile do you want to draw?");
+                }
+            }
+        } else {
+            player.drawCardsUpToEight(model.getDrawingPile());
+        }
     }
 
     public void setView(View view) {

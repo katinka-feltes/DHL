@@ -242,6 +242,16 @@ public class Game {
             }
     }
 
+public Player getWinningPlayer(){
+        Player winningP = players.get(0);
+        for (Player p : players){
+            if (p.getVictoryPoints() > winningP.getVictoryPoints()){
+                winningP = p;
+            }
+        }
+        return winningP;
+}
+
     public DrawingPile getDrawingPile() {
         return drawingPile;
     }

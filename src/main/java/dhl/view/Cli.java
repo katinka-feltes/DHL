@@ -1,10 +1,7 @@
 package dhl.view;
 
 import dhl.controller.Controller;
-import dhl.model.Card;
-import dhl.model.DirectionDiscardPile;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -123,6 +120,39 @@ public class Cli implements View {
     }
 
     /**
+     * prints out the results when the game is over
+     * @param game the game that ended
+     */
+    @Override
+    public void printResults(Game game) {
+        System.out.println();
+        System.out.println("GAME OVER! The winner is " + game.getWinningPlayer().getName() + ".");
+
+        //print points
+        System.out.print("Points: ");
+        for (Player p: game.getPlayers()) {
+            System.out.print(p.getName() + " " + p.getVictoryPoints() + "   ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * prints the top cards of all discarding piles
+     * @param game the current game
+     */
+    @Override
+    public void printDiscardingPiles(Game game) {
+        System.out.println("Top Cards of all Discarding Piles: ");
+        printTop(game.getDiscardingPileBlue());
+        printTop(game.getDiscardingPileGreen());
+        printTop(game.getDiscardingPileOrange());
+        printTop(game.getDiscardingPilePurple());
+        printTop(game.getDiscardingPileRed());
+        System.out.println();
+        System.out.println();
+    }
+
+    /**
      * @param pile the pile which color, top card and direction to print
      */
     private void printTop(DirectionDiscardPile pile){
@@ -132,6 +162,19 @@ public class Cli implements View {
         }
         else {
             System.out.print(color + pile.getTop().getNumber() + printDirection(pile) + "   ");
+        }
+    }
+
+    /**
+     * @param pile the pile which color, top card and direction to print
+     */
+    private void printTop(DiscardPile pile){
+        String color = Character.toString(pile.getColor());
+        if (pile.isEmpty()){
+            System.out.print(color + "     ");
+        }
+        else {
+            System.out.print(color + pile.getTop().getNumber() +  "    ");
         }
     }
 
@@ -183,19 +226,52 @@ public class Cli implements View {
      * @return a boolean that transfers to yes(true) and no(false).
      * @throws Exception if the input is yes nor no.
      */
-    public boolean promptPlayersChoice(String prompt) throws Exception {
+    public boolean promptPlayersChoice(String prompt){
         Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt);
+        System.out.println(prompt + " [y/n]");
 
         while(true){
             try {
                 String input = scanner.next();
-                if (input.equals("yes")) {
+                if (input.equals("y")) {
                     return true;
-                } else if (input.equals("no")) {
+                } else if (input.equals("n")) {
                     return false;
                 } else {
-                    throw new Exception("Please enter either yes or no.");
+                    throw new Exception("Please enter either y or n.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+                scanner.nextLine();
+            }
+        }
+    }
+
+    /**
+     * @param prompt the message that the player is asked
+     * @return the input char (r, g, b, o or p)
+     */
+    @Override
+    public char promptColor(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt + " [y/n]");
+
+        while(true){
+            try {
+                String input = scanner.next();
+                if (input.equals("r")) {
+                    return 'r';
+                } else if (input.equals("g")) {
+                    return 'g';
+                } else if (input.equals("b")) {
+                    return 'b';
+                } else if (input.equals("p")) {
+                    return 'p';
+                } else if (input.equals("o")) {
+                    return 'o';
+                } else {
+                    throw new Exception("Please enter either r, g, b, o or p.");
                 }
             }
             catch (Exception e){

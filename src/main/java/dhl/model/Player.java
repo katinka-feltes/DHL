@@ -51,6 +51,15 @@ public class Player {
         }
     }
 
+    public void drawFromDiscardingPile(DiscardPile pile, Card lastTrash) throws Exception {
+        if(pile.isEmpty()){
+            throw new Exception("You fool: this pile is empty!");
+        } else if(pile.getTop() == lastTrash){
+            throw new Exception("You can't draw a card you just trashed!");
+        }
+        hand.add(pile.getAndRemoveTop());
+    }
+
     /**
      * adds the card to the correctly colored directionDiscardPile and removes it from hand
      *
@@ -87,7 +96,9 @@ public class Player {
      * @param figure the position of the figure to move (1, 2 or 3)
      */
     public void placeFigure(char cardColor, int figure) throws Exception {
+        victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
+        victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
     }
 
     /**
@@ -279,3 +290,5 @@ public class Player {
         return goblinSpecialPlayed;
     }
 }
+
+
