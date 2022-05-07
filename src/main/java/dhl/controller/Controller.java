@@ -87,17 +87,9 @@ public class Controller {
         view.printHand(player);
 
         // play or discard a card
-        boolean playCard;
-        while (true) {
-            try {
-                playCard = view.promptPlayersChoice("Do you want to play a card? (if no you trash one)");
-                break;
-            } catch (Exception e) {
-                view.error(e.getMessage());
-            }
-        }
         Card trashCard = null;
-        if (playCard){ // TO DO: check if player even can play (player.canPlay() &&)
+        // check if player can play a card and if yes ask
+        if (player.canPlay() && view.promptPlayersChoice("Do you want to play a card? (if no you trash one)")){
             playCard(player);
         } else {
             while (true) {
@@ -145,7 +137,7 @@ public class Controller {
                 }
             }
         } else {
-            player.drawCardsUpToEight(model.getDrawingPile());
+            player.drawFromDrawingPile(model.getDrawingPile());
         }
     }
 

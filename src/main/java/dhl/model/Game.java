@@ -115,7 +115,7 @@ public class Game {
 
     public void createDecks() {
         for (Player p: players) {
-            p.drawCardsUpToEight(drawingPile);
+            p.drawFromDrawingPile(drawingPile);
         }
     }
 
@@ -166,7 +166,7 @@ public class Game {
 
         // all players draw 8 cards
         for (Player p: players) {
-            p.drawCardsUpToEight(drawingPile);
+            p.drawFromDrawingPile(drawingPile);
         }
     }
 
@@ -205,6 +205,11 @@ public class Game {
         }
     }
 
+    /**
+     * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)
+     * @param trashCard in this turn trashed card
+     * @return true if drawing from any discarding pile is possible
+     */
     public boolean canDrawFromDiscarding(Card trashCard) {
         boolean canDraw = !(getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty() && getDiscardingPileBlue().isEmpty() &&
                 getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty());
@@ -269,7 +274,7 @@ public class Game {
             }
     }
 
-public Player getWinningPlayer(){
+    public Player getWinningPlayer(){
         Player winningP = players.get(0);
         for (Player p : players){
             if (p.getVictoryPoints() > winningP.getVictoryPoints()){

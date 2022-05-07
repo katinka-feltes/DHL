@@ -43,7 +43,7 @@ public class Player {
      * fills the hand up to eight cards
      * @param drawingPile the global drawingPile
      */
-    public void drawCardsUpToEight(DrawingPile drawingPile) {
+    public void drawFromDrawingPile(DrawingPile drawingPile) {
         if (drawingPile != null) {
             while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
@@ -51,6 +51,12 @@ public class Player {
         }
     }
 
+    /**
+     * adds card from discarding pile to active player's hand
+     * @param pile discarding pile from which to draw
+     * @param lastTrash last card trashed in this turn
+     * @throws Exception if chosen pile is empty or top is last-trashed card
+     */
     public void drawFromDiscardingPile(DiscardPile pile, Card lastTrash) throws Exception {
         if(pile.isEmpty()){
             throw new Exception("You fool: this pile is empty!");
@@ -95,7 +101,7 @@ public class Player {
      * @param cardColor color of the played card
      * @param figure the position of the figure to move (1, 2 or 3)
      */
-    public void placeFigure(char cardColor, int figure) throws Exception {
+    public void placeFigure(char cardColor, int figure){
         victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
         victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
@@ -215,6 +221,41 @@ public class Player {
             }
         }
         return sortedColorList;
+    }
+
+    /**
+     * checks if player is able to play at least one card from his hand
+     * @return true if he can play at least one card
+     */
+    public boolean canPlay (){
+        for (Card card : hand){
+            if(cardFitsToAnyPile(card)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * checks if card fits to any of the player's piles
+     * @param card one card from the player's hand
+     * @return true if card fits to appropriately colored pile
+     */
+    private boolean cardFitsToAnyPile(Card card){
+        switch (card.getColor()) {
+            case ('r'):
+                return playedCardsRed.cardFitsToPile(card);
+            case ('g'):
+                return playedCardsGreen.cardFitsToPile(card);
+            case ('b'):
+                return playedCardsBlue.cardFitsToPile(card);
+            case ('p'):
+                return playedCardsPurple.cardFitsToPile(card);
+            case ('o'):
+                return playedCardsOrange.cardFitsToPile(card);
+            default:
+                return false;
+        }
     }
 
     /**

@@ -142,13 +142,13 @@ public class Cli implements View {
      */
     @Override
     public void printDiscardingPiles(Game game) {
+        System.out.println();
         System.out.println("Top Cards of all Discarding Piles: ");
         printTop(game.getDiscardingPileBlue());
         printTop(game.getDiscardingPileGreen());
         printTop(game.getDiscardingPileOrange());
         printTop(game.getDiscardingPilePurple());
         printTop(game.getDiscardingPileRed());
-        System.out.println();
         System.out.println();
     }
 
@@ -307,7 +307,7 @@ public class Cli implements View {
         //print points
         System.out.print("Points: ");
         for (Player p: players) {
-            System.out.print(p.getName() + " " + p.getVictoryPoints() + "   ");
+            System.out.print(p.getName() + ": " + p.getVictoryPoints() + "   ");
         }
         System.out.println();
         System.out.println();
