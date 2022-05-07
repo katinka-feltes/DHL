@@ -51,6 +51,15 @@ public class Player {
         }
     }
 
+    public void drawFromDiscardingPile(DiscardPile pile, Card lastTrash) throws Exception {
+        if(pile.isEmpty()){
+            throw new Exception("You fool: this pile is empty!");
+        } else if(pile.getTop() == lastTrash){
+            throw new Exception("You can't draw a card you just trashed!");
+        }
+        hand.add(pile.getAndRemoveTop());
+    }
+
     /**
      * adds the card to the correctly colored directionDiscardPile and removes it from hand
      *
