@@ -7,7 +7,6 @@ public class SpiderWeb implements Token {
 
     public static final char SYMBOL = '\u25A9';
 
-
     @Override
     public boolean isCollectable() {
         return false;

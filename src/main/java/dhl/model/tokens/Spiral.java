@@ -8,7 +8,6 @@ public class Spiral implements Token {
         private int fieldIndex;
         private boolean playersChoice;
         public static final char SYMBOL = '\u058E';
-
         @Override
         public boolean isCollectable() {
                 return false;

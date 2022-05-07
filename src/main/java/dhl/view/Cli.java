@@ -55,6 +55,11 @@ public class Cli implements View {
         }
     }
 
+    /**
+     *
+     * @param prompt
+     * @return
+     */
     @Override
     public String promptCardString(String prompt){
         System.out.println(prompt);
@@ -120,7 +125,7 @@ public class Cli implements View {
     /**
      * @param pile the pile which color, top card and direction to print
      */
-    private void printTop( DirectionDiscardPile pile ){
+    private void printTop(DirectionDiscardPile pile){
         String color = Character.toString(pile.getColor());
         if (pile.isEmpty()){
             System.out.print(color + printDirection(pile) + "    ");
