@@ -15,7 +15,7 @@ public class Controller {
         model = new Game(playerName);
 
         while(!model.gameOver()){ //round should not be finished
-            for (Player activeP : model.getPlayers()){
+            for (Player activeP: model.getPlayers()){
                 takeTurn(activeP);
             }
         }
@@ -58,7 +58,21 @@ public class Controller {
 
     }
 
+    /**
+     *
+     * @param player
+     */
     public void takeTurn(Player player) {
+        try{
+            boolean startTurn = false;
+            while (!startTurn) {
+                if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play? (yes/no)")) {
+                    startTurn = true;
+                }
+            }
+        } catch (Exception e){
+                System.out.println(e.getMessage());
+        }
 
         //maybe all prints into one method in view?
         System.out.println(player.getName() + "'s Turn!"); // view needs to do this !!

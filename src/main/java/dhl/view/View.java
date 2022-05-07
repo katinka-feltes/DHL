@@ -8,6 +8,7 @@ public interface View {
     void printCurrentBoard(Game game);
     String[] inputPlayersNames(int playerAmount);
     int promptInt(int start, int end, String prompt);
+    boolean promptPlayersChoice(String question) throws Exception;
 
     String promptCardString(String prompt);
     void error(String str);
