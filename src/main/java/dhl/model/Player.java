@@ -87,7 +87,9 @@ public class Player {
      * @param figure the position of the figure to move (1, 2 or 3)
      */
     public void placeFigure(char cardColor, int figure) throws Exception {
+        victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
+        victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
     }
 
     /**
@@ -279,3 +281,5 @@ public class Player {
         return goblinSpecialPlayed;
     }
 }
+
+
