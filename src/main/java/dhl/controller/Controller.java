@@ -113,8 +113,10 @@ public class Controller {
         }
 
         // draw cards up to eight again either from one discarding or from drawing pile
-        view.printDiscardingPiles(model);
-        if(view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
+        if(model.canDrawFromDiscarding(trashCard)) {
+            view.printDiscardingPiles(model);
+        }
+        if(model.canDrawFromDiscarding(trashCard) && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
             char color = view.promptColor("From what colored pile do you want to draw?");
 
             while (true) {

@@ -205,6 +205,33 @@ public class Game {
         }
     }
 
+    public boolean canDrawFromDiscarding(Card trashCard) {
+        boolean canDraw = !(getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty() && getDiscardingPileBlue().isEmpty() &&
+                getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty());
+        if(trashCard != null) {
+            if(canDraw == true) {
+                switch (trashCard.getColor()) {
+                    case ('r'): if(!getDiscardingPileRed().isEmpty()) {
+                        canDraw = !(getDiscardingPileRed().getTop() == trashCard);
+                    }
+                    case ('g'): if(!getDiscardingPileGreen().isEmpty()) {
+                        canDraw = !(getDiscardingPileGreen().getTop() == trashCard);
+                    }
+                    case ('b'): if(!getDiscardingPileBlue().isEmpty()) {
+                        canDraw = !(getDiscardingPileBlue().getTop() == trashCard);
+                    }
+                    case ('p'): if(!getDiscardingPilePurple().isEmpty()) {
+                        canDraw = !(getDiscardingPilePurple().getTop() == trashCard);
+                    }
+                    case ('o'): if(!getDiscardingPileOrange().isEmpty()) {
+                        canDraw = !(getDiscardingPileOrange().getTop() == trashCard);
+                    }
+                }
+            }
+        }
+        return canDraw;
+    }
+
     /**
      * @return the amount of figures in the finish area as an int
      */
