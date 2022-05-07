@@ -38,4 +38,8 @@ public class DrawingPile {
     public boolean isEmpty() {
         return cards.isEmpty();
     }
+
+    public Stack<Card> getCards() {
+        return cards;
+    }
 }

@@ -111,7 +111,9 @@ public class Game {
         for(int i = 1; i <= playerAmount; i++){
             players.add(new Player("P" + i, symbols[i-1]));
         }
-        // all players draw 8 cards
+    }
+
+    public void createDecks() {
         for (Player p: players) {
             p.drawCardsUpToEight(drawingPile);
         }

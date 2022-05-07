@@ -13,6 +13,7 @@ public class Controller {
     public void startGame() {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
+        model.createDecks();
 
         while(!model.gameOver()){ //round should not be finished
             for (Player activeP: model.getPlayers()){

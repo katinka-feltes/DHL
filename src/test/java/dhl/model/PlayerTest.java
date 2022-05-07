@@ -2,6 +2,8 @@ package dhl.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerTest {
@@ -11,44 +13,55 @@ class PlayerTest {
 
     @Test
     void drawCardsUpToEight() throws Exception {
-        assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.addCardToPlayedCards(player.getHand().get(0));
         assertEquals(7, player.getHand().size());
+        player.drawCardsUpToEight(game.getDrawingPile());
+        assertEquals(8, player.getHand().size());
+        player.getHand().removeAll(player.getHand());
+        assertEquals(0, player.getHand().size());
         player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
     }
 
     @Test
     void addCardToPlayedCards() throws Exception {
+        player.getHand().removeAll(player.getHand());
+        assertEquals(0, player.getHand().size());
+        player.getHand().add(new Card(1, 'r'));
+        player.getHand().add(new Card(1, 'g'));
+        player.getHand().add(new Card(1, 'b'));
+        player.getHand().add(new Card(1, 'p'));
+        player.getHand().add(new Card(1, 'o'));
+        assertEquals(5, player.getHand().size());
         player.drawCardsUpToEight(game.getDrawingPile());
+        assertEquals(8, player.getHand().size());
         int size_r = 0;
         int size_g = 0;
         int size_b = 0;
         int size_p = 0;
         int size_o = 0;
-        for(int i = 0; i < player.getHand().size(); i++){
-            Card card = player.getSortedHand().get(i);
+        ArrayList<Card> sorted_hand = new ArrayList<>(player.getSortedHand());
+        for (Card card : sorted_hand) {
             player.addCardToPlayedCards(card);
             switch (card.getColor()) {
-                case('r'):
+                case ('r'):
                     size_r++;
                     assertEquals(size_r, player.getPlayedCardsRed().pile.size());
                     break;
-                case('g'):
+                case ('g'):
                     size_g++;
                     assertEquals(size_g, player.getPlayedCardsGreen().pile.size());
                     break;
-                case('b'):
+                case ('b'):
                     size_b++;
                     assertEquals(size_b, player.getPlayedCardsBlue().pile.size());
                     break;
-                case('p'):
+                case ('p'):
                     size_p++;
                     assertEquals(size_p, player.getPlayedCardsPurple().pile.size());
                     break;
-                case('o'):
+                case ('o'):
                     size_o++;
                     assertEquals(size_o, player.getPlayedCardsOrange().pile.size());
                     break;
