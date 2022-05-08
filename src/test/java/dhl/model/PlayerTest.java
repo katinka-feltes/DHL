@@ -1,18 +1,28 @@
 package dhl.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PlayerTest {
 
-    Game game = new Game(2);
-    Player player = game.getPlayers().get(0);
+    Game game;
+    Player player;
+
+    @BeforeEach
+    void setup() {
+        game = new Game(2);
+        player = game.getPlayers().get(0);
+    }
 
     @Test
     void drawCardsUpToEight() throws Exception {
+        assertEquals(0, player.getHand().size());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.addCardToPlayedCards(player.getHand().get(0));
         assertEquals(7, player.getHand().size());
@@ -70,20 +80,46 @@ class PlayerTest {
     }
 
     @Test
-    void placeFigure() {
+    void placeFigure() throws Exception {
+        player.placeFigure('r', 1);
+        assertEquals(3, player.getFigureByPos(1).getPos());
+        player.placeFigure('g', 1);
+        assertEquals(4, player.getFigureByPos(1).getPos());
+
     }
 
     @Test
-    void getFigureOnField() {
+    void getFigureOnField() throws Exception {
+        player.getFigures()[0].setPos(4);
+        assertEquals(player.getFigureOnField(4), player.getFigures()[0]);
+        player.getFigures()[1].setPos(5);
+        player.getFigures()[2].setPos(6);
+        assertEquals(player.getFigureOnField(5), player.getFigures()[1]);
+        assertEquals(player.getFigureOnField(6), player.getFigures()[2]);
+        assertThrows(Exception.class, () -> player.getFigureOnField(10));
     }
 
     @Test
-    void getCardFromHand() {
+    void getCardFromHand() throws Exception {
+        player.getHand().add(new Card(2, 'r'));
+        assertEquals(player.getCardFromHand("r2"), player.getHand().get(0));
+        player.getHand().remove(0);
+        player.getHand().add(new Card(10, 'g'));
+        assertEquals(player.getCardFromHand("g10"), player.getHand().get(0));
+
 
     }
 
     @Test
     void getFigureAmountOnField() {
+        player.getFigures()[0].setPos(5);
+        player.getFigures()[1].setPos(7);
+        player.getFigures()[2].setPos(8);
+        assertEquals(1, player.getFigureAmountOnField(5));
+        player.getFigures()[0].setPos(7);
+        assertEquals(2, player.getFigureAmountOnField(7));
+        player.getFigures()[2].setPos(7);
+        assertEquals(3, player.getFigureAmountOnField(7));
     }
 
     @Test
@@ -151,5 +187,29 @@ class PlayerTest {
 
     @Test
     void isGoblinSpecialPlayed() {
+    }
+
+    @Test
+    void getFigureByPos() {
+        player.getFigures()[0].setPos(3);
+        player.getFigures()[1].setPos(5);
+        player.getFigures()[2].setPos(6);
+        assertEquals(player.getFigureByPos(3), player.getFigures()[0]);
+        assertEquals(player.getFigureByPos(2), player.getFigures()[1]);
+        assertEquals(player.getFigureByPos(1), player.getFigures()[2]);
+        player.getFigures()[0].setPos(5);
+        assertEquals(player.getFigureByPos(3), player.getFigures()[0]);
+        assertEquals(player.getFigureByPos(2), player.getFigures()[1]);
+    }
+
+    @Test
+    //TODO: function has some weird dynamics
+    void drawFromDiscardingPile() throws Exception {
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue(), null), "You fool: this pile is empty!");
+        game.getDiscardingPileBlue().getPile().add(new Card(4, 'r'));
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue(), game.getDiscardingPileBlue().getPile().get(0)), "You can't draw a card you just trashed!");
+        player.drawFromDiscardingPile(game.getDiscardingPileBlue(), null);
+        assertEquals('r', player.getHand().get(0).getColor());
+        assertEquals(4, player.getHand().get(0).getNumber());
     }
 }

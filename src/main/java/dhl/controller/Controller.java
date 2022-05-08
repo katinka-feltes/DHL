@@ -97,7 +97,7 @@ public class Controller {
             }
         }
         Card trashCard = null;
-        if (playCard){ // TO DO: check if player even can play (player.canPlay() &&)
+        if (playCard){ // TODO: check if player even can play (player.canPlay() &&)
             playCard(player);
         } else {
             while (true) {

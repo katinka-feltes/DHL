@@ -95,7 +95,7 @@ public class Player {
      * @param cardColor color of the played card
      * @param figure the position of the figure to move (1, 2 or 3)
      */
-    public void placeFigure(char cardColor, int figure) throws Exception {
+    public void placeFigure(char cardColor, int figure) {
         victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
         victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
