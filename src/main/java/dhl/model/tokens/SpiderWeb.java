@@ -4,12 +4,20 @@ import dhl.model.Game;
 import dhl.model.Player;
 
 public class SpiderWeb implements Token {
+    // Kleeblatt
+
+    private char color;
 
     public static final char SYMBOL = '\u25A9';
 
     @Override
     public boolean isCollectable() {
         return false;
+    }
+
+
+    public char getColor() {
+        return color;
     }
 
     @Override
@@ -25,8 +33,6 @@ public class SpiderWeb implements Token {
 
     @Override
     public void setFieldIndex(int fieldIndex) {
-
-
     }
 
     @Override

@@ -26,11 +26,11 @@ class PlayerTest {
         assertEquals(8, player.getHand().size());
         player.addCardToPlayedCards(player.getHand().get(0));
         assertEquals(7, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingPile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.getHand().removeAll(player.getHand());
         assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingPile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
     }
 
@@ -44,7 +44,7 @@ class PlayerTest {
         player.getHand().add(new Card(1, 'p'));
         player.getHand().add(new Card(1, 'o'));
         assertEquals(5, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingPile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         int size_r = 0;
         int size_g = 0;
@@ -167,7 +167,7 @@ class PlayerTest {
 
     @Test
     void getHand() {
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingPile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         for (Card card : player.getHand()) {
             assertEquals(Card.class, card.getClass());

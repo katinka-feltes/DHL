@@ -115,7 +115,7 @@ public class Game {
 
     public void createDecks() {
         for (Player p: players) {
-            p.drawCardsUpToEight(drawingPile);
+            p.drawFromDrawingPile(drawingPile);
         }
     }
 
@@ -166,7 +166,7 @@ public class Game {
 
         // all players draw 8 cards
         for (Player p: players) {
-            p.drawCardsUpToEight(drawingPile);
+            p.drawFromDrawingPile(drawingPile);
         }
     }
 
@@ -206,6 +206,38 @@ public class Game {
     }
 
     /**
+     * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)
+     * @param trashCard in this turn trashed card
+     * @return true if drawing from any discarding pile is possible
+     */
+    public boolean canDrawFromDiscarding(Card trashCard) {
+        boolean canDraw = !(getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty() && getDiscardingPileBlue().isEmpty() &&
+                getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty());
+        if(trashCard != null) {
+            if(canDraw == true) {
+                switch (trashCard.getColor()) {
+                    case ('r'): if(!getDiscardingPileRed().isEmpty()) {
+                        canDraw = !(getDiscardingPileRed().getTop() == trashCard);
+                    }
+                    case ('g'): if(!getDiscardingPileGreen().isEmpty()) {
+                        canDraw = !(getDiscardingPileGreen().getTop() == trashCard);
+                    }
+                    case ('b'): if(!getDiscardingPileBlue().isEmpty()) {
+                        canDraw = !(getDiscardingPileBlue().getTop() == trashCard);
+                    }
+                    case ('p'): if(!getDiscardingPilePurple().isEmpty()) {
+                        canDraw = !(getDiscardingPilePurple().getTop() == trashCard);
+                    }
+                    case ('o'): if(!getDiscardingPileOrange().isEmpty()) {
+                        canDraw = !(getDiscardingPileOrange().getTop() == trashCard);
+                    }
+                }
+            }
+        }
+        return canDraw;
+    }
+
+    /**
      * @return the amount of figures in the finish area as an int
      */
     private int figuresInFinishArea(){
@@ -242,7 +274,7 @@ public class Game {
             }
     }
 
-public Player getWinningPlayer(){
+    public Player getWinningPlayer(){
         Player winningP = players.get(0);
         for (Player p : players){
             if (p.getVictoryPoints() > winningP.getVictoryPoints()){
