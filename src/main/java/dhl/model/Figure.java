@@ -26,6 +26,9 @@ public class Figure {
         latestPos = pos;
         pos+=steps; //move this figure the calculated amount of steps forward
     }
+    public Field getField(int fieldIndex){
+        return Game.FIELDS[fieldIndex];
+    }
 
     public int getPos() {
         return pos;

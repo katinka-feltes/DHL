@@ -115,7 +115,7 @@ public class Game {
 
     public void createDecks() {
         for (Player p: players) {
-            p.drawFromDrawingPile(drawingPile);
+            p.drawCardsUpToEight(drawingPile);
         }
     }
 
@@ -166,7 +166,7 @@ public class Game {
 
         // all players draw 8 cards
         for (Player p: players) {
-            p.drawFromDrawingPile(drawingPile);
+            p.drawCardsUpToEight(drawingPile);
         }
     }
 

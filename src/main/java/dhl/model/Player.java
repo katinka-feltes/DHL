@@ -1,5 +1,7 @@
 package dhl.model;
 
+import dhl.model.tokens.Token;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -16,9 +18,12 @@ public class Player {
     private ArrayList<Card> hand;
 
     int victoryPoints;
+    Figure lastMovedFigure;
     boolean goblinSpecialPlayed;
 
     private Figure[] figures = new Figure[3];
+
+    private ArrayList<Token> tokens;
 
 
     // collected tokens and color need to be added
@@ -43,7 +48,7 @@ public class Player {
      * fills the hand up to eight cards
      * @param drawingPile the global drawingPile
      */
-    public void drawFromDrawingPile(DrawingPile drawingPile) {
+    public void drawCardsUpToEight(DrawingPile drawingPile) {
         if (drawingPile != null) {
             while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
@@ -101,7 +106,7 @@ public class Player {
      * @param cardColor color of the played card
      * @param figure the position of the figure to move (1, 2 or 3)
      */
-    public void placeFigure(char cardColor, int figure){
+    public void placeFigure(char cardColor, int figure) throws Exception {
         victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
         victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
@@ -136,6 +141,7 @@ public class Player {
                 }
                 break;
         }
+        lastMovedFigure = chosen;
         return chosen;
     }
 
@@ -278,6 +284,11 @@ public class Player {
         }
         return amount;
     }
+    public Figure getLastMovedFigure(){
+        return lastMovedFigure;
+    }
+
+
 
     public Figure[] getFigures() {
         return figures;
@@ -325,6 +336,10 @@ public class Player {
 
     public void setVictoryPoints(int victoryPoints) {
         this.victoryPoints = victoryPoints;
+    }
+
+    public ArrayList<Token> getTokens() {
+        return tokens;
     }
 
     public boolean isGoblinSpecialPlayed() {

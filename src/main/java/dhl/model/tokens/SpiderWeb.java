@@ -9,15 +9,12 @@ public class SpiderWeb implements Token {
     private char color;
 
     public static final char SYMBOL = '\u25A9';
+    private char fieldColor;
+    private int chosenPos;
 
     @Override
     public boolean isCollectable() {
         return false;
-    }
-
-
-    public char getColor() {
-        return color;
     }
 
     @Override
@@ -27,17 +24,34 @@ public class SpiderWeb implements Token {
     }
 
     @Override
-    public void action(Game game, Player player) {
+    public void action(Game game, Player player) throws Exception{
+        fieldColor = player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getColor();
 
+            if (player.getLastMovedFigure().getField(chosenPos).getColor() == fieldColor && chosenPos <= 39 && chosenPos >= 0) {
+                player.getLastMovedFigure().setPos(chosenPos);
+            } else {
+                throw new Exception("The color does not fit");
+            }
     }
 
     @Override
-    public void setFieldIndex(int fieldIndex) {
+    public void setChosenPos(int chosenPos) {
+        chosenPos = chosenPos;
     }
 
     @Override
-    public int getFieldIndex() {
+    public char getPileChoice() {
         return 0;
+    }
+
+    @Override
+    public void setPileChoice(char pileChoice) {
+
+    }
+
+    @Override
+    public void setCardChoice(String card) {
+
     }
 
     @Override

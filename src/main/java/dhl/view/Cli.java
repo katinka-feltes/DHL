@@ -152,6 +152,11 @@ public class Cli implements View {
         System.out.println();
     }
 
+    @Override
+    public void out(String str) {
+        System.out.println(str);
+    }
+
     /**
      * @param pile the pile which color, top card and direction to print
      */
@@ -270,6 +275,41 @@ public class Cli implements View {
                     return 'p';
                 } else if (input.equals("o")) {
                     return 'o';
+                } else {
+                    throw new Exception("Please enter either r, g, b, o or p.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+                scanner.nextLine();
+            }
+        }
+    }
+
+    /**
+     * @param prompt the message that the player is asked
+     * @return the input char (r, g, b, o or p)
+     */
+    @Override
+    public char promptColorAndHand(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt + " [y/n]");
+
+        while(true){
+            try {
+                String input = scanner.next();
+                if (input.equals("r")) {
+                    return 'r';
+                } else if (input.equals("g")) {
+                    return 'g';
+                } else if (input.equals("b")) {
+                    return 'b';
+                } else if (input.equals("p")) {
+                    return 'p';
+                } else if (input.equals("o")) {
+                    return 'o';
+                } else if (input.equals("h")) {
+                    return 'h';
                 } else {
                     throw new Exception("Please enter either r, g, b, o or p.");
                 }

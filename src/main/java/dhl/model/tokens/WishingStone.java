@@ -14,27 +14,38 @@ public class WishingStone implements Token{
 
     @Override
     public String getName() {
-        return null;
+        String[] temp = this.getClass().toString().split("\\.");
+        return temp[temp.length-1];
     }
 
     @Override
     public void action(Game game, Player player) {
-
-    }
-
-    @Override
-    public void setFieldIndex(int fieldIndex) {
-
-    }
-
-    @Override
-    public int getFieldIndex() {
-        return 0;
     }
 
     @Override
     public char getSymbol() {
         return SYMBOL;
+    }
+
+    @Override
+    public void setChosenPos(int chosenPos) {
+
+
+    }
+
+    @Override
+    public char getPileChoice() {
+        return 0;
+    }
+
+    @Override
+    public void setPileChoice(char pileChoice) {
+
+    }
+
+    @Override
+    public void setCardChoice(String card) {
+
     }
 
 }
