@@ -20,21 +20,37 @@ public class Mirror implements Token {
 
     @Override
     public void action(Game game, Player player) {
+        for (int i = 0; i <= player.getTokens().size(); i++){
+            if (player.getTokens().get(i).getName().equals("WishingStone")) {
+                //player.getTokens().add();
+            }
+
+        }
+
+
+        }
+    @Override
+    public char getSymbol() {
+        return SYMBOL;
+    }
+
+    @Override
+    public void setChosenPos(int chosenPos) {
 
     }
 
     @Override
-    public void setFieldIndex(int fieldIndex) {
-
-    }
-
-    @Override
-    public int getFieldIndex() {
+    public char getPileChoice() {
         return 0;
     }
 
     @Override
-    public char getSymbol() {
-        return SYMBOL;
+    public void setPileChoice(char pileChoice) {
+
+    }
+
+    @Override
+    public void setCardChoice(String card) {
+
     }
 }

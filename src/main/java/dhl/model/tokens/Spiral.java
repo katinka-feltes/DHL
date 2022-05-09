@@ -5,9 +5,10 @@ import dhl.model.Player;
 
 public class Spiral implements Token {
 
-        private int fieldIndex;
-        private boolean playersChoice;
         public static final char SYMBOL = '\u058E';
+        private int fieldIndex;
+        private int chosenPos;
+
         @Override
         public boolean isCollectable() {
                 return false;
@@ -21,35 +22,34 @@ public class Spiral implements Token {
 
         @Override
         public void action(Game game, Player player) {
-                String question = "You can move this figure backwards as far as you want. Except the field where you come from." +
-                        "Do you want to proceed with your action? (yes/no)";
-                if (playersChoice) {
-                        try {
-                                player.getFigureOnField(fieldIndex).setPos(player.getFigureOnField(fieldIndex).getLatestPos());
-                        } catch (Exception e) {
-                                e.getMessage();
+                        if (player.getLastMovedFigure().getPos() != player.getLastMovedFigure().getLatestPos()){
+                                player.getLastMovedFigure().setPos(chosenPos);
                         }
-                }
-        }
-
-        @Override
-        public void setFieldIndex(int fieldIndex) {
-                this.fieldIndex = fieldIndex;
-        }
-
-        @Override
-        public int getFieldIndex() {
-                return fieldIndex;
         }
 
         @Override
         public char getSymbol() {
                 return SYMBOL;
         }
-
-        public void setPlayersChoice(boolean playersChoice){
-                this.playersChoice = playersChoice;
+        @Override
+        public void setChosenPos(int chosenPos) {
+                chosenPos = chosenPos;
         }
 
+
+        @Override
+        public char getPileChoice() {
+                return 0;
+        }
+
+        @Override
+        public void setPileChoice(char pileChoice) {
+
+        }
+
+        @Override
+        public void setCardChoice(String card) {
+
+        }
 
 }

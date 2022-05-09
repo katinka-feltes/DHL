@@ -20,12 +20,17 @@ public interface Token {
     /**
      * executes the token's action
      */
-    void action(Game game, Player player);
-
-    void setFieldIndex(int fieldIndex);
-
-    int getFieldIndex();
+    void action(Game game, Player player) throws Exception;
 
     char getSymbol();
+
+    public void setChosenPos(int chosenPos);
+
+    public char getPileChoice();
+
+    public void setPileChoice(char pileChoice);
+
+    public void setCardChoice(String card);
+
 }
 
