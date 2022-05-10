@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -33,7 +34,7 @@ public class Spiral implements Token {
         }
         @Override
         public void setChosenPos(int chosenPos) {
-                chosenPos = chosenPos;
+                this.chosenPos = chosenPos;
         }
 
 
@@ -48,8 +49,9 @@ public class Spiral implements Token {
         }
 
         @Override
-        public void setCardChoice(String card) {
+        public void setCardChoice(Card card) {
 
         }
+
 
 }

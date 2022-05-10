@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -24,14 +25,8 @@ public class SpiderWeb implements Token {
     }
 
     @Override
-    public void action(Game game, Player player) throws Exception{
-        fieldColor = player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getColor();
-
-            if (player.getLastMovedFigure().getField(chosenPos).getColor() == fieldColor && chosenPos <= 39 && chosenPos >= 0) {
-                player.getLastMovedFigure().setPos(chosenPos);
-            } else {
-                throw new Exception("The color does not fit");
-            }
+    public void action(Game game, Player player){
+       player.getLastMovedFigure().move(player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getColor());
     }
 
     @Override
@@ -50,7 +45,7 @@ public class SpiderWeb implements Token {
     }
 
     @Override
-    public void setCardChoice(String card) {
+    public void setCardChoice(Card card) {
 
     }
 

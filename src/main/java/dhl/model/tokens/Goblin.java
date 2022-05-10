@@ -1,16 +1,14 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
 public class Goblin implements Token {
 
     public static final char SYMBOL = 'G';
-    private int fieldIndex;
-    private boolean playersChoice;
-    private int chosenPos;
     private char pile;
-    private String card;
+    private Card card;
 
     @Override
     public boolean isCollectable() {
@@ -25,36 +23,32 @@ public class Goblin implements Token {
 
     @Override
     public void action(Game game, Player player) {
-                try {
-                    switch (pile) {
-                        case ('b'):
-                            game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getTop());
-                            break;
-                        case ('g'):
-                            game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getTop());
-                            break;
-                        case ('o'):
-                            game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getTop());
-                            break;
-                        case ('p'):
-                            game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getTop());
-                            break;
-                        case ('r'):
-                            game.getDiscardingPileRed().add(player.getPlayedCardsRed().getTop());
-                            break;
-                        case ('h'):
-                            player.putCardOnDiscardingPile(player.getCardFromHand(card));
-                            break;
 
+                    switch (pile){
+                        case ('b') :
+                            game.getDiscardingPileBlue().getPile().add(player.getPlayedCardsBlue().getTop());
+                            break;
+                        case ('g') :
+                            game.getDiscardingPileGreen().getPile().add(player.getPlayedCardsGreen().getTop());
+                            break;
+                        case ('o') :
+                            game.getDiscardingPileOrange().getPile().add(player.getPlayedCardsOrange().getTop());
+                            break;
+                        case ('p') :
+                            game.getDiscardingPilePurple().getPile().add(player.getPlayedCardsPurple().getTop());
+                            break;
+                        case ('r') :
+                            game.getDiscardingPileRed().getPile().add(player.getPlayedCardsRed().getTop());
+                            break;
+                        case ('h') :
+                            try{ // just to clear the errors !!not the final implementation!!
+                                player.putCardOnDiscardingPile(card);
+                            } catch(Exception e) {
+                                e.getMessage();
+                            }
+
+                            break;
                     }
-                } catch (Exception e) {
-                    e.getMessage();
-                }
-    }
-
-    @Override
-    public void setChosenPos(int chosenPos) {
-        this.chosenPos = chosenPos;
     }
 
     @Override
@@ -64,17 +58,22 @@ public class Goblin implements Token {
 
     @Override
     public void setPileChoice(char pileChoice) {
-        pile = pileChoice;
+        this.pile = pileChoice;
     }
 
     @Override
-    public void setCardChoice(String card) {
+    public void setCardChoice(Card card) {
         this.card = card;
     }
 
     @Override
     public char getSymbol() {
         return SYMBOL;
+    }
+
+    @Override
+    public void setChosenPos(int chosenPos) {
+
     }
 
 }
