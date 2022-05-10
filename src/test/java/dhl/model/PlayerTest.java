@@ -20,7 +20,7 @@ class PlayerTest {
     }
 
     @Test
-    void drawFromDrawingPile() throws Exception {
+    void drawCardsUpToEight() throws Exception {
         assertEquals(0, player.getHand().size());
         player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());

@@ -163,11 +163,6 @@ public class Game {
         for (int i = 0; i < playerNames.length; i++) {
             players.add(new Player(playerNames[i], symbols[i], this));
         }
-
-        // all players draw 8 cards
-        for (Player p : players) {
-            p.drawCardsUpToEight(drawingPile);
-        }
     }
 
     /**
@@ -203,32 +198,53 @@ public class Game {
         if (trashCard != null && canDraw) {
             switch (trashCard.getColor()) {
                 case ('r'):
-                    canDraw = getDiscardingPileRed().getTop() != trashCard;
+                    if (!getDiscardingPileRed().isEmpty() && getDiscardingPileRed().getTop() == trashCard
+                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
+                        canDraw = false;
+                    }
                     return canDraw;
                 case ('g'):
-                    canDraw = getDiscardingPileGreen().getTop() != trashCard;
+                    if (!getDiscardingPileGreen().isEmpty() && getDiscardingPileGreen().getTop() == trashCard
+                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileRed().isEmpty()
+                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
+                        canDraw = false;
+                    }
                     return canDraw;
                 case ('b'):
-                    canDraw = getDiscardingPileBlue().getTop() != trashCard;
+                    if(!getDiscardingPileBlue().isEmpty() && getDiscardingPileBlue().getTop() == trashCard
+                            && getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty()
+                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
+                        canDraw = false;
+                    }
                     return canDraw;
                 case ('p'):
-                    canDraw = getDiscardingPilePurple().getTop() != trashCard;
+                    if(!getDiscardingPilePurple().isEmpty() && getDiscardingPilePurple().getTop() == trashCard
+                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                            && getDiscardingPileRed().isEmpty() && getDiscardingPileOrange().isEmpty()) {
+                        canDraw = false;
+                    }
                     return canDraw;
                 case ('o'):
-                    canDraw = getDiscardingPileOrange().getTop() != trashCard;
+                    if(!getDiscardingPileOrange().isEmpty() && getDiscardingPileOrange().getTop() == trashCard
+                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileRed().isEmpty()) {
+                        canDraw = false;
+                    }
                     return canDraw;
                 default:
                     return false;
             }
-        } return canDraw;
+        }
+        return canDraw;
     }
 
     /**
      * @return the amount of figures in the finish area as an int
      */
-    private int figuresInFinishArea(){
+    private int figuresInFinishArea() {
         int amount = 0;
-        for (Player p : players){
+        for (Player p : players) {
             amount += p.getFigureAmountInFinishArea();
         }
         return amount;
@@ -239,7 +255,7 @@ public class Game {
      */
     private boolean allFiguresOfOneInFinishArea() {
         for (Player p : players) {
-            if (p.getFigureAmountInFinishArea()==3){
+            if (p.getFigureAmountInFinishArea() == 3) {
                 return true;
             }
         }
@@ -252,30 +268,32 @@ public class Game {
     public void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
-            for (Field field : FIELDS){
-                if (!(field instanceof LargeField)){
-                    field.setToken(this.tokens.get(i));
-                    i++;
-                }
+        for (Field field : FIELDS) {
+            if (!(field instanceof LargeField)) {
+                field.setToken(this.tokens.get(i));
+                i++;
             }
+        }
     }
 
-    public Player getWinningPlayer(){
+    public Player getWinningPlayer() {
         Player winningP = players.get(0);
-        for (Player p : players){
-            if (p.getVictoryPoints() > winningP.getVictoryPoints()){
+        for (Player p : players) {
+            if (p.getVictoryPoints() > winningP.getVictoryPoints()) {
                 winningP = p;
             }
         }
         return winningP;
-}
+    }
 
     public DrawingPile getDrawingPile() {
         return drawingPile;
     }
+
     public DiscardPile getDiscardingPileBlue() {
         return discardingPileBlue;
     }
+
     public DiscardPile getDiscardingPileRed() {
         return discardingPileRed;
     }
@@ -292,15 +310,16 @@ public class Game {
         return discardingPileOrange;
     }
 
-    public ArrayList<Player> getPlayers (){
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
     /**
      * returns the amount of the players in the game
+     *
      * @return the size of the players-list
      */
-    public int getPlayerAmount(){
+    public int getPlayerAmount() {
         return players.size();
     }
 

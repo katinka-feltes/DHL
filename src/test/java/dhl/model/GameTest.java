@@ -10,13 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     private Game game;
-    private Game game2;
     private Player player;
 
     @BeforeEach
     void setup() {
-        game = new Game(2);
-        game2 = new Game(new String[]{"Player 1", "Player 2"});
+        game = new Game(new String[]{"Player 1", "Player 2", "Player 3"});
         player = game.getPlayers().get(0);
     }
     private int getSizeOfDiscardingPiles() {
@@ -28,11 +26,27 @@ class GameTest {
     }
 
     @Test
-    void gameOver() {
+    public void gameOver() {
+        //checks if game ends when one player has all 3 in finish area
+        Figure[] figures = player.getFigures();
+        figures[0].setPos(22);
+        figures[1].setPos(22);
+        figures[2].setPos(22);
+        assertTrue(game.gameOver());
+        figures[0].setPos(0);
+        assertFalse(game.gameOver());
+        //checks if game ends when 5 figures are in finish area
+        Player player1 = game.getPlayers().get(1);
+        Player player2 = game.getPlayers().get(2);
+        Figure[] figures1 = player1.getFigures();
+        Figure[] figures2 = player2.getFigures();
+        figures1[0].setPos(22);
+        figures1[1].setPos(22);
+        figures2[0].setPos(22);
+        assertTrue(game.gameOver());
+        //checks if game ends when drawing pile is empty
         game.getDrawingPile().getCards().clear();
         assertTrue(game.gameOver());
-        game2.getDrawingPile().getCards().clear();
-        assertTrue(game2.gameOver());
     }
 
     @Test
@@ -48,6 +62,35 @@ class GameTest {
         }
         assertEquals(5, getSizeOfDiscardingPiles());
         assertThrows(Exception.class, () -> player.putCardOnDiscardingPile(new Card(1, 'f')), "Color of the card doesn't exist.");
+    }
+
+    @Test
+    void canDrawFromDiscarding() {
+        //false if all piles are empty
+        player.setLastTrashed(new Card(5, 'b'));
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        //false if lastTrashed = top card of same colored pile, others empty
+        game.getDiscardingPileBlue().pile.add(player.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        game.getDiscardingPileBlue().getPile().clear();
+        player.setLastTrashed(new Card(5, 'r'));
+        game.getDiscardingPileRed().pile.add(player.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        game.getDiscardingPileRed().getPile().clear();
+        player.setLastTrashed(new Card(5, 'g'));
+        game.getDiscardingPileGreen().pile.add(player.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        game.getDiscardingPileGreen().getPile().clear();
+        player.setLastTrashed(new Card(5, 'p'));
+        game.getDiscardingPilePurple().pile.add(player.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        game.getDiscardingPilePurple().getPile().clear();
+        player.setLastTrashed(new Card(5, 'o'));
+        game.getDiscardingPileOrange().pile.add(player.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        //true if none of above
+        player.setLastTrashed(new Card(5, 'b'));
+        assertTrue(game.canDrawFromDiscarding(player.getLastTrashed()));
     }
 
     @Test
@@ -84,14 +127,14 @@ class GameTest {
 
     @Test
     void getPlayers() {
-        assertEquals(2, game.getPlayers().size());
+        assertEquals(3, game.getPlayers().size());
         game.getPlayers().remove(player);
-        assertEquals(1, game.getPlayers().size());
+        assertEquals(2, game.getPlayers().size());
     }
 
     @Test
     void getPlayerAmount() {
-        assertEquals(2, game.getPlayerAmount());
+        assertEquals(3, game.getPlayerAmount());
     }
 
     @Test
