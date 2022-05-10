@@ -1,7 +1,5 @@
 package dhl.model.tokens;
 
-import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 
 public class Skullpoints implements Token{
@@ -32,7 +30,7 @@ public class Skullpoints implements Token{
      * @param player the current player
      */
     @Override
-    public void action(Game game, Player player) {
+    public void action( Player player) {
         player.setVictoryPoints(player.getVictoryPoints() + points);
     }
 
@@ -40,26 +38,6 @@ public class Skullpoints implements Token{
     @Override
     public char getSymbol() {
         return SYMBOL;
-    }
-
-    @Override
-    public void setChosenPos(int chosenPos) {
-
-    }
-
-    @Override
-    public char getPileChoice() {
-        return 0;
-    }
-
-    @Override
-    public void setPileChoice(char pileChoice) {
-
-    }
-
-    @Override
-    public void setCardChoice(Card card) {
-
     }
 
     public int getPoints(){

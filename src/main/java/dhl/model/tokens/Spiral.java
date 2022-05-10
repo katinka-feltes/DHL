@@ -1,13 +1,10 @@
 package dhl.model.tokens;
 
-import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 
 public class Spiral implements Token {
 
         public static final char SYMBOL = '\u058E';
-        private int fieldIndex;
         private int chosenPos;
 
         @Override
@@ -22,7 +19,7 @@ public class Spiral implements Token {
         }
 
         @Override
-        public void action(Game game, Player player) {
+        public void action( Player player) {
                         if (player.getLastMovedFigure().getPos() != player.getLastMovedFigure().getLatestPos()){
                                 player.getLastMovedFigure().setPos(chosenPos);
                         }
@@ -32,26 +29,10 @@ public class Spiral implements Token {
         public char getSymbol() {
                 return SYMBOL;
         }
-        @Override
+
+
         public void setChosenPos(int chosenPos) {
                 this.chosenPos = chosenPos;
         }
-
-
-        @Override
-        public char getPileChoice() {
-                return 0;
-        }
-
-        @Override
-        public void setPileChoice(char pileChoice) {
-
-        }
-
-        @Override
-        public void setCardChoice(Card card) {
-
-        }
-
 
 }

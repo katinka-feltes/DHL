@@ -1,12 +1,11 @@
 package dhl.model.tokens;
 
-import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 
 public class WishingStone implements Token{
 
     public static final char SYMBOL = 'W';
+    public static final int[] VALUE = {-4, -3, 2, 3, 6, 10};
 
     @Override
     public boolean isCollectable() {
@@ -20,33 +19,13 @@ public class WishingStone implements Token{
     }
 
     @Override
-    public void action(Game game, Player player) {
+    public void action( Player player) {
+        player.getTokens().add(this);
     }
 
     @Override
     public char getSymbol() {
         return SYMBOL;
-    }
-
-    @Override
-    public void setChosenPos(int chosenPos) {
-
-
-    }
-
-    @Override
-    public char getPileChoice() {
-        return 0;
-    }
-
-    @Override
-    public void setPileChoice(char pileChoice) {
-
-    }
-
-    @Override
-    public void setCardChoice(Card card) {
-
     }
 
 }

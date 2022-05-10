@@ -22,46 +22,45 @@ public class Goblin implements Token {
     }
 
     @Override
-    public void action(Game game, Player player) {
-
-                    switch (pile){
-                        case ('b') :
-                            game.getDiscardingPileBlue().getPile().add(player.getPlayedCardsBlue().getTop());
-                            break;
-                        case ('g') :
-                            game.getDiscardingPileGreen().getPile().add(player.getPlayedCardsGreen().getTop());
-                            break;
-                        case ('o') :
-                            game.getDiscardingPileOrange().getPile().add(player.getPlayedCardsOrange().getTop());
-                            break;
-                        case ('p') :
-                            game.getDiscardingPilePurple().getPile().add(player.getPlayedCardsPurple().getTop());
-                            break;
-                        case ('r') :
-                            game.getDiscardingPileRed().getPile().add(player.getPlayedCardsRed().getTop());
-                            break;
-                        case ('h') :
-                            try{ // just to clear the errors !!not the final implementation!!
-                                player.putCardOnDiscardingPile(card);
-                            } catch(Exception e) {
-                                e.getMessage();
-                            }
-
-                            break;
-                    }
+    public void action( Player player) {
+        Game game = player.getGame();
+        // check if card is not null
+        try {
+            switch (pile) {
+                case ('b'):
+                    game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getTop());
+                    break;
+                case ('g'):
+                    //game.getDiscardingPileGreen().getPile().add(player.getPlayedCardsGreen().getTop());
+                    game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getTop());
+                    break;
+                case ('o'):
+                    game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getTop());
+                    break;
+                case ('p'):
+                    game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getTop());
+                    break;
+                case ('r'):
+                    game.getDiscardingPileRed().add(player.getPlayedCardsRed().getTop());
+                    break;
+                case ('h'):
+                    //player.putCardOnDiscardingPile(player.getCardFromHand(card));
+                    player.putCardOnDiscardingPile(card);
+                    break;
+                default:
+                    break;
+            }
+        } catch(Exception ignored) {}
     }
 
-    @Override
     public char getPileChoice() {
         return pile;
     }
 
-    @Override
     public void setPileChoice(char pileChoice) {
         this.pile = pileChoice;
     }
 
-    @Override
     public void setCardChoice(Card card) {
         this.card = card;
     }
@@ -69,11 +68,6 @@ public class Goblin implements Token {
     @Override
     public char getSymbol() {
         return SYMBOL;
-    }
-
-    @Override
-    public void setChosenPos(int chosenPos) {
-
     }
 
 }

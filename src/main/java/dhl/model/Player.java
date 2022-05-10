@@ -1,6 +1,8 @@
 package dhl.model;
 
+import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
+import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 
@@ -110,7 +112,7 @@ public class Player {
      * @param cardColor color of the played card
      * @param figure the position of the figure to move (1, 2 or 3)
      */
-    public void placeFigure(char cardColor, int figure) throws Exception {
+    public void placeFigure(char cardColor, int figure) {
         victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
         getFigureByPos(figure).move(cardColor);
         victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
@@ -143,6 +145,8 @@ public class Player {
                         chosen = f;
                     }
                 }
+                break;
+            default:
                 break;
         }
         lastMovedFigure = chosen;
@@ -255,6 +259,22 @@ public class Player {
     }
 
     /**
+     * The points from the collected tokens are calculated and added to the victory points
+     */
+    public void calcTokenPoints(){
+        int stones = 0;
+        int mirrors = 0;
+        for (Token token : tokens){
+            if(token instanceof WishingStone){
+                stones++;
+            } else if(token instanceof Mirror){
+                mirrors++;
+            }
+        }
+        victoryPoints += (WishingStone.VALUE[stones] * (int)Math.pow(2, mirrors));
+    }
+
+    /**
      * checks if player is able to play at least one card from his hand
      * @return true if he can play at least one card
      */
@@ -312,8 +332,6 @@ public class Player {
     public Figure getLastMovedFigure(){
         return lastMovedFigure;
     }
-
-
 
     public Figure[] getFigures() {
         return figures;

@@ -1,7 +1,5 @@
 package dhl.model.tokens;
 
-import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 
 public class Mirror implements Token {
@@ -20,39 +18,11 @@ public class Mirror implements Token {
     }
 
     @Override
-    public void action(Game game, Player player) {
-        for (int i = 0; i <= player.getTokens().size(); i++){
-            if (player.getTokens().get(i).getName().equals("WishingStone")) {
-                //player.getTokens().add();
-            }
-
-        }
-
-
-        }
+    public void action( Player player) {
+        player.getTokens().add(this);
+    }
     @Override
     public char getSymbol() {
         return SYMBOL;
     }
-
-    @Override
-    public void setChosenPos(int chosenPos) {
-
-    }
-
-    @Override
-    public char getPileChoice() {
-        return 0;
-    }
-
-    @Override
-    public void setPileChoice(char pileChoice) {
-
-    }
-
-    @Override
-    public void setCardChoice(Card card) {
-
-    }
-
 }
