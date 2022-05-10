@@ -33,7 +33,7 @@ public class Spiral implements Token {
         }
         @Override
         public void setChosenPos(int chosenPos) {
-                chosenPos = chosenPos;
+                this.chosenPos = chosenPos;
         }
 
 

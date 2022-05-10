@@ -107,6 +107,7 @@ public class Controller {
         // collecting or using tokens
         usingToken(player);
 
+
         // draw cards up to eight again either from one discarding or from drawing pile
         if(model.canDrawFromDiscarding(player.getLastTrashed())) {
             view.printDiscardingPiles(model);
@@ -150,15 +151,14 @@ public class Controller {
     }
 
     /**
+     * this method decides witch token action comes in to play
      *
-     * @param player
-     * @throws Exception
+     * @param player the current player
      */
     private void usingToken(Player player){
         int fieldIndex = player.getLastMovedFigure().getPos();
         String name = player.getLastMovedFigure().getField(fieldIndex).getToken().getName();
         Figure currentFigure = player.getLastMovedFigure();
-        boolean choice;
 
         if (currentFigure.getField(fieldIndex).getToken().isCollectable()){
 
@@ -177,52 +177,103 @@ public class Controller {
             switch (name){
 
                 case("Skullpoints") :
-                    view.out("You found a Skullpoint!");
-                    doTokenAction(player, model);
+                    doTokenSkullpoints(player, model);
                     break;
 
                 case("Spiral") :
-                    view.out("You found a Spiral!");
-                    choice = view.promptPlayersChoice("You can move this figure backwards as far as you want. " +
-                            "Except the field where you came from. " +
-                            "Do you want to proceed with your action?");
-                    if (choice) {
-                        doTokenChoosePos(player, view.promptInt(0, fieldIndex,
-                                "Where do you want to place your figure?"));
-                        doTokenAction(player, model);
-                    }
-                        break;
+                    doTokenSpiral(player, model, currentFigure, fieldIndex);
+                    break;
 
-                    case("Goblin") :
-                    view.out("You found a Goblin!");
-                    choice = view.promptPlayersChoice("You can discard a card from one of your discardpiles " +
-                            "or from your hand. " +
-                            "Do you want to proceed with your action?");
-                    if (choice) {
-                        doTokenPileChoice(player, view.promptColorAndHand("You can choose out of the following: " +
-                                "r, g, b, p, o, h (hand)."));
-                        if (player.getLastMovedFigure().getField(fieldIndex).getToken().getPileChoice() == 'h') {
-                            doTokenCardChoice(player, view.promptCardString("What card do you want to trash?"));
-                            doTokenAction(player, model);
-                        }
-                        doTokenAction(player, model);
-                    }
-                        break;
+                case("Goblin") :
+                    doTokenGoblin(player, model, fieldIndex);
+                    break;
 
-                    case("SpiderWeb") :
-                    view.out("You found a Spiderweb!");
-                    choice = view.promptPlayersChoice("You are allowed to move your " +
-                            "figure to the next field with the same color. " +
-                            "Do you want to proceed with your action?");
-
-                    if (choice) {
-                            doTokenChoosePos(player, view.promptInt(fieldIndex, 39,
-                                    "Where do you want to place your figure?"));
-                            doTokenAction(player, model);
-
-                    }
-                        break;
+                case("SpiderWeb") :
+                    doTokenSpiderWeb(player, model);
+                    break;
             }
+        }
+    }
+
+    /**
+     * this method controls the Token action
+     * @param player the current player
+     * @param model the current game status
+     */
+    public void doTokenSkullpoints(Player player, Game model) {
+        view.out("You found a Skullpoint!");
+        getTokenAction(player, model);
+    }
+
+    /**
+     * this method controls the Token action
+     * @param player the current player
+     * @param model the current game status
+     * @param currentFigure the current Figure
+     * @param fieldIndex the field index of the field the token lies on
+     */
+    public void doTokenSpiral(Player player, Game model, Figure currentFigure, int fieldIndex) {
+        boolean choice;
+        int chosenPos;
+
+        view.out("You found a Spiral!");
+        choice = view.promptPlayersChoice("You can move this figure backwards as far as you want. " +
+                "Except the field where you came from. " +
+                "Do you want to proceed with your action?");
+        if (choice) {
+            chosenPos = view.promptInt(0, fieldIndex,
+                    "Where do you want to place your figure?");
+            if (chosenPos != currentFigure.getLatestPos()){
+                setTokenChoosePos(player, chosenPos);
+                getTokenAction(player, model);
+                view.printCurrentBoard(model);
+                usingToken(player);
+            } else {
+                view.error("You can not go to the field you came from!");
+            }
+        }
+    }
+
+    /**
+     * this method controls the Token action
+     * @param player the current player
+     * @param model the current game status
+     * @param fieldIndex the field index of the field the token lies on
+     */
+    public void doTokenGoblin(Player player, Game model, int fieldIndex) {
+        boolean choice;
+
+        view.out("You found a Goblin!");
+        choice = view.promptPlayersChoice("You can discard a card from one of your discardpiles " +
+                "or from your hand. " +
+                "Do you want to proceed with your action?");
+        if (choice) {
+            setTokenPileChoice(player, view.promptColorAndHand("You can choose out of the following: " +
+                    "r, g, b, p, o, h (hand)."));
+            if (player.getLastMovedFigure().getField(fieldIndex).getToken().getPileChoice() == 'h') {
+                setTokenCardChoice(player, view.promptCardString("What card do you want to trash?"));
+                getTokenAction(player, model);
+            }
+            getTokenAction(player, model);
+        }
+    }
+
+    /**
+     * this method controls if the Token action is valid and does the token action
+     * @param player the current player
+     * @param model the current game status
+     */
+    public void doTokenSpiderWeb(Player player, Game model) {
+        boolean choice;
+
+        view.out("You found a Spiderweb!");
+        choice = view.promptPlayersChoice("Your Figure gets moved to " +
+                "figure to the next field with the same color. " +
+                "Do you want to proceed with your action?");
+        if (choice) {
+            getTokenAction(player, model);
+            view.printCurrentBoard(model);
+            usingToken(player);
         }
     }
 
@@ -243,13 +294,8 @@ public class Controller {
      * @param player the current player
      * @param model the current game status
      */
-    public void doTokenAction(Player player, Game model) {
-        try{
+    public void getTokenAction(Player player, Game model) {
             player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getToken().action(model, player);
-        } catch (Exception e){
-            view.error(e.getMessage());
-        }
-
     }
 
     /**
@@ -257,7 +303,7 @@ public class Controller {
      * @param player the current player
      * @param pos the chosen position
      */
-    public void doTokenChoosePos(Player player, int pos){
+    public void setTokenChoosePos(Player player, int pos){
         player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getToken().
                 setChosenPos(pos);
     }
@@ -267,7 +313,7 @@ public class Controller {
      * @param player the current player
      * @param color the chosen pile color
      */
-    public void doTokenPileChoice(Player player, char color){
+    public void setTokenPileChoice(Player player, char color){
         player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getToken().setPileChoice(color);
     }
 
@@ -276,7 +322,7 @@ public class Controller {
      * @param player the current player
      * @param card the chosen card
      */
-    public void doTokenCardChoice(Player player, String card) {
+    public void setTokenCardChoice(Player player, String card) {
         player.getLastMovedFigure().getField(player.getLastMovedFigure().getPos()).getToken().setCardChoice(card);
     }
 }

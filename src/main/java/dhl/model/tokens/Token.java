@@ -20,7 +20,7 @@ public interface Token {
     /**
      * executes the token's action
      */
-    void action(Game game, Player player) throws Exception;
+    void action(Game game, Player player);
 
     char getSymbol();
 

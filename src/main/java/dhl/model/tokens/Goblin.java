@@ -26,26 +26,25 @@ public class Goblin implements Token {
     @Override
     public void action(Game game, Player player) {
                 try {
-                    switch (pile) {
-                        case ('b'):
+                    switch (pile){
+                        case ('b') :
                             game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getTop());
                             break;
-                        case ('g'):
+                        case ('g') :
                             game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getTop());
                             break;
-                        case ('o'):
+                        case ('o') :
                             game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getTop());
                             break;
-                        case ('p'):
+                        case ('p') :
                             game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getTop());
                             break;
-                        case ('r'):
+                        case ('r') :
                             game.getDiscardingPileRed().add(player.getPlayedCardsRed().getTop());
                             break;
-                        case ('h'):
-                            player.putCardOnDiscardingPile(player.getCardFromHand(card));
+                        case ('h') :
+                            game.putCardOnDiscardingPile(player.getCardFromHand(card), player);
                             break;
-
                     }
                 } catch (Exception e) {
                     e.getMessage();
@@ -64,7 +63,7 @@ public class Goblin implements Token {
 
     @Override
     public void setPileChoice(char pileChoice) {
-        pile = pileChoice;
+        this.pile = pileChoice;
     }
 
     @Override
