@@ -22,7 +22,7 @@ public class Controller {
                     try {
                         takeTurn(activeP);
                     } catch (Exception e) {
-                       e.getMessage();
+                       view.error(e.getMessage());
                     }
                 }
                 else {
@@ -73,21 +73,17 @@ public class Controller {
      *
      * @param player
      */
-    public void takeTurn(Player player) throws Exception {
-            boolean startTurn = false;
-            while (!startTurn) {
-                if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play?")) {
-                    startTurn = true;
-                }
+    public void takeTurn(Player player) {
+        view.out(System.lineSeparator().repeat(50)); //clear screen
+        while (true) {
+            if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play?")) {
+                break;
             }
-        //maybe all prints into one method in view?
-        System.out.println(player.getName() + "'s Turn!"); // view needs to do this !!
+        }
+        view.out(player.getName() + "'s Turn!");
         view.printCurrentBoard(model);
         view.printTopCards(player);
         view.printHand(player);
-
-        // play or discard a card
-        Card trashCard = null;
         // check if player can play a card and if yes ask
         if (player.canPlay() && view.promptPlayersChoice("Do you want to play a card? (if no you trash one)")){
             playCard(player);
@@ -95,8 +91,8 @@ public class Controller {
             while (true) {
                 try {
                     String cardAsString = view.promptCardString("What card do you want to trash?");
-                    trashCard = player.getCardFromHand(cardAsString);
-                    model.putCardOnDiscardingPile(trashCard, player);
+                    player.setLastTrashed(player.getCardFromHand(cardAsString));
+                    player.putCardOnDiscardingPile(player.getLastTrashed());
                     break;
                 } catch (Exception e) {
                     view.error(e.getMessage());
@@ -112,29 +108,29 @@ public class Controller {
         usingToken(player);
 
         // draw cards up to eight again either from one discarding or from drawing pile
-        if(model.canDrawFromDiscarding(trashCard)) {
+        if(model.canDrawFromDiscarding(player.getLastTrashed())) {
             view.printDiscardingPiles(model);
         }
-        if(model.canDrawFromDiscarding(trashCard) && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
+        if(model.canDrawFromDiscarding(player.getLastTrashed()) && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
             char color = view.promptColor("From what colored pile do you want to draw?");
 
             while (true) {
                 try {
                     switch (color) {
                         case ('r'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileRed(), trashCard);
+                            player.drawFromDiscardingPile(model.getDiscardingPileRed());
                             break;
                         case ('g'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileGreen(), trashCard);
+                            player.drawFromDiscardingPile(model.getDiscardingPileGreen());
                             break;
                         case ('b'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileBlue(), trashCard);
+                            player.drawFromDiscardingPile(model.getDiscardingPileBlue());
                             break;
                         case ('p'):
-                            player.drawFromDiscardingPile(model.getDiscardingPilePurple(), trashCard);
+                            player.drawFromDiscardingPile(model.getDiscardingPilePurple());
                             break;
                         case ('o'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileOrange(), trashCard);
+                            player.drawFromDiscardingPile(model.getDiscardingPileOrange());
                             break;
                     }
                     break;
@@ -145,6 +141,11 @@ public class Controller {
             }
         } else {
             player.drawCardsUpToEight(model.getDrawingPile());
+        }
+        while (true) {
+            if (view.promptPlayersChoice("are you done with your turn?")) {
+                break;
+            }
         }
     }
 

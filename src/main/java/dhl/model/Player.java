@@ -9,11 +9,15 @@ public class Player {
     private String name;
     private char symbol;
 
+    private Game game;
+
     private DirectionDiscardPile playedCardsRed;
     private DirectionDiscardPile playedCardsBlue;
     private DirectionDiscardPile playedCardsGreen;
     private DirectionDiscardPile playedCardsPurple;
     private DirectionDiscardPile playedCardsOrange;
+
+    private Card lastTrashed;
 
     private ArrayList<Card> hand;
 
@@ -28,9 +32,10 @@ public class Player {
 
     // collected tokens and color need to be added
 
-    public Player(String name, char symbol){
+    public Player(String name, char symbol, Game game){
         this.name = name;
         this.symbol = symbol;
+        this.game = game;
         goblinSpecialPlayed = false;
         victoryPoints = 0;
         playedCardsRed = new DirectionDiscardPile('r');
@@ -59,13 +64,12 @@ public class Player {
     /**
      * adds card from discarding pile to active player's hand
      * @param pile discarding pile from which to draw
-     * @param lastTrash last card trashed in this turn
      * @throws Exception if chosen pile is empty or top is last-trashed card
      */
-    public void drawFromDiscardingPile(DiscardPile pile, Card lastTrash) throws Exception {
+    public void drawFromDiscardingPile(DiscardPile pile) throws Exception {
         if(pile.isEmpty()){
             throw new Exception("You fool: this pile is empty!");
-        } else if(pile.getTop() == lastTrash){
+        } else if(pile.getTop() == lastTrashed){
             throw new Exception("You can't draw a card you just trashed!");
         }
         hand.add(pile.getAndRemoveTop());
@@ -176,7 +180,28 @@ public class Player {
         }
         throw new Exception("Card is not in Hand.");
     }
-
+    public void putCardOnDiscardingPile(Card card) throws Exception {
+        hand.remove(card);
+        switch (card.getColor()) {
+            case 'r':
+                game.getDiscardingPileRed().add(card);
+                break;
+            case 'g':
+                game.getDiscardingPileGreen().add(card);
+                break;
+            case 'b':
+                game.getDiscardingPileBlue().add(card);
+                break;
+            case 'p':
+                game.getDiscardingPilePurple().add(card);
+                break;
+            case 'o':
+                game.getDiscardingPileOrange().add(card);
+                break;
+            default:
+                throw new Exception("Color of the card doesn't exist.");
+        }
+    }
     /**
      * sorts the hand of the player by number and color
      * @return hand sorted by number and color as an ArrayList
@@ -328,6 +353,18 @@ public class Player {
 
     public ArrayList<Card> getHand() {
         return hand;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setLastTrashed(Card lastTrashed) {
+        this.lastTrashed = lastTrashed;
+    }
+
+    public Card getLastTrashed() {
+        return lastTrashed;
     }
 
     public int getVictoryPoints() {

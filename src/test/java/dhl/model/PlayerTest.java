@@ -20,7 +20,7 @@ class PlayerTest {
     }
 
     @Test
-    void drawCardsUpToEight() throws Exception {
+    void drawFromDrawingPile() throws Exception {
         assertEquals(0, player.getHand().size());
         player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
@@ -203,13 +203,14 @@ class PlayerTest {
     }
 
     @Test
-    //TODO: function has some weird dynamics
     void drawFromDiscardingPile() throws Exception {
-        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue(), null), "You fool: this pile is empty!");
-        game.getDiscardingPileBlue().getPile().add(new Card(4, 'r'));
-        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue(), game.getDiscardingPileBlue().getPile().get(0)), "You can't draw a card you just trashed!");
-        player.drawFromDiscardingPile(game.getDiscardingPileBlue(), null);
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You fool: this pile is empty!");
+        game.getDiscardingPileBlue().getPile().add(new Card(4, 'b'));
+        player.setLastTrashed(game.getDiscardingPileBlue().getPile().get(0));
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You can't draw a card you just trashed!");
+        game.getDiscardingPileRed().add(new Card(2, 'r'));
+        player.drawFromDiscardingPile(game.getDiscardingPileRed());
         assertEquals('r', player.getHand().get(0).getColor());
-        assertEquals(4, player.getHand().get(0).getNumber());
+        assertEquals(2, player.getHand().get(0).getNumber());
     }
 }

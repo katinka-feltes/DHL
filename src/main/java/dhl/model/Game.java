@@ -7,7 +7,7 @@ import java.util.Collections;
 
 public class Game {
     public static final Field[] FIELDS = {
-            new LargeField(0,'w', 0),
+            new LargeField(0, 'w', 0),
             new Field(-4, 'p'),
             new Field(-4, 'o'),
             new Field(-4, 'r'),
@@ -46,7 +46,6 @@ public class Game {
     };
 
 
-
     private DiscardPile discardingPileRed;
     private DiscardPile discardingPileBlue;
     private DiscardPile discardingPileGreen;
@@ -64,7 +63,7 @@ public class Game {
      *
      * @param playerAmount the amount of players that will play the game as an int
      */
-    public Game (int playerAmount){
+    public Game(int playerAmount) {
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
@@ -76,12 +75,12 @@ public class Game {
 
         tokens = new ArrayList<>();
 
-        for (int i = 1; i <= 3; i++){
+        for (int i = 1; i <= 3; i++) {
             tokens.add(new Goblin());
             tokens.add(new Spiral());
             tokens.add(new Mirror());
         }
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 5; i++) {
             tokens.add(new SpiderWeb());
         }
         for (int i = 1; i <= 16; i++) {
@@ -107,23 +106,24 @@ public class Game {
         //♣ \u2663 BLACK CLUB SUIT
         //♥ \u2665 BLACK HEART SUIT
         //♦ \u2666 BLACK DIAMOND SUIT
-        char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-        for(int i = 1; i <= playerAmount; i++){
-            players.add(new Player("P" + i, symbols[i-1]));
+        char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+        for (int i = 1; i <= playerAmount; i++) {
+            players.add(new Player("P" + i, symbols[i - 1], this));
         }
     }
 
     public void createDecks() {
-        for (Player p: players) {
+        for (Player p : players) {
             p.drawCardsUpToEight(drawingPile);
         }
     }
 
     /**
      * Constructor for Game with given amount of players (2-4)
+     *
      * @param playerNames the List of all player Names
      */
-    public Game(String[] playerNames){
+    public Game(String[] playerNames) {
 
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
@@ -136,12 +136,12 @@ public class Game {
 
         tokens = new ArrayList<>();
 
-        for (int i = 1; i <= 3; i++){
+        for (int i = 1; i <= 3; i++) {
             tokens.add(new Goblin());
             tokens.add(new Spiral());
             tokens.add(new Mirror());
         }
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 5; i++) {
             tokens.add(new SpiderWeb());
         }
         for (int i = 1; i <= 16; i++) {
@@ -159,13 +159,13 @@ public class Game {
         placeTokens();
 
         //add player to the players-list
-        char [] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-        for(int i = 0; i < playerNames.length; i++){
-            players.add(new Player(playerNames[i], symbols[i]));
+        char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+        for (int i = 0; i < playerNames.length; i++) {
+            players.add(new Player(playerNames[i], symbols[i], this));
         }
 
         // all players draw 8 cards
-        for (Player p: players) {
+        for (Player p : players) {
             p.drawCardsUpToEight(drawingPile);
         }
     }
@@ -174,9 +174,10 @@ public class Game {
      * checks if drawing pile is empty
      * or if 5 figures are in the finish area
      * or if one player has all figures in the finish area
+     *
      * @return true if one of the conditions to end the game true
      */
-    public boolean gameOver (){
+    public boolean gameOver() {
         return drawingPile.isEmpty()  // drawing pile is empty
                 || figuresInFinishArea() >= 5 // 5 figures are in finish area
                 || allFiguresOfOneInFinishArea(); // or one person has all figures in the finish area
@@ -184,57 +185,42 @@ public class Game {
 
     /**
      * Adds the given card to the matching discard pile and removes it from the players hand
-     * @param card the card to be discarded
+     *
+     * @param card   the card to be discarded
      * @param player the player that removes card
      */
-    public void putCardOnDiscardingPile(Card card, Player player) throws Exception {
-        player.getHand().remove(card);
-        switch (card.getColor()) {
-            case 'r': discardingPileRed.add(card);
-                break;
-            case 'g': discardingPileGreen.add(card);
-                break;
-            case 'b': discardingPileBlue.add(card);
-                break;
-            case 'p': discardingPilePurple.add(card);
-                break;
-            case 'o': discardingPileOrange.add(card);
-                break;
-            default:
-                throw new Exception("Color of the card doesn't exist.");
-        }
-    }
+
 
     /**
      * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)
+     *
      * @param trashCard in this turn trashed card
      * @return true if drawing from any discarding pile is possible
      */
     public boolean canDrawFromDiscarding(Card trashCard) {
         boolean canDraw = !(getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty() && getDiscardingPileBlue().isEmpty() &&
                 getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty());
-        if(trashCard != null) {
-            if(canDraw == true) {
-                switch (trashCard.getColor()) {
-                    case ('r'): if(!getDiscardingPileRed().isEmpty()) {
-                        canDraw = !(getDiscardingPileRed().getTop() == trashCard);
-                    }
-                    case ('g'): if(!getDiscardingPileGreen().isEmpty()) {
-                        canDraw = !(getDiscardingPileGreen().getTop() == trashCard);
-                    }
-                    case ('b'): if(!getDiscardingPileBlue().isEmpty()) {
-                        canDraw = !(getDiscardingPileBlue().getTop() == trashCard);
-                    }
-                    case ('p'): if(!getDiscardingPilePurple().isEmpty()) {
-                        canDraw = !(getDiscardingPilePurple().getTop() == trashCard);
-                    }
-                    case ('o'): if(!getDiscardingPileOrange().isEmpty()) {
-                        canDraw = !(getDiscardingPileOrange().getTop() == trashCard);
-                    }
-                }
+        if (trashCard != null && canDraw) {
+            switch (trashCard.getColor()) {
+                case ('r'):
+                    canDraw = getDiscardingPileRed().getTop() != trashCard;
+                    return canDraw;
+                case ('g'):
+                    canDraw = getDiscardingPileGreen().getTop() != trashCard;
+                    return canDraw;
+                case ('b'):
+                    canDraw = getDiscardingPileBlue().getTop() != trashCard;
+                    return canDraw;
+                case ('p'):
+                    canDraw = getDiscardingPilePurple().getTop() != trashCard;
+                    return canDraw;
+                case ('o'):
+                    canDraw = getDiscardingPileOrange().getTop() != trashCard;
+                    return canDraw;
+                default:
+                    return false;
             }
-        }
-        return canDraw;
+        } return canDraw;
     }
 
     /**

@@ -26,19 +26,25 @@ public class Goblin implements Token {
     @Override
     public void action(Game game, Player player) {
                 try {
-                    switch (pile){
-                        case ('b') :
+                    switch (pile) {
+                        case ('b'):
                             game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getTop());
-                        case ('g') :
+                            break;
+                        case ('g'):
                             game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getTop());
-                        case ('o') :
+                            break;
+                        case ('o'):
                             game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getTop());
-                        case ('p') :
+                            break;
+                        case ('p'):
                             game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getTop());
-                        case ('r') :
+                            break;
+                        case ('r'):
                             game.getDiscardingPileRed().add(player.getPlayedCardsRed().getTop());
-                        case ('h') :
-                            game.putCardOnDiscardingPile(player.getCardFromHand(card), player);
+                            break;
+                        case ('h'):
+                            player.putCardOnDiscardingPile(player.getCardFromHand(card));
+                            break;
 
                     }
                 } catch (Exception e) {
@@ -48,7 +54,7 @@ public class Goblin implements Token {
 
     @Override
     public void setChosenPos(int chosenPos) {
-        chosenPos = chosenPos;
+        this.chosenPos = chosenPos;
     }
 
     @Override
@@ -63,7 +69,7 @@ public class Goblin implements Token {
 
     @Override
     public void setCardChoice(String card) {
-        card = card;
+        this.card = card;
     }
 
     @Override

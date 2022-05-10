@@ -36,7 +36,6 @@ class GameTest {
     }
 
     @Test
-    //TODO: Why card and Player?, Default case needs work.
     void putCardOnDiscardingPile() throws Exception {
         player.getHand().add(new Card(1, 'r'));
         player.getHand().add(new Card(1, 'g'));
@@ -45,10 +44,10 @@ class GameTest {
         player.getHand().add(new Card(1, 'o'));
         ArrayList<Card> hand = new ArrayList<>(player.getHand());
         for (Card card : hand) {
-            game.putCardOnDiscardingPile(card, player);
+            player.putCardOnDiscardingPile(card);
         }
         assertEquals(5, getSizeOfDiscardingPiles());
-        assertThrows(Exception.class, () -> game.putCardOnDiscardingPile(new Card(1, 'f'), player), "Color of the card doesn't exist.");
+        assertThrows(Exception.class, () -> player.putCardOnDiscardingPile(new Card(1, 'f')), "Color of the card doesn't exist.");
     }
 
     @Test
