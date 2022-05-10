@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -44,7 +45,7 @@ public class SpiderWeb implements Token {
     }
 
     @Override
-    public void setCardChoice(String card) {
+    public void setCardChoice(Card card) {
 
     }
 

@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -30,7 +31,7 @@ public interface Token {
 
     public void setPileChoice(char pileChoice);
 
-    public void setCardChoice(String card);
+    public void setCardChoice(Card card);
 
 }
 

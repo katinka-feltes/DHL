@@ -184,7 +184,7 @@ public class Player {
         hand.remove(card);
         switch (card.getColor()) {
             case 'r':
-                game.getDiscardingPileRed().add(card);
+                game.getDiscardingPileRed().getPile().add(card);
                 break;
             case 'g':
                 game.getDiscardingPileGreen().add(card);
