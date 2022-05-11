@@ -3,6 +3,7 @@ package dhl.view;
 import dhl.model.Game;
 import dhl.model.Player;
 
+@SuppressWarnings("ClassEscapesDefinedScope")
 public interface View {
 
     void printCurrentBoard(Game game);

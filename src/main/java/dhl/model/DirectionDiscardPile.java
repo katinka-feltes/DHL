@@ -63,11 +63,6 @@ public class DirectionDiscardPile extends DiscardPile{
         super.getPile().add(card);
     }
 
-
-    public void setDirection(int dir) {
-        this.direction = dir;
-    }
-
     public int getDirection(){
         return direction;
     }

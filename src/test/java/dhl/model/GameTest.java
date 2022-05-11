@@ -10,12 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     private Game game;
-    private Player player;
+    private Player player1;
+    private Player player2;
 
     @BeforeEach
     void setup() {
         game = new Game(new String[]{"Player 1", "Player 2", "Player 3"});
-        player = game.getPlayers().get(0);
+        player1 = game.getPlayers().get(0);
+        player2 = game.getPlayers().get(1);
     }
     private int getSizeOfDiscardingPiles() {
         return game.getDiscardingPileOrange().pile.size() +
@@ -26,9 +28,9 @@ class GameTest {
     }
 
     @Test
-    public void gameOver() {
+    void gameOver() {
         //checks if game ends when one player has all 3 in finish area
-        Figure[] figures = player.getFigures();
+        Figure[] figures = player1.getFigures();
         figures[0].setPos(22);
         figures[1].setPos(22);
         figures[2].setPos(22);
@@ -51,46 +53,46 @@ class GameTest {
 
     @Test
     void putCardOnDiscardingPile() throws Exception {
-        player.getHand().add(new Card(1, 'r'));
-        player.getHand().add(new Card(1, 'g'));
-        player.getHand().add(new Card(1, 'b'));
-        player.getHand().add(new Card(1, 'p'));
-        player.getHand().add(new Card(1, 'o'));
-        ArrayList<Card> hand = new ArrayList<>(player.getHand());
+        player1.getHand().add(new Card(1, 'r'));
+        player1.getHand().add(new Card(1, 'g'));
+        player1.getHand().add(new Card(1, 'b'));
+        player1.getHand().add(new Card(1, 'p'));
+        player1.getHand().add(new Card(1, 'o'));
+        ArrayList<Card> hand = new ArrayList<>(player1.getHand());
         for (Card card : hand) {
-            player.putCardOnDiscardingPile(card);
+            player1.putCardOnDiscardingPile(card);
         }
         assertEquals(5, getSizeOfDiscardingPiles());
-        assertThrows(Exception.class, () -> player.putCardOnDiscardingPile(new Card(1, 'f')), "Color of the card doesn't exist.");
+        assertThrows(Exception.class, () -> player1.putCardOnDiscardingPile(new Card(1, 'f')), "Color of the card doesn't exist.");
     }
 
     @Test
     void canDrawFromDiscarding() {
         //false if all piles are empty
-        player.setLastTrashed(new Card(5, 'b'));
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'b'));
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         //false if lastTrashed = top card of same colored pile, others empty
-        game.getDiscardingPileBlue().pile.add(player.getLastTrashed());
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        game.getDiscardingPileBlue().pile.add(player1.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         game.getDiscardingPileBlue().getPile().clear();
-        player.setLastTrashed(new Card(5, 'r'));
-        game.getDiscardingPileRed().pile.add(player.getLastTrashed());
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'r'));
+        game.getDiscardingPileRed().pile.add(player1.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         game.getDiscardingPileRed().getPile().clear();
-        player.setLastTrashed(new Card(5, 'g'));
-        game.getDiscardingPileGreen().pile.add(player.getLastTrashed());
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'g'));
+        game.getDiscardingPileGreen().pile.add(player1.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         game.getDiscardingPileGreen().getPile().clear();
-        player.setLastTrashed(new Card(5, 'p'));
-        game.getDiscardingPilePurple().pile.add(player.getLastTrashed());
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'p'));
+        game.getDiscardingPilePurple().pile.add(player1.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         game.getDiscardingPilePurple().getPile().clear();
-        player.setLastTrashed(new Card(5, 'o'));
-        game.getDiscardingPileOrange().pile.add(player.getLastTrashed());
-        assertFalse(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'o'));
+        game.getDiscardingPileOrange().pile.add(player1.getLastTrashed());
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         //true if none of above
-        player.setLastTrashed(new Card(5, 'b'));
-        assertTrue(game.canDrawFromDiscarding(player.getLastTrashed()));
+        player1.setLastTrashed(new Card(5, 'b'));
+        assertTrue(game.canDrawFromDiscarding(player1.getLastTrashed()));
     }
 
     @Test
@@ -100,8 +102,8 @@ class GameTest {
     @Test
     void getDrawingPile() {
         assertEquals(110, game.getDrawingPile().getCards().size());
-        player.getHand().removeAll(player.getHand());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player1.getHand().removeAll(player1.getHand());
+        player1.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(102, game.getDrawingPile().getCards().size());
     }
 
@@ -128,7 +130,7 @@ class GameTest {
     @Test
     void getPlayers() {
         assertEquals(3, game.getPlayers().size());
-        game.getPlayers().remove(player);
+        game.getPlayers().remove(player1);
         assertEquals(2, game.getPlayers().size());
     }
 
@@ -140,8 +142,17 @@ class GameTest {
     @Test
     void createDecks() {
         game.createDecks();
-        for (Player player : game.getPlayers()) {
-            assertEquals(8, player.getHand().size());
+        for (Player player1 : game.getPlayers()) {
+            assertEquals(8, player1.getHand().size());
         }
+    }
+
+    @Test
+    void getWinningPlayer() {
+        player1.setVictoryPoints(20);
+        player2.setVictoryPoints(10);
+        assertEquals(player1, game.getWinningPlayer());
+        player2.setVictoryPoints(30);
+        assertEquals(player2, game.getWinningPlayer());
     }
 }

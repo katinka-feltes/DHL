@@ -103,7 +103,7 @@ public class Controller {
                 }
             }
         } else {
-            player.drawCardsUpToEight(model.getDrawingPile());
+            player.drawFromDrawingpile(model.getDrawingPile());
         }
         waitForConfirmation("Are you done with your turn?");
     }

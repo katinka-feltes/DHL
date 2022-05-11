@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DrawingPile {
 
-    private Stack<Card> cards;
+    private final Stack<Card> cards;
 
     /**
      * Constructor of the class

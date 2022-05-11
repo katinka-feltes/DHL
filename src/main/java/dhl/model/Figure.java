@@ -3,7 +3,7 @@ package dhl.model;
 public class Figure {
     private int pos;
     private int latestPos;
-    private char color;
+    private final char color;
 
     /**
      *  Constructor for the Figure
@@ -34,8 +34,6 @@ public class Figure {
     public void setPos(int pos){
         this.pos = pos;
     }
-
-    public char getColor() {return color; }
 
     public int getLatestPos() {
         return latestPos;

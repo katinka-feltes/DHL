@@ -46,75 +46,20 @@ public class Game {
     };
 
 
-    private DiscardPile discardingPileRed;
-    private DiscardPile discardingPileBlue;
-    private DiscardPile discardingPileGreen;
-    private DiscardPile discardingPilePurple;
-    private DiscardPile discardingPileOrange;
+    private final DiscardPile discardingPileRed;
+    private final DiscardPile discardingPileBlue;
+    private final DiscardPile discardingPileGreen;
+    private final DiscardPile discardingPilePurple;
+    private final DiscardPile discardingPileOrange;
 
-    private DrawingPile drawingPile;
-    private ArrayList<Player> players;
+    private final DrawingPile drawingPile;
+    private final ArrayList<Player> players;
 
-    private ArrayList<Token> tokens;
-
-
-    /**
-     * Constructor for Game with given amount of players (2-4)
-     *
-     * @param playerAmount the amount of players that will play the game as an int
-     */
-    public Game(int playerAmount) {
-        //initializing discard piles and the players list
-        discardingPileRed = new DiscardPile('r');
-        discardingPileBlue = new DiscardPile('b');
-        discardingPileGreen = new DiscardPile('g');
-        discardingPilePurple = new DiscardPile('p');
-        discardingPileOrange = new DiscardPile('o');
-        drawingPile = new DrawingPile();
-        players = new ArrayList<>();
-
-        tokens = new ArrayList<>();
-
-        for (int i = 1; i <= 3; i++) {
-            tokens.add(new Goblin());
-            tokens.add(new Spiral());
-            tokens.add(new Mirror());
-        }
-        for (int i = 1; i <= 5; i++) {
-            tokens.add(new SpiderWeb());
-        }
-        for (int i = 1; i <= 16; i++) {
-            if (i <= 4) {
-                tokens.add(new Skullpoints(1));
-            } else if (i >= 5 && i <= 10) {
-                tokens.add(new Skullpoints(2));
-            } else if (i >= 11 && i <= 13) {
-                tokens.add(new Skullpoints(3));
-            } else {
-                tokens.add(new Skullpoints(4));
-            }
-        }
-        placeTokens();
-        //add player to the players-list
-        //other symbols
-        //♛ \u265B BLACK CHESS QUEEN
-        //♜ \u265C BLACK CHESS ROOK
-        //♝ \u265D BLACK CHESS BISHOP
-        //♞ \u265E BLACK CHESS KNIGHT
-        //our symbols
-        //♠ \u2660 BLACK SPADE SUIT
-        //♣ \u2663 BLACK CLUB SUIT
-        //♥ \u2665 BLACK HEART SUIT
-        //♦ \u2666 BLACK DIAMOND SUIT
-        char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-        for (int i = 1; i <= playerAmount; i++) {
-            players.add(new Player("P" + i, symbols[i - 1], this));
-        }
-    }
+    private final ArrayList<Token> tokens;
 
     public void createDecks() {
         for (Player p : players) {
-            p.drawCardsUpToEight(drawingPile);
+            p.drawFromDrawingpile(drawingPile);
         }
     }
 
@@ -147,9 +92,9 @@ public class Game {
         for (int i = 1; i <= 16; i++) {
             if (i <= 4) {
                 tokens.add(new Skullpoints(1));
-            } else if (i >= 5 && i <= 10) {
+            } else if (i <= 10) {
                 tokens.add(new Skullpoints(2));
-            } else if (i >= 11 && i <= 13) {
+            } else if (i <= 13) {
                 tokens.add(new Skullpoints(3));
             } else {
                 tokens.add(new Skullpoints(4));
@@ -159,6 +104,16 @@ public class Game {
         placeTokens();
 
         //add player to the players-list
+        //other symbols
+        //♛ \u265B BLACK CHESS QUEEN
+        //♜ \u265C BLACK CHESS ROOK
+        //♝ \u265D BLACK CHESS BISHOP
+        //♞ \u265E BLACK CHESS KNIGHT
+        //our symbols
+        //♠ \u2660 BLACK SPADE SUIT
+        //♣ \u2663 BLACK CLUB SUIT
+        //♥ \u2665 BLACK HEART SUIT
+        //♦ \u2666 BLACK DIAMOND SUIT
         char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
         for (int i = 0; i < playerNames.length; i++) {
             players.add(new Player(playerNames[i], symbols[i], this));
@@ -177,14 +132,6 @@ public class Game {
                 || figuresInFinishArea() >= 5 // 5 figures are in finish area
                 || allFiguresOfOneInFinishArea(); // or one person has all figures in the finish area
     }
-
-    /**
-     * Adds the given card to the matching discard pile and removes it from the players hand
-     *
-     * @param card   the card to be discarded
-     * @param player the player that removes card
-     */
-
 
     /**
      * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)

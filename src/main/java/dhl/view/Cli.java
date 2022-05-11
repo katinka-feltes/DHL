@@ -1,6 +1,6 @@
 package dhl.view;
 
-import dhl.controller.Controller;
+//Suppressed warnings for the following import:
 import dhl.model.*;
 
 import java.util.ArrayList;
@@ -10,23 +10,8 @@ import java.util.Scanner;
 /**
  * Starting point of the command line interface
  */
+@SuppressWarnings("ClassEscapesDefinedScope")
 public class Cli implements View {
-
-    private final Controller controller;
-
-    public Cli(Controller controller){
-        this.controller = controller;
-    }
-
-    /**
-     * The entry point of the CLI application.
-     *
-     * @param args The command line arguments passed to the application
-     */
-    public static void main(String[] args) {
-
-    }
-
     /** This method ask how many players are going to play.
      *
      * @return result an Integer which says how many players are going to play.
@@ -54,8 +39,8 @@ public class Cli implements View {
 
     /**
      *
-     * @param prompt
-     * @return
+     * @param prompt the prompt that is printed to the user
+     * @return String of the Card that the user selected
      */
     @Override
     public String promptCardString(String prompt){
@@ -229,7 +214,6 @@ public class Cli implements View {
      *
      * @param prompt the question the player is asked.
      * @return a boolean that transfers to yes(true) and no(false).
-     * @throws Exception if the input is yes nor no.
      */
     public boolean promptPlayersChoice(String prompt){
         Scanner scanner = new Scanner(System.in);
@@ -265,18 +249,19 @@ public class Cli implements View {
         while(true){
             try {
                 String input = scanner.next();
-                if (input.equals("r")) {
-                    return 'r';
-                } else if (input.equals("g")) {
-                    return 'g';
-                } else if (input.equals("b")) {
-                    return 'b';
-                } else if (input.equals("p")) {
-                    return 'p';
-                } else if (input.equals("o")) {
-                    return 'o';
-                } else {
-                    throw new Exception("Please enter either r, g, b, o or p.");
+                switch (input) {
+                    case "r":
+                        return 'r';
+                    case "g":
+                        return 'g';
+                    case "b":
+                        return 'b';
+                    case "p":
+                        return 'p';
+                    case "o":
+                        return 'o';
+                    default:
+                        throw new Exception("Please enter either r, g, b, o or p.");
                 }
             }
             catch (Exception e){
@@ -298,20 +283,21 @@ public class Cli implements View {
         while(true){
             try {
                 String input = scanner.next();
-                if (input.equals("r")) {
-                    return 'r';
-                } else if (input.equals("g")) {
-                    return 'g';
-                } else if (input.equals("b")) {
-                    return 'b';
-                } else if (input.equals("p")) {
-                    return 'p';
-                } else if (input.equals("o")) {
-                    return 'o';
-                } else if (input.equals("h")) {
-                    return 'h';
-                } else {
-                    throw new Exception("Please enter either r, g, b, o or p.");
+                switch (input) {
+                    case "r":
+                        return 'r';
+                    case "g":
+                        return 'g';
+                    case "b":
+                        return 'b';
+                    case "p":
+                        return 'p';
+                    case "o":
+                        return 'o';
+                    case "h":
+                        return 'h';
+                    default:
+                        throw new Exception("Please enter either r, g, b, o or p.");
                 }
             }
             catch (Exception e){

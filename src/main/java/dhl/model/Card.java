@@ -34,10 +34,6 @@ public class Card {
         return number;
     }
 
-    public int getOracleNumber() {
-        return oracleNumber;
-    }
-
     public char getColor() {
         return color;
     }

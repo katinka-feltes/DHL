@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class DiscardPile {
     //TODO: maybe change list to stack
-    protected ArrayList<Card> pile;
-    protected char color;
+    protected final ArrayList<Card> pile;
+    protected final char color;
 
 
     /**

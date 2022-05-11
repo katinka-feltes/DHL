@@ -4,8 +4,12 @@ import dhl.model.Player;
 
 public class WishingStone implements Token{
 
-    public static final char SYMBOL = 'W';
-    public static final int[] VALUE = {-4, -3, 2, 3, 6, 10};
+    private static final char SYMBOL = 'W';
+
+    public static int getValue(int amountStones){
+         int[] value = {-4, -3, 2, 3, 6, 10};
+        return value[amountStones];
+    }
 
     @Override
     public boolean isCollectable() {

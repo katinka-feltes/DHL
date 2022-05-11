@@ -9,25 +9,25 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private char symbol;
-    private Game game;
-    private DirectionDiscardPile playedCardsRed;
-    private DirectionDiscardPile playedCardsBlue;
-    private DirectionDiscardPile playedCardsGreen;
-    private DirectionDiscardPile playedCardsPurple;
-    private DirectionDiscardPile playedCardsOrange;
+    private final char symbol;
+    private final Game game;
+    private final DirectionDiscardPile playedCardsRed;
+    private final DirectionDiscardPile playedCardsBlue;
+    private final DirectionDiscardPile playedCardsGreen;
+    private final DirectionDiscardPile playedCardsPurple;
+    private final DirectionDiscardPile playedCardsOrange;
 
     private Card lastTrashed;
 
-    private ArrayList<Card> hand;
+    private final ArrayList<Card> hand;
 
     int victoryPoints;
     Figure lastMovedFigure;
-    boolean goblinSpecialPlayed;
+    final boolean goblinSpecialPlayed;
 
-    private Figure[] figures = new Figure[3];
+    private final Figure[] figures = new Figure[3];
 
-    private ArrayList<Token> tokens;
+    private final ArrayList<Token> tokens;
 
 
     // collected tokens and color need to be added
@@ -54,7 +54,7 @@ public class Player {
      * fills the hand up to eight cards
      * @param drawingPile the global drawingPile
      */
-    public void drawCardsUpToEight(DrawingPile drawingPile) {
+    public void drawFromDrawingpile(DrawingPile drawingPile) {
         if (drawingPile != null) {
             while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
@@ -270,7 +270,7 @@ public class Player {
                 mirrors++;
             }
         }
-        victoryPoints += (WishingStone.VALUE[stones] * (int)Math.pow(2, mirrors));
+        victoryPoints += (WishingStone.getValue(stones) * (int)Math.pow(2, mirrors));
     }
 
     /**
@@ -335,23 +335,12 @@ public class Player {
     public Figure[] getFigures() {
         return figures;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
-
     public DirectionDiscardPile getPlayedCardsRed() {
         return playedCardsRed;
     }
@@ -398,6 +387,10 @@ public class Player {
 
     public boolean isGoblinSpecialPlayed() {
         return goblinSpecialPlayed;
+    }
+
+    public char getSymbol() {
+        return symbol;
     }
 }
 

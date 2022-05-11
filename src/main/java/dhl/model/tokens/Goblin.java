@@ -32,7 +32,6 @@ public class Goblin implements Token {
                     player.setLastTrashed(game.getDiscardingPileGreen().getTop());
                     break;
                 case ('g'):
-                    //game.getDiscardingPileGreen().getPile().add(player.getPlayedCardsGreen().getTop());
                     game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getAndRemoveTop());
                     player.setLastTrashed(game.getDiscardingPileGreen().getTop());
                     break;
@@ -49,7 +48,6 @@ public class Goblin implements Token {
                     player.setLastTrashed(game.getDiscardingPileRed().getTop());
                     break;
                 case ('h'):
-                    //player.putCardOnDiscardingPile(player.getCardFromHand(card));
                     player.putCardOnDiscardingPile(card);
                     player.setLastTrashed(card);
                     break;
@@ -57,6 +55,7 @@ public class Goblin implements Token {
                     break;
             }
         } catch(Exception ignored) {
+            // do nothing
         }
     }
 

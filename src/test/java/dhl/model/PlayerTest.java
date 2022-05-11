@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
@@ -15,22 +14,22 @@ class PlayerTest {
 
     @BeforeEach
     void setup() {
-        game = new Game(2);
+        game = new Game(new String[]{"Player 1", "Player 2"});
         player = game.getPlayers().get(0);
     }
 
     @Test
     void drawCardsUpToEight() throws Exception {
         assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.addCardToPlayedCards(player.getHand().get(0));
         assertEquals(7, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.getHand().removeAll(player.getHand());
         assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
     }
 
@@ -44,7 +43,7 @@ class PlayerTest {
         player.getHand().add(new Card(1, 'p'));
         player.getHand().add(new Card(1, 'o'));
         assertEquals(5, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         int size_r = 0;
         int size_g = 0;
@@ -105,6 +104,7 @@ class PlayerTest {
         player.getHand().remove(0);
         player.getHand().add(new Card(10, 'g'));
         assertEquals(player.getCardFromHand("g10"), player.getHand().get(0));
+        assertThrows(Exception.class, () -> player.getCardFromHand("p2"), "Card is not in Hand.");
 
 
     }
@@ -127,7 +127,7 @@ class PlayerTest {
 
     @Test
     void getName() {
-        assertEquals("P1", player.getName());
+        assertEquals("Player 1", player.getName());
     }
 
     @Test
@@ -166,7 +166,7 @@ class PlayerTest {
 
     @Test
     void getHand() {
-        player.drawCardsUpToEight(game.getDrawingPile());
+        player.drawFromDrawingpile(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         for (Card card : player.getHand()) {
             assertEquals(Card.class, card.getClass());
@@ -211,5 +211,13 @@ class PlayerTest {
         player.drawFromDiscardingPile(game.getDiscardingPileRed());
         assertEquals('r', player.getHand().get(0).getColor());
         assertEquals(2, player.getHand().get(0).getNumber());
+    }
+
+    @Test
+    void canPlay() {
+        player.getHand().add(new Card(2, 'r'));
+        assertTrue(player.canPlay());
+        player.getHand().remove(0);
+        assertFalse(player.canPlay());
     }
 }
