@@ -193,48 +193,33 @@ public class Game {
      * @return true if drawing from any discarding pile is possible
      */
     public boolean canDrawFromDiscarding(Card trashCard) {
+        // can't draw if all piles are empty
         boolean canDraw = !(getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty() && getDiscardingPileBlue().isEmpty() &&
                 getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty());
-        if (trashCard != null && canDraw) {
-            switch (trashCard.getColor()) {
-                case ('r'):
-                    if (!getDiscardingPileRed().isEmpty() && getDiscardingPileRed().getTop() == trashCard
-                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
-                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
-                        canDraw = false;
-                    }
-                    return canDraw;
-                case ('g'):
-                    if (!getDiscardingPileGreen().isEmpty() && getDiscardingPileGreen().getTop() == trashCard
-                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileRed().isEmpty()
-                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
-                        canDraw = false;
-                    }
-                    return canDraw;
-                case ('b'):
-                    if(!getDiscardingPileBlue().isEmpty() && getDiscardingPileBlue().getTop() == trashCard
-                            && getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty()
-                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty()) {
-                        canDraw = false;
-                    }
-                    return canDraw;
-                case ('p'):
-                    if(!getDiscardingPilePurple().isEmpty() && getDiscardingPilePurple().getTop() == trashCard
-                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
-                            && getDiscardingPileRed().isEmpty() && getDiscardingPileOrange().isEmpty()) {
-                        canDraw = false;
-                    }
-                    return canDraw;
-                case ('o'):
-                    if(!getDiscardingPileOrange().isEmpty() && getDiscardingPileOrange().getTop() == trashCard
-                            && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
-                            && getDiscardingPilePurple().isEmpty() && getDiscardingPileRed().isEmpty()) {
-                        canDraw = false;
-                    }
-                    return canDraw;
-                default:
-                    return false;
-            }
+        // if a trashcard exists and not all piles are empty, we have to check if trashcard == top card of discarding pile
+        // if yes, he can only draw if there is another pile which isn't empty
+        if (trashCard != null && canDraw &&
+                // red pile's top card
+                ((!getDiscardingPileRed().isEmpty() && getDiscardingPileRed().getTop() == trashCard
+                        && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                        && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty())
+                        // green pile's top card
+                        || (!getDiscardingPileGreen().isEmpty() && getDiscardingPileGreen().getTop() == trashCard
+                        && getDiscardingPileBlue().isEmpty() && getDiscardingPileRed().isEmpty()
+                        && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty())
+                        // blue pile's top card
+                        || (!getDiscardingPileBlue().isEmpty() && getDiscardingPileBlue().getTop() == trashCard
+                        && getDiscardingPileRed().isEmpty() && getDiscardingPileGreen().isEmpty()
+                        && getDiscardingPilePurple().isEmpty() && getDiscardingPileOrange().isEmpty())
+                        // purple's pile top card
+                        || (!getDiscardingPilePurple().isEmpty() && getDiscardingPilePurple().getTop() == trashCard
+                        && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                        && getDiscardingPileRed().isEmpty() && getDiscardingPileOrange().isEmpty())
+                        // orange's pile top card
+                        || (!getDiscardingPileOrange().isEmpty() && getDiscardingPileOrange().getTop() == trashCard
+                        && getDiscardingPileBlue().isEmpty() && getDiscardingPileGreen().isEmpty()
+                        && getDiscardingPilePurple().isEmpty() && getDiscardingPileRed().isEmpty()))) {
+            canDraw = false;
         }
         return canDraw;
     }

@@ -3,6 +3,7 @@ package dhl.model;
 import java.util.ArrayList;
 
 public class DiscardPile {
+    //TODO: maybe change list to stack
     protected ArrayList<Card> pile;
     protected char color;
 
