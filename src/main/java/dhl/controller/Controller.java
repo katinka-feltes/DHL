@@ -201,6 +201,11 @@ public class Controller {
 
                 case("Goblin") :
                     doTokenGoblin(player);
+                    if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
+                            view.promptPlayersChoice("Do you want to play your goblin-special? (you would earn "
+                            + player.goblinSpecialPoints() + " points)")){
+                        player.playGoblinSpecial();
+                    }
                     break;
 
                 case("SpiderWeb") :

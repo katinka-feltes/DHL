@@ -1,5 +1,6 @@
 package dhl.model;
 
+import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
@@ -21,9 +22,9 @@ public class Player {
 
     private final ArrayList<Card> hand;
 
-    int victoryPoints;
-    Figure lastMovedFigure;
-    final boolean goblinSpecialPlayed;
+    private int victoryPoints;
+    private Figure lastMovedFigure;
+    private boolean goblinSpecialPlayed;
 
     private final Figure[] figures = new Figure[3];
 
@@ -158,7 +159,7 @@ public class Player {
                 }
                 break;
             default:
-                break;
+                // do nothing
         }
         lastMovedFigure = chosen;
         return chosen;
@@ -306,6 +307,54 @@ public class Player {
                 return false;
         }
     }
+
+    /**
+     * method to check if goblin special could be played
+     * (checking figures, not if already played)
+     * @return true if all figures are on a goblin field
+     */
+    public boolean allFiguresGoblin(){
+        boolean result = true;
+        for(Figure f : figures){
+            // if the figure is not on a goblin field
+            if(! (Game.FIELDS[f.getPos()].getToken() instanceof Goblin)){
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * calculate how many goblin points you would get
+     * @return points as int (0, 5, 10 or 15)
+     */
+    public int goblinSpecialPoints (){
+        if(allFiguresGoblin() && !goblinSpecialPlayed){
+            int fieldOfFig0 = figures[0].getPos();
+            if(getFigureAmountOnField(fieldOfFig0) == 3){
+                //  all 3 on the same field
+                return 5;
+            } else if(getFigureAmountOnField(fieldOfFig0) == 2 || figures[1].getPos() == figures[2].getPos()){
+                // 2 figures on the field from figure0 or the other 2 figures on the same field
+                return 10;
+            }
+            else{
+                // all figures on different fields
+                return 15;
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * play goblin special: add points to victory points
+     */
+    public void playGoblinSpecial(){
+        victoryPoints+=goblinSpecialPoints();
+        goblinSpecialPlayed = true;
+    }
+
 
     /**
      * @param fieldIndex the index of the field to get the figure-amount from
