@@ -196,14 +196,14 @@ public class Cli implements View {
         for(int i = 0; i < playerAmount; i++) {
             int j = i + 1;
             System.out.println("Please enter the name of player " + j + ":");
-            String playerName = scanner.next();
+            String playerName = scanner.nextLine();
             while (true) { // checks if the players name has the right length
                 if (playerName.length() <= nameLength && !playerName.isEmpty()) {
                     playersNames[i] = (playerName);
                     break;
                 } else {
                     error("Name can't be empty and only be " + nameLength + " characters long. Try again!");
-                    playerName = scanner.next();
+                    playerName = scanner.nextLine();
                 }
             }
         }
