@@ -18,6 +18,7 @@ public interface Token {
 
     /**
      * executes the token's action
+     * @param player the player that will execute the action
      */
     void action(Player player);
 

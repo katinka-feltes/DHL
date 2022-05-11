@@ -19,7 +19,7 @@ public class Controller {
         model = new Game(playerName);
         model.createDecks();
 
-        while(!model.gameOver()){ //round should not be finished
+        while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){
                 if(!model.gameOver()) {
                     try {
@@ -73,11 +73,18 @@ public class Controller {
         if(model.canDrawFromDiscarding(player.getLastTrashed())) {
             view.printDiscardingPiles(model);
         }
-        if(model.canDrawFromDiscarding(player.getLastTrashed()) && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
-            char color = view.promptColor("From what colored pile do you want to draw?");
+        drawOne(player);
+        waitForConfirmation("Are you done with your turn?");
+    }
+
+    private void drawOne(Player player) {
+        if(model.canDrawFromDiscarding(player.getLastTrashed())
+                && player.getHand().size() < 8
+                && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
 
             while (true) {
                 try {
+                    char color = view.promptColor("From what colored pile do you want to draw?");
                     switch (color) {
                         case ('r'):
                             player.drawFromDiscardingPile(model.getDiscardingPileRed());
@@ -95,17 +102,16 @@ public class Controller {
                             player.drawFromDiscardingPile(model.getDiscardingPileOrange());
                             break;
                         default:
+                            break;
                     }
                     break;
                 } catch (Exception e){
                     view.error(e.getMessage());
-                    color = view.promptColor("From what colored pile do you want to draw?");
                 }
             }
         } else {
-            player.drawFromDrawingpile(model.getDrawingPile());
+            player.drawFromDrawingPile(model.getDrawingPile());
         }
-        waitForConfirmation("Are you done with your turn?");
     }
 
     /**
@@ -145,11 +151,6 @@ public class Controller {
                 view.error(e.getMessage());
             }
         }
-
-        //special action field / special action oracle (only when game is not over!)
-
-        //**rare** if 3 Goblin
-
     }
 
     /**
@@ -261,6 +262,7 @@ public class Controller {
                             cardAsString = view.promptCardString("What card do you want to trash?");
                             ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
                             token.action(player);
+                            drawOne(player);
                             break;
                         } catch (Exception e) {
                             view.error(e.getMessage());

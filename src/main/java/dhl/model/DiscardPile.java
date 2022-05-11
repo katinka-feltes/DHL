@@ -20,6 +20,7 @@ public class DiscardPile {
     /**
      * adds card to top (end) of the pile if the color is the same
      * @param card the card that is added
+     * @throws Exception if card is null or a different color than the pile
      */
     public void add(Card card) throws Exception {
         if (card == null || card.getColor()!=color){

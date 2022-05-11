@@ -59,7 +59,7 @@ public class Game {
 
     public void createDecks() {
         for (Player p : players) {
-            p.drawFromDrawingpile(drawingPile);
+            p.drawCardsUpToEight(drawingPile);
         }
     }
 

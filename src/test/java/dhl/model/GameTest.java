@@ -103,7 +103,7 @@ class GameTest {
     void getDrawingPile() {
         assertEquals(110, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
-        player1.drawFromDrawingpile(game.getDrawingPile());
+        player1.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(102, game.getDrawingPile().getCards().size());
     }
 

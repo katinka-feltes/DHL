@@ -54,13 +54,24 @@ public class Player {
      * fills the hand up to eight cards
      * @param drawingPile the global drawingPile
      */
-    public void drawFromDrawingpile(DrawingPile drawingPile) {
+    public void drawCardsUpToEight(DrawingPile drawingPile) {
         if (drawingPile != null) {
             while (hand.size() < 8 && !drawingPile.isEmpty()) {
                 hand.add(drawingPile.draw()); //draws one card and adds it to the hand
             }
         }
     }
+
+    /**
+     * adds top card from drawing pile to hand
+     * @param drawingPile the global drawingPile
+     */
+    public void drawFromDrawingPile(DrawingPile drawingPile) {
+        if (!drawingPile.isEmpty()){
+            hand.add(drawingPile.draw()); //draws one card and adds it to the hand
+        }
+    }
+
 
     /**
      * adds card from discarding pile to active player's hand
@@ -80,6 +91,7 @@ public class Player {
      * adds the card to the correctly colored directionDiscardPile and removes it from hand
      *
      * @param card card the player wants to play
+     * @throws Exception from add(card)
      */
     public void addCardToPlayedCards(Card card) throws Exception {
 
@@ -100,7 +112,7 @@ public class Player {
                 playedCardsOrange.add(card);
                 break;
             default:
-                throw new Exception("Card color does not exist");
+                // do nothing
         }
         hand.remove(card);
     }
@@ -150,19 +162,6 @@ public class Player {
         }
         lastMovedFigure = chosen;
         return chosen;
-    }
-
-    /**
-     * @param fieldIndex the index of the field to get the figure from
-     * @return the figure on the field or null if there is none
-     */
-    public Figure getFigureOnField(int fieldIndex) throws Exception {
-        for (Figure f : figures) {
-            if (f.getPos() == fieldIndex) {
-                return f;
-            }
-        }
-        throw new Exception("No figure on this field.");
     }
 
     /**

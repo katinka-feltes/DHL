@@ -21,15 +21,15 @@ class PlayerTest {
     @Test
     void drawCardsUpToEight() throws Exception {
         assertEquals(0, player.getHand().size());
-        player.drawFromDrawingpile(game.getDrawingPile());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.addCardToPlayedCards(player.getHand().get(0));
         assertEquals(7, player.getHand().size());
-        player.drawFromDrawingpile(game.getDrawingPile());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         player.getHand().removeAll(player.getHand());
         assertEquals(0, player.getHand().size());
-        player.drawFromDrawingpile(game.getDrawingPile());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
     }
 
@@ -43,7 +43,7 @@ class PlayerTest {
         player.getHand().add(new Card(1, 'p'));
         player.getHand().add(new Card(1, 'o'));
         assertEquals(5, player.getHand().size());
-        player.drawFromDrawingpile(game.getDrawingPile());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         int size_r = 0;
         int size_g = 0;
@@ -84,17 +84,6 @@ class PlayerTest {
         assertEquals(3, player.getFigureByPos(1).getPos());
         player.placeFigure('g', player.getFigureByPos(1));
         assertEquals(4, player.getFigureByPos(1).getPos());
-    }
-
-    @Test
-    void getFigureOnField() throws Exception {
-        player.getFigures()[0].setPos(4);
-        assertEquals(player.getFigureOnField(4), player.getFigures()[0]);
-        player.getFigures()[1].setPos(5);
-        player.getFigures()[2].setPos(6);
-        assertEquals(player.getFigureOnField(5), player.getFigures()[1]);
-        assertEquals(player.getFigureOnField(6), player.getFigures()[2]);
-        assertThrows(Exception.class, () -> player.getFigureOnField(10));
     }
 
     @Test
@@ -166,7 +155,7 @@ class PlayerTest {
 
     @Test
     void getHand() {
-        player.drawFromDrawingpile(game.getDrawingPile());
+        player.drawCardsUpToEight(game.getDrawingPile());
         assertEquals(8, player.getHand().size());
         for (Card card : player.getHand()) {
             assertEquals(Card.class, card.getClass());
