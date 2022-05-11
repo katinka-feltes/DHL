@@ -14,7 +14,7 @@ class GameTest {
     private Player player2;
 
     @BeforeEach
-    void setup() {
+    public void setup() {
         game = new Game(new String[]{"Player 1", "Player 2", "Player 3"});
         player1 = game.getPlayers().get(0);
         player2 = game.getPlayers().get(1);
@@ -28,7 +28,7 @@ class GameTest {
     }
 
     @Test
-    void gameOver() {
+    public void gameOver() {
         //checks if game ends when one player has all 3 in finish area
         Figure[] figures = player1.getFigures();
         figures[0].setPos(22);
@@ -52,7 +52,7 @@ class GameTest {
     }
 
     @Test
-    void putCardOnDiscardingPile() throws Exception {
+    public void putCardOnDiscardingPile() throws Exception {
         player1.getHand().add(new Card(1, 'r'));
         player1.getHand().add(new Card(1, 'g'));
         player1.getHand().add(new Card(1, 'b'));
@@ -67,7 +67,7 @@ class GameTest {
     }
 
     @Test
-    void canDrawFromDiscarding() {
+    public void canDrawFromDiscarding() {
         //false if all piles are empty
         player1.setLastTrashed(new Card(5, 'b'));
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
@@ -96,11 +96,7 @@ class GameTest {
     }
 
     @Test
-    void placeTokens() {
-    }
-
-    @Test
-    void getDrawingPile() {
+    public void getDrawingPile() {
         assertEquals(110, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
         player1.drawCardsUpToEight(game.getDrawingPile());
@@ -108,39 +104,19 @@ class GameTest {
     }
 
     @Test
-    void getDiscardingPileBlue() {
-    }
-
-    @Test
-    void getDiscardingPileRed() {
-    }
-
-    @Test
-    void getDiscardingPileGreen() {
-    }
-
-    @Test
-    void getDiscardingPilePurple() {
-    }
-
-    @Test
-    void getDiscardingPileOrange() {
-    }
-
-    @Test
-    void getPlayers() {
+    public void getPlayers() {
         assertEquals(3, game.getPlayers().size());
         game.getPlayers().remove(player1);
         assertEquals(2, game.getPlayers().size());
     }
 
     @Test
-    void getPlayerAmount() {
+    public void getPlayerAmount() {
         assertEquals(3, game.getPlayerAmount());
     }
 
     @Test
-    void createDecks() {
+    public void createDecks() {
         game.createDecks();
         for (Player player1 : game.getPlayers()) {
             assertEquals(8, player1.getHand().size());
@@ -148,7 +124,7 @@ class GameTest {
     }
 
     @Test
-    void getWinningPlayer() {
+    public void getWinningPlayer() {
         player1.setVictoryPoints(20);
         player2.setVictoryPoints(10);
         assertEquals(player1, game.getWinningPlayer());
