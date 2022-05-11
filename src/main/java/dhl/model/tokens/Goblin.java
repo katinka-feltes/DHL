@@ -22,35 +22,42 @@ public class Goblin implements Token {
     }
 
     @Override
-    public void action( Player player) {
+    public void action(Player player) {
         Game game = player.getGame();
         // check if card is not null
         try {
             switch (pile) {
                 case ('b'):
-                    game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getTop());
+                    game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getAndRemoveTop());
+                    player.setLastTrashed(game.getDiscardingPileGreen().getTop());
                     break;
                 case ('g'):
                     //game.getDiscardingPileGreen().getPile().add(player.getPlayedCardsGreen().getTop());
-                    game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getTop());
+                    game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getAndRemoveTop());
+                    player.setLastTrashed(game.getDiscardingPileGreen().getTop());
                     break;
                 case ('o'):
-                    game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getTop());
+                    game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getAndRemoveTop());
+                    player.setLastTrashed(game.getDiscardingPileOrange().getTop());
                     break;
                 case ('p'):
-                    game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getTop());
+                    game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getAndRemoveTop());
+                    player.setLastTrashed(game.getDiscardingPilePurple().getTop());
                     break;
                 case ('r'):
-                    game.getDiscardingPileRed().add(player.getPlayedCardsRed().getTop());
+                    game.getDiscardingPileRed().add(player.getPlayedCardsRed().getAndRemoveTop());
+                    player.setLastTrashed(game.getDiscardingPileRed().getTop());
                     break;
                 case ('h'):
                     //player.putCardOnDiscardingPile(player.getCardFromHand(card));
                     player.putCardOnDiscardingPile(card);
+                    player.setLastTrashed(card);
                     break;
                 default:
                     break;
             }
-        } catch(Exception ignored) {}
+        } catch(Exception ignored) {
+        }
     }
 
     public char getPileChoice() {

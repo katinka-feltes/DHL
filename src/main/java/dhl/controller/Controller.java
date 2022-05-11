@@ -38,82 +38,36 @@ public class Controller {
         }
     }
 
-    public void playCard(Player player){
-
-        Card card;
-
-        // choose a card from hand and place it on matching playedCardsPile
-        while (true) {
-            try {
-                // get card as string and check type with view method
-                String cardAsString = view.promptCardString("What card do you want to play?");
-                card = player.getCardFromHand(cardAsString);
-                player.addCardToPlayedCards(card);
-                break;
-            } catch (Exception e) {
-                view.error(e.getMessage());
-            }
-        }
-
-        // oracle or figure
-        //oracle: which number
-
-        //figure: which field
-        while (true) {
-            try {
-                player.placeFigure(card.getColor(), view.promptInt(1, 3,
-                        "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)"));
-                break;
-            } catch (IndexOutOfBoundsException indexE){
-                view.error("This figure can't move this far.");
-            } catch (Exception e) {
-                view.error(e.getMessage());
-            }
-        }
-
-        //special action field / special action oracle (only when game is not over!)
-
-        //**rare** if 3 Goblin
-
-    }
-
     /**
+     * After acceptance to start the turn, the player will trash or play a card.
+     * If the player moves onto a field with a token, that action will take place.
+     * At the end the hand will be filled up to 8 cards again.
      *
-     * @param player
+     * @param player the player to take the turn
      */
     public void takeTurn(Player player) {
         view.out(System.lineSeparator().repeat(50)); //clear screen
-        while (true) {
-            if (view.promptPlayersChoice(player.getName() + " it is your turn. Are you ready to play?")) {
-                break;
-            }
-        }
+        waitForConfirmation(player.getName() + " it is your turn. Are you ready to play?");
         view.out(player.getName() + "'s Turn!");
         view.printCurrentBoard(model);
         view.printTopCards(player);
         view.printHand(player);
         // check if player can play a card and if yes ask
         if (player.canPlay() && view.promptPlayersChoice("Do you want to play a card? (if no you trash one)")){
-            playCard(player);
-        } else {
-            while (true) {
-                try {
-                    String cardAsString = view.promptCardString("What card do you want to trash?");
-                    player.setLastTrashed(player.getCardFromHand(cardAsString));
-                    player.putCardOnDiscardingPile(player.getLastTrashed());
-                    break;
-                } catch (Exception e) {
-                    view.error(e.getMessage());
-                }
-            }
-        }
-        // updating the board
-        view.printCurrentBoard(model);
-        view.printTopCards(player);
-        view.printHand(player);
 
-        // collecting or using tokens
-        usingToken(player);
+            playCard(player);
+
+            // updating the board
+            view.printCurrentBoard(model);
+            view.printTopCards(player);
+            view.printHand(player);
+
+            // collecting or using tokens
+            usingToken(player);
+
+        } else {
+            trashCard(player);
+        }
 
         // draw cards up to eight again either from one discarding or from drawing pile
         if(model.canDrawFromDiscarding(player.getLastTrashed())) {
@@ -151,8 +105,77 @@ public class Controller {
         } else {
             player.drawCardsUpToEight(model.getDrawingPile());
         }
+        waitForConfirmation("Are you done with your turn?");
+    }
+
+    /**
+     * player chooses card to play and then the figure is moved accordingly
+     * @param player the player that will play a card
+     */
+    public void playCard(Player player){
+
+        Card card;
+
+        // choose a card from hand and place it on matching playedCardsPile
         while (true) {
-            if (view.promptPlayersChoice("are you done with your turn?")) {
+            try {
+                // get card as string and check type with view method
+                String cardAsString = view.promptCardString("What card do you want to play?");
+                card = player.getCardFromHand(cardAsString);
+                player.addCardToPlayedCards(card);
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+
+        // oracle or figure
+        //oracle: which number
+
+        //figure: which field
+        while (true) {
+            try {
+                int figurePos = view.promptInt(1, 3,
+                        "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)");
+                player.placeFigure(card.getColor(), player.getFigureByPos(figurePos));
+                break;
+            } catch (IndexOutOfBoundsException indexE){
+                view.error("This figure can't move this far.");
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+
+        //special action field / special action oracle (only when game is not over!)
+
+        //**rare** if 3 Goblin
+
+    }
+
+    /**
+     * player chooses one card to trash from his hand and trashes it
+     * @param player the player that trashes a card
+     */
+    private void trashCard(Player player) {
+        while (true) {
+            try {
+                String cardAsString = view.promptCardString("What card do you want to trash?");
+                player.setLastTrashed(player.getCardFromHand(cardAsString));
+                player.putCardOnDiscardingPile(player.getLastTrashed());
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Method to wait for acceptance of the question
+     * @param question the question to accept
+     */
+    private void waitForConfirmation(String question) {
+        while (true) {
+            if (view.promptPlayersChoice(question)) {
                 break;
             }
         }
@@ -199,7 +222,7 @@ public class Controller {
      * this method controls the Token action
      * @param player the current player
      */
-    public void doTokenSpiral(Player player) {
+    private void doTokenSpiral(Player player) {
         Figure currentFigure = player.getLastMovedFigure();
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
@@ -222,12 +245,13 @@ public class Controller {
      * this method controls the Token action
      * @param player the current player
      */
-    public void doTokenGoblin(Player player) {
+    private void doTokenGoblin(Player player) {
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (view.promptPlayersChoice("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {
 
+            view.printTopCards(player);
             ((Goblin)token).setPileChoice(view.promptColorAndHand("You can choose out of the following: " +
                     "r, g, b, p, o, h (hand)."));
             if (((Goblin)token).getPileChoice() == 'h') {

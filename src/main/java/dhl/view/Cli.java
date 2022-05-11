@@ -378,6 +378,7 @@ public class Cli implements View {
         System.out.println();
         // print tokens of the fields
         for (int i = rowStart; i <= rowEnd; i++){
+            //TODO: Large Field tokens need to be printed twice
             if(Game.FIELDS[i].getToken() != null) {
                 System.out.print(Game.FIELDS[i].getToken().getSymbol() + "      ");
             }else {

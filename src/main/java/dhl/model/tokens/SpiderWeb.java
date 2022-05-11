@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.Player;
 
@@ -22,7 +23,8 @@ public class SpiderWeb implements Token {
 
     @Override
     public void action( Player player){
-       player.getLastMovedFigure().move(Game.FIELDS[player.getLastMovedFigure().getPos()].getColor());
+        Figure lastMoved = player.getLastMovedFigure();
+       player.placeFigure(Game.FIELDS[lastMoved.getPos()].getColor(), lastMoved);
     }
 
     @Override

@@ -80,12 +80,11 @@ class PlayerTest {
     }
 
     @Test
-    void placeFigure() throws Exception {
-        player.placeFigure('r', 1);
+    void placeFigure() {
+        player.placeFigure('r', player.getFigureByPos(1));
         assertEquals(3, player.getFigureByPos(1).getPos());
-        player.placeFigure('g', 1);
+        player.placeFigure('g', player.getFigureByPos(1));
         assertEquals(4, player.getFigureByPos(1).getPos());
-
     }
 
     @Test

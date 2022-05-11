@@ -10,9 +10,7 @@ public class Player {
 
     private String name;
     private char symbol;
-
     private Game game;
-
     private DirectionDiscardPile playedCardsRed;
     private DirectionDiscardPile playedCardsBlue;
     private DirectionDiscardPile playedCardsGreen;
@@ -49,6 +47,7 @@ public class Player {
         figures[0] = new Figure(symbol);
         figures[1] = new Figure(symbol);
         figures[2] = new Figure(symbol);
+        tokens = new ArrayList<>();
     }
 
     /**
@@ -109,13 +108,13 @@ public class Player {
     /**
      * places the figure to the next correctly colored field
      *
-     * @param cardColor color of the played card
-     * @param figure the position of the figure to move (1, 2 or 3)
+     * @param fieldColor color of the field to place the figure on
+     * @param figure the figure to move
      */
-    public void placeFigure(char cardColor, int figure) {
-        victoryPoints -= Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
-        getFigureByPos(figure).move(cardColor);
-        victoryPoints += Game.FIELDS[getFigureByPos(figure).getPos()].getPoints();
+    public void placeFigure(char fieldColor, Figure figure) {
+        victoryPoints -= Game.FIELDS[figure.getPos()].getPoints();
+        figure.move(fieldColor);
+        victoryPoints += Game.FIELDS[figure.getPos()].getPoints();
     }
 
     /**
@@ -278,7 +277,7 @@ public class Player {
      * checks if player is able to play at least one card from his hand
      * @return true if he can play at least one card
      */
-    public boolean canPlay (){
+    public boolean canPlay() {
         for (Card card : hand){
             if(cardFitsToAnyPile(card)){
                 return true;
