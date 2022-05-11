@@ -1,5 +1,7 @@
 package dhl.model;
 
+import dhl.model.tokens.Mirror;
+import dhl.model.tokens.WishingStone;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -94,8 +96,6 @@ class PlayerTest {
         player.getHand().add(new Card(10, 'g'));
         assertEquals(player.getCardFromHand("g10"), player.getHand().get(0));
         assertThrows(Exception.class, () -> player.getCardFromHand("p2"), "Card is not in Hand.");
-
-
     }
 
     @Test
@@ -191,6 +191,12 @@ class PlayerTest {
     }
 
     @Test
+    void getLastMovedFigure() {
+        player.placeFigure('r', player.getFigureByPos(1));
+        assertEquals(player.getFigureByPos(1), player.getLastMovedFigure());
+    }
+
+    @Test
     void drawFromDiscardingPile() throws Exception {
         assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You fool: this pile is empty!");
         game.getDiscardingPileBlue().getPile().add(new Card(4, 'b'));
@@ -208,5 +214,35 @@ class PlayerTest {
         assertTrue(player.canPlay());
         player.getHand().remove(0);
         assertFalse(player.canPlay());
+    }
+
+    @Test
+    void cardFitsToAnyPile() {
+        player.getHand().add(new Card(0, 't'));
+        assertFalse(player.canPlay());
+        player.getHand().add(new Card(1, 'g'));
+        assertTrue(player.canPlay());
+        player.getHand().clear();
+        player.getHand().add(new Card(1, 'b'));
+        assertTrue(player.canPlay());
+        player.getHand().clear();
+        player.getHand().add(new Card(1, 'p'));
+        assertTrue(player.canPlay());
+        player.getHand().clear();
+        player.getHand().add(new Card(1, 'o'));
+        assertTrue(player.canPlay());
+        player.getHand().clear();
+    }
+
+    @Test
+    void calcTokenPoints() {
+        player.getTokens().add(new WishingStone());
+        player.getTokens().add(new Mirror());
+        player.calcTokenPoints();
+        assertEquals(-6, player.getVictoryPoints());
+        player.setVictoryPoints(0);
+        player.getTokens().add(new Mirror());
+        player.calcTokenPoints();
+        assertEquals(-12, player.getVictoryPoints());
     }
 }
