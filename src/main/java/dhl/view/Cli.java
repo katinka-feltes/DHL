@@ -116,7 +116,7 @@ public class Cli implements View {
         //print points
         System.out.print("Points: ");
         for (Player p: game.getPlayers()) {
-            System.out.print(p.getName() + " " + p.getVictoryPoints() + "   ");
+            System.out.print(p.getName() + ": " + p.getVictoryPoints() + "   ");
         }
         System.out.println();
     }

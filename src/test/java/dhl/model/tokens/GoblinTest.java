@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class GoblinTest {
+public class GoblinTest {
 
     private Token token;
 
@@ -17,24 +17,24 @@ class GoblinTest {
     private Game game;
 
     @BeforeEach
-    void setup() {
+    public void setup() {
         token = new Goblin();
         game = new Game(new String[]{"Test", "Test"});
         player1 = game.getPlayers().get(0);
     }
 
     @Test
-    void isCollectable() {
+    public void isCollectable() {
         assertFalse(token.isCollectable());
     }
 
     @Test
-    void getName() {
+    public void getName() {
         assertEquals("Goblin", token.getName());
     }
 
     @Test
-    void action() throws Exception {
+    public void action() throws Exception {
         actionForPile('r');
         actionForPile('g');
         actionForPile('b');
@@ -74,20 +74,8 @@ class GoblinTest {
     }
 
     @Test
-    void getPileChoice() {
-    }
-
-    @Test
     void setPileChoice() {
         ((Goblin)token).setPileChoice('r');
         assertEquals('r', ((Goblin) token).getPileChoice());
-    }
-
-    @Test
-    void setCardChoice() {
-    }
-
-    @Test
-    void getSymbol() {
     }
 }
