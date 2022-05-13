@@ -87,7 +87,7 @@ public class Game {
             tokens.add(new Mirror());
         }
         for (int i = 1; i <= 5; i++) {
-            tokens.add(new SpiderWeb());
+            tokens.add(new Spiderweb());
         }
         for (int i = 1; i <= 16; i++) {
             if (i <= 4) {

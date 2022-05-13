@@ -176,8 +176,7 @@
                 <configuration>
                     <excludes>
                         <!-- Ignore GUI classes for coverage -->
-                        <exclude>dhl/cli/**/*</exclude>
-                        <exclude>dhl/gui/**/*</exclude>
+                        <exclude>dhl/view/**/*</exclude> <!-- adapted to our folder structure -->
                         <exclude>dhl/Main.class</exclude>
                     </excludes>
                 </configuration>

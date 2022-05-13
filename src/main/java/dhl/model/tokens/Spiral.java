@@ -20,9 +20,10 @@ public class Spiral implements Token {
 
         @Override
         public void action( Player player) {
-                        if (player.getLastMovedFigure().getPos() != player.getLastMovedFigure().getLatestPos()){
-                                player.getLastMovedFigure().setPos(chosenPos);
-                        }
+                if (chosenPos != player.getLastMovedFigure().getLatestPos()){
+                        player.getLastMovedFigure().setPos(chosenPos);
+                }
+                //TODO: add exception
         }
 
         @Override

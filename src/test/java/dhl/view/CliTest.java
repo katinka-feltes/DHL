@@ -1,6 +1,7 @@
 package dhl.view;
 
 import dhl.model.Card;
+import dhl.model.Field;
 import dhl.model.Game;
 import dhl.model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,7 +55,7 @@ public class CliTest {
     }
 
     @Test
-    void promptCardString() {
+    public void promptCardString() {
         String input;
         InputStream bytes;
         String s;
@@ -67,20 +68,20 @@ public class CliTest {
     }
 
     @Test
-    void error() {
+    public void error() {
         c.error("test");
         assertEquals("test\n", errContent.toString());
     }
 
     @Test
-    void printHand() {
+    public void printHand() {
         player.getHand().add(new Card(5, 'r'));
         c.printHand(player);
         assertEquals("Player 1's Hand Cards:\nr5   \n\n", outContent.toString());
     }
 
     @Test
-    void printTopCards() throws Exception {
+    public void printTopCards() throws Exception {
         player.getPlayedCardsOrange().add(new Card(1, 'o'));
         player.getPlayedCardsOrange().add(new Card(2, '0'));
         player.getPlayedCardsRed().add(new Card(3, 'r'));
@@ -91,7 +92,7 @@ public class CliTest {
     }
 
     @Test
-    void printResults() {
+    public void printResults() {
         player.setVictoryPoints(12);
         c.printResults(game);
         assertEquals("\nGAME OVER! The winner is Player 1.\n" +
@@ -99,7 +100,7 @@ public class CliTest {
     }
 
     @Test
-    void printDiscardingPiles() throws Exception {
+    public void printDiscardingPiles() throws Exception {
         game.getDiscardingPileBlue().add(new Card(1, 'b'));
         game.getDiscardingPileRed().add(new Card(4, 'r'));
         game.getDiscardingPileRed().add(new Card(5, 'r'));
@@ -111,13 +112,13 @@ public class CliTest {
     }
 
     @Test
-    void out() {
+    public void out() {
         c.out("test");
         assertEquals("test\n", outContent.toString());
     }
 
     @Test
-    void inputPlayersNames() {
+    public void inputPlayersNames() {
         String input = "p1\ntestwithnamelongerthat16\np2";
         InputStream bytes = new ByteArrayInputStream(input.getBytes());
         System.setIn(bytes);
@@ -131,7 +132,7 @@ public class CliTest {
     }
 
     @Test
-    void promptPlayersChoice() {
+    public void promptPlayersChoice() {
         String input;
         InputStream bytes;
 
@@ -149,7 +150,7 @@ public class CliTest {
     }
 
     @Test
-    void promptColor() {
+    public void promptColor() {
         String input;
         InputStream bytes;
         char ch;
@@ -162,7 +163,7 @@ public class CliTest {
     }
 
     @Test
-    void promptColorAndHand() {
+    public void promptColorAndHand() {
         String input;
         InputStream bytes;
         char ch;
@@ -173,5 +174,35 @@ public class CliTest {
         ch = c.promptColorAndHand("test");
         assertEquals('h', ch);
     }
+
+    @Test
+    public void printCurrentBoard(){
+        //remove token
+        for (Field field: game.FIELDS){
+            field.setToken(null);
+        }
+        c.printCurrentBoard(game);
+        assertEquals("Player 1:♠    Player 2:♣    \n" +
+                "(0)    (1)    (2)    (3)    (4)    (5)    (6)    (7)    (8)    (9)    (10)   (11)   \n" +
+                "0      -4     -4     -4     -4     -4     -4     -3     -3     -3     -2     -2     \n" +
+                "w      p      o      r      g      b      p      r      o      r      g      b      \n" +
+                "                                                                                    \n" +
+                "♠ ♠ ♠                                                                               \n" +
+                "♣ ♣ ♣                                                                               \n" +
+                "(12)   (13)   (14)   (15)   (16)   (17)   (18)   (19)   (20)   (21)   (22)   (23)   \n" +
+                "-2     -2     1      1      1      2      2      2      2      3      3      3      \n" +
+                "p      o      o      r      g      b      p      o      r      r      b      p      \n" +
+                "                                                                                    \n" +
+                "                                                                                    \n" +
+                "                                                                                    \n" +
+                "(24)   (25)   (26)   (27)   (28)   (29)   (30)   (31)   (32)   (33)   (34)   (35)   \n" +
+                "3      5      5      5      5      6      6      6      7      7      7      10     \n" +
+                "g      o      r      g      g      b      r      o      r      g      b      b      \n" +
+                "                                                                                    \n" +
+                "                                                                                    \n" +
+                "                                                                                    \n" +
+                "Points: Player 1: 0   Player 2: 0   \n\n", outContent.toString());
+    }
+
 
 }

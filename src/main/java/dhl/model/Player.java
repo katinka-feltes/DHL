@@ -127,6 +127,7 @@ public class Player {
     public void placeFigure(char fieldColor, Figure figure) {
         victoryPoints -= Game.FIELDS[figure.getPos()].getPoints();
         figure.move(fieldColor);
+        lastMovedFigure = figure;
         victoryPoints += Game.FIELDS[figure.getPos()].getPoints();
     }
 
@@ -161,7 +162,6 @@ public class Player {
             default:
                 // do nothing
         }
-        lastMovedFigure = chosen;
         return chosen;
     }
 

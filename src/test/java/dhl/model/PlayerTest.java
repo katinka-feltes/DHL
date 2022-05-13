@@ -156,7 +156,7 @@ public class PlayerTest {
     }
 
     @Test
-    void getLastMovedFigure() {
+    public void getLastMovedFigure() {
         player.placeFigure('r', player.getFigureByPos(1));
         assertEquals(player.getFigureByPos(1), player.getLastMovedFigure());
     }
@@ -222,7 +222,7 @@ public class PlayerTest {
     }
 
     @Test
-    void cardFitsToAnyPile() {
+    public void cardFitsToAnyPile() {
         player.getHand().add(new Card(0, 't'));
         assertFalse(player.canPlay());
         player.getHand().add(new Card(1, 'g'));
@@ -240,7 +240,7 @@ public class PlayerTest {
     }
 
     @Test
-    void calcTokenPoints() {
+    public void calcTokenPoints() {
         player.getTokens().add(new WishingStone());
         player.getTokens().add(new Mirror());
         player.calcTokenPoints();

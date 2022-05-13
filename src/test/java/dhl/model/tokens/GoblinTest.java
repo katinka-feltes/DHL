@@ -74,7 +74,7 @@ public class GoblinTest {
     }
 
     @Test
-    void setPileChoice() {
+    public void setPileChoice() {
         ((Goblin)token).setPileChoice('r');
         assertEquals('r', ((Goblin) token).getPileChoice());
     }

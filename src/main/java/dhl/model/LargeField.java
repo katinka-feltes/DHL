@@ -34,7 +34,7 @@ public class LargeField extends Field {
             Token temp = tokenTwo;
             tokenTwo = null;
             return temp;
-        } else if (super.collectToken() != null) {
+        } else if (super.getToken() != null) {
             Token temp = super.collectToken();
             super.setToken(null);
             return temp;
