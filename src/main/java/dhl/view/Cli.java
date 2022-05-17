@@ -128,7 +128,7 @@ public class Cli implements View {
     @Override
     public char promptColor(String prompt) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
+        System.out.println(prompt + " [r, g, b, o, or p]");
 
         while(true){
             try {
@@ -146,42 +146,6 @@ public class Cli implements View {
                         return 'o';
                     default:
                         throw new Exception("Please enter either r, g, b, o or p.");
-                }
-            }
-            catch (Exception e){
-                error(e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * This method allows the player to choose a color or his hand.
-     * @param prompt the message that the player is asked
-     * @return the input char (r, g, b, o, p or h)
-     */
-    @Override
-    public char promptColorAndHand(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt);
-
-        while(true){
-            try {
-                String input = scanner.next();
-                switch (input) {
-                    case "r":
-                        return 'r';
-                    case "g":
-                        return 'g';
-                    case "b":
-                        return 'b';
-                    case "p":
-                        return 'p';
-                    case "o":
-                        return 'o';
-                    case "h":
-                        return 'h';
-                    default:
-                        throw new Exception("Please enter either r, g, b, o, p or h.");
                 }
             }
             catch (Exception e){

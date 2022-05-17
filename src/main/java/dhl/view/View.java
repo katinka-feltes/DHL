@@ -11,7 +11,6 @@ public interface View {
     int promptInt(int start, int end, String prompt);
     boolean promptPlayersChoice(String question);
     char promptColor(String prompt);
-    char promptColorAndHand(String prompt);
 
     String promptCardString(String prompt);
     void error(String str);

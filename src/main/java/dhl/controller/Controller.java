@@ -270,12 +270,13 @@ public class Controller {
                 "or from your hand. Do you want to proceed with your action?")) {
 
             view.printTopCards(player);
-            ((Goblin)token).setPileChoice(view.promptColorAndHand("You can choose out of the following: " +
-                    "r, g, b, p, o, h (hand)."));
-            if (((Goblin)token).getPileChoice() == 'h') {
+
+            if (view.promptPlayersChoice("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
+                ((Goblin) token).setPileChoice('h');
                     while (true) {
                         String cardAsString;
                         try {
+                            view.printHand(player);
                             cardAsString = view.promptCardString("What card do you want to trash?");
                             view.printHand(player);
                             ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
@@ -286,8 +287,24 @@ public class Controller {
                             view.error(e.getMessage());
                         }
                     }
+            }else {
+                while (true){
+                        ((Goblin)token).setPileChoice(view.promptColor("From which pile do you want to trash the top card?"));
+                        if (((Goblin)token).getPileChoice() == 'r' && !player.getPlayedCardsRed().isEmpty() ||
+                                ((Goblin)token).getPileChoice() == 'g' && !player.getPlayedCardsGreen().isEmpty() ||
+                                ((Goblin)token).getPileChoice() == 'b' && !player.getPlayedCardsBlue().isEmpty() ||
+                                ((Goblin)token).getPileChoice() == 'o' && !player.getPlayedCardsOrange().isEmpty()) {
+
+                            token.action(player);
+                            break;
+                        } else if (((Goblin)token).getPileChoice() == 'p' && !player.getPlayedCardsPurple().isEmpty()) {
+                            token.action(player);
+                            break;
+                        } else {
+                            view.error("This pile is empty! Try another color.");
+                        }
+                }
             }
-            token.action(player);
         }
     }
 

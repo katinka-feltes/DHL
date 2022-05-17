@@ -163,19 +163,6 @@ public class CliTest {
     }
 
     @Test
-    public void promptColorAndHand() {
-        String input;
-        InputStream bytes;
-        char ch;
-
-        input = "h";
-        bytes = new ByteArrayInputStream(input.getBytes());
-        System.setIn(bytes);
-        ch = c.promptColorAndHand("test");
-        assertEquals('h', ch);
-    }
-
-    @Test
     public void printCurrentBoard(){
         //remove token
         for (Field field: game.FIELDS){
