@@ -19,7 +19,7 @@ public class TokenTest {
     public void setup(){
         goblin = new Goblin();
         mirror = new Mirror();
-        skull = new Skullpoints(1);
+        skull = new Skullpoint(1);
         spider = new Spiderweb();
         spiral = new Spiral();
         stone = new WishingStone();
@@ -42,7 +42,7 @@ public class TokenTest {
     public void getName() {
         assertEquals("Goblin", goblin.getName());
         assertEquals("Mirror", mirror.getName());
-        assertEquals("Skullpoints", skull.getName());
+        assertEquals("Skullpoint", skull.getName());
         assertEquals("Spiderweb", spider.getName());
         assertEquals("Spiral", spiral.getName());
         assertEquals("WishingStone", stone.getName());

@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.model.tokens.Skullpoints;
+import dhl.model.tokens.Skullpoint;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class FieldTest {
         assertNull(f.getToken());
         assertNull(f.collectToken());
         //set not collectable token
-        Token skull = new Skullpoints(1);
+        Token skull = new Skullpoint(1);
         assertFalse(skull.isCollectable());
         f.setToken(skull);
         assertEquals("Skullpoints", f.collectToken().getName());

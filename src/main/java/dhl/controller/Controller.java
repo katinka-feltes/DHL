@@ -1,9 +1,6 @@
 package dhl.controller;
 
-import dhl.model.Card;
-import dhl.model.Figure;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
@@ -14,6 +11,10 @@ public class Controller {
     View view;
     Game model;
 
+    /**
+     * This method starts and keeps the game running.
+     * The game starts with the input of the players names. While the game is not over the active player can take turn.
+     */
     public void startGame() {
         String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         model = new Game(playerName);
@@ -73,6 +74,12 @@ public class Controller {
         waitForConfirmation("Are you done with your turn?");
     }
 
+    /**
+     * If the players hand card amount is beneath eight the player draws a card. Either from the discarding piles or
+     * from the drawing pile.
+     * If the player chooses the discard piles he can choose the color of the pile too.
+     * @param player the current player
+     */
     private void drawOne(Player player) {
         if(model.canDrawFromDiscarding(player.getLastTrashed())
                 && player.getHand().size() < 8
@@ -180,12 +187,12 @@ public class Controller {
 
     /**
      * this method decides witch token action comes in to play
-     *
      * @param player the current player
      */
     private void usingToken(Player player){
         //get the token and remove it from the field if it is collectable
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].getToken();
+
         if (token != null){
             view.out("You found a " + token.getName() + "!");
 
@@ -212,11 +219,20 @@ public class Controller {
                         usingToken(player);
                     }
                     break;
-
+                case("Skullpoint") :
+                    token.action(player);
+                    break;
+                case("WishingStone") :
+                case("Mirror") :
+                    Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+                    view.printCurrentBoard(model);
+                    break;
                 default:
                     token.action(player);
                     break;
             }
+        } else {
+            view.out("There is no token available on this field");
         }
     }
 
@@ -261,6 +277,7 @@ public class Controller {
                         String cardAsString;
                         try {
                             cardAsString = view.promptCardString("What card do you want to trash?");
+                            view.printHand(player);
                             ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
                             token.action(player);
                             drawOne(player);

@@ -2,16 +2,20 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
-public class Skullpoints implements Token{
+public class Skullpoint implements Token{
     // ☠ is the symbol of the token
     public static final char SYMBOL = '\u2620';
 
     private final int points;
 
-    public Skullpoints(int points){
+    public Skullpoint(int points){
         this.points = points;
     }
 
+    /**
+     * says if the token is collectable
+     * @return true if the token will be collected, false otherwise
+     */
     @Override
     public boolean isCollectable() {
         return false;
@@ -24,12 +28,11 @@ public class Skullpoints implements Token{
     }
 
     /**the skullpoints are added to the current players' victory points
-     * the counting stones position gets updated
      * @param player the current player
      */
     @Override
     public void action(Player player) {
-        player.setVictoryPoints(player.getVictoryPoints() + points);
+        player.setVictoryPoints(player.getVictoryPoints() + this.points);
     }
 
 

@@ -33,6 +33,12 @@ public class Player {
 
     // collected tokens and color need to be added
 
+    /**
+     * the constructor of the player
+     * @param name the players name
+     * @param symbol the players symbol
+     * @param game the current game status
+     */
     public Player(String name, char symbol, Game game){
         this.name = name;
         this.symbol = symbol;
@@ -170,6 +176,13 @@ public class Player {
         }
         throw new Exception("Card is not in Hand.");
     }
+
+    /**
+     * Allows to place a card on the discarding pile.
+     * The card gets sorted to the correct color discarding pile.
+     * @param card the card that gets discarded.
+     * @throws Exception if the color of the card does not exist.
+     */
     public void putCardOnDiscardingPile(Card card) throws Exception {
         hand.remove(card);
         switch (card.getColor()) {
@@ -356,6 +369,11 @@ public class Player {
         }
         return amount;
     }
+
+    /**
+     * counts the figures in the finish area.
+     * @return the amount of figures in the finish area.
+     */
     public int getFigureAmountInFinishArea(){
         int amount = 0;
         for(int field = 22; field <= 35; field++){ //should be 22 but for better testing 4
@@ -363,6 +381,7 @@ public class Player {
         }
         return amount;
     }
+
     public Figure getLastMovedFigure(){
         return lastMovedFigure;
     }
