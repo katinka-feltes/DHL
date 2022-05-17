@@ -7,7 +7,6 @@ public class DiscardPile {
     protected final ArrayList<Card> pile;
     protected final char color;
 
-
     /**
      * The constructor for DiscardPile
      * @param color the color that the pile will have

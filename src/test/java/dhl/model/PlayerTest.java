@@ -174,6 +174,12 @@ public class PlayerTest {
     }
 
     @Test
+    void drawFromDrawingPile() {
+        player.drawFromDrawingPile(game.getDrawingPile());
+        assertEquals(1, player.getHand().size());
+    }
+
+    @Test
     public void canPlay() {
         player.getHand().add(new Card(2, 'r'));
         assertTrue(player.canPlay());
