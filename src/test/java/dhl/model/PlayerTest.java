@@ -22,21 +22,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void drawCardsUpToEight() throws Exception {
-        assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
-        assertEquals(8, player.getHand().size());
-        player.addCardToPlayedCards(player.getHand().get(0));
-        assertEquals(7, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
-        assertEquals(8, player.getHand().size());
-        player.getHand().removeAll(player.getHand());
-        assertEquals(0, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
-        assertEquals(8, player.getHand().size());
-    }
-
-    @Test
     public void addCardToPlayedCards() throws Exception {
         player.getHand().removeAll(player.getHand());
         assertEquals(0, player.getHand().size());
@@ -46,15 +31,19 @@ public class PlayerTest {
         player.getHand().add(new Card(1, 'p'));
         player.getHand().add(new Card(1, 'o'));
         assertEquals(5, player.getHand().size());
-        player.drawCardsUpToEight(game.getDrawingPile());
-        assertEquals(8, player.getHand().size());
+        player.getHand().add(new Card(2, 'r')); // red increasing direction
+        player.getHand().add(new Card(1, 'g')); // green no direction
+        player.getHand().add(new Card(0, 'b')); // blue decreasing direction
+        player.getHand().add(new Card(0, 'b'));
+
+
         int size_r = 0;
         int size_g = 0;
         int size_b = 0;
         int size_p = 0;
         int size_o = 0;
-        ArrayList<Card> sorted_hand = new ArrayList<>(player.getSortedHand());
-        for (Card card : sorted_hand) {
+        ArrayList<Card> hand = new ArrayList<>(player.getHand());
+        for (Card card : hand) {
             player.addCardToPlayedCards(card);
             switch (card.getColor()) {
                 case ('r'):
@@ -79,14 +68,25 @@ public class PlayerTest {
                     break;
             }
         }
+        // check pile directions
+        assertEquals(1, player.getPlayedCardsRed().getDirection());
+        assertEquals(0, player.getPlayedCardsGreen().getDirection());
+        assertEquals(-1, player.getPlayedCardsBlue().getDirection());
+
+        //card that does not fit
+        assertThrows(Exception.class, () -> player.getPlayedCardsRed().add(new Card(0, 'r')), "Card does not fit to the pile");
     }
 
     @Test
     public void placeFigure() {
-        player.placeFigure('r', player.getFigureByPos(1));
-        assertEquals(3, player.getFigureByPos(1).getPos());
-        player.placeFigure('g', player.getFigureByPos(1));
-        assertEquals(4, player.getFigureByPos(1).getPos());
+        Figure fig = player.getFigureByPos(1);
+        player.placeFigure('r', fig);
+        assertEquals(3, fig.getPos());
+        player.placeFigure('g', fig);
+        assertEquals(4, fig.getPos());
+        fig = player.getFigureByPos(3);
+        player.placeFigure('g', fig);
+        assertEquals(4, fig.getPos());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class PlayerTest {
 
     @Test
     public void getHand() {
-        player.drawCardsUpToEight(game.getDrawingPile());
+        game.createDecks();
         assertEquals(8, player.getHand().size());
         for (Card card : player.getHand()) {
             assertEquals(Card.class, card.getClass());
@@ -163,6 +163,9 @@ public class PlayerTest {
 
     @Test
     public void drawFromDiscardingPile() throws Exception {
+        // add card to wrong pile
+        assertThrows(Exception.class, () -> game.getDiscardingPilePurple().add(new Card(3, 'o')), "Card is null or a different color than the pile.");
+        // try to draw from empty pile
         assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You fool: this pile is empty!");
         game.getDiscardingPileBlue().getPile().add(new Card(4, 'b'));
         player.setLastTrashed(game.getDiscardingPileBlue().getPile().get(0));
@@ -175,7 +178,7 @@ public class PlayerTest {
 
     @Test
     void drawFromDrawingPile() {
-        player.drawFromDrawingPile(game.getDrawingPile());
+        player.drawFromDrawingPile();
         assertEquals(1, player.getHand().size());
     }
 
@@ -255,5 +258,25 @@ public class PlayerTest {
         player.getTokens().add(new Mirror());
         player.calcTokenPoints();
         assertEquals(-12, player.getVictoryPoints());
+    }
+
+    @Test
+    public void getSortedHand() {
+        player.getHand().removeAll(player.getHand());
+        player.getHand().add(new Card(1, 'r'));
+        player.getHand().add(new Card(1, 'g'));
+        player.getHand().add(new Card(1, 'b'));
+        player.getHand().add(new Card(1, 'p'));
+        player.getHand().add(new Card(2, 'r'));
+        player.getHand().add(new Card(1, 'g'));
+        player.getHand().add(new Card(0, 'b'));
+        player.getHand().add(new Card(0, 'o'));
+
+        ArrayList<Card> sortedHand = new ArrayList<>(player.getSortedHand());
+        assertEquals('b', sortedHand.get(0).getColor());
+        assertEquals(0, sortedHand.get(0).getNumber());
+        assertEquals('b', sortedHand.get(1).getColor());
+        assertEquals('r', sortedHand.get((sortedHand.size()-1)).getColor());
+        assertEquals(2, sortedHand.get((sortedHand.size()-1)).getNumber());
     }
 }

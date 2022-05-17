@@ -52,24 +52,11 @@ public class Player {
     }
 
     /**
-     * fills the hand up to eight cards
-     * @param drawingPile the global drawingPile
-     */
-    public void drawCardsUpToEight(DrawingPile drawingPile) {
-        if (drawingPile != null) {
-            while (hand.size() < 8 && !drawingPile.isEmpty()) {
-                hand.add(drawingPile.draw()); //draws one card and adds it to the hand
-            }
-        }
-    }
-
-    /**
      * adds top card from drawing pile to hand
-     * @param drawingPile the global drawingPile
      */
-    public void drawFromDrawingPile(DrawingPile drawingPile) {
-        if (!drawingPile.isEmpty()){
-            hand.add(drawingPile.draw()); //draws one card and adds it to the hand
+    public void drawFromDrawingPile() {
+        if (!game.getDrawingPile().isEmpty()){
+            hand.add(game.getDrawingPile().draw()); //draws one card and adds it to the hand
         }
     }
 
@@ -202,7 +189,7 @@ public class Player {
                 game.getDiscardingPileOrange().add(card);
                 break;
             default:
-                throw new Exception("Color of the card doesn't exist.");
+                // do nothing
         }
     }
     /**

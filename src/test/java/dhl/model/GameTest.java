@@ -99,8 +99,9 @@ public class GameTest {
     public void getDrawingPile() {
         assertEquals(110, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
-        player1.drawCardsUpToEight(game.getDrawingPile());
-        assertEquals(102, game.getDrawingPile().getCards().size());
+        player1.drawFromDrawingPile();
+        player1.drawFromDrawingPile();
+        assertEquals(108, game.getDrawingPile().getCards().size());
     }
 
     @Test

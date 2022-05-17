@@ -22,11 +22,7 @@ public class Controller {
         while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){
                 if(!model.gameOver()) {
-                    try {
-                        takeTurn(activeP);
-                    } catch (Exception e) {
-                       view.error(e.getMessage());
-                    }
+                    takeTurn(activeP);
                 }
                 else {
                     for (Player p : model.getPlayers()){
@@ -110,7 +106,7 @@ public class Controller {
                 }
             }
         } else {
-            player.drawFromDrawingPile(model.getDrawingPile());
+            player.drawFromDrawingPile();
         }
     }
 
@@ -208,7 +204,7 @@ public class Controller {
                     }
                     break;
 
-                case("SpiderWeb") :
+                case("Spiderweb") :
                     if (view.promptPlayersChoice("Your Figure gets moved to " +
                             "figure to the next field with the same color. Do you want to proceed with your action?")) {
                         token.action(player);

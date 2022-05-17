@@ -32,7 +32,6 @@ public class Cli implements View {
                 return result;
             } catch (InputMismatchException e){
                 error("Input must be an integer!");
-                scanner.nextLine();
             }
         }
     }
@@ -63,10 +62,133 @@ public class Cli implements View {
                 }
             } catch (Exception e) {
                 error(e.getMessage());
-                scanner.nextLine();
             }
         }
     }
+
+    /** This method allows the player to choose their name as long it is not longer than 16 characters.
+     *
+     * @param playerAmount the amount of players that will compete at the game
+     * @return playersNames a String Array filled with the Names of the Players
+     */
+    @Override
+    public String[] inputPlayersNames(int playerAmount){
+        Scanner scanner = new Scanner(System.in);
+        String [] playersNames = new String[playerAmount];
+        int nameLength = 16;
+
+        for(int i = 0; i < playerAmount; i++) {
+            int j = i + 1;
+            System.out.println("Please enter the name of player " + j + ":");
+            String playerName = scanner.nextLine();
+            while (true) { // checks if the players name has the right length
+                if (playerName.length() <= nameLength && !playerName.isEmpty()) {
+                    playersNames[i] = (playerName);
+                    break;
+                } else {
+                    error("Name can't be empty and only be " + nameLength + " characters long. Try again!");
+                    playerName = scanner.nextLine();
+                }
+            }
+        }
+        return playersNames;
+    }
+
+    /** this method enables the player to take a choice.
+     *
+     * @param prompt the question the player is asked.
+     * @return a boolean that transfers to yes(true) and no(false).
+     */
+    public boolean promptPlayersChoice(String prompt){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt + " [y/n]");
+
+        while(true){
+            try {
+                String input = scanner.next();
+                if (input.equals("y")) {
+                    return true;
+                } else if (input.equals("n")) {
+                    return false;
+                } else {
+                    throw new Exception("Please enter either y or n.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * @param prompt the message that the player is asked
+     * @return the input char (r, g, b, o or p)
+     */
+    @Override
+    public char promptColor(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt + " [y/n]");
+
+        while(true){
+            try {
+                String input = scanner.next();
+                switch (input) {
+                    case "r":
+                        return 'r';
+                    case "g":
+                        return 'g';
+                    case "b":
+                        return 'b';
+                    case "p":
+                        return 'p';
+                    case "o":
+                        return 'o';
+                    default:
+                        throw new Exception("Please enter either r, g, b, o or p.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * @param prompt the message that the player is asked
+     * @return the input char (r, g, b, o or p)
+     */
+    @Override
+    public char promptColorAndHand(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+
+        while(true){
+            try {
+                String input = scanner.next();
+                switch (input) {
+                    case "r":
+                        return 'r';
+                    case "g":
+                        return 'g';
+                    case "b":
+                        return 'b';
+                    case "p":
+                        return 'p';
+                    case "o":
+                        return 'o';
+                    case "h":
+                        return 'h';
+                    default:
+                        throw new Exception("Please enter either r, g, b, o, p or h.");
+                }
+            }
+            catch (Exception e){
+                error(e.getMessage());
+            }
+        }
+    }
+
+
 
     /**
      * @param str Error Message
@@ -179,131 +301,6 @@ public class Cli implements View {
             return "+";
         } else {
             return "-";
-        }
-    }
-
-    /** This method allows the player to choose their name as long it is not longer than 16 characters.
-     *
-     * @param playerAmount the amount of players that will compete at the game
-     * @return playersNames a String Array filled with the Names of the Players
-     */
-    @Override
-    public String[] inputPlayersNames(int playerAmount){
-        Scanner scanner = new Scanner(System.in);
-        String [] playersNames = new String[playerAmount];
-        int nameLength = 16;
-
-        for(int i = 0; i < playerAmount; i++) {
-            int j = i + 1;
-            System.out.println("Please enter the name of player " + j + ":");
-            String playerName = scanner.nextLine();
-            while (true) { // checks if the players name has the right length
-                if (playerName.length() <= nameLength && !playerName.isEmpty()) {
-                    playersNames[i] = (playerName);
-                    break;
-                } else {
-                    error("Name can't be empty and only be " + nameLength + " characters long. Try again!");
-                    playerName = scanner.nextLine();
-                }
-            }
-        }
-        return playersNames;
-    }
-
-    /** this method enables the player to take a choice.
-     *
-     * @param prompt the question the player is asked.
-     * @return a boolean that transfers to yes(true) and no(false).
-     */
-    public boolean promptPlayersChoice(String prompt){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
-
-        while(true){
-            try {
-                String input = scanner.next();
-                if (input.equals("y")) {
-                    return true;
-                } else if (input.equals("n")) {
-                    return false;
-                } else {
-                    throw new Exception("Please enter either y or n.");
-                }
-            }
-            catch (Exception e){
-                error(e.getMessage());
-                scanner.nextLine();
-            }
-        }
-    }
-
-    /**
-     * @param prompt the message that the player is asked
-     * @return the input char (r, g, b, o or p)
-     */
-    @Override
-    public char promptColor(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
-
-        while(true){
-            try {
-                String input = scanner.next();
-                switch (input) {
-                    case "r":
-                        return 'r';
-                    case "g":
-                        return 'g';
-                    case "b":
-                        return 'b';
-                    case "p":
-                        return 'p';
-                    case "o":
-                        return 'o';
-                    default:
-                        throw new Exception("Please enter either r, g, b, o or p.");
-                }
-            }
-            catch (Exception e){
-                error(e.getMessage());
-                scanner.nextLine();
-            }
-        }
-    }
-
-    /**
-     * @param prompt the message that the player is asked
-     * @return the input char (r, g, b, o or p)
-     */
-    @Override
-    public char promptColorAndHand(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
-
-        while(true){
-            try {
-                String input = scanner.next();
-                switch (input) {
-                    case "r":
-                        return 'r';
-                    case "g":
-                        return 'g';
-                    case "b":
-                        return 'b';
-                    case "p":
-                        return 'p';
-                    case "o":
-                        return 'o';
-                    case "h":
-                        return 'h';
-                    default:
-                        throw new Exception("Please enter either r, g, b, o or p.");
-                }
-            }
-            catch (Exception e){
-                error(e.getMessage());
-                scanner.nextLine();
-            }
         }
     }
 

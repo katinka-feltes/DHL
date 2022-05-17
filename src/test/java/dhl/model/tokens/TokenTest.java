@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.Player;
@@ -101,5 +102,51 @@ public class TokenTest {
         ((Spiral)spiral).setChosenPos(3); // move back there
         spiral.action(player);
         assertEquals(3, figure.getPos());
+    }
+
+    @Test
+    public void actionGoblin() throws Exception{
+
+        goblin.action(player); // nothing should happen if no pile is set
+
+        ((Goblin) goblin).setPileChoice('r');
+        goblin.action(player); //wrong choice as pile is empty should change nothing
+        player.getPlayedCardsRed().add(new Card(2, 'r'));
+        goblin.action(player);
+        assertEquals(1, game.getDiscardingPileRed().getPile().size());
+        assertEquals(0, player.getPlayedCardsRed().getPile().size());
+
+        ((Goblin) goblin).setPileChoice('g');
+        player.getPlayedCardsGreen().add(new Card(2, 'g'));
+        goblin.action(player);
+        assertEquals(1, game.getDiscardingPileGreen().getPile().size());
+
+        ((Goblin) goblin).setPileChoice('b');
+        player.getPlayedCardsBlue().add(new Card(2, 'b'));
+        goblin.action(player);
+        assertEquals(1, game.getDiscardingPileBlue().getPile().size());
+
+        ((Goblin) goblin).setPileChoice('p');
+        player.getPlayedCardsPurple().add(new Card(2, 'p'));
+        goblin.action(player);
+        assertEquals(1, game.getDiscardingPilePurple().getPile().size());
+
+        ((Goblin) goblin).setPileChoice('o');
+        player.getPlayedCardsOrange().add(new Card(2, 'o'));
+        goblin.action(player);
+        assertEquals(1, game.getDiscardingPileOrange().getPile().size());
+
+        ((Goblin) goblin).setPileChoice('h');
+        Card card = new Card (5, 'p');
+        player.getHand().add(card);
+        ((Goblin) goblin).setCardChoice(card);
+        goblin.action(player);
+        assertEquals(0, player.getHand().size());
+        assertEquals(card, game.getDiscardingPilePurple().getTop());
+    }
+    @Test
+    public void setPileChoice() {
+        ((Goblin) goblin).setPileChoice('r');
+        assertEquals('r', ((Goblin) goblin).getPileChoice());
     }
 }

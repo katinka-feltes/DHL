@@ -59,7 +59,12 @@ public class Game {
 
     public void createDecks() {
         for (Player p : players) {
-            p.drawCardsUpToEight(drawingPile);
+            if (drawingPile != null) {
+                // draw up to 8 cards
+                while (p.getHand().size() < 8 && !drawingPile.isEmpty()) {
+                    p.drawFromDrawingPile(); //draw one card from drawing pile
+                }
+            }
         }
     }
 
