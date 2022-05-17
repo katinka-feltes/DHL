@@ -10,6 +10,10 @@ public class Goblin implements Token {
     private char pile;
     private Card card;
 
+    /**
+     * says if the token is collectable
+     * @return true if the token will be collected, false otherwise
+     */
     @Override
     public boolean isCollectable() {
         return false;
@@ -21,6 +25,11 @@ public class Goblin implements Token {
         return temp[temp.length-1];
     }
 
+    /**
+     * Depending on the chosen color the player can discard a card from the directional discard pile or from his hand.
+     * If a card from the players hand gets discarded the color has to be chosen again.
+     * @param player the player that will execute the action
+     */
     @Override
     public void action(Player player) {
         Game game = player.getGame();

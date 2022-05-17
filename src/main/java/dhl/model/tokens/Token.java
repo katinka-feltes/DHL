@@ -4,8 +4,6 @@ import dhl.model.Player;
 
 public interface Token {
 
-    // symbol
-
     /**
      * @return true if the token will be collected, false otherwise
      */

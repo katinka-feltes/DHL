@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class Gui extends Application{
     /**
      * This method is called by the Application to start the GUI.
-     *
      * @param primaryStage The initial root stage of the application.
      */
     @Override
@@ -30,7 +29,6 @@ public class Gui extends Application{
 
     /**
      * The entry point of the GUI application.
-     *
      * @param args The command line arguments passed to the application
      */
     public static void main(String[] args) {

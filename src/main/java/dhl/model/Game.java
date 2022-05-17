@@ -57,6 +57,9 @@ public class Game {
 
     private final ArrayList<Token> tokens;
 
+    /**
+     * This method creates the deck for each player.
+     */
     public void createDecks() {
         for (Player p : players) {
             p.drawCardsUpToEight(drawingPile);
@@ -65,7 +68,6 @@ public class Game {
 
     /**
      * Constructor for Game with given amount of players (2-4)
-     *
      * @param playerNames the List of all player Names
      */
     public Game(String[] playerNames) {
@@ -91,13 +93,13 @@ public class Game {
         }
         for (int i = 1; i <= 16; i++) {
             if (i <= 4) {
-                tokens.add(new Skullpoints(1));
+                tokens.add(new Skullpoint(1));
             } else if (i <= 10) {
-                tokens.add(new Skullpoints(2));
+                tokens.add(new Skullpoint(2));
             } else if (i <= 13) {
-                tokens.add(new Skullpoints(3));
+                tokens.add(new Skullpoint(3));
             } else {
-                tokens.add(new Skullpoints(4));
+                tokens.add(new Skullpoint(4));
             }
         }
 
@@ -172,6 +174,7 @@ public class Game {
     }
 
     /**
+     * counts the amount of figures from every player in the finish area
      * @return the amount of figures in the finish area as an int
      */
     private int figuresInFinishArea() {
@@ -183,6 +186,7 @@ public class Game {
     }
 
     /**
+     * checks if one player has three figures in the finish area.
      * @return true if one player has all his figures in the finish area
      */
     private boolean allFiguresOfOneInFinishArea() {
@@ -208,6 +212,10 @@ public class Game {
         }
     }
 
+    /**
+     * checks the victory points of every player to elect the winning player.
+     * @return the player with the highest score.
+     */
     public Player getWinningPlayer() {
         Player winningP = players.get(0);
         for (Player p : players) {
@@ -246,11 +254,6 @@ public class Game {
         return players;
     }
 
-    /**
-     * returns the amount of the players in the game
-     *
-     * @return the size of the players-list
-     */
     public int getPlayerAmount() {
         return players.size();
     }

@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 @SuppressWarnings("ClassEscapesDefinedScope")
 public class Cli implements View {
+
     /** This method ask how many players are going to play.
-     *
      * @return result an Integer which says how many players are going to play.
      */
     @Override
@@ -38,7 +38,7 @@ public class Cli implements View {
     }
 
     /**
-     *
+     * this method allows the player to choose a card and write it as a string input.
      * @param prompt the prompt that is printed to the user
      * @return String of the Card that the user selected
      */
@@ -69,6 +69,7 @@ public class Cli implements View {
     }
 
     /**
+     * this method pints an error in the terminal.
      * @param str Error Message
      */
     @Override
@@ -77,6 +78,7 @@ public class Cli implements View {
     }
 
     /**
+     * prints the hand card of the player.
      * @param player the active player whose hand cards to show
      */
     @Override
@@ -90,6 +92,7 @@ public class Cli implements View {
     }
 
     /**
+     * prints the top card of the players directional discarding piles.
      * @param player the active player whose top cards to show
      */
     @Override
@@ -137,12 +140,17 @@ public class Cli implements View {
         System.out.println();
     }
 
+    /**
+     * prints a message in the terminal.
+     * @param str the message as a string
+     */
     @Override
     public void out(String str) {
         System.out.println(str);
     }
 
     /**
+     * prints the top card and the direction of the pile.
      * @param pile the pile which color, top card and direction to print
      */
     private void printTop(DirectionDiscardPile pile){
@@ -156,6 +164,7 @@ public class Cli implements View {
     }
 
     /**
+     * prints the top card of the discard pile.
      * @param pile the pile which color, top card and direction to print
      */
     private void printTop(DiscardPile pile){
@@ -169,8 +178,10 @@ public class Cli implements View {
     }
 
     /**
-     * @param pile pile which direction to print
-     * @return direction as a String
+     * prints the direction of the discard pile.
+     * The direction depends on the played cards
+     * @param pile pile which direction to print.
+     * @return direction as a String "+" if the pile goes upwards, "-" if it is downwards, "+-" when there is no direction.
      */
     private String printDirection(DirectionDiscardPile pile) {
         if (pile.getDirection() == 0) {
@@ -182,8 +193,8 @@ public class Cli implements View {
         }
     }
 
-    /** This method allows the player to choose their name as long it is not longer than 16 characters.
-     *
+    /**
+     * This method allows the player to choose their name as long it is not longer than 16 characters.
      * @param playerAmount the amount of players that will compete at the game
      * @return playersNames a String Array filled with the Names of the Players
      */
@@ -210,8 +221,8 @@ public class Cli implements View {
         return playersNames;
     }
 
-    /** this method enables the player to take a choice.
-     *
+    /**
+     * this method enables the player to take a choice.
      * @param prompt the question the player is asked.
      * @return a boolean that transfers to yes(true) and no(false).
      */
@@ -238,6 +249,7 @@ public class Cli implements View {
     }
 
     /**
+     * This method allows the player to choose a color.
      * @param prompt the message that the player is asked
      * @return the input char (r, g, b, o or p)
      */
@@ -272,13 +284,14 @@ public class Cli implements View {
     }
 
     /**
+     * This method allows the player to choose a color or his hand.
      * @param prompt the message that the player is asked
-     * @return the input char (r, g, b, o or p)
+     * @return the input char (r, g, b, o, p or h)
      */
     @Override
     public char promptColorAndHand(String prompt) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
+        System.out.println(prompt);
 
         while(true){
             try {
@@ -297,7 +310,7 @@ public class Cli implements View {
                     case "h":
                         return 'h';
                     default:
-                        throw new Exception("Please enter either r, g, b, o or p.");
+                        throw new Exception("Please enter either r, g, b, o, p or h.");
                 }
             }
             catch (Exception e){
@@ -340,7 +353,8 @@ public class Cli implements View {
     }
 
     /**
-     * @param rowStart the first field of the board that will be printed
+     * prints the filed index, points, color, tokens and figures on the board.
+     * * @param rowStart the first field of the board that will be printed
      * @param rowEnd the last field of the board that will be printed
      * @param players the players of the game
      */
@@ -364,9 +378,19 @@ public class Cli implements View {
         System.out.println();
         // print tokens of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            //TODO: Large Field tokens need to be printed twice
             if(Game.FIELDS[i].getToken() != null) {
-                System.out.print(Game.FIELDS[i].getToken().getSymbol() + "      ");
+                if (i == 7 || i == 14 || i == 21 || i == 28) {
+                    String symbol = Game.FIELDS[i].getToken().getSymbol() + " " + Game.FIELDS[i].getToken().getSymbol() + "       ";
+                    System.out.print(symbol.substring(0, 7));
+                } else {
+                    if (Game.FIELDS[i].getToken().getName().equals("Skullpoint")) {
+                        String symbol = Game.FIELDS[i].getToken().getSymbol() + "      ";
+                        System.out.print(symbol.substring(0, 6));
+                    } else {
+                        String symbol = Game.FIELDS[i].getToken().getSymbol() + "      ";
+                        System.out.print(symbol.substring(0, 7));
+                    }
+                }
             }else {
                 System.out.print("       ");
             }

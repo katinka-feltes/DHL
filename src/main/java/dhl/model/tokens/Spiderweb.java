@@ -10,6 +10,10 @@ public class Spiderweb implements Token {
 
     public static final char SYMBOL = '\u25A9';
 
+    /**
+     * says if the token is collectable
+     * @return true if the token will be collected, false otherwise
+     */
     @Override
     public boolean isCollectable() {
         return false;
@@ -21,6 +25,10 @@ public class Spiderweb implements Token {
         return temp[temp.length-1];
     }
 
+    /**
+     * the last moved figure of the player is moved to the next field with thew same color it stands on.
+     * @param player the player that will execute the action
+     */
     @Override
     public void action( Player player){
         Figure lastMoved = player.getLastMovedFigure();
