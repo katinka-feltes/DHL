@@ -32,6 +32,7 @@ public class Cli implements View {
                 return result;
             } catch (InputMismatchException e){
                 error("Input must be an integer!");
+                scanner.nextLine();
             }
         }
     }

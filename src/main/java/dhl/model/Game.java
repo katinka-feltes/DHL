@@ -231,6 +231,28 @@ public class Game {
         return winningP;
     }
 
+    /**
+     * method to get the discard pile of the game in the given color
+     * @param color the color of the pile to return
+     * @return the discard pile
+     */
+    public DiscardPile getDiscardPileByColor(char color){
+        switch (color) {
+            case 'r':
+                return discardingPileRed;
+            case 'g':
+                return discardingPileGreen;
+            case 'b':
+                return discardingPileBlue;
+            case 'p':
+                return discardingPilePurple;
+            case 'o':
+                return discardingPileOrange;
+            default:
+                return null;
+        }
+    }
+
     public DrawingPile getDrawingPile() {
         return drawingPile;
     }

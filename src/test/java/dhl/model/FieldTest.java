@@ -21,7 +21,7 @@ public class FieldTest {
         Token skull = new Skullpoint(1);
         assertFalse(skull.isCollectable());
         f.setToken(skull);
-        assertEquals("Skullpoints", f.collectToken().getName());
+        assertEquals("Skullpoint", f.collectToken().getName());
         assertEquals(skull, f.getToken());
         assertEquals(skull, f.collectToken());
 

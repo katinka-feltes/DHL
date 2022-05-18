@@ -88,25 +88,7 @@ public class Controller {
             while (true) {
                 try {
                     char color = view.promptColor("From what colored pile do you want to draw?");
-                    switch (color) {
-                        case ('r'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileRed());
-                            break;
-                        case ('g'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileGreen());
-                            break;
-                        case ('b'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileBlue());
-                            break;
-                        case ('p'):
-                            player.drawFromDiscardingPile(model.getDiscardingPilePurple());
-                            break;
-                        case ('o'):
-                            player.drawFromDiscardingPile(model.getDiscardingPileOrange());
-                            break;
-                        default:
-                            break;
-                    }
+                    player.drawFromDiscardingPile(model.getDiscardPileByColor(color));
                     break;
                 } catch (Exception e){
                     view.error(e.getMessage());

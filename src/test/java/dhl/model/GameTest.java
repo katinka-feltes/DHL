@@ -63,7 +63,6 @@ public class GameTest {
             player1.putCardOnDiscardingPile(card);
         }
         assertEquals(5, getSizeOfDiscardingPiles());
-        assertThrows(Exception.class, () -> player1.putCardOnDiscardingPile(new Card(1, 'f')), "Color of the card doesn't exist.");
     }
 
     @Test
