@@ -141,30 +141,30 @@ public class TokenTest {
 
         ((Goblin) goblin).setPileChoice('r');
         goblin.action(player); //wrong choice as pile is empty should change nothing
-        player.getPlayedCardsRed().add(new Card(2, 'r'));
+        player.getPlayedCards('r').add(new Card(2, 'r'));
         goblin.action(player);
-        assertEquals(1, game.getDiscardingPileRed().getPile().size());
-        assertEquals(0, player.getPlayedCardsRed().getPile().size());
+        assertEquals(1, game.getDiscardPile('r').getPile().size());
+        assertEquals(0, player.getPlayedCards('r').getPile().size());
 
         ((Goblin) goblin).setPileChoice('g');
-        player.getPlayedCardsGreen().add(new Card(2, 'g'));
+        player.getPlayedCards('g').add(new Card(2, 'g'));
         goblin.action(player);
-        assertEquals(1, game.getDiscardingPileGreen().getPile().size());
+        assertEquals(1, game.getDiscardPile('g').getPile().size());
 
         ((Goblin) goblin).setPileChoice('b');
-        player.getPlayedCardsBlue().add(new Card(2, 'b'));
+        player.getPlayedCards('b').add(new Card(2, 'b'));
         goblin.action(player);
-        assertEquals(1, game.getDiscardingPileBlue().getPile().size());
+        assertEquals(1, game.getDiscardPile('b').getPile().size());
 
         ((Goblin) goblin).setPileChoice('p');
-        player.getPlayedCardsPurple().add(new Card(2, 'p'));
+        player.getPlayedCards('p').add(new Card(2, 'p'));
         goblin.action(player);
-        assertEquals(1, game.getDiscardingPilePurple().getPile().size());
+        assertEquals(1, game.getDiscardPile('p').getPile().size());
 
         ((Goblin) goblin).setPileChoice('o');
-        player.getPlayedCardsOrange().add(new Card(2, 'o'));
+        player.getPlayedCards('o').add(new Card(2, 'o'));
         goblin.action(player);
-        assertEquals(1, game.getDiscardingPileOrange().getPile().size());
+        assertEquals(1, game.getDiscardPile('o').getPile().size());
 
         ((Goblin) goblin).setPileChoice('h');
         Card card = new Card (5, 'p');
@@ -172,7 +172,7 @@ public class TokenTest {
         ((Goblin) goblin).setCardChoice(card);
         goblin.action(player);
         assertEquals(0, player.getHand().size());
-        assertEquals(card, game.getDiscardingPilePurple().getTop());
+        assertEquals(card, game.getDiscardPile('p').getTop());
     }
 
     @Test

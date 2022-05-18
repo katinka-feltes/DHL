@@ -54,35 +54,35 @@ public class PlayerTest {
         for (Card card : hand) {
             player.addCardToPlayedCards(card);
             switch (card.getColor()) {
-                case ('r'):
+                case 'r':
                     size_r++;
-                    assertEquals(size_r, player.getPlayedCardsRed().pile.size());
+                    assertEquals(size_r, player.getPlayedCards(card.getColor()).pile.size());
                     break;
-                case ('g'):
+                case 'g':
                     size_g++;
-                    assertEquals(size_g, player.getPlayedCardsGreen().pile.size());
+                    assertEquals(size_g, player.getPlayedCards(card.getColor()).pile.size());
                     break;
-                case ('b'):
+                case 'b':
                     size_b++;
-                    assertEquals(size_b, player.getPlayedCardsBlue().pile.size());
+                    assertEquals(size_b, player.getPlayedCards(card.getColor()).pile.size());
                     break;
-                case ('p'):
+                case 'p':
                     size_p++;
-                    assertEquals(size_p, player.getPlayedCardsPurple().pile.size());
+                    assertEquals(size_p, player.getPlayedCards(card.getColor()).pile.size());
                     break;
-                case ('o'):
+                case 'o':
                     size_o++;
-                    assertEquals(size_o, player.getPlayedCardsOrange().pile.size());
+                    assertEquals(size_o, player.getPlayedCards(card.getColor()).pile.size());
                     break;
             }
         }
         // check pile directions
-        assertEquals(1, player.getPlayedCardsRed().getDirection());
-        assertEquals(0, player.getPlayedCardsGreen().getDirection());
-        assertEquals(-1, player.getPlayedCardsBlue().getDirection());
+        assertEquals(1, player.getPlayedCards('r').getDirection());
+        assertEquals(0, player.getPlayedCards('g').getDirection());
+        assertEquals(-1, player.getPlayedCards('b').getDirection());
 
         //card that does not fit
-        assertThrows(Exception.class, () -> player.getPlayedCardsRed().add(new Card(0, 'r')), "Card does not fit to the pile");
+        assertThrows(Exception.class, () -> player.getPlayedCards('r').add(new Card(0, 'r')), "Card does not fit to the pile");
     }
 
     @Test
@@ -205,14 +205,14 @@ public class PlayerTest {
      */
     public void drawFromDiscardingPile() throws Exception {
         // add card to wrong pile
-        assertThrows(Exception.class, () -> game.getDiscardingPilePurple().add(new Card(3, 'o')), "Card is null or a different color than the pile.");
+        assertThrows(Exception.class, () -> game.getDiscardPile('p').add(new Card(3, 'o')), "Card is null or a different color than the pile.");
         // try to draw from empty pile
-        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You fool: this pile is empty!");
-        game.getDiscardingPileBlue().getPile().add(new Card(4, 'b'));
-        player.setLastTrashed(game.getDiscardingPileBlue().getPile().get(0));
-        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardingPileBlue()), "You can't draw a card you just trashed!");
-        game.getDiscardingPileRed().add(new Card(2, 'r'));
-        player.drawFromDiscardingPile(game.getDiscardingPileRed());
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardPile('b')), "You fool: this pile is empty!");
+        game.getDiscardPile('b').getPile().add(new Card(4, 'b'));
+        player.setLastTrashed(game.getDiscardPile('b').getPile().get(0));
+        assertThrows(Exception.class, () -> player.drawFromDiscardingPile(game.getDiscardPile('b')), "You can't draw a card you just trashed!");
+        game.getDiscardPile('r').add(new Card(2, 'r'));
+        player.drawFromDiscardingPile(game.getDiscardPile('r'));
         assertEquals('r', player.getHand().get(0).getColor());
         assertEquals(2, player.getHand().get(0).getNumber());
     }
@@ -342,7 +342,7 @@ public class PlayerTest {
         assertEquals('b', sortedHand.get(0).getColor());
         assertEquals(0, sortedHand.get(0).getNumber());
         assertEquals('b', sortedHand.get(1).getColor());
-        assertEquals('r', sortedHand.get((sortedHand.size()-1)).getColor());
-        assertEquals(2, sortedHand.get((sortedHand.size()-1)).getNumber());
+        assertEquals('r', sortedHand.get(sortedHand.size()-1).getColor());
+        assertEquals(2, sortedHand.get(sortedHand.size()-1).getNumber());
     }
 }

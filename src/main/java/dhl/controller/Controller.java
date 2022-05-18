@@ -90,7 +90,7 @@ public class Controller {
             while (true) {
                 try {
                     char color = view.promptColor("From what colored pile do you want to draw?");
-                    player.drawFromDiscardingPile(model.getDiscardPileByColor(color));
+                    player.drawFromDiscardingPile(model.getDiscardPile(color));
                     break;
                 } catch (Exception e){
                     view.error(e.getMessage());

@@ -38,33 +38,13 @@ public class Goblin implements Token {
         Game game = player.getGame();
         // check if card is not null
         try {
-            switch (pile) {
-                case ('b'):
-                    game.getDiscardingPileBlue().add(player.getPlayedCardsBlue().getAndRemoveTop());
-                    player.setLastTrashed(game.getDiscardingPileGreen().getTop());
-                    break;
-                case ('g'):
-                    game.getDiscardingPileGreen().add(player.getPlayedCardsGreen().getAndRemoveTop());
-                    player.setLastTrashed(game.getDiscardingPileGreen().getTop());
-                    break;
-                case ('o'):
-                    game.getDiscardingPileOrange().add(player.getPlayedCardsOrange().getAndRemoveTop());
-                    player.setLastTrashed(game.getDiscardingPileOrange().getTop());
-                    break;
-                case ('p'):
-                    game.getDiscardingPilePurple().add(player.getPlayedCardsPurple().getAndRemoveTop());
-                    player.setLastTrashed(game.getDiscardingPilePurple().getTop());
-                    break;
-                case ('r'):
-                    game.getDiscardingPileRed().add(player.getPlayedCardsRed().getAndRemoveTop());
-                    player.setLastTrashed(game.getDiscardingPileRed().getTop());
-                    break;
-                case ('h'):
-                    player.putCardOnDiscardingPile(card);
-                    player.setLastTrashed(card);
-                    break;
-                default:
-                    break;
+            if(pile == 'h') {
+                player.putCardOnDiscardingPile(card);
+                player.setLastTrashed(card);
+            } else {
+                Card trashCard = player.getPlayedCards(pile).getAndRemoveTop();
+                game.getDiscardPile(pile).add(trashCard);
+                player.setLastTrashed(game.getDiscardPile(pile).getTop());
             }
         } catch(Exception ignored) {
             // do nothing

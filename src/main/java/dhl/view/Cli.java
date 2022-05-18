@@ -86,7 +86,7 @@ public class Cli implements View {
             String playerName = scanner.nextLine();
             while (true) { // checks if the players name has the right length
                 if (playerName.length() <= nameLength && !playerName.isEmpty()) {
-                    playersNames[i] = (playerName);
+                    playersNames[i] = playerName;
                     break;
                 } else {
                     error("Name can't be empty and only be " + nameLength + " characters long. Try again!");
@@ -187,11 +187,11 @@ public class Cli implements View {
     @Override
     public void printTopCards(Player player) {
         System.out.println(player.getName() + "'s Top Card:");
-        printTop(player.getPlayedCardsBlue());
-        printTop(player.getPlayedCardsGreen());
-        printTop(player.getPlayedCardsOrange());
-        printTop(player.getPlayedCardsPurple());
-        printTop(player.getPlayedCardsRed());
+        printTop(player.getPlayedCards('b'));
+        printTop(player.getPlayedCards('g'));
+        printTop(player.getPlayedCards('o'));
+        printTop(player.getPlayedCards('p'));
+        printTop(player.getPlayedCards('r'));
         System.out.println();
         System.out.println();
     }
@@ -221,11 +221,11 @@ public class Cli implements View {
     public void printDiscardingPiles(Game game) {
         System.out.println();
         System.out.println("Top Cards of all Discarding Piles: ");
-        printTop(game.getDiscardingPileBlue());
-        printTop(game.getDiscardingPileGreen());
-        printTop(game.getDiscardingPileOrange());
-        printTop(game.getDiscardingPilePurple());
-        printTop(game.getDiscardingPileRed());
+        printTop(game.getDiscardPile('b'));
+        printTop(game.getDiscardPile('g'));
+        printTop(game.getDiscardPile('o'));
+        printTop(game.getDiscardPile('p'));
+        printTop(game.getDiscardPile('r'));
         System.out.println();
     }
 
@@ -362,13 +362,13 @@ public class Cli implements View {
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){
                 switch (p.getFigureAmountOnField(i)){
-                    case (3):
+                    case 3:
                         System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
                         break;
-                    case (2):
+                    case 2:
                         System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
                         break;
-                    case (1):
+                    case 1:
                         System.out.print( p.getSymbol() + "      ");
                         break;
                     default:

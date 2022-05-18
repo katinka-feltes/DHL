@@ -26,11 +26,11 @@ public class GameTest {
         player2 = game.getPlayers().get(1);
     }
     private int getSizeOfDiscardingPiles() {
-        return game.getDiscardingPileOrange().pile.size() +
-                game.getDiscardingPileBlue().pile.size() +
-                game.getDiscardingPileGreen().pile.size() +
-                game.getDiscardingPilePurple().pile.size() +
-                game.getDiscardingPileRed().pile.size();
+        return game.getDiscardPile('o').pile.size() +
+                game.getDiscardPile('b').pile.size() +
+                game.getDiscardPile('g').pile.size() +
+                game.getDiscardPile('p').pile.size() +
+                game.getDiscardPile('r').pile.size();
     }
 
     @Test
@@ -86,23 +86,23 @@ public class GameTest {
         player1.setLastTrashed(new Card(5, 'b'));
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         //false if lastTrashed = top card of same colored pile, others empty
-        game.getDiscardingPileBlue().pile.add(player1.getLastTrashed());
+        game.getDiscardPile('b').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        game.getDiscardingPileBlue().getPile().clear();
+        game.getDiscardPile('b').getPile().clear();
         player1.setLastTrashed(new Card(5, 'r'));
-        game.getDiscardingPileRed().pile.add(player1.getLastTrashed());
+        game.getDiscardPile('r').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        game.getDiscardingPileRed().getPile().clear();
+        game.getDiscardPile('r').getPile().clear();
         player1.setLastTrashed(new Card(5, 'g'));
-        game.getDiscardingPileGreen().pile.add(player1.getLastTrashed());
+        game.getDiscardPile('g').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        game.getDiscardingPileGreen().getPile().clear();
+        game.getDiscardPile('g').getPile().clear();
         player1.setLastTrashed(new Card(5, 'p'));
-        game.getDiscardingPilePurple().pile.add(player1.getLastTrashed());
+        game.getDiscardPile('p').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        game.getDiscardingPilePurple().getPile().clear();
+        game.getDiscardPile('p').getPile().clear();
         player1.setLastTrashed(new Card(5, 'o'));
-        game.getDiscardingPileOrange().pile.add(player1.getLastTrashed());
+        game.getDiscardPile('o').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         //true if none of above
         player1.setLastTrashed(new Card(5, 'b'));

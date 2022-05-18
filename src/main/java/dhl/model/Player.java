@@ -193,19 +193,19 @@ public class Player {
         hand.remove(card);
         switch (card.getColor()) {
             case 'r':
-                game.getDiscardingPileRed().getPile().add(card);
+                game.getDiscardPile('r').getPile().add(card);
                 break;
             case 'g':
-                game.getDiscardingPileGreen().add(card);
+                game.getDiscardPile('g').add(card);
                 break;
             case 'b':
-                game.getDiscardingPileBlue().add(card);
+                game.getDiscardPile('b').add(card);
                 break;
             case 'p':
-                game.getDiscardingPilePurple().add(card);
+                game.getDiscardPile('p').add(card);
                 break;
             case 'o':
-                game.getDiscardingPileOrange().add(card);
+                game.getDiscardPile('o').add(card);
                 break;
             default:
                 // do nothing
@@ -415,21 +415,6 @@ public class Player {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public DirectionDiscardPile getPlayedCardsRed() {
-        return playedCardsRed;
-    }
-    public DirectionDiscardPile getPlayedCardsBlue() {
-        return playedCardsBlue;
-    }
-    public DirectionDiscardPile getPlayedCardsGreen() {
-        return playedCardsGreen;
-    }
-    public DirectionDiscardPile getPlayedCardsPurple() {
-        return playedCardsPurple;
-    }
-    public DirectionDiscardPile getPlayedCardsOrange() {
-        return playedCardsOrange;
     }
 
     public List<Card> getHand() {
