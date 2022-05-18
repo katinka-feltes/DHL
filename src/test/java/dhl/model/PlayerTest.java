@@ -10,18 +10,27 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests the class Player
+ */
 public class PlayerTest {
 
     Game game;
     Player player;
 
     @BeforeEach
+    /**
+     * creates a new game with 2 players
+     */
     public void setup() {
         game = new Game(new String[]{"Player 1", "Player 2"});
         player = game.getPlayers().get(0);
     }
 
     @Test
+    /**
+     * tests if method addCardToPlayedCards works
+     */
     public void addCardToPlayedCards() throws Exception {
         player.getHand().removeAll(player.getHand());
         assertEquals(0, player.getHand().size());
@@ -35,7 +44,6 @@ public class PlayerTest {
         player.getHand().add(new Card(1, 'g')); // green no direction
         player.getHand().add(new Card(0, 'b')); // blue decreasing direction
         player.getHand().add(new Card(0, 'b'));
-
 
         int size_r = 0;
         int size_g = 0;
@@ -78,6 +86,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method placeFigure works
+     */
     public void placeFigure() {
         Figure fig = player.getFigureByPos(1);
         player.placeFigure('r', fig);
@@ -90,6 +101,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getCardFromHand works
+     */
     public void getCardFromHand() throws Exception {
         player.getHand().add(new Card(2, 'r'));
         assertEquals(player.getCardFromHand("r2"), player.getHand().get(0));
@@ -100,6 +114,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getFigureAmountOnField works
+     */
     public void getFigureAmountOnField() {
         player.getFigures()[0].setPos(5);
         player.getFigures()[1].setPos(7);
@@ -112,17 +129,26 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getName works
+     */
     public void getName() {
         assertEquals("Player 1", player.getName());
     }
 
     @Test
+    /**
+     * tests if method setName works
+     */
     public void setName() {
         player.setName("Test");
         assertEquals("Test", player.getName());
     }
 
     @Test
+    /**
+     * tests if method getHand works
+     */
     public void getHand() {
         game.createDecks();
         assertEquals(8, player.getHand().size());
@@ -132,17 +158,26 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getVictoryPoints works
+     */
     public void getVictoryPoints() {
         assertEquals(0, player.getVictoryPoints());
     }
 
     @Test
+    /**
+     * tests if method setVictoryPoints works
+     */
     public void setVictoryPoints() {
         player.setVictoryPoints(10);
         assertEquals(10, player.getVictoryPoints());
     }
 
     @Test
+    /**
+     * tests if method getFigureByPos works
+     */
     public void getFigureByPos() {
         player.getFigures()[0].setPos(3);
         player.getFigures()[1].setPos(5);
@@ -156,12 +191,18 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getLastMovedFigure works
+     */
     public void getLastMovedFigure() {
         player.placeFigure('r', player.getFigureByPos(1));
         assertEquals(player.getFigureByPos(1), player.getLastMovedFigure());
     }
 
     @Test
+    /**
+     * tests if method drawFromDiscardingPile works
+     */
     public void drawFromDiscardingPile() throws Exception {
         // add card to wrong pile
         assertThrows(Exception.class, () -> game.getDiscardingPilePurple().add(new Card(3, 'o')), "Card is null or a different color than the pile.");
@@ -177,12 +218,18 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method drawFromDrawingPile works
+     */
     void drawFromDrawingPile() {
         player.drawFromDrawingPile();
         assertEquals(1, player.getHand().size());
     }
 
     @Test
+    /**
+     * tests if method canPlay works
+     */
     public void canPlay() {
         player.getHand().add(new Card(2, 'r'));
         assertTrue(player.canPlay());
@@ -191,6 +238,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method allFiguresGoblin works
+     */
     public void allFiguresGoblin(){
         assertFalse(player.allFiguresGoblin());
         Game.FIELDS[0].setToken(new Goblin());
@@ -206,6 +256,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method goblinSpecialPoints works
+     */
     public void goblinSpecialPoints(){
         Game.FIELDS[0].setToken(new Goblin());
         assertEquals(5 , player.goblinSpecialPoints());
@@ -218,7 +271,11 @@ public class PlayerTest {
         Game.FIELDS[10].setToken(null);
         assertEquals(0 , player.goblinSpecialPoints());
     }
+
     @Test
+    /**
+     * tests if method playGoblinSpecial works
+     */
     public void playGoblinSpecial(){
         assertFalse(player.isGoblinSpecialPlayed());
         Game.FIELDS[0].setToken(new Goblin());
@@ -231,6 +288,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method cardFitsToAnyPile works
+     */
     public void cardFitsToAnyPile() {
         player.getHand().add(new Card(0, 't'));
         assertFalse(player.canPlay());
@@ -249,6 +309,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method calcTokenPoints works
+     */
     public void calcTokenPoints() {
         player.getTokens().add(new WishingStone());
         player.getTokens().add(new Mirror());
@@ -261,6 +324,9 @@ public class PlayerTest {
     }
 
     @Test
+    /**
+     * tests if method getSortedHand works
+     */
     public void getSortedHand() {
         player.getHand().removeAll(player.getHand());
         player.getHand().add(new Card(1, 'r'));

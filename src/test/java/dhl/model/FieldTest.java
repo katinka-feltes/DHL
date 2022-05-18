@@ -7,9 +7,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests the class Field
+ */
 public class FieldTest {
 
     @Test
+    /**
+     * tests if method collectToken works
+     */
     public void collectToken() {
         Field f = new Field(5, 'r');
         //set collectable token
@@ -32,7 +38,5 @@ public class FieldTest {
         assertEquals(stoneInField, lf.collectToken());
         assertNull(lf.getToken());
         assertNull(lf.collectToken());
-
-
     }
 }

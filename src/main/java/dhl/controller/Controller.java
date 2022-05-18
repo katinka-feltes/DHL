@@ -6,7 +6,6 @@ import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
 import dhl.view.View;
 
-
 public class Controller {
     View view;
     Game model;
