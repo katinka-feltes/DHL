@@ -7,6 +7,11 @@ import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 
+/**
+ * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
+ * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),
+ * a list of figures and the last played figure and finaly a list of tokens.
+ */
 public class Player {
 
     private String name;

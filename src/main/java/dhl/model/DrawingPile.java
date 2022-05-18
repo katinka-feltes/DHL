@@ -3,6 +3,10 @@ package dhl.model;
 import java.util.Collections;
 import java.util.Stack;
 
+/**
+ * This Class represents a Drawing Pile. It is realised as a Stack. When you create it it gets shuffled.
+ * You can draw cards from the Top
+ */
 public class DrawingPile {
 
     private final Stack<Card> cards;

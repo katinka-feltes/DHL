@@ -2,6 +2,9 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+/**
+ * This Class represents a WishingStone Token. If you collect it you get a WishingStone-score ranging from -4 to 10.
+ */
 public class WishingStone implements Token{
 
     private static final char SYMBOL = 'W';

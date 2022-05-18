@@ -1,5 +1,8 @@
 package dhl.model;
 
+/**
+ * This Class represents a Figure. A Figure has a position, a last position and a color.
+ */
 public class Figure {
     private int pos;
     private int latestPos;

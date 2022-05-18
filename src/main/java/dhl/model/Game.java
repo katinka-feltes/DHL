@@ -5,6 +5,10 @@ import dhl.model.tokens.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This Class represents a Game. A Game has a list of players, a playingfield (list of Fields), a list of tokens,
+ * a Drwaingpile and a list of discard piles. It is one of the main classes of the project.
+ */
 public class Game {
     public static final Field[] FIELDS = {
             new LargeField(0, 'w', 0),

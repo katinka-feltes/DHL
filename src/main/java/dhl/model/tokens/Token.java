@@ -2,6 +2,9 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+/**
+ * This Interface provides the basic functionality of a Token.
+ */
 public interface Token {
 
     /**

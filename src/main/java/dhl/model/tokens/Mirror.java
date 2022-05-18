@@ -2,6 +2,9 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+/**
+ * This Class represents a Mirror Token. If you find a Mirror you collect it and it doubles your Wishing-Stone points.
+ */
 public class Mirror implements Token {
 
     public static final char SYMBOL = 'M';

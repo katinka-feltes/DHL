@@ -4,9 +4,10 @@ import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.Player;
 
+/**
+ * This Class represents a Spiderweb Token. If you collect it you are allowed to move to the next field of the color of the Spiderweb.
+ */
 public class Spiderweb implements Token {
-    // Kleeblatt
-
 
     public static final char SYMBOL = '\u25A9';
 

@@ -2,6 +2,9 @@ package dhl.model;
 
 import dhl.model.tokens.Token;
 
+/**
+ * This Class represents a Field. A Field has points, a color and a token.
+ */
 public class Field {
     private final int points;
     private final char color;

@@ -1,5 +1,8 @@
 package dhl.model;
 
+/**
+ * This Class represents a Card. A Card has a number and a color.
+ */
 public class Card {
     private final int number;
     private final char color;

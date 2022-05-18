@@ -2,6 +2,9 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+/**
+ * This Class represents a Skullpoint Token. If you collect it you get victory points depending on the Skullpoint you found.
+ */
 public class Skullpoint implements Token{
     // ☠ is the symbol of the token
     public static final char SYMBOL = '\u2620';

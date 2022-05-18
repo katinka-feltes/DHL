@@ -2,6 +2,9 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+/**
+ * This Class represents a Spiral Token. If you collect it you are allowed to move back as far as you want just not thefield you just came from.
+ */
 public class Spiral implements Token {
 
         public static final char SYMBOL = '\u058E';

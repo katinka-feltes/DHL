@@ -3,6 +3,9 @@ package dhl.model;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
+/**
+ * This Class represents a Large Field. A Large Field is a Field with another Token on it.
+ */
 public class LargeField extends Field {
     private Token tokenTwo = null;
 

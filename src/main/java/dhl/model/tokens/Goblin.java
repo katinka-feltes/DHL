@@ -4,6 +4,9 @@ import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 
+/**
+ * This Class represents a Goblin Token. If you find a Goblin you are allowed to either remove a card from your hand or from one of your discarding piles.
+ */
 public class Goblin implements Token {
 
     public static final char SYMBOL = 'G';

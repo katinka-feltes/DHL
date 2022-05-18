@@ -6,7 +6,9 @@ import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
 import dhl.view.View;
 
-
+/**
+ * This Class is the Controller of the MVC pattern. It is responsible for the communication between the Model and the View.
+ */
 public class Controller {
     View view;
     Game model;

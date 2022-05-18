@@ -2,6 +2,9 @@ package dhl.model;
 
 import java.util.ArrayList;
 
+/**
+ * This Class represents a Discard Pile. You can discard any card on it you want.
+ */
 public class DiscardPile {
     //TODO: maybe change list to stack
     protected final ArrayList<Card> pile;

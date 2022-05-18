@@ -1,5 +1,9 @@
 package dhl.model;
 
+/**
+ * This Class represents a DirectionDiscardPile. A DirectionDiscardPile is a pile of cards that only allows one
+ * direction the cards can be discarded. Meaning cards can only be added descending or ascending.
+ */
 public class DirectionDiscardPile extends DiscardPile{
 
     private int direction; //-1 if decreasing, 0 if not set and 1 if increasing

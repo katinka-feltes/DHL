@@ -4,6 +4,10 @@ import dhl.model.Game;
 import dhl.model.Player;
 
 @SuppressWarnings("ClassEscapesDefinedScope")
+/**
+ * This Class represents the View. It is the only class that can be accessed from the outside.
+ * It is responsible for the user interaction and the communication between the model and the view.
+ */
 public interface View {
 
     String[] inputPlayersNames(int playerAmount);
