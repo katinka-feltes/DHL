@@ -2,6 +2,7 @@ package dhl.controller;
 
 import dhl.model.*;
 import dhl.model.tokens.Goblin;
+import dhl.model.tokens.Spiderweb;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
 import dhl.view.View;
@@ -188,20 +189,11 @@ public class Controller {
 
                 case "Goblin":
                     doTokenGoblin(player);
-                    if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
-                            view.promptPlayersChoice("Do you want to play your goblin-special? (you would earn "
-                            + player.goblinSpecialPoints() + " points)")){
-                        player.playGoblinSpecial();
-                    }
+                    doGoblinSpecialAction(player);
                     break;
 
-                case "Spiderweb":
-                    if (view.promptPlayersChoice("Your Figure gets moved to " +
-                            "figure to the next field with the same color. Do you want to proceed with your action?")) {
-                        token.action(player);
-                        view.printCurrentBoard(model);
-                        usingToken(player);
-                    }
+                case "Spiderweb" :
+                        doTokenSpiderWeb(player);
                     break;
                 default:
                     token.action(player);
@@ -244,36 +236,68 @@ public class Controller {
 
         if (view.promptPlayersChoice("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {
+            goblinChosenPile(player, token);
+        }
 
-            view.printTopCards(player);
+    }
+
+    /**
+     * this method controls the Token action
+     * @param player the current player
+     */
+    private void doTokenSpiderWeb(Player player) {
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+
+        if (view.promptPlayersChoice("Your Figure gets moved to " +
+                "figure to the next field with the same color. Do you want to proceed with your action?")) {
+            ((Spiderweb)token).action(player);
+            view.printCurrentBoard(model);
+            usingToken(player);
+        }
+    }
+
+    /**
+     * this method controls the pile decision
+     * @param player the current player
+     * @param token the Goblin token
+     */
+    private void goblinChosenPile(Player player, Token token) {
+
+        view.printTopCards(player);
 
             if (view.promptPlayersChoice("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
                 ((Goblin) token).setPileChoice('h');
-                    while (true) {
-                        String cardAsString;
-                        try {
-                            view.printHand(player);
-                            cardAsString = view.promptCardString("What card do you want to trash?");
-                            view.printHand(player);
-                            ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
-                            token.action(player);
-                            drawOne(player);
-                            break;
-                        } catch (Exception e) {
-                            view.error(e.getMessage());
-                        }
+
+                    String cardAsString;
+                    try {
+                        view.printHand(player);
+                        cardAsString = view.promptCardString("What card do you want to trash?");
+                        ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
+                        token.action(player);
+                        drawOne(player);
+                    } catch (Exception e) {
+                        view.error(e.getMessage());
                     }
             }else {
-                while (true){
-                        ((Goblin)token).setPileChoice(view.promptColor("From which pile do you want to trash the top card?"));
-                        if (!player.getPlayedCards(((Goblin)token).getPileChoice()).isEmpty()) {
-                            token.action(player);
-                            break;
-                        } else {
-                            view.error("This pile is empty! Try another color.");
-                        }
-                }
+                    ((Goblin)token).setPileChoice(view.promptColor("From which pile do you want to trash the top card?"));
+                    if (!player.getPlayedCards(((Goblin)token).getPileChoice()).isEmpty()) {
+                        token.action(player);
+                    } else {
+                        view.error("This pile is empty! Try another color.");
+                        goblinChosenPile(player, token);
+                    }
             }
+        }
+
+    /**
+     * this method controls the goblin special action
+     * @param player the current player
+     */
+    private void doGoblinSpecialAction(Player player) {
+        if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
+                view.promptPlayersChoice("Do you want to play your goblin-special? (you would earn "
+                        + player.goblinSpecialPoints() + " points)")){
+            player.playGoblinSpecial();
         }
     }
 
