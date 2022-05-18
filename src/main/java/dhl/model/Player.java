@@ -6,6 +6,7 @@ import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
@@ -25,7 +26,7 @@ public class Player {
 
     private Card lastTrashed;
 
-    private final ArrayList<Card> hand;
+    private final List<Card> hand;
 
     private int victoryPoints;
     private Figure lastMovedFigure;
@@ -33,7 +34,7 @@ public class Player {
 
     private final Figure[] figures = new Figure[3];
 
-    private final ArrayList<Token> tokens;
+    private final List<Token> tokens;
 
 
     // collected tokens and color need to be added
@@ -214,14 +215,14 @@ public class Player {
      * sorts the hand of the player by number and color
      * @return hand sorted by number and color as an ArrayList
      */
-    public ArrayList<Card> getSortedHand() {
-        ArrayList<Card> unsortedHand = getHand();
-        ArrayList<Card> blueCards = new ArrayList<>();
-        ArrayList<Card> greenCards = new ArrayList<>();
-        ArrayList<Card> orangeCards = new ArrayList<>();
-        ArrayList<Card> purpleCards = new ArrayList<>();
-        ArrayList<Card> redCards = new ArrayList<>();
-        ArrayList<Card> sortedHand = new ArrayList<>();
+    public List<Card> getSortedHand() {
+        List<Card> unsortedHand = getHand();
+        List<Card> blueCards = new ArrayList<>();
+        List<Card> greenCards = new ArrayList<>();
+        List<Card> orangeCards = new ArrayList<>();
+        List<Card> purpleCards = new ArrayList<>();
+        List<Card> redCards = new ArrayList<>();
+        List<Card> sortedHand = new ArrayList<>();
 
         for(Card card: unsortedHand) {
             if(card.getColor() == 'b') {
@@ -236,11 +237,11 @@ public class Player {
                 redCards.add(card);
             }
         }
-        sortedHand.addAll(sortColorList(blueCards));
-        sortedHand.addAll(sortColorList(greenCards));
-        sortedHand.addAll(sortColorList(orangeCards));
-        sortedHand.addAll(sortColorList(purpleCards));
-        sortedHand.addAll(sortColorList(redCards));
+        sortedHand.addAll(sortColorList((ArrayList<Card>) blueCards));
+        sortedHand.addAll(sortColorList((ArrayList<Card>) greenCards));
+        sortedHand.addAll(sortColorList((ArrayList<Card>) orangeCards));
+        sortedHand.addAll(sortColorList((ArrayList<Card>) purpleCards));
+        sortedHand.addAll(sortColorList((ArrayList<Card>) redCards));
 
         return sortedHand;
     }
@@ -250,8 +251,8 @@ public class Player {
      * @param colorList list of cards already sorted by color
      * @return cards of a specific color sorted by number as an ArrayList
      */
-    public ArrayList<Card> sortColorList(ArrayList<Card> colorList) {
-        ArrayList<Card> sortedColorList = new ArrayList<>();
+    public List<Card> sortColorList(ArrayList<Card> colorList) {
+        List<Card> sortedColorList = new ArrayList<>();
         for(int i=0; i<=10; i++) {
             for(Card card: colorList) {
                 if (card.getNumber() == i) {
@@ -275,7 +276,7 @@ public class Player {
                 mirrors++;
             }
         }
-        victoryPoints += WishingStone.getValue(stones) * (int)Math.pow(2, mirors;
+        victoryPoints += WishingStone.getValue(stones) * (int)Math.pow(2, mirrors);
     }
 
     /**
@@ -431,7 +432,7 @@ public class Player {
         return playedCardsOrange;
     }
 
-    public ArrayList<Card> getHand() {
+    public List<Card> getHand() {
         return hand;
     }
 
@@ -455,7 +456,7 @@ public class Player {
         this.victoryPoints = victoryPoints;
     }
 
-    public ArrayList<Token> getTokens() {
+    public List<Token> getTokens() {
         return tokens;
     }
 

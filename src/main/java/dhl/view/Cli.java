@@ -1,10 +1,12 @@
 package dhl.view;
 
 //Suppressed warnings for the following import:
+
 import dhl.model.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -287,7 +289,7 @@ public class Cli implements View {
     @Override
     public void printCurrentBoard(Game game){
 
-        ArrayList<Player> players = game.getPlayers();
+        List<Player> players = game.getPlayers();
 
         //legend for player-symbols
         //player 1: C, player 2: H, player 3: K, player 4: M
@@ -297,11 +299,11 @@ public class Cli implements View {
         System.out.println();
 
         //print the boards first row (from 0-11)
-        printBoardPart(0,11, players);
+        printBoardPart(0,11, (ArrayList<Player>) players);
         //print the boards first row (from 12-23)
-        printBoardPart(12,23, players);
+        printBoardPart(12,23, (ArrayList<Player>) players);
         //print the boards first row (from 24-35)
-        printBoardPart(24,35, players);
+        printBoardPart(24,35, (ArrayList<Player>) players);
 
         //print points
         System.out.print("Points: ");
@@ -318,7 +320,7 @@ public class Cli implements View {
      * @param rowEnd the last field of the board that will be printed
      * @param players the players of the game
      */
-    private void printBoardPart(int rowStart, int rowEnd, ArrayList<Player> players){
+    private void printBoardPart(int rowStart, int rowEnd, List<Player> players){
         // print index
         for (int i = rowStart; i <= rowEnd; i++){
             System.out.print(("(" + i + ")    ").substring(0,7));

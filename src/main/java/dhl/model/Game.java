@@ -4,6 +4,7 @@ import dhl.model.tokens.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * This Class represents a Game. A Game has a list of players, a playingfield (list of Fields), a list of tokens,
@@ -57,9 +58,9 @@ public class Game {
     private final DiscardPile discardingPileOrange;
 
     private final DrawingPile drawingPile;
-    private final ArrayList<Player> players;
+    private final List<Player> players;
 
-    private final ArrayList<Token> tokens;
+    private final List<Token> tokens;
 
     /**
      * This method creates the deck for each player.
@@ -281,7 +282,7 @@ public class Game {
         return discardingPileOrange;
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
