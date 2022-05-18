@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests all the token classes
+ */
 public class TokenTest {
 
     private Token goblin, mirror, skull, spider, spiral, stone;
@@ -16,6 +19,9 @@ public class TokenTest {
     private Player player;
 
     @BeforeEach
+    /**
+     * creates one of each tokens and a game with 2 players
+     */
     public void setup(){
         goblin = new Goblin();
         mirror = new Mirror();
@@ -29,6 +35,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method isCollectable works
+     */
     public void isCollectable() {
         assertFalse(goblin.isCollectable());
         assertTrue(mirror.isCollectable());
@@ -39,6 +48,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method getName works
+     */
     public void getName() {
         assertEquals("Goblin", goblin.getName());
         assertEquals("Mirror", mirror.getName());
@@ -49,6 +61,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method getSymbol works
+     */
     public void getSymbol() {
         assertEquals('G', goblin.getSymbol());
         assertEquals('M', mirror.getSymbol());
@@ -59,6 +74,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method actionCollectables (mirror + wishingstone) works
+     */
     public void actionCollectables(){
         // test mirror action
         assertEquals(0,player.getTokens().size());
@@ -72,6 +90,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method actionSkullpoints works
+     */
     public void actionSkullpoints(){
         assertEquals(0, player.getVictoryPoints());
         skull.action(player);
@@ -79,6 +100,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method getSymbol works
+     */
     public void actionSpiderweb(){
         Figure figure1 = player.getFigures()[0];
         Figure figure2 = player.getFigures()[1];
@@ -92,6 +116,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method actionSpiral works
+     */
     public void actionSpiral(){
         Figure figure = player.getFigures()[0];
         player.placeFigure('p', figure); // move figure to the field with index 1
@@ -105,6 +132,9 @@ public class TokenTest {
     }
 
     @Test
+    /**
+     * tests if method actionGoblin works
+     */
     public void actionGoblin() throws Exception{
 
         goblin.action(player); // nothing should happen if no pile is set
@@ -144,7 +174,11 @@ public class TokenTest {
         assertEquals(0, player.getHand().size());
         assertEquals(card, game.getDiscardingPilePurple().getTop());
     }
+
     @Test
+    /**
+     * tests if method setPileChoice works
+     */
     public void setPileChoice() {
         ((Goblin) goblin).setPileChoice('r');
         assertEquals('r', ((Goblin) goblin).getPileChoice());

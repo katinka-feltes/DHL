@@ -26,15 +26,15 @@ public class DirectionDiscardPile extends DiscardPile{
      */
     public boolean cardFitsToPile(Card card){ //color are needed to be correct
         switch(direction){
-            case(0):
+            case 0:
                 if(pile.isEmpty()) {
                     return true;
                 }
                 return getTop().getColor() == getColor();
-            case(1):
-                return (getTop().getColor() == getColor() && getTop().getNumber() <= card.getNumber());
-            case(-1):
-                return (getTop().getColor() == getColor() && getTop().getNumber() >= card.getNumber());
+            case 1:
+                return getTop().getColor() == getColor() && getTop().getNumber() <= card.getNumber();
+            case -1:
+                return getTop().getColor() == getColor() && getTop().getNumber() >= card.getNumber();
             default:
                 return false;
         }

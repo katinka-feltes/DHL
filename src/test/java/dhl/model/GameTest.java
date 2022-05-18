@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests the class Game
+ */
 public class GameTest {
 
     private Game game;
@@ -14,6 +17,9 @@ public class GameTest {
     private Player player2;
 
     @BeforeEach
+    /**
+     * creates a new game with 3 players
+     */
     public void setup() {
         game = new Game(new String[]{"Player 1", "Player 2", "Player 3"});
         player1 = game.getPlayers().get(0);
@@ -28,6 +34,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method gameOver works
+     */
     public void gameOver() {
         //checks if game ends when one player has all 3 in finish area
         Figure[] figures = player1.getFigures();
@@ -52,6 +61,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method putCardOnDiscardingPile works
+     */
     public void putCardOnDiscardingPile() throws Exception {
         player1.getHand().add(new Card(1, 'r'));
         player1.getHand().add(new Card(1, 'g'));
@@ -66,6 +78,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method canDrawFromDiscarding works
+     */
     public void canDrawFromDiscarding() {
         //false if all piles are empty
         player1.setLastTrashed(new Card(5, 'b'));
@@ -95,6 +110,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method getDrawingPile works
+     */
     public void getDrawingPile() {
         assertEquals(110, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
@@ -104,6 +122,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method getPlayers works
+     */
     public void getPlayers() {
         assertEquals(3, game.getPlayers().size());
         game.getPlayers().remove(player1);
@@ -111,11 +132,17 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method getPlayerAmount works
+     */
     public void getPlayerAmount() {
         assertEquals(3, game.getPlayerAmount());
     }
 
     @Test
+    /**
+     * tests if method createDecks works
+     */
     public void createDecks() {
         game.createDecks();
         for (Player player1 : game.getPlayers()) {
@@ -124,6 +151,9 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * tests if method getWinningPlayer works
+     */
     public void getWinningPlayer() {
         player1.setVictoryPoints(20);
         player2.setVictoryPoints(10);

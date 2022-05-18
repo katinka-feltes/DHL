@@ -95,19 +95,19 @@ public class Player {
     public void addCardToPlayedCards(Card card) throws Exception {
 
         switch (card.getColor()) {
-            case ('r'):
+            case 'r':
                 playedCardsRed.add(card);
                 break;
-            case ('g'):
+            case 'g':
                 playedCardsGreen.add(card);
                 break;
-            case ('b'):
+            case 'b':
                 playedCardsBlue.add(card);
                 break;
-            case ('p'):
+            case 'p':
                 playedCardsPurple.add(card);
                 break;
-            case ('o'):
+            case 'o':
                 playedCardsOrange.add(card);
                 break;
             default:
@@ -136,21 +136,21 @@ public class Player {
     public Figure getFigureByPos(int figurePos) {
         Figure chosen = figures[0];
         switch(figurePos){
-            case(1):
+            case 1:
                 for(Figure f : figures){
                     if (f.getPos() > chosen.getPos()){
                         chosen = f;
                     }
                 }
                 break;
-            case(2):
+            case 2:
                 for(Figure f : figures){
                     if (f != getFigureByPos(1) && f != getFigureByPos(3)){
                         chosen = f;
                     }
                 }
                 break;
-            case(3):
+            case 3:
                 for(Figure f : figures){
                     if (f.getPos() < chosen.getPos()){
                         chosen = f;
@@ -174,8 +174,8 @@ public class Player {
         char[] cardValue = cardAsString.toCharArray();
         for (Card handCard : hand) {
             // if number and color match current card from hand (if the length of value is 3, the number always is 10)
-            if ((cardValue.length == 2 && handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1])) ||
-                    (cardValue.length == 3 && handCard.getNumber() == 10)) {
+            if (cardValue.length == 2 && handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1]) ||
+                    cardValue.length == 3 && handCard.getNumber() == 10) {
                 return handCard;
             }
         }
@@ -275,7 +275,7 @@ public class Player {
                 mirrors++;
             }
         }
-        victoryPoints += (WishingStone.getValue(stones) * (int)Math.pow(2, mirrors));
+        victoryPoints += WishingStone.getValue(stones) * (int)Math.pow(2, mirors;
     }
 
     /**
@@ -297,19 +297,12 @@ public class Player {
      * @return true if card fits to appropriately colored pile
      */
     private boolean cardFitsToAnyPile(Card card){
-        switch (card.getColor()) {
-            case ('r'):
-                return playedCardsRed.cardFitsToPile(card);
-            case ('g'):
-                return playedCardsGreen.cardFitsToPile(card);
-            case ('b'):
-                return playedCardsBlue.cardFitsToPile(card);
-            case ('p'):
-                return playedCardsPurple.cardFitsToPile(card);
-            case ('o'):
-                return playedCardsOrange.cardFitsToPile(card);
-            default:
-                return false;
+        DirectionDiscardPile playedCards = getPlayedCards(card.getColor());
+        if(playedCards != null){
+            return playedCards.cardFitsToPile(card);
+        }
+        else {
+            return false;
         }
     }
 
@@ -385,6 +378,28 @@ public class Player {
             amount += getFigureAmountOnField(field);
         }
         return amount;
+    }
+
+    /**
+     * getter for the played card piles
+     * @param color the color of the pile to return
+     * @return the direction-discard-pile in the given color
+     */
+    public DirectionDiscardPile getPlayedCards(char color){
+            switch (color) {
+                case 'r':
+                    return playedCardsRed;
+                case 'g':
+                    return playedCardsGreen;
+                case 'b':
+                    return playedCardsBlue;
+                case 'p':
+                    return playedCardsPurple;
+                case 'o':
+                    return playedCardsOrange;
+                default:
+                    return null;
+        }
     }
 
     public Figure getLastMovedFigure(){

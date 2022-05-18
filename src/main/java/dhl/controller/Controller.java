@@ -175,18 +175,18 @@ public class Controller {
      */
     private void usingToken(Player player){
         //get the token and remove it from the field if it is collectable
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].getToken();
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (token != null){
             view.out("You found a " + token.getName() + "!");
 
             switch (token.getName()){
 
-                case("Spiral") :
+                case "Spiral" :
                     doTokenSpiral(player);
                     break;
 
-                case("Goblin") :
+                case "Goblin":
                     doTokenGoblin(player);
                     if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
                             view.promptPlayersChoice("Do you want to play your goblin-special? (you would earn "
@@ -195,21 +195,13 @@ public class Controller {
                     }
                     break;
 
-                case("Spiderweb") :
+                case "Spiderweb":
                     if (view.promptPlayersChoice("Your Figure gets moved to " +
                             "figure to the next field with the same color. Do you want to proceed with your action?")) {
                         token.action(player);
                         view.printCurrentBoard(model);
                         usingToken(player);
                     }
-                    break;
-                case("Skullpoint") :
-                    token.action(player);
-                    break;
-                case("WishingStone") :
-                case("Mirror") :
-                    Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
-                    view.printCurrentBoard(model);
                     break;
                 default:
                     token.action(player);
@@ -274,14 +266,7 @@ public class Controller {
             }else {
                 while (true){
                         ((Goblin)token).setPileChoice(view.promptColor("From which pile do you want to trash the top card?"));
-                        if (((Goblin)token).getPileChoice() == 'r' && !player.getPlayedCardsRed().isEmpty() ||
-                                ((Goblin)token).getPileChoice() == 'g' && !player.getPlayedCardsGreen().isEmpty() ||
-                                ((Goblin)token).getPileChoice() == 'b' && !player.getPlayedCardsBlue().isEmpty() ||
-                                ((Goblin)token).getPileChoice() == 'o' && !player.getPlayedCardsOrange().isEmpty()) {
-
-                            token.action(player);
-                            break;
-                        } else if (((Goblin)token).getPileChoice() == 'p' && !player.getPlayedCardsPurple().isEmpty()) {
+                        if (!player.getPlayedCards(((Goblin)token).getPileChoice()).isEmpty()) {
                             token.action(player);
                             break;
                         } else {
