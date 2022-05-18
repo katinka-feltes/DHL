@@ -14,15 +14,25 @@ public class FieldTest {
 
     @Test
     /**
-     * tests if method collectToken works
+     * tests if method collectToken works for collectable
+     * tokens on normal fields
      */
-    public void collectToken() {
+    public void collectCollectableTokenFromField() {
         Field f = new Field(5, 'r');
         //set collectable token
         f.setToken(new WishingStone());
         assertEquals("WishingStone", f.collectToken().getName());
         assertNull(f.getToken());
         assertNull(f.collectToken());
+    }
+
+    @Test
+    /**
+     * tests if method collectToken works for not-collectable
+     * tokens on normal fields
+     */
+    public void collectNotCollectableTokenFromField() {
+        Field f = new Field(5, 'r');
         //set not collectable token
         Token skull = new Skullpoint(1);
         assertFalse(skull.isCollectable());
@@ -30,7 +40,12 @@ public class FieldTest {
         assertEquals("Skullpoint", f.collectToken().getName());
         assertEquals(skull, f.getToken());
         assertEquals(skull, f.collectToken());
+    }
 
+    /**
+     * tests if method collectToken works on large fields
+     */
+    public void collectTokenLargeField() {
         //test large field collect token
         LargeField lf = new LargeField(7, 'b', 2);
         assertTrue(lf.collectToken() instanceof WishingStone);

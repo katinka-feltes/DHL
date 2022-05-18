@@ -36,15 +36,22 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if method isCollectable works
+     * tests if method isCollectable works for collectable tokens
      */
     public void isCollectable() {
-        assertFalse(goblin.isCollectable());
         assertTrue(mirror.isCollectable());
+        assertTrue(stone.isCollectable());
+    }
+
+    @Test
+    /**
+     * tests if method isCollectable works for not-collectable tokens
+     */
+    public void isNotCollectable() {
+        assertFalse(goblin.isCollectable());
         assertFalse(skull.isCollectable());
         assertFalse(spider.isCollectable());
         assertFalse(spiral.isCollectable());
-        assertTrue(stone.isCollectable());
     }
 
     @Test
@@ -56,7 +63,6 @@ public class TokenTest {
         assertEquals("Mirror", mirror.getName());
         assertEquals("Skullpoint", skull.getName());
         assertEquals("Spiderweb", spider.getName());
-        assertEquals("Spiral", spiral.getName());
         assertEquals("WishingStone", stone.getName());
     }
 
@@ -70,12 +76,11 @@ public class TokenTest {
         assertEquals('\u2620', skull.getSymbol());
         assertEquals('\u25A9', spider.getSymbol());
         assertEquals('\u058E', spiral.getSymbol());
-        assertEquals('W', stone.getSymbol());
     }
 
     @Test
     /**
-     * tests if method actionCollectables (mirror + wishingstone) works
+     * tests if action of collectable tokens (mirror + wishingstone) works
      */
     public void actionCollectables(){
         // test mirror action
@@ -91,7 +96,7 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if method actionSkullpoints works
+     * tests if action of skullpoint token works
      */
     public void actionSkullpoints(){
         assertEquals(0, player.getVictoryPoints());
@@ -101,7 +106,7 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if method getSymbol works
+     * tests if action of spiderweb works
      */
     public void actionSpiderweb(){
         Figure figure1 = player.getFigures()[0];
@@ -117,7 +122,7 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if method actionSpiral works
+     * tests if action of spiral works
      */
     public void actionSpiral(){
         Figure figure = player.getFigures()[0];
@@ -133,7 +138,8 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if method actionGoblin works
+     * tests if action of goblin works
+     * too many asserts because we need to test all colors
      */
     public void actionGoblin() throws Exception{
 

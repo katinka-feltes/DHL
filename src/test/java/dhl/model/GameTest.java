@@ -80,6 +80,7 @@ public class GameTest {
     @Test
     /**
      * tests if method canDrawFromDiscarding works
+     * too many asserts because we need to test all color options
      */
     public void canDrawFromDiscarding() {
         //false if all piles are empty

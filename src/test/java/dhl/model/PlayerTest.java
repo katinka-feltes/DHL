@@ -30,20 +30,18 @@ public class PlayerTest {
     @Test
     /**
      * tests if method addCardToPlayedCards works
+     * too many asserts because we need to test all colors
      */
     public void addCardToPlayedCards() throws Exception {
         player.getHand().removeAll(player.getHand());
-        assertEquals(0, player.getHand().size());
         player.getHand().add(new Card(1, 'r'));
         player.getHand().add(new Card(1, 'g'));
         player.getHand().add(new Card(1, 'b'));
         player.getHand().add(new Card(1, 'p'));
         player.getHand().add(new Card(1, 'o'));
-        assertEquals(5, player.getHand().size());
         player.getHand().add(new Card(2, 'r')); // red increasing direction
         player.getHand().add(new Card(1, 'g')); // green no direction
         player.getHand().add(new Card(0, 'b')); // blue decreasing direction
-        player.getHand().add(new Card(0, 'b'));
 
         int size_r = 0;
         int size_g = 0;
