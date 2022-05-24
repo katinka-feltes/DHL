@@ -18,11 +18,7 @@ public class Player {
     private String name;
     private final char symbol;
     private final Game game;
-    private final DirectionDiscardPile playedCardsRed;
-    private final DirectionDiscardPile playedCardsBlue;
-    private final DirectionDiscardPile playedCardsGreen;
-    private final DirectionDiscardPile playedCardsPurple;
-    private final DirectionDiscardPile playedCardsOrange;
+    private final DirectionDiscardPile[] playedCards = new DirectionDiscardPile[5];
 
     private Card lastTrashed;
 
@@ -51,11 +47,11 @@ public class Player {
         this.game = game;
         goblinSpecialPlayed = false;
         victoryPoints = 0;
-        playedCardsRed = new DirectionDiscardPile('r');
-        playedCardsBlue = new DirectionDiscardPile('b');
-        playedCardsGreen = new DirectionDiscardPile('g');
-        playedCardsPurple = new DirectionDiscardPile('p');
-        playedCardsOrange = new DirectionDiscardPile('o');
+        playedCards[0] = new DirectionDiscardPile('r');
+        playedCards[1] = new DirectionDiscardPile('b');
+        playedCards[2] = new DirectionDiscardPile('g');
+        playedCards[3] = new DirectionDiscardPile('p');
+        playedCards[4] = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
         figures[0] = new Figure(symbol);
         figures[1] = new Figure(symbol);
@@ -94,26 +90,7 @@ public class Player {
      * @throws Exception from add(card)
      */
     public void addCardToPlayedCards(Card card) throws Exception {
-
-        switch (card.getColor()) {
-            case 'r':
-                playedCardsRed.add(card);
-                break;
-            case 'g':
-                playedCardsGreen.add(card);
-                break;
-            case 'b':
-                playedCardsBlue.add(card);
-                break;
-            case 'p':
-                playedCardsPurple.add(card);
-                break;
-            case 'o':
-                playedCardsOrange.add(card);
-                break;
-            default:
-                // do nothing
-        }
+        getPlayedCards(card.getColor()).add(card);
         hand.remove(card);
     }
 
@@ -191,25 +168,8 @@ public class Player {
      */
     public void putCardOnDiscardingPile(Card card) throws Exception {
         hand.remove(card);
-        switch (card.getColor()) {
-            case 'r':
-                game.getDiscardPile('r').getPile().add(card);
-                break;
-            case 'g':
-                game.getDiscardPile('g').add(card);
-                break;
-            case 'b':
-                game.getDiscardPile('b').add(card);
-                break;
-            case 'p':
-                game.getDiscardPile('p').add(card);
-                break;
-            case 'o':
-                game.getDiscardPile('o').add(card);
-                break;
-            default:
-                // do nothing
-        }
+        game.getDiscardPile(card.getColor()).add(card);
+        //game.getDiscardPile(card.getColor()).getPile().add(card);
     }
     /**
      * sorts the hand of the player by number and color
@@ -354,7 +314,6 @@ public class Player {
         goblinSpecialPlayed = true;
     }
 
-
     /**
      * @param fieldIndex the index of the field to get the figure-amount from
      * @return the amount of figures on the field as an int
@@ -387,20 +346,12 @@ public class Player {
      * @return the direction-discard-pile in the given color
      */
     public DirectionDiscardPile getPlayedCards(char color){
-            switch (color) {
-                case 'r':
-                    return playedCardsRed;
-                case 'g':
-                    return playedCardsGreen;
-                case 'b':
-                    return playedCardsBlue;
-                case 'p':
-                    return playedCardsPurple;
-                case 'o':
-                    return playedCardsOrange;
-                default:
-                    return null;
+        for (DirectionDiscardPile pile : playedCards){
+            if(pile.getColor() == color){
+                return pile;
+            }
         }
+        return null;
     }
 
     public Figure getLastMovedFigure(){
@@ -453,5 +404,3 @@ public class Player {
         return symbol;
     }
 }
-
-
