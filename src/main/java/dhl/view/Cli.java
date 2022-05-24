@@ -173,7 +173,7 @@ public class Cli implements View {
     @Override
     public void printHand(Player player) {
         System.out.println(player.getName() + "'s Hand Cards:");
-        for (Card card : player.getSortedHand()){
+        for (Card card : CardFunction.sortHand(player.getHand())){
             System.out.print(Character.toString(card.getColor())+ card.getNumber() + "   ");
         }
         System.out.println();

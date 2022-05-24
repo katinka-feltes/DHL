@@ -5,23 +5,20 @@ import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
  * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),
- * a list of figures and the last played figure and finaly a list of tokens.
+ * a list of figures and the last played figure and finally a list of tokens.
  */
 public class Player {
 
     private String name;
     private final char symbol;
     private final Game game;
-    private final DirectionDiscardPile playedCardsRed;
-    private final DirectionDiscardPile playedCardsBlue;
-    private final DirectionDiscardPile playedCardsGreen;
-    private final DirectionDiscardPile playedCardsPurple;
-    private final DirectionDiscardPile playedCardsOrange;
+    private final DirectionDiscardPile[] playedCards = new DirectionDiscardPile[5];
 
     private Card lastTrashed;
 
@@ -50,11 +47,11 @@ public class Player {
         this.game = game;
         goblinSpecialPlayed = false;
         victoryPoints = 0;
-        playedCardsRed = new DirectionDiscardPile('r');
-        playedCardsBlue = new DirectionDiscardPile('b');
-        playedCardsGreen = new DirectionDiscardPile('g');
-        playedCardsPurple = new DirectionDiscardPile('p');
-        playedCardsOrange = new DirectionDiscardPile('o');
+        playedCards[0] = new DirectionDiscardPile('r');
+        playedCards[1] = new DirectionDiscardPile('b');
+        playedCards[2] = new DirectionDiscardPile('g');
+        playedCards[3] = new DirectionDiscardPile('p');
+        playedCards[4] = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
         figures.add(new Figure(symbol));
         figures.add(new Figure(symbol));
@@ -93,26 +90,7 @@ public class Player {
      * @throws Exception from add(card)
      */
     public void addCardToPlayedCards(Card card) throws Exception {
-
-        switch (card.getColor()) {
-            case 'r':
-                playedCardsRed.add(card);
-                break;
-            case 'g':
-                playedCardsGreen.add(card);
-                break;
-            case 'b':
-                playedCardsBlue.add(card);
-                break;
-            case 'p':
-                playedCardsPurple.add(card);
-                break;
-            case 'o':
-                playedCardsOrange.add(card);
-                break;
-            default:
-                // do nothing
-        }
+        getPlayedCards(card.getColor()).add(card);
         hand.remove(card);
     }
 
@@ -139,25 +117,6 @@ public class Player {
     }
 
     /**
-     * Get a card from hand
-     * @param cardAsString the card to get from the hand as a string
-     * @return the Card
-     * @throws Exception if card is not in Hand
-     */
-    public Card getCardFromHand(String cardAsString) throws Exception {
-
-        char[] cardValue = cardAsString.toCharArray();
-        for (Card handCard : hand) {
-            // if number and color match current card from hand (if the length of value is 3, the number always is 10)
-            if (cardValue.length == 2 && handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1]) ||
-                    cardValue.length == 3 && handCard.getNumber() == 10) {
-                return handCard;
-            }
-        }
-        throw new Exception("Card is not in Hand.");
-    }
-
-    /**
      * Allows to place a card on the discarding pile.
      * The card gets sorted to the correct color discarding pile.
      * @param card the card that gets discarded.
@@ -165,6 +124,8 @@ public class Player {
      */
     public void putCardOnDiscardingPile(Card card) throws Exception {
         hand.remove(card);
+        game.getDiscardPile(card.getColor()).add(card);
+        //game.getDiscardPile(card.getColor()).getPile().add(card);
         switch (card.getColor()) {
             case 'r':
                 game.getDiscardPile('r').getPile().add(card);
@@ -259,27 +220,13 @@ public class Player {
      */
     public boolean canPlay() {
         for (Card card : hand){
-            if(cardFitsToAnyPile(card)){
+            if(CardFunction.cardFitsToAnyPile(card, getPlayedCards(card.getColor()))){
                 return true;
             }
         }
         return false;
     }
 
-    /**
-     * checks if card fits to any of the player's piles
-     * @param card one card from the player's hand
-     * @return true if card fits to appropriately colored pile
-     */
-    private boolean cardFitsToAnyPile(Card card){
-        DirectionDiscardPile playedCards = getPlayedCards(card.getColor());
-        if(playedCards != null){
-            return playedCards.cardFitsToPile(card);
-        }
-        else {
-            return false;
-        }
-    }
 
     /**
      * method to check if goblin special could be played
@@ -328,7 +275,6 @@ public class Player {
         goblinSpecialPlayed = true;
     }
 
-
     /**
      * @param fieldIndex the index of the field to get the figure-amount from
      * @return the amount of figures on the field as an int
@@ -361,20 +307,12 @@ public class Player {
      * @return the direction-discard-pile in the given color
      */
     public DirectionDiscardPile getPlayedCards(char color){
-            switch (color) {
-                case 'r':
-                    return playedCardsRed;
-                case 'g':
-                    return playedCardsGreen;
-                case 'b':
-                    return playedCardsBlue;
-                case 'p':
-                    return playedCardsPurple;
-                case 'o':
-                    return playedCardsOrange;
-                default:
-                    return null;
+        for (DirectionDiscardPile pile : playedCards){
+            if(pile.getColor() == color){
+                return pile;
+            }
         }
+        return null;
     }
 
     public Figure getLastMovedFigure(){
@@ -427,5 +365,3 @@ public class Player {
         return symbol;
     }
 }
-
-

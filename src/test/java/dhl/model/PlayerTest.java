@@ -98,18 +98,7 @@ public class PlayerTest {
         assertEquals(4, fig.getPos());
     }
 
-    @Test
-    /**
-     * tests if method getCardFromHand works
-     */
-    public void getCardFromHand() throws Exception {
-        player.getHand().add(new Card(2, 'r'));
-        assertEquals(player.getCardFromHand("r2"), player.getHand().get(0));
-        player.getHand().remove(0);
-        player.getHand().add(new Card(10, 'g'));
-        assertEquals(player.getCardFromHand("g10"), player.getHand().get(0));
-        assertThrows(Exception.class, () -> player.getCardFromHand("p2"), "Card is not in Hand.");
-    }
+
 
     @Test
     /**
@@ -321,26 +310,4 @@ public class PlayerTest {
         assertEquals(-12, player.getVictoryPoints());
     }
 
-    @Test
-    /**
-     * tests if method getSortedHand works
-     */
-    public void getSortedHand() {
-        player.getHand().removeAll(player.getHand());
-        player.getHand().add(new Card(1, 'r'));
-        player.getHand().add(new Card(1, 'g'));
-        player.getHand().add(new Card(1, 'b'));
-        player.getHand().add(new Card(1, 'p'));
-        player.getHand().add(new Card(2, 'r'));
-        player.getHand().add(new Card(1, 'g'));
-        player.getHand().add(new Card(0, 'b'));
-        player.getHand().add(new Card(0, 'o'));
-
-        ArrayList<Card> sortedHand = new ArrayList<>(player.getSortedHand());
-        assertEquals('b', sortedHand.get(0).getColor());
-        assertEquals(0, sortedHand.get(0).getNumber());
-        assertEquals('b', sortedHand.get(1).getColor());
-        assertEquals('r', sortedHand.get(sortedHand.size()-1).getColor());
-        assertEquals(2, sortedHand.get(sortedHand.size()-1).getNumber());
-    }
 }
