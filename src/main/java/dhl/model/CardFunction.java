@@ -1,9 +1,10 @@
 package dhl.model;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
+/**
+ * this class takes over some card and pile functions, like sorting and validating.
+ */
 public class CardFunction {
 
     /**
@@ -16,22 +17,6 @@ public class CardFunction {
         return hand;
     }
 
-    /**
-     * sorts given ArrayList by number
-     * @param colorList list of cards already sorted by color
-     * @return cards of a specific color sorted by number as an ArrayList
-     */
-    public static List<Card> sortColorList(ArrayList<Card> colorList) {
-        List<Card> sortedColorList = new ArrayList<>();
-        for(int i=0; i<=10; i++) {
-            for(Card card: colorList) {
-                if (card.getNumber() == i) {
-                    sortedColorList.add(card);
-                }
-            }
-        }
-        return sortedColorList;
-    }
 
     /**
      * Get a card from hand

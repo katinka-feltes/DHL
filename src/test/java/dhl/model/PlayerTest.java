@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -250,6 +251,42 @@ public class PlayerTest {
         player.getTokens().add(new Mirror());
         player.calcTokenPoints();
         assertEquals(-12, player.getVictoryPoints());
+    }
+
+    @Test
+    /**
+     * tests if method getSortedHand works
+     */
+    public void getSortedHand() {
+        player.getHand().removeAll(player.getHand());
+        player.getHand().add(new Card(1, 'r'));
+        player.getHand().add(new Card(1, 'g'));
+        player.getHand().add(new Card(1, 'b'));
+        player.getHand().add(new Card(1, 'p'));
+        player.getHand().add(new Card(2, 'r'));
+        player.getHand().add(new Card(1, 'g'));
+        player.getHand().add(new Card(0, 'b'));
+        player.getHand().add(new Card(0, 'o'));
+
+        List<Card> sortedHand = new ArrayList<Card>(CardFunction.sortHand(player.getHand()));
+        assertEquals('b', sortedHand.get(0).getColor());
+        assertEquals(0, sortedHand.get(0).getNumber());
+        assertEquals('b', sortedHand.get(1).getColor());
+        assertEquals('r', sortedHand.get(sortedHand.size()-1).getColor());
+        assertEquals(2, sortedHand.get(sortedHand.size()-1).getNumber());
+    }
+
+    @Test
+    /**
+     * tests if method getCardFromHand works
+     */
+    public void getCardFromHand() throws Exception {
+        player.getHand().add(new Card(2, 'r'));
+        assertEquals(CardFunction.getCardFromHand("r2", player.getHand()), player.getHand().get(0));
+        player.getHand().remove(0);
+        player.getHand().add(new Card(10, 'g'));
+        assertEquals(CardFunction.getCardFromHand("g10", player.getHand()), player.getHand().get(0));
+        assertThrows(Exception.class, () -> CardFunction.getCardFromHand("p2", player.getHand()), "Card is not in Hand.");
     }
 
 }
