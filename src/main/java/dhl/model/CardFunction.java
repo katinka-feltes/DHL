@@ -1,6 +1,7 @@
 package dhl.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CardFunction {
@@ -10,35 +11,10 @@ public class CardFunction {
      * @return hand sorted by number and color as an ArrayList
      */
     public static List<Card> sortHand(List<Card> hand) {
-        List<Card> blueCards = new ArrayList<>();
-        List<Card> greenCards = new ArrayList<>();
-        List<Card> orangeCards = new ArrayList<>();
-        List<Card> purpleCards = new ArrayList<>();
-        List<Card> redCards = new ArrayList<>();
-        List<Card> sortedHand = new ArrayList<>();
-
-        for(Card card: hand) {
-            if(card.getColor() == 'b') {
-                blueCards.add(card);
-            } else if(card.getColor() == 'g') {
-                greenCards.add(card);
-            } else if(card.getColor() == 'o') {
-                orangeCards.add(card);
-            } else if(card.getColor() == 'p') {
-                purpleCards.add(card);
-            } else if(card.getColor() == 'r') {
-                redCards.add(card);
-            }
-        }
-        sortedHand.addAll(sortColorList((ArrayList<Card>) blueCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) greenCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) orangeCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) purpleCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) redCards));
-
-        return sortedHand;
+        hand.sort(Comparator.comparing(Card::getNumber));
+        hand.sort(Comparator.comparing(Card::getColor));
+        return hand;
     }
-
 
     /**
      * sorts given ArrayList by number
