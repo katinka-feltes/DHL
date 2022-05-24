@@ -32,31 +32,29 @@ public class PlayerTest {
      * tests if method placeFigure works
      */
     public void placeFigure() {
-        Figure fig = player.getFigureByPos(1);
+        Figure fig = FigureFunction.getFigureByPos(1, player.getFigures());
         player.placeFigure('r', fig);
         assertEquals(3, fig.getPos());
         player.placeFigure('g', fig);
         assertEquals(4, fig.getPos());
-        fig = player.getFigureByPos(3);
+        fig = FigureFunction.getFigureByPos(3, player.getFigures());
         player.placeFigure('g', fig);
         assertEquals(4, fig.getPos());
     }
 
-
-
     @Test
     /**
-     * tests if method getFigureAmountOnField works
+     * tests if method getFigureAmountOnField from class FigureFunction works
      */
     public void getFigureAmountOnField() {
         player.getFigures().get(0).setPos(5);
         player.getFigures().get(1).setPos(7);
         player.getFigures().get(2).setPos(8);
-        assertEquals(1, player.getFigureAmountOnField(5));
+        assertEquals(1, FigureFunction.getFigureAmountOnField(5, player.getFigures()));
         player.getFigures().get(0).setPos(7);
-        assertEquals(2, player.getFigureAmountOnField(7));
+        assertEquals(2, FigureFunction.getFigureAmountOnField(7, player.getFigures()));
         player.getFigures().get(2).setPos(7);
-        assertEquals(3, player.getFigureAmountOnField(7));
+        assertEquals(3, FigureFunction.getFigureAmountOnField(7, player.getFigures()));
     }
 
     @Test
@@ -107,18 +105,18 @@ public class PlayerTest {
 
     @Test
     /**
-     * tests if method getFigureByPos works
+     * tests if method getFigureByPos in class FigureFunction works
      */
     public void getFigureByPos() {
         player.getFigures().get(0).setPos(3);
         player.getFigures().get(1).setPos(5);
         player.getFigures().get(2).setPos(6);
-        assertEquals(player.getFigureByPos(3), player.getFigures().get(0));
-        assertEquals(player.getFigureByPos(2), player.getFigures().get(1));
-        assertEquals(player.getFigureByPos(1), player.getFigures().get(2));
+        assertEquals(FigureFunction.getFigureByPos(3, player.getFigures()), player.getFigures().get(0));
+        assertEquals(FigureFunction.getFigureByPos(2, player.getFigures()), player.getFigures().get(1));
+        assertEquals(FigureFunction.getFigureByPos(1, player.getFigures()), player.getFigures().get(2));
         player.getFigures().get(0).setPos(5);
-        assertEquals(player.getFigureByPos(3), player.getFigures().get(0));
-        assertEquals(player.getFigureByPos(2), player.getFigures().get(1));
+        assertEquals(FigureFunction.getFigureByPos(3, player.getFigures()), player.getFigures().get(0));
+        assertEquals(FigureFunction.getFigureByPos(2, player.getFigures()), player.getFigures().get(1));
     }
 
     @Test
@@ -126,8 +124,8 @@ public class PlayerTest {
      * tests if method getLastMovedFigure works
      */
     public void getLastMovedFigure() {
-        player.placeFigure('r', player.getFigureByPos(1));
-        assertEquals(player.getFigureByPos(1), player.getLastMovedFigure());
+        player.placeFigure('r', FigureFunction.getFigureByPos(1, player.getFigures()));
+        assertEquals(FigureFunction.getFigureByPos(1, player.getFigures()), player.getLastMovedFigure());
     }
 
     @Test

@@ -6,7 +6,6 @@ import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -94,15 +93,6 @@ public class Player {
     }
 
     /**
-     * @param figurePos 1 for the figure first on the board, 2 or 3
-     * @return the figure on the field or null if there is none
-     */
-    public Figure getFigureByPos(int figurePos) {
-        figures.sort(Comparator.comparing(Figure::getPos));
-        return figures.get(figures.size() - figurePos);
-    }
-
-    /**
      * Allows to place a card on the discarding pile.
      * The card gets sorted to the correct color discarding pile.
      * @param card the card that gets discarded.
@@ -143,7 +133,6 @@ public class Player {
         return false;
     }
 
-
     /**
      * method to check if goblin special could be played
      * (checking figures, not if already played)
@@ -168,10 +157,10 @@ public class Player {
     public int goblinSpecialPoints (){
         if(allFiguresGoblin() && !goblinSpecialPlayed){
             int fieldOfFig0 = figures.get(0).getPos();
-            if(getFigureAmountOnField(fieldOfFig0) == 3){
+            if(FigureFunction.getFigureAmountOnField(fieldOfFig0, getFigures()) == 3){
                 //  all 3 on the same field
                 return 5;
-            } else if(getFigureAmountOnField(fieldOfFig0) == 2 || figures.get(1).getPos() == figures.get(2).getPos()){
+            } else if(FigureFunction.getFigureAmountOnField(fieldOfFig0, getFigures()) == 2 || figures.get(1).getPos() == figures.get(2).getPos()){
                 // 2 figures on the field from figure0 or the other 2 figures on the same field
                 return 10;
             }
@@ -189,32 +178,6 @@ public class Player {
     public void playGoblinSpecial(){
         victoryPoints+=goblinSpecialPoints();
         goblinSpecialPlayed = true;
-    }
-
-    /**
-     * @param fieldIndex the index of the field to get the figure-amount from
-     * @return the amount of figures on the field as an int
-     */
-    public int getFigureAmountOnField(int fieldIndex) {
-        int amount = 0;
-        for (Figure f : figures) {
-            if (f.getPos() == fieldIndex) {
-                amount++;
-            }
-        }
-        return amount;
-    }
-
-    /**
-     * counts the figures in the finish area.
-     * @return the amount of figures in the finish area.
-     */
-    public int getFigureAmountInFinishArea(){
-        int amount = 0;
-        for(int field = 22; field <= 35; field++){ //should be 22 but for better testing 4
-            amount += getFigureAmountOnField(field);
-        }
-        return amount;
     }
 
     /**

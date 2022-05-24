@@ -361,7 +361,7 @@ public class Cli implements View {
         //Print figures of the players
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){
-                switch (p.getFigureAmountOnField(i)){
+                switch (FigureFunction.getFigureAmountOnField(i, p.getFigures())){
                     case 3:
                         System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
                         break;

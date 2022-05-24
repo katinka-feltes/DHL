@@ -193,7 +193,7 @@ public class Game {
     private int figuresInFinishArea() {
         int amount = 0;
         for (Player p : players) {
-            amount += p.getFigureAmountInFinishArea();
+            amount += FigureFunction.getFigureAmountInFinishArea(p.getFigures());
         }
         return amount;
     }
@@ -204,7 +204,7 @@ public class Game {
      */
     private boolean allFiguresOfOneInFinishArea() {
         for (Player p : players) {
-            if (p.getFigureAmountInFinishArea() == 3) {
+            if (FigureFunction.getFigureAmountInFinishArea(p.getFigures()) == 3) {
                 return true;
             }
         }

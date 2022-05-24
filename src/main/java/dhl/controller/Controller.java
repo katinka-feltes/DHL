@@ -134,7 +134,7 @@ public class Controller {
             try {
                 int figurePos = view.promptInt(1, 3,
                         "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)");
-                player.placeFigure(card.getColor(), player.getFigureByPos(figurePos));
+                player.placeFigure(card.getColor(), FigureFunction.getFigureByPos(figurePos, player.getFigures()));
                 break;
             } catch (IndexOutOfBoundsException indexE){
                 view.error("This figure can't move this far.");
