@@ -115,7 +115,7 @@ public class Controller {
             try {
                 // get card as string and check type with view method
                 String cardAsString = view.promptCardString("What card do you want to play?");
-                card = player.getCardFromHand(cardAsString);
+                card = CardFunction.getCardFromHand(cardAsString, player.getHand());
                 player.addCardToPlayedCards(card);
                 break;
             } catch (Exception e) {
@@ -149,7 +149,7 @@ public class Controller {
         while (true) {
             try {
                 String cardAsString = view.promptCardString("What card do you want to trash?");
-                player.setLastTrashed(player.getCardFromHand(cardAsString));
+                player.setLastTrashed(CardFunction.getCardFromHand(cardAsString, player.getHand()));
                 player.putCardOnDiscardingPile(player.getLastTrashed());
                 break;
             } catch (Exception e) {
@@ -272,7 +272,7 @@ public class Controller {
                     try {
                         view.printHand(player);
                         cardAsString = view.promptCardString("What card do you want to trash?");
-                        ((Goblin) token).setCardChoice(player.getCardFromHand(cardAsString));
+                        ((Goblin) token).setCardChoice(CardFunction.getCardFromHand(cardAsString, player.getHand()));
                         token.action(player);
                         drawOne(player);
                     } catch (Exception e) {
