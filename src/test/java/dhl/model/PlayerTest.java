@@ -29,62 +29,6 @@ public class PlayerTest {
 
     @Test
     /**
-     * tests if method addCardToPlayedCards works
-     * too many asserts because we need to test all colors
-     */
-    public void addCardToPlayedCards() throws Exception {
-        player.getHand().removeAll(player.getHand());
-        player.getHand().add(new Card(1, 'r'));
-        player.getHand().add(new Card(1, 'g'));
-        player.getHand().add(new Card(1, 'b'));
-        player.getHand().add(new Card(1, 'p'));
-        player.getHand().add(new Card(1, 'o'));
-        player.getHand().add(new Card(2, 'r')); // red increasing direction
-        player.getHand().add(new Card(1, 'g')); // green no direction
-        player.getHand().add(new Card(0, 'b')); // blue decreasing direction
-
-        int size_r = 0;
-        int size_g = 0;
-        int size_b = 0;
-        int size_p = 0;
-        int size_o = 0;
-        ArrayList<Card> hand = new ArrayList<>(player.getHand());
-        for (Card card : hand) {
-            player.addCardToPlayedCards(card);
-            switch (card.getColor()) {
-                case 'r':
-                    size_r++;
-                    assertEquals(size_r, player.getPlayedCards(card.getColor()).pile.size());
-                    break;
-                case 'g':
-                    size_g++;
-                    assertEquals(size_g, player.getPlayedCards(card.getColor()).pile.size());
-                    break;
-                case 'b':
-                    size_b++;
-                    assertEquals(size_b, player.getPlayedCards(card.getColor()).pile.size());
-                    break;
-                case 'p':
-                    size_p++;
-                    assertEquals(size_p, player.getPlayedCards(card.getColor()).pile.size());
-                    break;
-                case 'o':
-                    size_o++;
-                    assertEquals(size_o, player.getPlayedCards(card.getColor()).pile.size());
-                    break;
-            }
-        }
-        // check pile directions
-        assertEquals(1, player.getPlayedCards('r').getDirection());
-        assertEquals(0, player.getPlayedCards('g').getDirection());
-        assertEquals(-1, player.getPlayedCards('b').getDirection());
-
-        //card that does not fit
-        assertThrows(Exception.class, () -> player.getPlayedCards('r').add(new Card(0, 'r')), "Card does not fit to the pile");
-    }
-
-    @Test
-    /**
      * tests if method placeFigure works
      */
     public void placeFigure() {

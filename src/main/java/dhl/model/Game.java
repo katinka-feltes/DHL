@@ -50,7 +50,6 @@ public class Game {
             new LargeField(10, 'b', 1)
     };
 
-
     private final DiscardPile discardingPileRed;
     private final DiscardPile discardingPileBlue;
     private final DiscardPile discardingPileGreen;
@@ -152,35 +151,39 @@ public class Game {
      * @return true if drawing from any discarding pile is possible
      */
     public boolean canDrawFromDiscarding(Card trashCard) {
-        // can't draw if all piles are empty
-        boolean canDraw = !(getDiscardPile('r').isEmpty() && getDiscardPile('g').isEmpty() && getDiscardPile('b').isEmpty() &&
-                getDiscardPile('p').isEmpty() && getDiscardPile('o').isEmpty());
-        // if a trashcard exists and not all piles are empty, we have to check if trashcard == top card of discarding pile
-        // if yes, he can only draw if there is another pile which isn't empty
-        if (trashCard != null && canDraw &&
-                // red pile's top card
-                ((!getDiscardPile('r').isEmpty() && getDiscardPile('r').getTop() == trashCard
-                        && getDiscardPile('b').isEmpty() && getDiscardPile('g').isEmpty()
-                        && getDiscardPile('p').isEmpty() && getDiscardPile('o').isEmpty())
-                        // green pile's top card
-                        || (!getDiscardPile('g').isEmpty() && getDiscardPile('g').getTop() == trashCard
-                        && getDiscardPile('b').isEmpty() && getDiscardPile('r').isEmpty()
-                        && getDiscardPile('p').isEmpty() && getDiscardPile('o').isEmpty())
-                        // blue pile's top card
-                        || (!getDiscardPile('b').isEmpty() && getDiscardPile('b').getTop() == trashCard
-                        && getDiscardPile('r').isEmpty() && getDiscardPile('g').isEmpty()
-                        && getDiscardPile('p').isEmpty() && getDiscardPile('o').isEmpty())
-                        // purple's pile top card
-                        || (!getDiscardPile('p').isEmpty() && getDiscardPile('p').getTop() == trashCard
-                        && getDiscardPile('b').isEmpty() && getDiscardPile('g').isEmpty()
-                        && getDiscardPile('r').isEmpty() && getDiscardPile('o').isEmpty())
-                        // orange's pile top card
-                        || (!getDiscardPile('o').isEmpty() && getDiscardPile('o').getTop() == trashCard
-                        && getDiscardPile('b').isEmpty() && getDiscardPile('g').isEmpty()
-                        && getDiscardPile('p').isEmpty() && getDiscardPile('r').isEmpty()))) {
-            canDraw = false;
+        if(discardingPileRed.isEmpty() && discardingPileGreen.isEmpty() && discardingPileBlue.isEmpty()
+                && discardingPilePurple.isEmpty() && discardingPileOrange.isEmpty()
+                // can't draw if all piles are empty
+                || trashCard!=null && !getDiscardPile(trashCard.getColor()).isEmpty()
+                && getDiscardPile(trashCard.getColor()).getTop() == trashCard
+                && allPilesEmptyExcept(trashCard.getColor())) {
+                //if there is a trashed card and all other piles are empty
+            return false;
         }
-        return canDraw;
+        return true;
+    }
+
+    /**
+     * Check if all piles except one are empty
+     * @param colorNotToCheck the color of the pile to ignore
+     * @return true if all piles except the one in the given color are empty
+     */
+    private boolean allPilesEmptyExcept(char colorNotToCheck) {
+        List<Character> colors = new ArrayList<>();
+        colors.add('r');
+        colors.add('g');
+        colors.add('b');
+        colors.add('p');
+        colors.add('o');
+        // remove the color to ignore
+        colors.remove((Character) colorNotToCheck);
+
+        for(char c : colors){
+            if(!getDiscardPile(c).isEmpty()){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

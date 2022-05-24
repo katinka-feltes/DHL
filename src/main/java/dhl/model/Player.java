@@ -6,6 +6,7 @@ import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -31,9 +32,6 @@ public class Player {
     private final List<Figure> figures = new ArrayList<>();
 
     private final List<Token> tokens;
-
-
-    // collected tokens and color need to be added
 
     /**
      * the constructor of the player
@@ -68,7 +66,6 @@ public class Player {
         }
     }
 
-
     /**
      * adds card from discarding pile to active player's hand
      * @param pile discarding pile from which to draw
@@ -81,17 +78,6 @@ public class Player {
             throw new Exception("You can't draw a card you just trashed!");
         }
         hand.add(pile.getAndRemoveTop());
-    }
-
-    /**
-     * adds the card to the correctly colored directionDiscardPile and removes it from hand
-     *
-     * @param card card the player wants to play
-     * @throws Exception from add(card)
-     */
-    public void addCardToPlayedCards(Card card) throws Exception {
-        getPlayedCards(card.getColor()).add(card);
-        hand.remove(card);
     }
 
     /**
@@ -126,76 +112,6 @@ public class Player {
         hand.remove(card);
         game.getDiscardPile(card.getColor()).add(card);
         //game.getDiscardPile(card.getColor()).getPile().add(card);
-        switch (card.getColor()) {
-            case 'r':
-                game.getDiscardPile('r').getPile().add(card);
-                break;
-            case 'g':
-                game.getDiscardPile('g').add(card);
-                break;
-            case 'b':
-                game.getDiscardPile('b').add(card);
-                break;
-            case 'p':
-                game.getDiscardPile('p').add(card);
-                break;
-            case 'o':
-                game.getDiscardPile('o').add(card);
-                break;
-            default:
-                // do nothing
-        }
-    }
-    /**
-     * sorts the hand of the player by number and color
-     * @return hand sorted by number and color as an ArrayList
-     */
-    public List<Card> getSortedHand() {
-        List<Card> unsortedHand = getHand();
-        List<Card> blueCards = new ArrayList<>();
-        List<Card> greenCards = new ArrayList<>();
-        List<Card> orangeCards = new ArrayList<>();
-        List<Card> purpleCards = new ArrayList<>();
-        List<Card> redCards = new ArrayList<>();
-        List<Card> sortedHand = new ArrayList<>();
-
-        for(Card card: unsortedHand) {
-            if(card.getColor() == 'b') {
-                blueCards.add(card);
-            } else if(card.getColor() == 'g') {
-                greenCards.add(card);
-            } else if(card.getColor() == 'o') {
-                orangeCards.add(card);
-            } else if(card.getColor() == 'p') {
-                purpleCards.add(card);
-            } else if(card.getColor() == 'r') {
-                redCards.add(card);
-            }
-        }
-        sortedHand.addAll(sortColorList(blueCards));
-        sortedHand.addAll(sortColorList(greenCards));
-        sortedHand.addAll(sortColorList(orangeCards));
-        sortedHand.addAll(sortColorList(purpleCards));
-        sortedHand.addAll(sortColorList(redCards));
-
-        return sortedHand;
-    }
-
-    /**
-     * sorts given ArrayList by number
-     * @param colorList list of cards already sorted by color
-     * @return cards of a specific color sorted by number as an ArrayList
-     */
-    public List<Card> sortColorList(List<Card> colorList) {
-        List<Card> sortedColorList = new ArrayList<>();
-        for(int i=0; i<=10; i++) {
-            for(Card card: colorList) {
-                if (card.getNumber() == i) {
-                    sortedColorList.add(card);
-                }
-            }
-        }
-        return sortedColorList;
     }
 
     /**
@@ -318,7 +234,6 @@ public class Player {
     public Figure getLastMovedFigure(){
         return lastMovedFigure;
     }
-
     public List<Figure> getFigures() {
         return figures;
     }
@@ -328,39 +243,30 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-
     public List<Card> getHand() {
         return hand;
     }
-
     public Game getGame() {
         return game;
     }
-
     public void setLastTrashed(Card lastTrashed) {
         this.lastTrashed = lastTrashed;
     }
-
     public Card getLastTrashed() {
         return lastTrashed;
     }
-
     public int getVictoryPoints() {
         return victoryPoints;
     }
-
     public void setVictoryPoints(int victoryPoints) {
         this.victoryPoints = victoryPoints;
     }
-
     public List<Token> getTokens() {
         return tokens;
     }
-
     public boolean isGoblinSpecialPlayed() {
         return goblinSpecialPlayed;
     }
-
     public char getSymbol() {
         return symbol;
     }

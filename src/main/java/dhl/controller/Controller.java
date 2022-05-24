@@ -116,7 +116,10 @@ public class Controller {
                 // get card as string and check type with view method
                 String cardAsString = view.promptCardString("What card do you want to play?");
                 card = CardFunction.getCardFromHand(cardAsString, player.getHand());
-                player.addCardToPlayedCards(card);
+                // add card to played cards
+                player.getPlayedCards(card.getColor()).add(card);
+                // remove card from players hand
+                player.getHand().remove(card);
                 break;
             } catch (Exception e) {
                 view.error(e.getMessage());

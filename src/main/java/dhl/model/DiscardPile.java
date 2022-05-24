@@ -36,6 +36,9 @@ public class DiscardPile {
      * @return the Card at the top of the Pile
      */
     public Card getTop() {
+        if (pile.isEmpty()){
+            return null;
+        }
         return pile.get(pile.size() - 1);
     }
 
