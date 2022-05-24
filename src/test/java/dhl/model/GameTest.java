@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,21 +40,21 @@ public class GameTest {
      */
     public void gameOver() {
         //checks if game ends when one player has all 3 in finish area
-        Figure[] figures = player1.getFigures();
-        figures[0].setPos(22);
-        figures[1].setPos(22);
-        figures[2].setPos(22);
+        List<Figure> figures = player1.getFigures();
+        figures.get(0).setPos(22);
+        figures.get(1).setPos(22);
+        figures.get(2).setPos(22);
         assertTrue(game.gameOver());
-        figures[0].setPos(0);
+        figures.get(0).setPos(0);
         assertFalse(game.gameOver());
         //checks if game ends when 5 figures are in finish area
         Player player1 = game.getPlayers().get(1);
         Player player2 = game.getPlayers().get(2);
-        Figure[] figures1 = player1.getFigures();
-        Figure[] figures2 = player2.getFigures();
-        figures1[0].setPos(22);
-        figures1[1].setPos(22);
-        figures2[0].setPos(22);
+        List<Figure> figures1 = player1.getFigures();
+        List<Figure> figures2 = player2.getFigures();
+        figures1.get(0).setPos(22);
+        figures1.get(1).setPos(22);
+        figures2.get(0).setPos(22);
         assertTrue(game.gameOver());
         //checks if game ends when drawing pile is empty
         game.getDrawingPile().getCards().clear();

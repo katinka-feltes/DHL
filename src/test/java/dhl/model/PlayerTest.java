@@ -116,13 +116,13 @@ public class PlayerTest {
      * tests if method getFigureAmountOnField works
      */
     public void getFigureAmountOnField() {
-        player.getFigures()[0].setPos(5);
-        player.getFigures()[1].setPos(7);
-        player.getFigures()[2].setPos(8);
+        player.getFigures().get(0).setPos(5);
+        player.getFigures().get(1).setPos(7);
+        player.getFigures().get(2).setPos(8);
         assertEquals(1, player.getFigureAmountOnField(5));
-        player.getFigures()[0].setPos(7);
+        player.getFigures().get(0).setPos(7);
         assertEquals(2, player.getFigureAmountOnField(7));
-        player.getFigures()[2].setPos(7);
+        player.getFigures().get(2).setPos(7);
         assertEquals(3, player.getFigureAmountOnField(7));
     }
 
@@ -177,15 +177,15 @@ public class PlayerTest {
      * tests if method getFigureByPos works
      */
     public void getFigureByPos() {
-        player.getFigures()[0].setPos(3);
-        player.getFigures()[1].setPos(5);
-        player.getFigures()[2].setPos(6);
-        assertEquals(player.getFigureByPos(3), player.getFigures()[0]);
-        assertEquals(player.getFigureByPos(2), player.getFigures()[1]);
-        assertEquals(player.getFigureByPos(1), player.getFigures()[2]);
-        player.getFigures()[0].setPos(5);
-        assertEquals(player.getFigureByPos(3), player.getFigures()[0]);
-        assertEquals(player.getFigureByPos(2), player.getFigures()[1]);
+        player.getFigures().get(0).setPos(3);
+        player.getFigures().get(1).setPos(5);
+        player.getFigures().get(2).setPos(6);
+        assertEquals(player.getFigureByPos(3), player.getFigures().get(0));
+        assertEquals(player.getFigureByPos(2), player.getFigures().get(1));
+        assertEquals(player.getFigureByPos(1), player.getFigures().get(2));
+        player.getFigures().get(0).setPos(5);
+        assertEquals(player.getFigureByPos(3), player.getFigures().get(0));
+        assertEquals(player.getFigureByPos(2), player.getFigures().get(1));
     }
 
     @Test
@@ -244,10 +244,10 @@ public class PlayerTest {
         Game.FIELDS[0].setToken(new Goblin());
         assertTrue(player.allFiguresGoblin());
         Game.FIELDS[5].setToken(new Goblin());
-        player.getFigures()[0].setPos(5);
+        player.getFigures().get(0).setPos(5);
         assertTrue(player.allFiguresGoblin());
         Game.FIELDS[10].setToken(new Goblin());
-        player.getFigures()[1].setPos(10);
+        player.getFigures().get(1).setPos(10);
         assertTrue(player.allFiguresGoblin());
         Game.FIELDS[10].setToken(null);
         assertFalse(player.allFiguresGoblin());
@@ -261,10 +261,10 @@ public class PlayerTest {
         Game.FIELDS[0].setToken(new Goblin());
         assertEquals(5 , player.goblinSpecialPoints());
         Game.FIELDS[5].setToken(new Goblin());
-        player.getFigures()[0].setPos(5);
+        player.getFigures().get(0).setPos(5);
         assertEquals(10 , player.goblinSpecialPoints());
         Game.FIELDS[10].setToken(new Goblin());
-        player.getFigures()[1].setPos(10);
+        player.getFigures().get(1).setPos(10);
         assertEquals(15 , player.goblinSpecialPoints());
         Game.FIELDS[10].setToken(null);
         assertEquals(0 , player.goblinSpecialPoints());
@@ -278,7 +278,7 @@ public class PlayerTest {
         assertFalse(player.isGoblinSpecialPlayed());
         Game.FIELDS[0].setToken(new Goblin());
         Game.FIELDS[5].setToken(new Goblin());
-        player.getFigures()[0].setPos(5);
+        player.getFigures().get(0).setPos(5);
         player.playGoblinSpecial();
         assertEquals(10 , player.getVictoryPoints());
         assertTrue(player.isGoblinSpecialPlayed());

@@ -5,8 +5,7 @@ import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
@@ -32,7 +31,7 @@ public class Player {
     private Figure lastMovedFigure;
     private boolean goblinSpecialPlayed;
 
-    private final Figure[] figures = new Figure[3];
+    private final List<Figure> figures = new ArrayList<>();
 
     private final List<Token> tokens;
 
@@ -57,9 +56,9 @@ public class Player {
         playedCardsPurple = new DirectionDiscardPile('p');
         playedCardsOrange = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
-        figures[0] = new Figure(symbol);
-        figures[1] = new Figure(symbol);
-        figures[2] = new Figure(symbol);
+        figures.add(new Figure(symbol));
+        figures.add(new Figure(symbol));
+        figures.add(new Figure(symbol));
         tokens = new ArrayList<>();
     }
 
@@ -135,33 +134,8 @@ public class Player {
      * @return the figure on the field or null if there is none
      */
     public Figure getFigureByPos(int figurePos) {
-        Figure chosen = figures[0];
-        switch(figurePos){
-            case 1:
-                for(Figure f : figures){
-                    if (f.getPos() > chosen.getPos()){
-                        chosen = f;
-                    }
-                }
-                break;
-            case 2:
-                for(Figure f : figures){
-                    if (f != getFigureByPos(1) && f != getFigureByPos(3)){
-                        chosen = f;
-                    }
-                }
-                break;
-            case 3:
-                for(Figure f : figures){
-                    if (f.getPos() < chosen.getPos()){
-                        chosen = f;
-                    }
-                }
-                break;
-            default:
-                // do nothing
-        }
-        return chosen;
+        figures.sort(Comparator.comparing(Figure::getPos));
+        return figures.get(figures.size() - figurePos);
     }
 
     /**
@@ -237,11 +211,11 @@ public class Player {
                 redCards.add(card);
             }
         }
-        sortedHand.addAll(sortColorList((ArrayList<Card>) blueCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) greenCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) orangeCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) purpleCards));
-        sortedHand.addAll(sortColorList((ArrayList<Card>) redCards));
+        sortedHand.addAll(sortColorList(blueCards));
+        sortedHand.addAll(sortColorList(greenCards));
+        sortedHand.addAll(sortColorList(orangeCards));
+        sortedHand.addAll(sortColorList(purpleCards));
+        sortedHand.addAll(sortColorList(redCards));
 
         return sortedHand;
     }
@@ -251,7 +225,7 @@ public class Player {
      * @param colorList list of cards already sorted by color
      * @return cards of a specific color sorted by number as an ArrayList
      */
-    public List<Card> sortColorList(ArrayList<Card> colorList) {
+    public List<Card> sortColorList(List<Card> colorList) {
         List<Card> sortedColorList = new ArrayList<>();
         for(int i=0; i<=10; i++) {
             for(Card card: colorList) {
@@ -330,11 +304,11 @@ public class Player {
      */
     public int goblinSpecialPoints (){
         if(allFiguresGoblin() && !goblinSpecialPlayed){
-            int fieldOfFig0 = figures[0].getPos();
+            int fieldOfFig0 = figures.get(0).getPos();
             if(getFigureAmountOnField(fieldOfFig0) == 3){
                 //  all 3 on the same field
                 return 5;
-            } else if(getFigureAmountOnField(fieldOfFig0) == 2 || figures[1].getPos() == figures[2].getPos()){
+            } else if(getFigureAmountOnField(fieldOfFig0) == 2 || figures.get(1).getPos() == figures.get(2).getPos()){
                 // 2 figures on the field from figure0 or the other 2 figures on the same field
                 return 10;
             }
@@ -407,7 +381,7 @@ public class Player {
         return lastMovedFigure;
     }
 
-    public Figure[] getFigures() {
+    public List<Figure> getFigures() {
         return figures;
     }
     public String getName() {

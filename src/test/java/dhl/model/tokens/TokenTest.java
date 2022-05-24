@@ -109,8 +109,8 @@ public class TokenTest {
      * tests if action of spiderweb works
      */
     public void actionSpiderweb(){
-        Figure figure1 = player.getFigures()[0];
-        Figure figure2 = player.getFigures()[1];
+        Figure figure1 = player.getFigures().get(0);
+        Figure figure2 = player.getFigures().get(1);
         //move both figures to the first red field
         player.placeFigure('r', figure1);
         player.placeFigure('r', figure2);
@@ -125,7 +125,7 @@ public class TokenTest {
      * tests if action of spiral works
      */
     public void actionSpiral(){
-        Figure figure = player.getFigures()[0];
+        Figure figure = player.getFigures().get(0);
         player.placeFigure('p', figure); // move figure to the field with index 1
         player.placeFigure('b', figure);// move figure to the field with index 5
         ((Spiral)spiral).setChosenPos(1); // not allowed so no movement
