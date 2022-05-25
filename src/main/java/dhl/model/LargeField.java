@@ -45,4 +45,8 @@ public class LargeField extends Field {
        return null;
     }
 
+    public Token getTokenTwo(){
+        return tokenTwo;
+    }
+
 }

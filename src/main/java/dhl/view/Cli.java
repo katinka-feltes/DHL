@@ -14,6 +14,8 @@ import java.util.Scanner;
 @SuppressWarnings("ClassEscapesDefinedScope")
 public class Cli implements View {
 
+    private static final String TABULATOR = "\t\t";
+
     /** This method ask how many players are going to play.
      * @return result an Integer which says how many players are going to play.
      */
@@ -174,7 +176,7 @@ public class Cli implements View {
     public void printHand(Player player) {
         System.out.println(player.getName() + "'s Hand Cards:");
         for (Card card : CardFunction.sortHand(player.getHand())){
-            System.out.print(Character.toString(card.getColor())+ card.getNumber() + "   ");
+            System.out.print(Character.toString(card.getColor())+ card.getNumber() + "\t");
         }
         System.out.println();
         System.out.println();
@@ -245,10 +247,18 @@ public class Cli implements View {
     private void printTop(DirectionDiscardPile pile){
         String color = Character.toString(pile.getColor());
         if (pile.isEmpty()){
-            System.out.print(color + printDirection(pile) + "    ");
+            System.out.print(color + "+-" + TABULATOR);
         }
         else {
-            System.out.print(color + pile.getTop().getNumber() + printDirection(pile) + "   ");
+            String direction;
+            if (pile.getDirection() == 0) {
+                direction =  "+-";
+            } else if (pile.getDirection() == 1) {
+                direction = "+";
+            } else {
+                direction = "-";
+            }
+            System.out.print(color + pile.getTop().getNumber() + direction + " \t");
         }
     }
 
@@ -259,26 +269,10 @@ public class Cli implements View {
     private void printTop(DiscardPile pile){
         String color = Character.toString(pile.getColor());
         if (pile.isEmpty()){
-            System.out.print(color + "     ");
+            System.out.print(color + "\t");
         }
         else {
-            System.out.print(color + pile.getTop().getNumber() +  "    ");
-        }
-    }
-
-    /**
-     * prints the direction of the discard pile.
-     * The direction depends on the played cards
-     * @param pile pile which direction to print.
-     * @return direction as a String "+" if the pile goes upwards, "-" if it is downwards, "+-" when there is no direction.
-     */
-    private String printDirection(DirectionDiscardPile pile) {
-        if (pile.getDirection() == 0) {
-            return "+-";
-        } else if (pile.getDirection() == 1) {
-            return "+";
-        } else {
-            return "-";
+            System.out.print(color + pile.getTop().getNumber() +  " \t");
         }
     }
 
@@ -292,7 +286,6 @@ public class Cli implements View {
         List<Player> players = game.getPlayers();
 
         //legend for player-symbols
-        //player 1: C, player 2: H, player 3: K, player 4: M
         for (Player p : players){
             System.out.print(p.getName() + ":" + p.getSymbol() + "    ");
         }
@@ -316,63 +309,53 @@ public class Cli implements View {
 
     /**
      * prints the filed index, points, color, tokens and figures on the board.
-     * * @param rowStart the first field of the board that will be printed
+     *
+     * @param rowStart the first field of the board that will be printed
      * @param rowEnd the last field of the board that will be printed
      * @param players the players of the game
      */
     private void printBoardPart(int rowStart, int rowEnd, List<Player> players){
         // print index
         for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print(("(" + i + ")    ").substring(0,7));
+            System.out.print("(" + i + ") \t");
         }
         System.out.println();
 
         // print points of the fields
         for (int i = rowStart; i <= rowEnd; i++) {
-            System.out.print((Game.FIELDS[i].getPoints() + "      ").substring(0,7));
+            System.out.print(Game.FIELDS[i].getPoints() + TABULATOR);
         }
         System.out.println();
 
         // print colors of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print(Game.FIELDS[i].getColor() + "      ");
+            System.out.print(Game.FIELDS[i].getColor() + TABULATOR);
         }
         System.out.println();
+
         // print tokens of the fields
         for (int i = rowStart; i <= rowEnd; i++){
             if(Game.FIELDS[i].getToken() != null) {
-                if (i == 7 || i == 14 || i == 21 || i == 28) {
-                    String symbol = Game.FIELDS[i].getToken().getSymbol() + " " + Game.FIELDS[i].getToken().getSymbol() + "       ";
-                    System.out.print(symbol.substring(0, 7));
+                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
+                    System.out.print(Game.FIELDS[i].getToken().getSymbol() + " " + Game.FIELDS[i].getToken().getSymbol());
                 } else {
-                    if (Game.FIELDS[i].getToken().getName().equals("Skullpoint")) {
-                        String symbol = Game.FIELDS[i].getToken().getSymbol() + "      ";
-                        System.out.print(symbol.substring(0, 6));
-                    } else {
-                        String symbol = Game.FIELDS[i].getToken().getSymbol() + "      ";
-                        System.out.print(symbol.substring(0, 7));
-                    }
+                    System.out.print(Game.FIELDS[i].getToken().getSymbol());
                 }
-            }else {
-                System.out.print("       ");
             }
+            System.out.print(TABULATOR);
         }
         System.out.println();
         //Print figures of the players
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){
-                switch (FigureFunction.getFigureAmountOnField(i, p.getFigures())){
-                    case 3:
-                        System.out.print(p.getSymbol() + " " + p.getSymbol() + " " + p.getSymbol() + "  ");
-                        break;
-                    case 2:
-                        System.out.print(p.getSymbol() + " " + p.getSymbol() + "    ");
-                        break;
-                    case 1:
-                        System.out.print( p.getSymbol() + "      ");
-                        break;
-                    default:
-                        System.out.print("       ");
+                int figureAmount = FigureFunction.getFigureAmountOnField(i, p.getFigures());
+                for (int j = 0; j < figureAmount; j++){
+                    System.out.print(p.getSymbol() + " ");
+                }
+                if (figureAmount == 3) {
+                    System.out.print("\t");
+                } else {
+                    System.out.print(TABULATOR);
                 }
             }
             System.out.println();
