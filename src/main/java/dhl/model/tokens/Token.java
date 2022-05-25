@@ -23,6 +23,10 @@ public interface Token {
      */
     void action(Player player);
 
+    /**
+     * gets the symbol of the Token
+     * @return the symbol of the token
+     */
     char getSymbol();
 
 }

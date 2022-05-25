@@ -9,6 +9,11 @@ public class WishingStone implements Token{
 
     private static final char SYMBOL = 'W';
 
+    /**
+     * gets the value for the amount of wishingstones presented.
+     * @param amountStones wishingstone-amount
+     * @return the value corresponding to the wishinstone-amount
+     */
     public static int getValue(int amountStones){
          int[] value = {-4, -3, 2, 3, 6, 10};
         return value[amountStones];

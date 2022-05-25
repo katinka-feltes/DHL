@@ -1,7 +1,5 @@
 package dhl.view;
 
-import dhl.model.Game;
-import dhl.model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,9 +17,6 @@ public class CliTest {
 
     private Cli c;
 
-    private Game game;
-    private Player player;
-
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
@@ -31,8 +26,6 @@ public class CliTest {
      */
     public void setUp() {
         c = new Cli();
-        game = new Game(new String[]{"Player 1", "Player 2"});
-        player = game.getPlayers().get(0);
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }

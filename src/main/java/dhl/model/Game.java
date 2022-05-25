@@ -1,6 +1,8 @@
 package dhl.model;
 
+import dhl.model.player_logic.Human;
 import dhl.model.tokens.*;
+import dhl.view.Cli;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,7 +82,6 @@ public class Game {
      * @param playerNames the List of all player Names
      */
     public Game(String[] playerNames) {
-
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
@@ -127,7 +128,7 @@ public class Game {
         //♦ \u2666 BLACK DIAMOND SUIT
         char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
         for (int i = 0; i < playerNames.length; i++) {
-            players.add(new Player(playerNames[i], symbols[i], this));
+            players.add(new Player(playerNames[i], symbols[i], this, new Human(new Cli())));
         }
     }
 
@@ -151,16 +152,13 @@ public class Game {
      * @return true if drawing from any discarding pile is possible
      */
     public boolean canDrawFromDiscarding(Card trashCard) {
-        if(discardingPileRed.isEmpty() && discardingPileGreen.isEmpty() && discardingPileBlue.isEmpty()
+        return !(discardingPileRed.isEmpty() && discardingPileGreen.isEmpty() && discardingPileBlue.isEmpty()
                 && discardingPilePurple.isEmpty() && discardingPileOrange.isEmpty()
                 // can't draw if all piles are empty
                 || trashCard!=null && !getDiscardPile(trashCard.getColor()).isEmpty()
                 && getDiscardPile(trashCard.getColor()).getTop() == trashCard
-                && allPilesEmptyExcept(trashCard.getColor())) {
+                && allPilesEmptyExcept(trashCard.getColor()));
                 //if there is a trashed card and all other piles are empty
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -269,8 +267,11 @@ public class Game {
         return players;
     }
 
+    /**
+     * returns the size of the list of players
+     * @return the amount of players in the game
+     */
     public int getPlayerAmount() {
         return players.size();
     }
-
 }

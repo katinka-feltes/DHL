@@ -51,14 +51,26 @@ public class Goblin implements Token {
         }
     }
 
+    /**
+     * returns the chosen pile
+     * @return the chosen pile
+     */
     public char getPileChoice() {
         return pile;
     }
 
+    /**
+     * sets the players pile choice
+     * @param pileChoice the chosen pile
+     */
     public void setPileChoice(char pileChoice) {
         this.pile = pileChoice;
     }
 
+    /**
+     * sets the players card choice
+     * @param card the chosen card
+     */
     public void setCardChoice(Card card) {
         this.card = card;
     }

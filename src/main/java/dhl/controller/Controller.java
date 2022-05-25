@@ -19,8 +19,8 @@ public class Controller {
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
      */
     public void startGame() {
-        String[] playerName = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
-        model = new Game(playerName);
+        String[] playerNames = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
+        model = new Game(playerNames);
         model.createDecks();
 
         while(!model.gameOver()){
@@ -47,7 +47,7 @@ public class Controller {
      */
     public void takeTurn(Player player) {
         view.out(System.lineSeparator().repeat(50)); //clear screen
-        waitForConfirmation(player.getName() + " it is your turn. Are you ready to play?");
+        player.getPlayerLogic().confirm(player.getName() + " it is your turn. Are you ready to play?");
         view.out(player.getName() + "'s Turn!");
         view.printCurrentBoard(model);
         view.printTopCards(player);
@@ -75,6 +75,8 @@ public class Controller {
         }
         drawOne(player);
         waitForConfirmation("Are you done with your turn?");
+
+
     }
 
     /**

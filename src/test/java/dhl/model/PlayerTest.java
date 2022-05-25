@@ -151,7 +151,7 @@ public class PlayerTest {
     /**
      * tests if method drawFromDrawingPile works
      */
-    void drawFromDrawingPile() {
+    public void drawFromDrawingPile() {
         player.drawFromDrawingPile();
         assertEquals(1, player.getHand().size());
     }

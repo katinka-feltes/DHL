@@ -4,7 +4,6 @@ package dhl.view;
 
 import dhl.model.*;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -96,12 +95,13 @@ public class Cli implements View {
         }
         return playersNames;
     }
-    @Override
+
     /**
      * this method enables the player to take a choice.
      * @param prompt the question the player is asked.
      * @return a boolean that transfers to yes(true) and no(false).
      */
+    @Override
     public boolean promptPlayersChoice(String prompt){
         Scanner scanner = new Scanner(System.in);
         System.out.println(prompt + " [y/n]");
@@ -299,11 +299,11 @@ public class Cli implements View {
         System.out.println();
 
         //print the boards first row (from 0-11)
-        printBoardPart(0,11, (ArrayList<Player>) players);
+        printBoardPart(0,11, players);
         //print the boards first row (from 12-23)
-        printBoardPart(12,23, (ArrayList<Player>) players);
+        printBoardPart(12,23, players);
         //print the boards first row (from 24-35)
-        printBoardPart(24,35, (ArrayList<Player>) players);
+        printBoardPart(24,35, players);
 
         //print points
         System.out.print("Points: ");

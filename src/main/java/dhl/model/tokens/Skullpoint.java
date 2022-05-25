@@ -11,6 +11,10 @@ public class Skullpoint implements Token{
 
     private final int points;
 
+    /**
+     * Creates a Skullpoint
+     * @param points the Points the Skullpoint will have
+     */
     public Skullpoint(int points){
         this.points = points;
     }

@@ -71,7 +71,7 @@ public class GameTest {
         player1.getHand().add(new Card(1, 'b'));
         player1.getHand().add(new Card(1, 'p'));
         player1.getHand().add(new Card(1, 'o'));
-        ArrayList<Card> hand = new ArrayList<>(player1.getHand());
+        List<Card> hand = new ArrayList<>(player1.getHand());
         for (Card card : hand) {
             player1.putCardOnDiscardingPile(card);
         }

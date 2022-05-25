@@ -1,10 +1,10 @@
 package dhl.model;
 
+import dhl.model.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
-
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -14,21 +14,17 @@ import java.util.List;
  */
 public class Player {
 
+    private final PlayerLogic playerLogic;
     private String name;
     private final char symbol;
     private final Game game;
     private final DirectionDiscardPile[] playedCards = new DirectionDiscardPile[5];
-
     private Card lastTrashed;
-
     private final List<Card> hand;
-
     private int victoryPoints;
     private Figure lastMovedFigure;
     private boolean goblinSpecialPlayed;
-
     private final List<Figure> figures = new ArrayList<>();
-
     private final List<Token> tokens;
 
     /**
@@ -37,7 +33,8 @@ public class Player {
      * @param symbol the players symbol
      * @param game the current game status
      */
-    public Player(String name, char symbol, Game game){
+    public Player(String name, char symbol, Game game, PlayerLogic logic){
+        this.playerLogic = logic;
         this.name = name;
         this.symbol = symbol;
         this.game = game;
@@ -100,7 +97,6 @@ public class Player {
     public void putCardOnDiscardingPile(Card card) throws Exception {
         hand.remove(card);
         game.getDiscardPile(card.getColor()).add(card);
-        //game.getDiscardPile(card.getColor()).getPile().add(card);
     }
 
     /**
@@ -232,4 +228,5 @@ public class Player {
     public char getSymbol() {
         return symbol;
     }
+    public PlayerLogic getPlayerLogic() {return playerLogic;}
 }

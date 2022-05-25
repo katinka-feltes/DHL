@@ -3,6 +3,9 @@ package dhl.model;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * This Class implements the function of the figures in the game
+ */
 public class FigureFunction {
 
     /**
