@@ -47,13 +47,13 @@ public class Controller {
      */
     public void takeTurn(Player player) {
         view.out(System.lineSeparator().repeat(50)); //clear screen
-        player.getPlayerLogic().confirm(player.getName() + " it is your turn. Are you ready to play?");
+        waitForConfirmation(player.getName() + " it is your turn. Are you ready to play?", player);
         view.out(player.getName() + "'s Turn!");
         view.printCurrentBoard(model);
         view.printTopCards(player);
         view.printHand(player);
         // check if player can play a card and if yes ask
-        if (player.canPlay() && view.promptPlayersChoice("Do you want to play a card? (if no you trash one)")){
+        if (player.canPlay() && player.getPlayerLogic().choose("Do you want to play a card? (if no you trash one)")) {
 
             playCard(player);
 
@@ -74,9 +74,7 @@ public class Controller {
             view.printDiscardingPiles(model);
         }
         drawOne(player);
-        waitForConfirmation("Are you done with your turn?");
-
-
+        waitForConfirmation("Are you done with your turn?", player);
     }
 
     /**
@@ -88,7 +86,7 @@ public class Controller {
     private void drawOne(Player player) {
         if(model.canDrawFromDiscarding(player.getLastTrashed())
                 && player.getHand().size() < 8
-                && view.promptPlayersChoice("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
+                && player.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
 
             while (true) {
                 try {
@@ -116,7 +114,7 @@ public class Controller {
         while (true) {
             try {
                 // get card as string and check type with view method
-                String cardAsString = view.promptCardString("What card do you want to play?");
+                String cardAsString = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand());
                 card = CardFunction.getCardFromHand(cardAsString, player.getHand());
                 // add card to played cards
                 player.getPlayedCards(card.getColor()).add(card);
@@ -134,7 +132,7 @@ public class Controller {
         //figure: which field
         while (true) {
             try {
-                int figurePos = view.promptInt(1, 3,
+                int figurePos = player.getPlayerLogic().chooseFigure(1, 3,
                         "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)");
                 player.placeFigure(card.getColor(), FigureFunction.getFigureByPos(figurePos, player.getFigures()));
                 break;
@@ -153,7 +151,7 @@ public class Controller {
     private void trashCard(Player player) {
         while (true) {
             try {
-                String cardAsString = view.promptCardString("What card do you want to trash?");
+                String cardAsString = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
                 player.setLastTrashed(CardFunction.getCardFromHand(cardAsString, player.getHand()));
                 player.putCardOnDiscardingPile(player.getLastTrashed());
                 break;
@@ -167,9 +165,9 @@ public class Controller {
      * Method to wait for acceptance of the question
      * @param question the question to accept
      */
-    private void waitForConfirmation(String question) {
+    private void waitForConfirmation(String question, Player player) {
         while (true) {
-            if (view.promptPlayersChoice(question)) {
+            if (player.getPlayerLogic().choose(question)) {
                 break;
             }
         }
@@ -217,7 +215,7 @@ public class Controller {
         Figure currentFigure = player.getLastMovedFigure();
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
-        if (view.promptPlayersChoice("You can move this figure backwards as far as you want. " +
+        if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
             int chosenPos = view.promptInt(0, currentFigure.getPos(),
                     "Where do you want to place your figure?");
@@ -239,7 +237,7 @@ public class Controller {
     private void doTokenGoblin(Player player) {
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
-        if (view.promptPlayersChoice("You can discard a card from one of your discard piles " +
+        if (player.getPlayerLogic().choose("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {
             goblinChosenPile(player, token);
         }
@@ -253,7 +251,7 @@ public class Controller {
     private void doTokenSpiderWeb(Player player) {
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
-        if (view.promptPlayersChoice("Your Figure gets moved to " +
+        if (player.getPlayerLogic().choose("Your Figure gets moved to " +
                 "figure to the next field with the same color. Do you want to proceed with your action?")) {
             ((Spiderweb)token).action(player);
             view.printCurrentBoard(model);
@@ -270,13 +268,13 @@ public class Controller {
 
         view.printTopCards(player);
 
-            if (view.promptPlayersChoice("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
+            if (player.getPlayerLogic().choose("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
                 ((Goblin) token).setPileChoice('h');
 
                     String cardAsString;
                     try {
                         view.printHand(player);
-                        cardAsString = view.promptCardString("What card do you want to trash?");
+                        cardAsString = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
                         ((Goblin) token).setCardChoice(CardFunction.getCardFromHand(cardAsString, player.getHand()));
                         token.action(player);
                         drawOne(player);
@@ -300,7 +298,7 @@ public class Controller {
      */
     private void doGoblinSpecialAction(Player player) {
         if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
-                view.promptPlayersChoice("Do you want to play your goblin-special? (you would earn "
+                player.getPlayerLogic().choose("Do you want to play your goblin-special? (you would earn "
                         + player.goblinSpecialPoints() + " points)")){
             player.playGoblinSpecial();
         }

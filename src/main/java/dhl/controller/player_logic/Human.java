@@ -1,6 +1,9 @@
 package dhl.controller.player_logic;
 
+import dhl.model.Card;
 import dhl.view.View;
+
+import java.util.List;
 
 /**
  * The Logic for a Human
@@ -18,21 +21,17 @@ public class Human implements PlayerLogic{
     }
 
     @Override
-    public void confirm(String question) {
-        while (true) {
-            if (view.promptPlayersChoice(question)) {
-                break;
-            }
-        }
+    public boolean choose(String question) {
+        return view.promptPlayersChoice(question);
     }
 
     @Override
-    public String chooseCard() {
-        return null;
+    public String chooseCard(String question, List<Card> hand) {
+        return view.promptCardString(question);
     }
 
     @Override
-    public int chooseFigure() {
-        return 0;
+    public int chooseFigure(int start, int end, String question) {
+        return view.promptInt(start, end, question);
     }
 }
