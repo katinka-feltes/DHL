@@ -20,7 +20,7 @@ public interface PlayerLogic {
      * asks the logic to choose a card
      * @return the chosen card as a string
      */
-    String chooseCard(String question, List<Card> hand);
+    Card chooseCard(String question, List<Card> hand);
 
     /**
      * asks the logic to choose a figure

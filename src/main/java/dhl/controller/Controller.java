@@ -114,8 +114,7 @@ public class Controller {
         while (true) {
             try {
                 // get card as string and check type with view method
-                String cardAsString = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand());
-                card = CardFunction.getCardFromHand(cardAsString, player.getHand());
+                card = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand());
                 // add card to played cards
                 player.getPlayedCards(card.getColor()).add(card);
                 // remove card from players hand
@@ -151,8 +150,8 @@ public class Controller {
     private void trashCard(Player player) {
         while (true) {
             try {
-                String cardAsString = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
-                player.setLastTrashed(CardFunction.getCardFromHand(cardAsString, player.getHand()));
+                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+                player.setLastTrashed(trash);
                 player.putCardOnDiscardingPile(player.getLastTrashed());
                 break;
             } catch (Exception e) {
@@ -271,11 +270,10 @@ public class Controller {
             if (player.getPlayerLogic().choose("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
                 ((Goblin) token).setPileChoice('h');
 
-                    String cardAsString;
                     try {
                         view.printHand(player);
-                        cardAsString = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
-                        ((Goblin) token).setCardChoice(CardFunction.getCardFromHand(cardAsString, player.getHand()));
+                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+                        ((Goblin) token).setCardChoice(trash);
                         token.action(player);
                         drawOne(player);
                     } catch (Exception e) {

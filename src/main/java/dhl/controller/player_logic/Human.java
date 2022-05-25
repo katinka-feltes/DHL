@@ -1,6 +1,7 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
+import dhl.model.CardFunction;
 import dhl.view.View;
 
 import java.util.List;
@@ -26,8 +27,14 @@ public class Human implements PlayerLogic{
     }
 
     @Override
-    public String chooseCard(String question, List<Card> hand) {
-        return view.promptCardString(question);
+    public Card chooseCard(String question, List<Card> hand) {
+        try {
+            String cardAsString = view.promptCardString(question);
+            return CardFunction.getCardFromHand(cardAsString, hand);
+        } catch(Exception e) {
+            view.error(e.getMessage());
+            return chooseCard(question, hand);
+        }
     }
 
     @Override

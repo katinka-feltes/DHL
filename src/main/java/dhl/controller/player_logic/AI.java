@@ -13,17 +13,17 @@ public class AI implements PlayerLogic {
     public boolean choose(String question) {
         if (question.endsWith("Are you ready to play?")) {
             return true;
-        } else if (question == "Are you done with your turn?") {
+        } else if (question.equals("Are you done with your turn?")) {
             return true;
         } else if (question.startsWith("Do you want to play a card?")) {
             return true;
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return false;
-        } else if(question.endsWith("Do you want to proceed with your action?")) {
+        } else if (question.endsWith("Do you want to proceed with your action?")) {
             return false;
-        } else if(question.startsWith("Do you want to trash one from your hand?")) {
+        } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return true;
-        } else if(question.startsWith("Do you want to play your goblin-special?")) {
+        } else if (question.startsWith("Do you want to play your goblin-special?")) {
             return true;
         } else {
             return true;
@@ -31,13 +31,13 @@ public class AI implements PlayerLogic {
     }
 
     @Override
-    public String chooseCard(String question, List<Card> hand) {
-        if(question == "What card do you want to play?") {
-            return null;
-        } else if(question == "What card do you want to trash?") {
-            return null;
+    public Card chooseCard(String question, List<Card> hand) {
+        if (question.equals("What card do you want to play?")) {
+            return hand.get(0);
+        } else if (question.equals("What card do you want to trash?")) {
+            return hand.get(0);
         } else {
-            return null;
+            return hand.get(0);
         }
     }
 
