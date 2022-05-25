@@ -1,12 +1,13 @@
 package dhl.model;
 
-import dhl.model.player_logic.PlayerLogic;
+import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
  * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),

@@ -2,6 +2,7 @@ package dhl.model;
 
 import java.util.Comparator;
 import java.util.List;
+
 /**
  * this class takes over some card and pile functions, like sorting and validating.
  */

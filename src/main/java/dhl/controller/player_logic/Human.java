@@ -1,4 +1,4 @@
-package dhl.model.player_logic;
+package dhl.controller.player_logic;
 
 import dhl.view.View;
 
