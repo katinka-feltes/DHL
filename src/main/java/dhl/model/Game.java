@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.model.player_logic.Human;
+import dhl.controller.player_logic.Human;
 import dhl.model.tokens.*;
 import dhl.view.Cli;
 

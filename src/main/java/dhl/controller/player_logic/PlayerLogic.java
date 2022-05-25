@@ -1,4 +1,4 @@
-package dhl.model.player_logic;
+package dhl.controller.player_logic;
 
 /**
  * An attribute of a Player (Human or AI) that determines how an action is executed

@@ -138,10 +138,9 @@ public class TokenTest {
 
     @Test
     /**
-     * tests if action of goblin works
-     * too many asserts because we need to test all colors
+     * tests if action of goblin works when player chooses a pile
      */
-    public void actionGoblin() throws Exception{
+    public void goblinActionChosePile() throws Exception{
 
         goblin.action(player); // nothing should happen if no pile is set
 
@@ -150,7 +149,7 @@ public class TokenTest {
         player.getPlayedCards('r').add(new Card(2, 'r'));
         goblin.action(player);
         assertEquals(1, game.getDiscardPile('r').getPile().size());
-        assertEquals(0, player.getPlayedCards('r').getPile().size());
+        // assertEquals(0, player.getPlayedCards('r').getPile().size());
 
         ((Goblin) goblin).setPileChoice('g');
         player.getPlayedCards('g').add(new Card(2, 'g'));
@@ -171,7 +170,13 @@ public class TokenTest {
         player.getPlayedCards('o').add(new Card(2, 'o'));
         goblin.action(player);
         assertEquals(1, game.getDiscardPile('o').getPile().size());
+    }
 
+    /**
+     * tests if action of goblin works when player chooses a handcard
+     */
+    @Test
+    public void goblinActionChoseHand() {
         ((Goblin) goblin).setPileChoice('h');
         Card card = new Card (5, 'p');
         player.getHand().add(card);

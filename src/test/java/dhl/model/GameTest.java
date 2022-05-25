@@ -81,13 +81,10 @@ public class GameTest {
     @Test
     /**
      * tests if method canDrawFromDiscarding works
-     * too many asserts because we need to test all color options
+     * false when lastTrashed = top card of same colored pile and others empty
      */
-    public void canDrawFromDiscarding() {
-        //false if all piles are empty
+    public void canDrawFromDiscardingLastTrashed() {
         player1.setLastTrashed(new Card(5, 'b'));
-        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        //false if lastTrashed = top card of same colored pile, others empty
         game.getDiscardPile('b').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
         game.getDiscardPile('b').getPile().clear();
@@ -106,7 +103,15 @@ public class GameTest {
         player1.setLastTrashed(new Card(5, 'o'));
         game.getDiscardPile('o').pile.add(player1.getLastTrashed());
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
-        //true if none of above
+    }
+
+    @Test
+    public void canDrawFromDiscardingOtherOptions() {
+        //false if all piles are empty
+        assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
+        //true if lastTrashed different from at least one pile's top card
+        player1.setLastTrashed(new Card(5, 'o'));
+        game.getDiscardPile('o').pile.add(player1.getLastTrashed());
         player1.setLastTrashed(new Card(5, 'b'));
         assertTrue(game.canDrawFromDiscarding(player1.getLastTrashed()));
     }

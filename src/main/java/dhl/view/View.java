@@ -25,6 +25,7 @@ public interface View {
      * @return the input int
      */
     int promptInt(int start, int end, String prompt);
+
     /**
      * this method enables the player to take a choice.
      * @param prompt the question the player is asked.
@@ -87,5 +88,4 @@ public interface View {
      * @param str Error Message
      */
     void error(String str);
-
 }
