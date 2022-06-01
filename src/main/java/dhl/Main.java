@@ -23,8 +23,8 @@ public class Main {
         if (cli) {
             c.setView(new Cli());
         } else {
+            c.setView(new Gui());
             Gui.main(args);
-            //c.setView(new Gui());
         }
         c.startGame();
     }

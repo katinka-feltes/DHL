@@ -37,7 +37,8 @@ public class Controller {
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
      */
     public void startGame() {
-        String[] playerNames = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
+        int playerAmount = view.promptInt(2, 4, "How many players?");
+        String[] playerNames = view.inputPlayersNames(playerAmount);
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
              players.add(new Player(playerNames[i], symbols[i], new Human(view)));

@@ -21,7 +21,7 @@ public class Cli implements View {
      */
     @Override
     public int promptInt(int start, int end, String prompt) {
-        System.out.println(prompt);
+        System.out.println(prompt + " (" + start + "-" + end + ")");
         Scanner scanner = new Scanner(System.in);
 
         while(true){ //checks if the input is an integer and if it is inbound
@@ -176,7 +176,7 @@ public class Cli implements View {
     public void printHand(Player player) {
         System.out.println(player.getName() + "'s Hand Cards:");
         for (Card card : CardFunction.sortHand(player.getHand())){
-            System.out.print(Character.toString(card.getColor())+ card.getNumber() + "\t");
+            System.out.print(Character.toString(card.getColor())+ card.getNumber() + "  ");
         }
         System.out.println();
         System.out.println();
@@ -345,6 +345,7 @@ public class Cli implements View {
             System.out.print(TABULATOR);
         }
         System.out.println();
+
         //Print figures of the players
         for (Player p: players) {
             for (int i = rowStart; i <= rowEnd; i++){
@@ -352,7 +353,7 @@ public class Cli implements View {
                 for (int j = 0; j < figureAmount; j++){
                     System.out.print(p.getSymbol() + " ");
                 }
-                if (figureAmount == 3) {
+                if (figureAmount > 1) {
                     System.out.print("\t");
                 } else {
                     System.out.print(TABULATOR);
