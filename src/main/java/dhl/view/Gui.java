@@ -1,6 +1,7 @@
 package dhl.view;
 
 import dhl.model.Game;
+import dhl.model.LargeField;
 import dhl.model.Player;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,8 +23,21 @@ import javafx.stage.Stage;
 public class Gui extends Application implements View{
 
     Stage window;
-
     int intReturn = -1;
+
+    private final String RED = "#C30202";
+    private final String GREEN = "#01902C";
+    private final String BLUE = "#0000FF";
+    private final String PURPLE = "#0000FF";
+    private final String ORANGE = "#0000FF";
+
+    /**
+     * The entry point of the GUI application.
+     * @param args The command line arguments passed to the application
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     /**
      * This method is called by the Application to start the GUI.
@@ -45,23 +59,21 @@ public class Gui extends Application implements View{
         player.setStyle("-fx-font: normal 20px 'sans-serif'");
         player.setFill(Color.RED); // setting color of the text to blue //TODO: player color
 
-        //Creating HBox for Top
+        //Creating VBox for Top
         VBox top = new VBox();
         top.getChildren().addAll(headline, player);
 
         //Creating GridPane for Center
         GridPane gridPane = new GridPane();
-        //Setting size for the pane
         gridPane.setMinSize(700, 400);
-        //Setting the padding
         gridPane.setPadding(new Insets(10, 10, 10, 10));
-        //Setting the vertical and horizontal gaps between the columns
         gridPane.setVgap(5);
         gridPane.setHgap(5);
-        //Setting the Grid alignment
-        gridPane.setAlignment(Pos.CENTER);
-        //Styling
         gridPane.setStyle("-fx-border-style: solid; -fx-border-color: Tomato; -fx-border-width: 2px");
+
+        //adding fields to center-grid
+        addingFields(gridPane);
+
         layout.setStyle("-fx-background-color: rgb(100, 100, 100);");
         layout.setTop(top);
         layout.setCenter(gridPane);
@@ -71,11 +83,70 @@ public class Gui extends Application implements View{
     }
 
     /**
-     * The entry point of the GUI application.
-     * @param args The command line arguments passed to the application
+     * creates a button for either a small or a large field
+     * @param color the color the field has
+     * @param large if the field is large or small
+     * @return the created button
      */
-    public static void main(String[] args) {
-        launch(args);
+    public Button createField(String color, boolean large) {
+        if (large) {
+            return createLargeField(color);
+        } else {
+            return createSmallField(color);
+        }
+    }
+
+    /**
+     * creates a button for a large field
+     * @param color the color the field has
+     * @return a large button
+     */
+    public Button createLargeField(String color) {
+        Button largeField = new Button();
+        largeField.setStyle(
+                "-fx-border-color: " + color + "; " +
+                        "-fx-border-width: 3; " +
+                        "-fx-border-radius: 99px; " +
+                        "-fx-background-radius: 99px; " +
+                        "-fx-min-width: 80px; " +
+                        "-fx-min-height: 80px; " +
+                        "-fx-max-width: 80px; " +
+                        "-fx-max-height: 80px; " +
+                        "-fx-background-color: transparent"
+        );
+        return largeField;
+    }
+
+    /**
+     * creates a button for a small field
+     * @param color the color the field has
+     * @return a small button
+     */
+    public Button createSmallField(String color) {
+        Button smallField = new Button();
+        smallField.setStyle(
+                "-fx-border-color: " + color + "; " +
+                        "-fx-border-width: 3; " +
+                        "-fx-border-radius: 99px; " +
+                        "-fx-background-radius: 99px; " +
+                        "-fx-min-width: 40px; " +
+                        "-fx-min-height: 40px; " +
+                        "-fx-max-width: 40px; " +
+                        "-fx-max-height: 40px; " +
+                        "-fx-background-color: transparent;"
+        );
+        return smallField;
+    }
+
+    /**
+     * adds all buttons to the field
+     * @param layout the center grid-layout
+     */
+    public void addingFields(GridPane layout) {
+        //first row
+        for(int i=0; i<10; i++) {
+            layout.add(createField(getColor(Game.FIELDS[i].getColor()), Game.FIELDS[i] instanceof LargeField), i, 0);
+        }
     }
 
     /**
@@ -253,5 +324,21 @@ public class Gui extends Application implements View{
     @Override
     public void error(String str) {
 
+    }
+
+    /**
+     * changes a color from char to string
+     * @param color as a char
+     * @return color as a String
+     */
+    private String getColor (char color){
+        switch (color){
+            case 'r': return "RED";
+            case 'g': return "GREEN";
+            case 'b': return "BLUE";
+            case 'p': return "PURPLE";
+            case 'o': return "ORANGE";
+            default: return "BLACK";
+        }
     }
 }
