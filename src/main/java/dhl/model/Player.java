@@ -30,15 +30,14 @@ public class Player {
 
     /**
      * the constructor of the player
-     * @param name the players name
+     *
+     * @param name   the players name
      * @param symbol the players symbol
-     * @param game the current game status
      */
-    public Player(String name, char symbol, Game game, PlayerLogic logic){
+    public Player(String name, char symbol, PlayerLogic logic){
         this.playerLogic = logic;
         this.name = name;
         this.symbol = symbol;
-        this.game = game;
         goblinSpecialPlayed = false;
         victoryPoints = 0;
         playedCards[0] = new DirectionDiscardPile('r');

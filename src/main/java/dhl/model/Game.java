@@ -113,6 +113,7 @@ public class Game {
         }
 
         placeTokens();
+        setup();
     }
 
     /**

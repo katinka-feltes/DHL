@@ -1,11 +1,16 @@
 package dhl.model.tokens;
 
+import dhl.controller.player_logic.Human;
 import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.Player;
+import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +35,11 @@ public class TokenTest {
         spiral = new Spiral();
         stone = new WishingStone();
 
-        game = new Game(new String[]{"Player 1", "Player 2"});
+        List<Player> players = new ArrayList<>();
+        players.add(new Player("test1", 'v', new Human(new Cli())));
+        players.add(new Player("test2", 'b', new Human(new Cli())));
+        game = new Game(players);
+
         player = game.getPlayers().get(0);
     }
 
@@ -177,6 +186,7 @@ public class TokenTest {
      */
     @Test
     public void goblinActionChoseHand() {
+        player.getHand().clear();
         ((Goblin) goblin).setPileChoice('h');
         Card card = new Card (5, 'p');
         player.getHand().add(card);

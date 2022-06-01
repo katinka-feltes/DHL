@@ -40,16 +40,15 @@ public class Controller {
         String[] playerNames = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
-             players.add(new Player(playerNames[i], symbols[i], model, new Human(view, playerNames[i])));
+             players.add(new Player(playerNames[i], symbols[i], new Human(view)));
         }
         if (playerNames.length != 4) {
             int aiAmount = view.promptInt(0, 4 - playerNames.length, "How many AI players? (max. " + (4 - playerNames.length) + ")");
             for (int i = 0; i < aiAmount; i++) {
-                players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], model, new AI()));
+                players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], new AI()));
             }
         }
         model = new Game(players);
-        model.setup();
 
         while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){

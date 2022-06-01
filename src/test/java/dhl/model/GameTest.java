@@ -1,5 +1,7 @@
 package dhl.model;
 
+import dhl.controller.player_logic.Human;
+import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +24,11 @@ public class GameTest {
      * creates a new game with 3 players
      */
     public void setup() {
-        game = new Game(new String[]{"Player 1", "Player 2", "Player 3"});
+        List<Player> players = new ArrayList<>();
+        players.add(new Player("test1", 'v', new Human(new Cli())));
+        players.add(new Player("test2", 'b', new Human(new Cli())));
+        players.add(new Player("test3", 'g', new Human(new Cli())));
+        game = new Game(players);
         player1 = game.getPlayers().get(0);
         player2 = game.getPlayers().get(1);
     }
@@ -66,6 +72,7 @@ public class GameTest {
      * tests if method putCardOnDiscardingPile works
      */
     public void putCardOnDiscardingPile() throws Exception {
+        player1.getHand().clear();
         player1.getHand().add(new Card(1, 'r'));
         player1.getHand().add(new Card(1, 'g'));
         player1.getHand().add(new Card(1, 'b'));
@@ -121,11 +128,11 @@ public class GameTest {
      * tests if method getDrawingPile works
      */
     public void getDrawingPile() {
-        assertEquals(110, game.getDrawingPile().getCards().size());
+        assertEquals(86, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
         player1.drawFromDrawingPile();
         player1.drawFromDrawingPile();
-        assertEquals(108, game.getDrawingPile().getCards().size());
+        assertEquals(84, game.getDrawingPile().getCards().size());
     }
 
     @Test

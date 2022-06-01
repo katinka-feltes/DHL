@@ -15,9 +15,10 @@ public class Human implements PlayerLogic{
 
     /**
      * Creates a human playerlogic
+     *
      * @param view the input for the logic
      */
-    public Human (View view, String name){
+    public Human (View view){
         this.view=view;
     }
 

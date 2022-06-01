@@ -1,8 +1,10 @@
 package dhl.model;
 
+import dhl.controller.player_logic.Human;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.WishingStone;
+import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +26,10 @@ public class PlayerTest {
      * creates a new game with 2 players
      */
     public void setup() {
-        game = new Game(new String[]{"Player 1", "Player 2"});
+        List<Player> players = new ArrayList<>();
+        players.add(new Player("test1", 'v', new Human(new Cli())));
+        players.add(new Player("test2", 'b', new Human(new Cli())));
+        game = new Game(players);
         player = game.getPlayers().get(0);
     }
 
@@ -63,7 +68,7 @@ public class PlayerTest {
      * tests if method getName works
      */
     public void getName() {
-        assertEquals("Player 1", player.getName());
+        assertEquals("test1", player.getName());
     }
 
     @Test
@@ -134,6 +139,7 @@ public class PlayerTest {
      * tests if method drawFromDiscardingPile works
      */
     public void drawFromDiscardingPile() throws Exception {
+        player.getHand().clear();
         // add card to wrong pile
         assertThrows(Exception.class, () -> game.getDiscardPile('p').add(new Card(3, 'o')), "Card is null or a different color than the pile.");
         // try to draw from empty pile
@@ -152,6 +158,7 @@ public class PlayerTest {
      * tests if method drawFromDrawingPile works
      */
     public void drawFromDrawingPile() {
+        player.getHand().clear();
         player.drawFromDrawingPile();
         assertEquals(1, player.getHand().size());
     }
@@ -161,6 +168,7 @@ public class PlayerTest {
      * tests if method canPlay works
      */
     public void canPlay() {
+        player.getHand().clear();
         player.getHand().add(new Card(2, 'r'));
         assertTrue(player.canPlay());
         player.getHand().remove(0);
@@ -222,6 +230,7 @@ public class PlayerTest {
      * tests if method cardFitsToAnyPile works
      */
     public void cardFitsToAnyPile() {
+        player.getHand().clear();
         player.getHand().add(new Card(0, 't'));
         assertFalse(player.canPlay());
         player.getHand().add(new Card(1, 'g'));
@@ -281,6 +290,7 @@ public class PlayerTest {
      * tests if method getCardFromHand works
      */
     public void getCardFromHand() throws Exception {
+        player.getHand().clear();
         player.getHand().add(new Card(2, 'r'));
         assertEquals(CardFunction.getCardFromHand("r2", player.getHand()), player.getHand().get(0));
         player.getHand().remove(0);
