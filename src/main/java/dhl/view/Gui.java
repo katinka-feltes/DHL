@@ -25,11 +25,11 @@ public class Gui extends Application implements View{
     Stage window;
     int intReturn = -1;
 
-    private final String RED = "#C30202";
-    private final String GREEN = "#01902C";
-    private final String BLUE = "#0000FF";
-    private final String PURPLE = "#0000FF";
-    private final String ORANGE = "#0000FF";
+    private final String RED = "#741C1C";
+    private final String GREEN = "#203420";
+    private final String BLUE = "#1A2847";
+    private final String PURPLE = "#4B2D48";
+    private final String ORANGE = "#D05E00";
 
     /**
      * The entry point of the GUI application.
@@ -72,7 +72,7 @@ public class Gui extends Application implements View{
         gridPane.setStyle("-fx-border-style: solid; -fx-border-color: Tomato; -fx-border-width: 2px");
 
         //adding fields to center-grid
-        addingFields(gridPane);
+        creatingField(gridPane);
 
         layout.setStyle("-fx-background-color: rgb(100, 100, 100);");
         layout.setTop(top);
@@ -139,13 +139,31 @@ public class Gui extends Application implements View{
     }
 
     /**
-     * adds all buttons to the field
+     * creates the field (currently only buttons)
      * @param layout the center grid-layout
      */
-    public void addingFields(GridPane layout) {
-        //first row
-        for(int i=0; i<10; i++) {
-            layout.add(createField(getColor(Game.FIELDS[i].getColor()), Game.FIELDS[i] instanceof LargeField), i, 0);
+    public void creatingField(GridPane layout) {
+        //first row (fields 0-9, row: 1-10, column: 1)
+        for(int i=1; i<=10; i++) {
+            layout.add(createField(getColor(Game.FIELDS[i-1].getColor()), Game.FIELDS[i-1] instanceof LargeField), i, 1);
+        }
+        //right part (fields 10-13, row: 11, column: 1-4)
+        for(int i=1; i<=4; i++) {
+            layout.add(createField(getColor(Game.FIELDS[i+9].getColor()), Game.FIELDS[i+9] instanceof LargeField), 11, i);
+        }
+        //second row (fields 14-21, row: 10-2, column: 4)
+        int j = 14;
+        for(int i=10; i>=2; i--) {
+            layout.add(createField(getColor(Game.FIELDS[j].getColor()), Game.FIELDS[j] instanceof LargeField), i, 4);
+            j++;
+        }
+        //left part (fields 22-25, row: 1, column: 4-7)
+        for(int i=4; i<=7; i++) {
+            layout.add(createField(getColor(Game.FIELDS[i+18].getColor()), Game.FIELDS[i+18] instanceof LargeField), 1, i);
+        }
+        //third row (fields 26-35, row: 2-11, column: 7)
+        for(int i=2; i<=11; i++) {
+            layout.add(createField(getColor(Game.FIELDS[i+24].getColor()), Game.FIELDS[i+24] instanceof LargeField), i, 7);
         }
     }
 
@@ -333,11 +351,11 @@ public class Gui extends Application implements View{
      */
     private String getColor (char color){
         switch (color){
-            case 'r': return "RED";
-            case 'g': return "GREEN";
-            case 'b': return "BLUE";
-            case 'p': return "PURPLE";
-            case 'o': return "ORANGE";
+            case 'r': return RED;
+            case 'g': return GREEN;
+            case 'b': return BLUE;
+            case 'p': return PURPLE;
+            case 'o': return ORANGE;
             default: return "BLACK";
         }
     }
