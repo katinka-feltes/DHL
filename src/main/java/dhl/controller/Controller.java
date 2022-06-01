@@ -1,11 +1,16 @@
 package dhl.controller;
 
+import dhl.controller.player_logic.AI;
+import dhl.controller.player_logic.Human;
 import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiderweb;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
 import dhl.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This Class is the Controller of the MVC pattern. It is responsible for the communication between the Model and the View.
@@ -14,14 +19,37 @@ public class Controller {
     View view;
     Game model;
 
+    //add player to the players-list
+    //other symbols
+    //♛ \u265B BLACK CHESS QUEEN
+    //♜ \u265C BLACK CHESS ROOK
+    //♝ \u265D BLACK CHESS BISHOP
+    //♞ \u265E BLACK CHESS KNIGHT
+    //our symbols
+    //♠ \u2660 BLACK SPADE SUIT
+    //♣ \u2663 BLACK CLUB SUIT
+    //♥ \u2665 BLACK HEART SUIT
+    //♦ \u2666 BLACK DIAMOND SUIT
+    char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+
     /**
      * This method starts and keeps the game running.
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
      */
     public void startGame() {
         String[] playerNames = view.inputPlayersNames(view.promptInt(2, 4, "How many players? (2, 3 or 4)"));
-        model = new Game(playerNames);
-        model.createDecks();
+        List<Player> players = new ArrayList<>();
+        for (int i = 0; i < playerNames.length; i++) {
+             players.add(new Player(playerNames[i], symbols[i], model, new Human(view, playerNames[i])));
+        }
+        if (playerNames.length != 4) {
+            int aiAmount = view.promptInt(0, 4 - playerNames.length, "How many AI players? (max. " + (4 - playerNames.length) + ")");
+            for (int i = 0; i < aiAmount; i++) {
+                players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], model, new AI()));
+            }
+        }
+        model = new Game(players);
+        model.setup();
 
         while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){

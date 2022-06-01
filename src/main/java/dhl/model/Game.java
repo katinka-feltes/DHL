@@ -1,8 +1,6 @@
 package dhl.model;
 
-import dhl.controller.player_logic.Human;
 import dhl.model.tokens.*;
-import dhl.view.Cli;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,10 +62,11 @@ public class Game {
     private final List<Token> tokens;
 
     /**
-     * This method creates the deck for each player.
+     * This method sets the game for each player and also creates their deck.
      */
-    public void createDecks() {
+    public void setup() {
         for (Player p : players) {
+            p.setGame(this);
             if (drawingPile != null) {
                 // draw up to 8 cards
                 while (p.getHand().size() < 8 && !drawingPile.isEmpty()) {
@@ -81,7 +80,7 @@ public class Game {
      * Constructor for Game with given amount of players (2-4)
      * @param playerNames the List of all player Names
      */
-    public Game(String[] playerNames) {
+    public Game(List<Player> players) {
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
@@ -89,7 +88,7 @@ public class Game {
         discardingPilePurple = new DiscardPile('p');
         discardingPileOrange = new DiscardPile('o');
         drawingPile = new DrawingPile();
-        players = new ArrayList<>();
+        this.players = players;
 
         tokens = new ArrayList<>();
 
@@ -114,22 +113,6 @@ public class Game {
         }
 
         placeTokens();
-
-        //add player to the players-list
-        //other symbols
-        //♛ \u265B BLACK CHESS QUEEN
-        //♜ \u265C BLACK CHESS ROOK
-        //♝ \u265D BLACK CHESS BISHOP
-        //♞ \u265E BLACK CHESS KNIGHT
-        //our symbols
-        //♠ \u2660 BLACK SPADE SUIT
-        //♣ \u2663 BLACK CLUB SUIT
-        //♥ \u2665 BLACK HEART SUIT
-        //♦ \u2666 BLACK DIAMOND SUIT
-        char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-        for (int i = 0; i < playerNames.length; i++) {
-            players.add(new Player(playerNames[i], symbols[i], this, new Human(new Cli())));
-        }
     }
 
     /**

@@ -80,7 +80,7 @@ public class PlayerTest {
      * tests if method getHand works
      */
     public void getHand() {
-        game.createDecks();
+        game.setup();
         assertEquals(8, player.getHand().size());
         for (Card card : player.getHand()) {
             assertEquals(Card.class, card.getClass());

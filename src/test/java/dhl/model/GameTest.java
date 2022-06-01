@@ -148,10 +148,10 @@ public class GameTest {
 
     @Test
     /**
-     * tests if method createDecks works
+     * tests if method setup works
      */
     public void createDecks() {
-        game.createDecks();
+        game.setup();
         for (Player player1 : game.getPlayers()) {
             assertEquals(8, player1.getHand().size());
         }

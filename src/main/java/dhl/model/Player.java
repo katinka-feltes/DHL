@@ -18,7 +18,7 @@ public class Player {
     private final PlayerLogic playerLogic;
     private String name;
     private final char symbol;
-    private final Game game;
+    private Game game;
     private final DirectionDiscardPile[] playedCards = new DirectionDiscardPile[5];
     private Card lastTrashed;
     private final List<Card> hand;
@@ -230,4 +230,8 @@ public class Player {
         return symbol;
     }
     public PlayerLogic getPlayerLogic() {return playerLogic;}
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }

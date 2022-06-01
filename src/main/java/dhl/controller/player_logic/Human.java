@@ -17,7 +17,7 @@ public class Human implements PlayerLogic{
      * Creates a human playerlogic
      * @param view the input for the logic
      */
-    public Human (View view){
+    public Human (View view, String name){
         this.view=view;
     }
 
