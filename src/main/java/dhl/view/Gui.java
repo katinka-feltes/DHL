@@ -34,6 +34,7 @@ public class Gui extends Application implements View{
     private final String PURPLE = "#4B2D48";
     private final String ORANGE = "#D05E00";
 
+
     /**
      * The entry point of the GUI application.
      * @param args The command line arguments passed to the application
@@ -49,7 +50,7 @@ public class Gui extends Application implements View{
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);
@@ -58,37 +59,6 @@ public class Gui extends Application implements View{
         //Setting title to the Stage
         primaryStage.setTitle("Dire Horror Land!");
         window = primaryStage;
-
-        //Layout
-        BorderPane layout = new BorderPane();
-
-        Text headline = new Text("Dire Horror Land");
-        headline.setStyle("-fx-font: normal bold 30px 'sans-serif'");
-        Text player = new Text("Active Player: ");
-        player.setStyle("-fx-font: normal 20px 'sans-serif'");
-        player.setFill(Color.RED); // setting color of the text to blue //TODO: player color
-
-        //Creating VBox for Top
-        VBox top = new VBox();
-        top.getChildren().addAll(headline, player);
-
-        //Creating GridPane for Center
-        GridPane gridPane = new GridPane();
-        gridPane.setMinSize(700, 400);
-        gridPane.setPadding(new Insets(10, 10, 10, 10));
-        gridPane.setVgap(5);
-        gridPane.setHgap(5);
-        gridPane.setStyle("-fx-border-style: solid; -fx-border-color: Tomato; -fx-border-width: 2px");
-
-        //adding fields to center-grid
-        creatingField(gridPane);
-
-        layout.setStyle("-fx-background-color: rgb(100, 100, 100);");
-        layout.setTop(top);
-        layout.setCenter(gridPane);
-
-        window.setScene(new Scene(layout, 800, 600));
-        window.show();
     }
 
     /**
