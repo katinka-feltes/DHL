@@ -6,7 +6,6 @@ module dhl {
     requires transitive javafx.graphics;
     requires javafx.fxml;
 
-    opens dhl;
+    opens dhl.view;
     exports dhl.view;
-
 }

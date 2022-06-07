@@ -140,7 +140,7 @@ public class Controller {
         while (true) {
             try {
                 // get card as string and check type with view method
-                card = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand());
+                card = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand(), player.getPlayedCards());
                 // add card to played cards
                 player.getPlayedCards(card.getColor()).add(card);
                 // remove card from players hand
@@ -176,7 +176,7 @@ public class Controller {
     private void trashCard(Player player) {
         while (true) {
             try {
-                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand(), player.getPlayedCards());
                 player.setLastTrashed(trash);
                 player.putCardOnDiscardingPile(player.getLastTrashed());
                 break;
@@ -298,7 +298,7 @@ public class Controller {
 
                     try {
                         view.printHand(player);
-                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand(), player.getPlayedCards());
                         ((Goblin) token).setCardChoice(trash);
                         token.action(player);
                         drawOne(player);

@@ -10,6 +10,7 @@ public class CardFunction {
 
     /**
      * sorts the hand of the player by number and color
+     *
      * @return hand sorted by number and color as an ArrayList
      */
     public static List<Card> sortHand(List<Card> hand) {
@@ -21,6 +22,7 @@ public class CardFunction {
 
     /**
      * Get a card from hand
+     *
      * @param cardAsString the card to get from the hand as a string
      * @return the Card
      * @throws Exception if card is not in Hand
@@ -39,15 +41,15 @@ public class CardFunction {
     }
 
     /**
-     * checks if card fits to any of the player's piles
+     * checks if card fits to player's played cards piles
      * @param card one card from the player's hand
+     * @param correctPile the player's played cards (with color of the card)
      * @return true if card fits to appropriately colored pile
      */
-    public static boolean cardFitsToAnyPile(Card card, DirectionDiscardPile playedCards){
-        if(playedCards != null){
-            return playedCards.cardFitsToPile(card);
-        }
-        else {
+    public static boolean cardFitsToPlayersPiles(Card card, DirectionDiscardPile correctPile) {
+        if (correctPile != null) {
+            return correctPile.cardFitsToPile(card);
+        } else {
             return false;
         }
     }

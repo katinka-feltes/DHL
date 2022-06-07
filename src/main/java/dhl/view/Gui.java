@@ -1,23 +1,20 @@
 package dhl.view;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import dhl.model.Game;
 import dhl.model.LargeField;
 import dhl.model.Player;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -50,7 +47,7 @@ public class Gui extends Application implements View{
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);

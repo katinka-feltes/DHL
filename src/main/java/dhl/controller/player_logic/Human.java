@@ -2,6 +2,7 @@ package dhl.controller.player_logic;
 
 import dhl.model.Card;
 import dhl.model.CardFunction;
+import dhl.model.DirectionDiscardPile;
 import dhl.view.View;
 
 import java.util.List;
@@ -28,13 +29,13 @@ public class Human implements PlayerLogic{
     }
 
     @Override
-    public Card chooseCard(String question, List<Card> hand) {
+    public Card chooseCard(String question, List<Card> hand, DirectionDiscardPile[] playedCards) {
         try {
             String cardAsString = view.promptCardString(question);
             return CardFunction.getCardFromHand(cardAsString, hand);
         } catch(Exception e) {
             view.error(e.getMessage());
-            return chooseCard(question, hand);
+            return chooseCard(question, hand, playedCards);
         }
     }
 
