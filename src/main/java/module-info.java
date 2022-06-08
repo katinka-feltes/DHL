@@ -8,5 +8,6 @@ module dhl {
 
     opens dhl;
     exports dhl.view;
+    exports dhl.controller;
 
 }
