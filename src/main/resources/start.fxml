@@ -41,11 +41,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhl.controller.GuiController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <BorderPane prefHeight="400.0" prefWidth="640.0">
+            <BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="640.0">
                <top>
                   <AnchorPane prefHeight="109.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                      <children>
@@ -105,7 +105,7 @@
                               <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
-                        <Button fx:id="startButton" layoutX="263.0" layoutY="241.0" mnemonicParsing="false" style="-fx-background-color: #880b0b;" text="START GAME" textFill="WHITE">
+                        <Button fx:id="startButton" layoutX="282.0" layoutY="243.0" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Ink Free" size="15.0" />
                            </font>
