@@ -1,7 +1,9 @@
 package dhl.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 
 public class GuiController {
@@ -38,6 +40,10 @@ public class GuiController {
     private Label playername;
     @FXML
     private Label toDoMessage;
+    @FXML
+    private Button startButton;
+    @FXML
+    private TextField name1;
 
     public void setLabel(String message) {
         toDoMessage.setText(message);
