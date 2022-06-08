@@ -280,24 +280,24 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="77.0" prefWidth="614.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="87.0" prefWidth="616.0" text="Dire Horror Land" textFill="#880b0b">
+                        <Label alignment="CENTER" prefHeight="87.0" prefWidth="577.0" text="DIRE HORROR LAND" textFill="#880b0b">
                            <font>
-                              <Font name="Euphorigenic" size="50.0" />
+                              <Font name="Ink Free" size="50.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="89.0" prefHeight="32.0" prefWidth="77.0" text="Active Player:">
+                        <Label fx:id="toDoMessage" layoutX="309.0" layoutY="88.0" prefHeight="32.0" prefWidth="268.0" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="toDoMessage" layoutX="309.0" layoutY="88.0" prefHeight="32.0" prefWidth="302.0" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
+                        <Label fx:id="playername" contentDisplay="CENTER" layoutX="68.0" layoutY="93.0" prefHeight="24.0" prefWidth="213.0" text="test playername">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="playername" contentDisplay="CENTER" layoutX="84.0" layoutY="90.0" prefHeight="29.0" prefWidth="204.0" text="test playername">
+                        <Label layoutX="4.0" layoutY="93.0" prefHeight="17.0" prefWidth="65.0" text="PLAYER :">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
                      </children>

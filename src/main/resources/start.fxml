@@ -49,9 +49,9 @@
                <top>
                   <AnchorPane prefHeight="109.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label alignment="CENTER" layoutX="178.0" layoutY="16.0" text="Dire Horror Land" textFill="#880b0b">
+                        <Label alignment="CENTER" layoutX="79.0" layoutY="14.0" text="DIRE HORROR LAND" textFill="#880b0b">
                            <font>
-                              <Font name="Euphorigenic" size="50.0" />
+                              <Font name="Ink Free" size="50.0" />
                            </font>
                         </Label>
                      </children>
@@ -65,9 +65,9 @@
                               <Font name="Euphorigenic" size="10.0" />
                            </font>
                         </TextField>
-                        <Label alignment="CENTER" layoutX="194.0" layoutY="36.0" prefHeight="23.0" prefWidth="251.0" text="Please enter the names of all human players :" textAlignment="CENTER">
+                        <Label alignment="CENTER" layoutX="119.0" layoutY="34.0" prefHeight="25.0" prefWidth="401.0" text="PLEASE ENTER THE NAMES OF ALL HUMAN PLAYERS :" textAlignment="CENTER">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
                         <TextField fx:id="name2" layoutX="223.0" layoutY="121.0" prefHeight="24.0" prefWidth="193.0">
@@ -85,29 +85,29 @@
                               <Font name="Euphorigenic" size="10.0" />
                            </font>
                         </TextField>
-                        <CheckBox fx:id="ai1" layoutX="445.0" layoutY="121.0" mnemonicParsing="false">
+                        <CheckBox fx:id="ai1" layoutX="454.0" layoutY="121.0" mnemonicParsing="false">
                            <font>
                               <Font name="Euphorigenic" size="15.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="ai2" layoutX="444.0" layoutY="162.0" mnemonicParsing="false">
+                        <CheckBox fx:id="ai2" layoutX="454.0" layoutY="162.0" mnemonicParsing="false">
                            <font>
                               <Font name="Euphorigenic" size="15.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="ai3" layoutX="444.0" layoutY="201.0" mnemonicParsing="false">
+                        <CheckBox fx:id="ai3" layoutX="454.0" layoutY="201.0" mnemonicParsing="false">
                            <font>
                               <Font name="Euphorigenic" size="15.0" />
                            </font>
                         </CheckBox>
-                        <Label alignment="CENTER" layoutX="428.0" layoutY="80.0" prefHeight="23.0" prefWidth="53.0" text="Add bots :" textAlignment="CENTER">
+                        <Label alignment="CENTER" layoutX="420.0" layoutY="79.0" prefHeight="25.0" prefWidth="91.0" text="ADD BOTS :" textAlignment="CENTER">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Label>
-                        <Button fx:id="startButton" layoutX="282.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="startButton" layoutX="263.0" layoutY="241.0" mnemonicParsing="false" style="-fx-background-color: #880b0b;" text="START GAME" textFill="WHITE">
                            <font>
-                              <Font name="Euphorigenic" size="15.0" />
+                              <Font name="Ink Free" size="15.0" />
                            </font>
                         </Button>
                      </children>
