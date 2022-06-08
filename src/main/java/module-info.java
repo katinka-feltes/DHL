@@ -7,6 +7,7 @@ module dhl {
     requires javafx.fxml;
 
     opens dhl;
+    opens dhl.controller;
     exports dhl.view;
     exports dhl.controller;
 }

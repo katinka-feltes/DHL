@@ -50,7 +50,7 @@ public class Goblin implements Token {
             // do nothing
         }
     }
-
+    
     /**
      * returns the chosen pile
      * @return the chosen pile
