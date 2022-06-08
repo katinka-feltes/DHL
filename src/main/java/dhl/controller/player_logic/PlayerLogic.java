@@ -1,6 +1,7 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
+import dhl.model.DirectionDiscardPile;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface PlayerLogic {
      * asks the logic to choose a card
      * @return the chosen card as a string
      */
-    Card chooseCard(String question, List<Card> hand);
+    Card chooseCard(String question, List<Card> hand, DirectionDiscardPile[] playedCards);
 
     /**
      * asks the logic to choose a figure

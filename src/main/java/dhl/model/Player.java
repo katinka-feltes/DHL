@@ -121,7 +121,7 @@ public class Player {
      */
     public boolean canPlay() {
         for (Card card : hand){
-            if(CardFunction.cardFitsToAnyPile(card, getPlayedCards(card.getColor()))){
+            if(CardFunction.cardFitsToPlayersPiles(card, getPlayedCards(card.getColor()))){
                 return true;
             }
         }
@@ -188,6 +188,7 @@ public class Player {
         }
         return null;
     }
+    public DirectionDiscardPile[] getPlayedCards() {return playedCards;}
 
     public Figure getLastMovedFigure(){
         return lastMovedFigure;
