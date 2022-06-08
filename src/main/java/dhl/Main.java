@@ -1,10 +1,9 @@
 package dhl;
 
-import dhl.controller.Controller;
+import dhl.controller.CliController;
 import dhl.view.Cli;
 import dhl.view.Gui;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -18,7 +17,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Controller c = new Controller();
+        CliController c = new CliController();
 
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {

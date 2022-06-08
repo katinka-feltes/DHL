@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * This Class is the Controller of the MVC pattern. It is responsible for the communication between the Model and the View.
  */
-public class Controller {
+public class CliController {
     View view;
     Game model;
 

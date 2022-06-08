@@ -1,20 +1,19 @@
 package dhl.view;
 
+import dhl.model.Game;
+import dhl.model.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import dhl.model.Game;
-import dhl.model.LargeField;
-import dhl.model.Player;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -47,96 +46,11 @@ public class Gui extends Application implements View{
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/start.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 900, 700);
+        Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    /**
-     * creates a button for either a small or a large field
-     * @param color the color the field has
-     * @param large if the field is large or small
-     * @return the created button
-     */
-    public Button createField(String color, boolean large) {
-        if (large) {
-            return createLargeField(color);
-        } else {
-            return createSmallField(color);
-        }
-    }
-
-    /**
-     * creates a button for a large field
-     * @param color the color the field has
-     * @return a large button
-     */
-    public Button createLargeField(String color) {
-        Button largeField = new Button();
-        largeField.setStyle(
-                "-fx-border-color: " + color + "; " +
-                        "-fx-border-width: 3; " +
-                        "-fx-border-radius: 99px; " +
-                        "-fx-background-radius: 99px; " +
-                        "-fx-min-width: 80px; " +
-                        "-fx-min-height: 80px; " +
-                        "-fx-max-width: 80px; " +
-                        "-fx-max-height: 80px; " +
-                        "-fx-background-color: transparent"
-        );
-        return largeField;
-    }
-
-    /**
-     * creates a button for a small field
-     * @param color the color the field has
-     * @return a small button
-     */
-    public Button createSmallField(String color) {
-        Button smallField = new Button();
-        smallField.setStyle(
-                "-fx-border-color: " + color + "; " +
-                        "-fx-border-width: 3; " +
-                        "-fx-border-radius: 99px; " +
-                        "-fx-background-radius: 99px; " +
-                        "-fx-min-width: 40px; " +
-                        "-fx-min-height: 40px; " +
-                        "-fx-max-width: 40px; " +
-                        "-fx-max-height: 40px; " +
-                        "-fx-background-color: transparent;"
-        );
-        return smallField;
-    }
-
-    /**
-     * creates the field (currently only buttons)
-     * @param layout the center grid-layout
-     */
-    public void creatingField(GridPane layout) {
-        //first row (fields 0-9, row: 1-10, column: 1)
-        for(int i=1; i<=10; i++) {
-            layout.add(createField(getColor(Game.FIELDS[i-1].getColor()), Game.FIELDS[i-1] instanceof LargeField), i, 1);
-        }
-        //right part (fields 10-13, row: 11, column: 1-4)
-        for(int i=1; i<=4; i++) {
-            layout.add(createField(getColor(Game.FIELDS[i+9].getColor()), Game.FIELDS[i+9] instanceof LargeField), 11, i);
-        }
-        //second row (fields 14-21, row: 10-2, column: 4)
-        int j = 14;
-        for(int i=10; i>=2; i--) {
-            layout.add(createField(getColor(Game.FIELDS[j].getColor()), Game.FIELDS[j] instanceof LargeField), i, 4);
-            j++;
-        }
-        //left part (fields 22-25, row: 1, column: 4-7)
-        for(int i=4; i<=7; i++) {
-            layout.add(createField(getColor(Game.FIELDS[i+18].getColor()), Game.FIELDS[i+18] instanceof LargeField), 1, i);
-        }
-        //third row (fields 26-35, row: 2-11, column: 7)
-        for(int i=2; i<=11; i++) {
-            layout.add(createField(getColor(Game.FIELDS[i+24].getColor()), Game.FIELDS[i+24] instanceof LargeField), i, 7);
-        }
     }
 
     /**

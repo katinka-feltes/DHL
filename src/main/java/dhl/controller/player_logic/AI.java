@@ -53,33 +53,30 @@ public class AI implements PlayerLogic {
      * checks which playable hand card is the best option according to the AI's played cards
      * the smaller the difference between last played card and (playable) hand card, the better
      * if the pile is empty, the card is better the higher/lower it is
-     * @param hand the player's current hand
+     *
+     * @param hand        the player's current hand
      * @param playedCards all the player's played cards
      * @return the hand card most fitting to the played cards
      */
     public Card bestCardOption(List<Card> hand, DirectionDiscardPile[] playedCards) {
         int smallestDifference = 11;
+        int diff;
         Card bestCard = null;
-        for(Card card: hand) {
+        for (Card card : hand) {
             DirectionDiscardPile pile = getCorrectPile(card, playedCards);
-            if(CardFunction.cardFitsToPlayersPiles(card, pile)) {
-                if(pile.isEmpty()) {
-                    if(card.getNumber() > 5) {
-                        smallestDifference = 10-card.getNumber();
-                        bestCard = card;
-                    } else if(card.getNumber() < 5) {
-                        smallestDifference = card.getNumber();
-                        bestCard = card;
-                    } else {
-                        smallestDifference = 5;
-                        bestCard = card;
-                    }
+            if (CardFunction.cardFitsToPlayersPiles(card, pile)) {
+                if (!pile.isEmpty()) {
+                    diff = Math.abs(pile.getTop().getNumber() - card.getNumber());
+                } else if (card.getNumber() > 5) {
+                    diff = 10 - card.getNumber();
+                } else if (card.getNumber() < 5) {
+                    diff = card.getNumber();
                 } else {
-                    int diff = Math.abs(pile.getTop().getNumber() - card.getNumber());
-                    if(diff < smallestDifference) {
-                        smallestDifference = diff;
-                        bestCard = card;
-                    }
+                    diff = 5;
+                }
+                if (diff < smallestDifference) {
+                    smallestDifference = diff;
+                    bestCard = card;
                 }
             }
         }
@@ -88,7 +85,8 @@ public class AI implements PlayerLogic {
 
     /**
      * to get the correctly colored played cards pile for a card
-     * @param card one of the player's hand cards
+     *
+     * @param card        one of the player's hand cards
      * @param playedCards all the player's played cards
      * @return the correctly colored played cards pile
      */
