@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This Class is the Controller of the MVC pattern when the game is played on the GUI.
@@ -32,15 +33,13 @@ import java.util.List;
 public class GuiController {
 
     @FXML
-    private Label redLabel;
+    private BorderPane borderPane;
+    @FXML
+    private Label toDo;
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    private Player activePlayer;
 
-
-
-    @FXML
-    private BorderPane borderPane;
     private final List<TextField> names = new ArrayList<>();
     private final List<CheckBox> ais = new ArrayList<>();
     private final List<Circle> circles = new ArrayList<>();
@@ -81,7 +80,7 @@ public class GuiController {
             }
         }
     }
-
+    @FXML
     public void startGame(ActionEvent event) throws IOException {
         classifyChildren(borderPane);
         int aiAmount = 0;
@@ -109,28 +108,33 @@ public class GuiController {
         }
         model = new Game(players);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/gui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui.fxml"));
+        fxmlLoader.setController(this);
+        Parent newRoot = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(newRoot);
         stage.setScene(scene);
         stage.show();
-    }
-    @FXML
-    public void startGamew() {
+        stage.setMaximized(true);
+        stage.centerOnScreen();
+        classifyChildren(newRoot);
 
-        /** while(!model.gameOver()){
+        while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){
                 if(!model.gameOver()) {
                     takeTurn(activeP);
-                }
-                else {
+                } else {
                     for (Player p : model.getPlayers()){
                         p.calcTokenPoints();
                     }
                     view.printResults(model);
                 }
             }
-        } **/
+         }
+    }
+
+    private void takeTurn(Player activeP) {
+        toDo.setText(activeP.getName() + "it's your turn");
     }
 
     /**
