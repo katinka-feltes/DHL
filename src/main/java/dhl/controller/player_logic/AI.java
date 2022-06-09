@@ -1,8 +1,10 @@
 package dhl.controller.player_logic;
 
 import dhl.model.*;
+import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Skullpoint;
 import dhl.model.tokens.Token;
+import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,10 @@ public class AI implements PlayerLogic {
             return playableCards().size() > 2; // play a card if there are more than two cards to play
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return false; // always draws from the drawing pile
-        } else if (question.startsWith("Your Figure gets moved to figure to the next field with the same color")){
+        } else if (question.startsWith("Your Figure gets moved to figure to the next field with the same color")) {
             return true; // always use spiderweb
         } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return false; // don't use all other token because they would need further choices //TODO
+            return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return playableCards().size() <= 4; // trash a hand card if at least 4 of them cannot be played
         } else if (question.startsWith("Do you want to play your goblin-special?")) {
@@ -37,6 +39,29 @@ public class AI implements PlayerLogic {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public int chooseSpiralPosition(String question, int position, int stonesAmount) {
+        int chosenPosition = position;
+        int originalPosition = self.getLastMovedFigure().getLatestPos();
+        if(stonesAmount < 3) {
+            for(int pos = position; pos > 0; pos--) {
+                if(Game.FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
+                    chosenPosition = pos;
+                }
+            }
+        } else {
+            for(int pos = position; pos > 0; pos--) {
+                if(Game.FIELDS[pos].getToken() instanceof Mirror && pos != originalPosition) {
+                    chosenPosition = pos;
+                }
+            }
+        }
+        if(chosenPosition == position) {
+            chosenPosition = position-1;
+        }
+        return chosenPosition;
     }
 
     @Override
@@ -52,8 +77,9 @@ public class AI implements PlayerLogic {
 
     /**
      * checks which figure moves the furthest according to the color of the played card
+     *
      * @param question question to display if it was a human
-     * @param figures the figures to choose from
+     * @param figures  the figures to choose from
      * @return the figure that will move the furthest with the last played card
      */
     @Override
@@ -63,12 +89,26 @@ public class AI implements PlayerLogic {
 
     /**
      * @param question the reason to choose the pile
-     * @return
+     * @return char color of the chosen pile
      */
     @Override
     public char choosePileColor(String question) {
-        if (question.equals("")) {
-
+        if (question.equals("From which pile do you want to trash the top card?")) {
+            char chosenPile = 'b';
+            int diffAuf = 0;
+            int diffAb = 10;
+            for(DirectionDiscardPile pile: self.getPlayedCards()) {
+                if(pile.getDirection() == 1 && pile.getTop().getNumber() > diffAuf) {
+                    chosenPile = pile.getColor();
+                    diffAuf = pile.getTop().getNumber();
+                } else if(pile.getDirection() == -1 && pile.getTop().getNumber() < diffAb) {
+                    chosenPile = pile.getColor();
+                    diffAb = pile.getTop().getNumber();
+                } else if (pile.getDirection() == 0 && !pile.isEmpty()){
+                    chosenPile = pile.getColor();
+                }
+            }
+            return chosenPile;
         } else if (question.equals("From what colored pile do you want to draw?")) {
             // never occurs yet
         }
@@ -78,16 +118,17 @@ public class AI implements PlayerLogic {
     /**
      * checks which playable hand card is the best option according to the AI's played cards
      */
-    private void calculateNextMove(){
+    private void calculateNextMove() {
         int bestOption = -100; //best calculated points by combination of figure and card
-        for (Figure figure : self.getFigures()){ //for every figure
+        for (Figure figure : self.getFigures()) { //for every figure
             for (Card card : self.getHand()) { //for every card from hand
-                int steps = steps(figure, card.getColor()); //how far the figure would move with the current card TODO: dont leave the field
-                int pointDifference = Game.FIELDS[figure.getPos()+steps].getPoints() - Game.FIELDS[figure.getPos()].getPoints();
+                int steps = steps(figure, card.getColor()); //how far the figure would move with the current card
+                if(steps == -100) {break;} // if the card would move the figure too far
+                int pointDifference = Game.FIELDS[figure.getPos() + steps].getPoints() - Game.FIELDS[figure.getPos()].getPoints();
 
-                int points = steps + pointDifference; //steps plus the gained points due to the steps
+                int points = steps + ((int)0.7 * pointDifference); //steps plus the gained points due to the steps
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
-                points += tokenWorth(Game.FIELDS[figure.getPos()+steps].getToken()); // plus how good the token on the field is
+                points += tokenWorth(Game.FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;
                     chosenFigure = figure;
@@ -99,14 +140,19 @@ public class AI implements PlayerLogic {
 
     /**
      * calculates how far the given figure would move to the given color
-     * @param f the figure to move
+     *
+     * @param f     the figure to move
      * @param color the color to move to
      * @return the amount of steps the figure would make (int)
      */
-    private int steps(Figure f, char color){
+    private int steps(Figure f, char color) {
         int steps = 1;
-        while (Game.FIELDS[f.getPos() + steps].getColor() != color) {
-            steps++;
+        try {
+            while (Game.FIELDS[f.getPos() + steps].getColor() != color) {
+                steps++;
+            }
+        } catch (Exception e){
+            return -100;
         }
         return steps;
     }
@@ -119,20 +165,25 @@ public class AI implements PlayerLogic {
      * @param pile the correctly colored pile to put the card on
      * @return the difference from top card of the pile to the new one
      */
-    private int difference (Card card, DirectionDiscardPile pile){
-        if(CardFunction.cardFitsToPlayersPiles(card, pile)) {
-            if(!pile.isEmpty()) {
+    private int difference(Card card, DirectionDiscardPile pile) {
+        if (CardFunction.cardFitsToPlayersPiles(card, pile)) {
+            if (!pile.isEmpty()) {
                 return Math.abs(pile.getTop().getNumber() - card.getNumber());
-            } else if(card.getNumber() > 5) { //if pile is empty and newNumber is high
-                return 10-card.getNumber();
-            } else if(card.getNumber() <= 5) {
+            } else if (card.getNumber() > 5) { //if pile is empty and newNumber is high
+                return 10 - card.getNumber();
+            } else if (card.getNumber() <= 5) {
                 return card.getNumber(); //if pile is empty and newNumber is low
             }
         }
         return 100; //if card doesn't fit
     }
 
-    private int tokenWorth(Token token){
+    /**
+     * calculates how important the token is
+     * @param token the token which worth to calculate
+     * @return int worth of the token
+     */
+    private int tokenWorth(Token token) {
         if (token != null) {
             switch (token.getName()) {
                 case "Goblin":
@@ -152,10 +203,14 @@ public class AI implements PlayerLogic {
         return 0;
     }
 
-    private Card bestHandCardToTrash () {
+    /**
+     * chooses which card from hand should be trashed
+     * @return card which should be trashed
+     */
+    private Card bestHandCardToTrash() {
         List<Card> notPlayable = new ArrayList<>(self.getHand());
         notPlayable.removeAll(playableCards());
-        if(!notPlayable.isEmpty()){
+        if (!notPlayable.isEmpty()) {
             return notPlayable.get(0);  //TODO: second factor to choose ?
         }
         return self.getHand().get(0); //why would it trash if all cards fit
@@ -163,12 +218,13 @@ public class AI implements PlayerLogic {
 
     /**
      * checks what cards from hand could be played
+     *
      * @return the cards in a list
      */
-    private List<Card> playableCards () {
+    private List<Card> playableCards() {
         List<Card> playable = new ArrayList<>();
-        for (Card c : self.getHand()){
-            if (CardFunction.cardFitsToPlayersPiles(c, self.getPlayedCards(c.getColor()))){
+        for (Card c : self.getHand()) {
+            if (CardFunction.cardFitsToPlayersPiles(c, self.getPlayedCards(c.getColor()))) {
                 playable.add(c);
             }
         }
@@ -178,5 +234,4 @@ public class AI implements PlayerLogic {
     public void setSelf(Player self) {
         this.self = self;
     }
-
 }
