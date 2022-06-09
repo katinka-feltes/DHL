@@ -45,6 +45,7 @@ public class GuiController {
     private final List<Rectangle> tokens = new ArrayList<>();
     private final List<Label> directionDiscardingPiles = new ArrayList<>();
     private final List<Label> discardPiles = new ArrayList<>();
+    private final List<Label> handCard = new ArrayList<>();
 
     Game model;
     View view;
@@ -71,10 +72,12 @@ public class GuiController {
                     names.add((TextField) node);
                 } else if (node.getId().startsWith("ai")) {
                     ais.add((CheckBox) node);
-                } else if (node.getId().startsWith("DirectionDiscardingPile")) {
+                } else if (node.getId().startsWith("directionDiscardingPile")) {
                     directionDiscardingPiles.add((Label) node);
-                } else if (node.getId().startsWith("DiscardingPile")) {
+                } else if (node.getId().startsWith("discardPile")) {
                     discardPiles.add((Label) node);
+                } else if (node.getId().startsWith("handCard")) {
+                    handCard.add((Label) node);
                 }
             }
         }
@@ -178,5 +181,16 @@ public class GuiController {
                 label.setText(number);
             }
         }
+    }
+
+
+    @FXML
+    private void clickedOnCard() {
+
+    }
+
+    @FXML
+    private int getCardIndex(String cardID) {
+       return Integer.parseInt(cardID.split("handCard")[0]);
     }
 }

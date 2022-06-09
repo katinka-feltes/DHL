@@ -38,7 +38,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -46,7 +45,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhl.controller.GuiController">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -215,7 +214,7 @@
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
    <top>
-      <HBox prefHeight="100.0" prefWidth="862.0" BorderPane.alignment="CENTER">
+      <HBox BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="123.0" prefWidth="551.0">
                <children>
@@ -236,7 +235,7 @@
                               <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
+                        <Label fx:id="toDoMessage" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="36.0" prefWidth="277.0" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
                            <font>
                               <Font name="Corbel" size="15.0" />
                            </font>
@@ -245,29 +244,18 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="117.0" prefWidth="278.0" />
          </children>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="534.0" prefWidth="126.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Pane>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-34.0" layoutY="-8.0" text="PLAYED CARDS">
-                     <font>
-                        <Font name="Ink Free" size="26.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="30.0" />
-               </padding>
-            </Pane>
-            <HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="PLAYED CARDS">
+               <font>
+                  <Font name="Ink Free" size="26.0" />
+               </font>
+            </Label>
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane>
                      <children>
@@ -295,7 +283,7 @@
                      </padding></Label>
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane>
                      <children>
@@ -316,7 +304,7 @@
                      </padding></Label>
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane>
                      <children>
@@ -337,7 +325,7 @@
                      </padding></Label>
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane>
                      <children>
@@ -358,7 +346,7 @@
                      </padding></Label>
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -387,18 +375,17 @@
       </VBox>
    </left>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Pane>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-61.0" layoutY="25.0" text="DISCARD PILES">
-                     <font>
-                        <Font name="Ink Free" size="26.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
+               <font>
+                  <Font name="Ink Free" size="26.0" />
+               </font>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </Label>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -415,7 +402,7 @@
                   </StackPane>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -432,7 +419,7 @@
                   </StackPane>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -449,7 +436,7 @@
                   </StackPane>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -466,7 +453,7 @@
                   </StackPane>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <StackPane prefHeight="150.0" prefWidth="50.0">
                      <children>
@@ -486,4 +473,123 @@
          </children>
       </VBox>
    </right>
+   <bottom>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS">
+               <font>
+                  <Font name="Ink Free" size="26.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand1" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" text="10">
+                           <font>
+                              <Font name="Ink Free" size="45.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand2" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand3" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand4" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand5" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand6" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand7" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand8" fx:id="cardHand8" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>
