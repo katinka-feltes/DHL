@@ -1,6 +1,9 @@
 package dhl.controller.player_logic;
 
-import dhl.model.*;
+import dhl.model.Card;
+import dhl.model.CardFunction;
+import dhl.model.Figure;
+import dhl.model.FigureFunction;
 import dhl.view.View;
 
 import java.util.List;
@@ -8,7 +11,7 @@ import java.util.List;
 /**
  * The Logic for a Human
  */
-public class Human implements PlayerLogic{
+public class Human implements PlayerLogic {
 
     private View view;
 
@@ -17,8 +20,13 @@ public class Human implements PlayerLogic{
      *
      * @param view the input for the logic
      */
-    public Human (View view){
-        this.view=view;
+    public Human(View view) {
+        this.view = view;
+    }
+
+    @Override
+    public int chooseSpiralPosition(String question, int position, int stonesAmount) {
+        return view.promptInt(0, position, question);
     }
 
     @Override
@@ -31,7 +39,7 @@ public class Human implements PlayerLogic{
         try {
             String cardAsString = view.promptCardString(question);
             return CardFunction.getCardFromHand(cardAsString, hand);
-        } catch(Exception e) {
+        } catch (Exception e) {
             view.error(e.getMessage());
             return chooseCard(question, hand);
         }
