@@ -122,7 +122,7 @@ public class GuiController {
         classifyChildren(newRoot);
 
         activePlayer = model.getPlayers().get(0);
-        toDo.setText(activePlayer.getName() + "it's your turn");
+        toDo.setText(activePlayer.getName() + " it's your turn");
     }
 
     private void takeTurn(Player activeP) {
