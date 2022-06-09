@@ -86,7 +86,7 @@ public class AI implements PlayerLogic {
                 int pointDifference = Game.FIELDS[figure.getPos()+steps].getPoints() - Game.FIELDS[figure.getPos()].getPoints();
 
                 int points = steps + pointDifference; //steps plus the gained points due to the steps
-                points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to fit the played cards pile
+                points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
                 points += tokenWorth(Game.FIELDS[figure.getPos()+steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;

@@ -23,6 +23,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This Class is the Controller of the MVC pattern when the game is played on the GUI.
+ * It is responsible for the communication between the Model and the View.
+ */
 public class GuiController {
 
     @FXML
@@ -36,7 +40,6 @@ public class GuiController {
         System.out.println("Lol");
         redLabel.setText("+");
     }
-
 
     @FXML
     private BorderPane borderPane;

@@ -39,7 +39,6 @@ public class Gui extends Application{
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     /**

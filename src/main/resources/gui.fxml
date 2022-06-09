@@ -34,282 +34,283 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhl.controller.GuiController">
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.topAnchor="0.0">
-            <center>
-                <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="4" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="49" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="54" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="6" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="11" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="16" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="19" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="19" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="21" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="26" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="31" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="21" GridPane.rowIndex="34" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55" GridPane.rowIndex="36" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="34" />
-                    <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="36" />
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-                </GridPane>
-            </center>
-            <left>
-                <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="98.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                             </columnConstraints>
-                                    <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  </rowConstraints>
-                                       <children>
-                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                         <children>
-                                            <Rectangle fx:id="redDiscardPile" accessibleRole="BUTTON" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#setDirection" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                            <Label id="redLabel" fx:id="redLabel" layoutX="57.0" layoutY="5.0" text="Label" />
-                                         </children>
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                                      </AnchorPane>
-                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                         <children>
-                                            <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                            <Label fx:id="greenLabel" layoutX="57.0" layoutY="5.0" text="Label" />
-                                         </children>
-                     <GridPane.margin>
-                        <Insets top="20.0" />
-                     </GridPane.margin>
-                                      </AnchorPane>
-                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                                         <children>
-                                            <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                            <Label fx:id="blueLabel" layoutX="57.0" layoutY="5.0" text="Label" />
-                                         </children>
-                     <GridPane.margin>
-                        <Insets top="30.0" />
-                     </GridPane.margin>
-                                      </AnchorPane>
-                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                                         <children>
-                                            <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                            <Label fx:id="orangeLabel" layoutX="57.0" layoutY="5.0" text="Label" />
-                                         </children>
-                     <GridPane.margin>
-                        <Insets top="40.0" />
-                     </GridPane.margin>
-                                      </AnchorPane>
-                                      <AnchorPane prefHeight="58.0" prefWidth="99.0" GridPane.rowIndex="4">
-                                         <children>
-                                            <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                            <Label fx:id="purpleLabel" layoutX="57.0" text="Label" />
-                                         </children>
-                     <GridPane.margin>
-                        <Insets top="50.0" />
-                     </GridPane.margin>
-                                      </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                   </children>
-               <padding>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/18" fx:controller="dhl.controller.GuiController">
+   <center>
+      <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="4" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="49" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="54" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="6" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="11" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="16" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="19" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="19" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="21" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="26" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="31" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="21" GridPane.rowIndex="34" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55" GridPane.rowIndex="36" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="34" />
+            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="36" />
+         </children>
+      </GridPane>
+   </center>
+   <left>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="98.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Rectangle fx:id="redDiscardPile" accessibleRole="BUTTON" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#setDirection" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                  <Label id="redLabel" fx:id="redLabel" layoutX="57.0" layoutY="5.0" text="Label" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                  <Label fx:id="greenLabel" layoutX="57.0" layoutY="5.0" text="Label" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                  <Label fx:id="blueLabel" layoutX="57.0" layoutY="5.0" text="Label" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                  <Label fx:id="orangeLabel" layoutX="57.0" layoutY="5.0" text="Label" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="58.0" prefWidth="99.0" GridPane.rowIndex="4">
+               <children>
+                  <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                  <Label fx:id="purpleLabel" layoutX="57.0" text="Label" />
+               </children>
+               <GridPane.margin>
                   <Insets top="50.0" />
-               </padding>
-                                </GridPane>
-            </left>
-         <top>
-            <SplitPane dividerPositions="0.6957175056348611" prefHeight="126.0" prefWidth="890.0" BorderPane.alignment="CENTER">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="77.0" prefWidth="614.0">
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </GridPane>
+   </left>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="862.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="123.0" prefWidth="551.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="551.0" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
+                     <font>
+                        <Font name="Dead Kansas" size="60.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 5;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="87.0" prefWidth="577.0" text="DIRE HORROR LAND" textFill="#880b0b">
+                        <Label prefHeight="46.0" prefWidth="65.0" text="Player:">
                            <font>
-                              <Font name="Ink Free" size="50.0" />
+                              <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="toDoMessage" layoutX="309.0" layoutY="88.0" prefHeight="32.0" prefWidth="268.0" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
+                        <Label fx:id="playername" prefHeight="36.0" prefWidth="230.0" text="test playername">
                            <font>
-                              <Font name="Ink Free" size="15.0" />
+                              <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="playername" contentDisplay="CENTER" layoutX="68.0" layoutY="93.0" prefHeight="24.0" prefWidth="213.0" text="test playername">
+                        <Label fx:id="toDoMessage" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="36.0" prefWidth="277.0" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
                            <font>
-                              <Font name="Ink Free" size="15.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="4.0" layoutY="93.0" prefHeight="17.0" prefWidth="65.0" text="PLAYER :">
-                           <font>
-                              <Font name="Ink Free" size="15.0" />
+                              <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
                      </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-              </items>
-            </SplitPane>
-         </top>
-         <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-         </padding>
-        </BorderPane>
-
-    </AnchorPane>
-</VBox>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="117.0" prefWidth="278.0" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
