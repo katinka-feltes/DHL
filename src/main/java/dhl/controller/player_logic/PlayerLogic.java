@@ -1,7 +1,7 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
-import dhl.model.DirectionDiscardPile;
+import dhl.model.Figure;
 
 import java.util.List;
 
@@ -21,12 +21,12 @@ public interface PlayerLogic {
      * asks the logic to choose a card
      * @return the chosen card as a string
      */
-    Card chooseCard(String question, List<Card> hand, DirectionDiscardPile[] playedCards);
+    Card chooseCard(String question, List<Card> hand);
 
     /**
      * asks the logic to choose a figure
      * @return the chosen figure as an int corresponding to the position on the playingfield. 1 being the furthest away
      * from the start.
      */
-    int chooseFigure(int start, int end, String question);
+    Figure chooseFigure(String question, List<Figure> figures);
 }

@@ -140,7 +140,7 @@ public class CliController {
         while (true) {
             try {
                 // get card as string and check type with view method
-                card = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand(), player.getPlayedCards());
+                card = player.getPlayerLogic().chooseCard("What card do you want to play?", player.getHand());
                 // add card to played cards
                 player.getPlayedCards(card.getColor()).add(card);
                 // remove card from players hand
@@ -157,9 +157,9 @@ public class CliController {
         //figure: which field
         while (true) {
             try {
-                int figurePos = player.getPlayerLogic().chooseFigure(1, 3,
-                        "Which figure do you want to move? (1, 2 or 3 - the figure the furthest away from the start is 1)");
-                player.placeFigure(card.getColor(), FigureFunction.getFigureByPos(figurePos, player.getFigures()));
+                Figure chosenFig = player.getPlayerLogic().chooseFigure("Which figure do you want to move? " +
+                        "(1, 2 or 3 - the figure the furthest away from the start is 1)", player.getFigures());
+                player.placeFigure(card.getColor(), chosenFig);
                 break;
             } catch (IndexOutOfBoundsException indexE){
                 view.error("This figure can't move this far.");
@@ -176,7 +176,7 @@ public class CliController {
     private void trashCard(Player player) {
         while (true) {
             try {
-                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand(), player.getPlayedCards());
+                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
                 player.setLastTrashed(trash);
                 player.putCardOnDiscardingPile(player.getLastTrashed());
                 break;
@@ -298,7 +298,7 @@ public class CliController {
 
                     try {
                         view.printHand(player);
-                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand(), player.getPlayedCards());
+                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
                         ((Goblin) token).setCardChoice(trash);
                         token.action(player);
                         drawOne(player);

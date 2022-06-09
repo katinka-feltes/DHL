@@ -47,4 +47,8 @@ public class Skullpoint implements Token{
     public char getSymbol() {
         return SYMBOL;
     }
+
+    public int getPoints() {
+        return points;
+    }
 }

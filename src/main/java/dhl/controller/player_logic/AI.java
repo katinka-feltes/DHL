@@ -1,8 +1,8 @@
 package dhl.controller.player_logic;
 
-import dhl.model.Card;
-import dhl.model.CardFunction;
-import dhl.model.DirectionDiscardPile;
+import dhl.model.*;
+import dhl.model.tokens.Skullpoint;
+import dhl.model.tokens.Token;
 
 import java.util.List;
 
@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class AI implements PlayerLogic {
 
+    Card chosenCard;
+    Figure chosenFigure;
+    Player self;
+
     @Override
     public boolean choose(String question) {
         if (question.endsWith("Are you ready to play?")) {
@@ -18,84 +22,122 @@ public class AI implements PlayerLogic {
         } else if (question.equals("Are you done with your turn?")) {
             return true;
         } else if (question.startsWith("Do you want to play a card?")) {
-            return true;
+            return true; // always plays a card if it is possible
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
-            return false;
+            return false; // always draws from the drawing pile
+        } else if (question.startsWith("Your Figure gets moved to figure to the next field with the same color")){
+            return true; // always use spiderweb
         } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return false;
+            return false; // don't use all other token because they would need further choices
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return true;
         } else if (question.startsWith("Do you want to play your goblin-special?")) {
-            return true;
+            return true; // always play if it is possible, because it doesn't occur often
         } else {
-            return true;
+            return false;
         }
     }
 
     @Override
-    public Card chooseCard(String question, List<Card> hand, DirectionDiscardPile[] playedCards) {
+    public Card chooseCard(String question, List<Card> hand) {
         if (question.equals("What card do you want to play?")) {
-            return bestCardOption(hand, playedCards);
+            calculateNextMove();
+            return chosenCard;
         } else if (question.equals("What card do you want to trash?")) {
-            return hand.get(0);
-        } else {
-            return hand.get(0);
+            self.getHand().get(0);
         }
+        return hand.get(0);
     }
 
+    /**
+     * checks which figure moves the furthest according to the color of the played card
+     * @param question question to display if it was a human
+     * @param figures the figures to choose from
+     * @return the figure that will move the furthest with the last played card
+     */
     @Override
-    public int chooseFigure(int start, int end, String question) {
-        //which figure he wants to move
-        return 1;
+    public Figure chooseFigure(String question, List<Figure> figures) {
+        return chosenFigure;
     }
 
     /**
      * checks which playable hand card is the best option according to the AI's played cards
-     * the smaller the difference between last played card and (playable) hand card, the better
-     * if the pile is empty, the card is better the higher/lower it is
-     *
-     * @param hand        the player's current hand
-     * @param playedCards all the player's played cards
-     * @return the hand card most fitting to the played cards
      */
-    public Card bestCardOption(List<Card> hand, DirectionDiscardPile[] playedCards) {
-        int smallestDifference = 11;
-        int diff;
-        Card bestCard = null;
-        for (Card card : hand) {
-            DirectionDiscardPile pile = getCorrectPile(card, playedCards);
-            if (CardFunction.cardFitsToPlayersPiles(card, pile)) {
-                if (!pile.isEmpty()) {
-                    diff = Math.abs(pile.getTop().getNumber() - card.getNumber());
-                } else if (card.getNumber() > 5) {
-                    diff = 10 - card.getNumber();
-                } else if (card.getNumber() < 5) {
-                    diff = card.getNumber();
-                } else {
-                    diff = 5;
-                }
-                if (diff < smallestDifference) {
-                    smallestDifference = diff;
-                    bestCard = card;
+    private void calculateNextMove(){
+        int bestOption = -100; //best calculated points by combination of figure and card
+        for (Figure figure : self.getFigures()){ //for every figure
+            for (Card card : self.getHand()) { //for every card from hand
+                int steps = steps(figure, card.getColor()); //how far the figure would move with the current card TODO: dont leave the field
+                int pointDifference = Game.FIELDS[figure.getPos()+steps].getPoints() - Game.FIELDS[figure.getPos()].getPoints();
+
+                int points = steps + pointDifference; //steps plus the gained points due to the steps
+                points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to fit the played cards pile
+                points += tokenWorth(Game.FIELDS[figure.getPos()+steps].getToken()); // plus how good the token on the field is
+                if (points > bestOption) { // if combo of figure and card is better than the current one
+                    chosenCard = card;
+                    chosenFigure = figure;
+                    bestOption = points;
                 }
             }
         }
-        return bestCard;
     }
 
     /**
-     * to get the correctly colored played cards pile for a card
-     *
-     * @param card        one of the player's hand cards
-     * @param playedCards all the player's played cards
-     * @return the correctly colored played cards pile
+     * calculates how far the given figure would move to the given color
+     * @param f the figure to move
+     * @param color the color to move to
+     * @return the amount of steps the figure would make (int)
      */
-    public DirectionDiscardPile getCorrectPile(Card card, DirectionDiscardPile[] playedCards) {
-        for (DirectionDiscardPile pile : playedCards) {
-            if (pile.getColor() == card.getColor()) {
-                return pile;
+    private int steps(Figure f, char color){
+        int steps = 1;
+        while (Game.FIELDS[f.getPos() + steps].getColor() != color) {
+            steps++;
+        }
+        return steps;
+    }
+
+    /**
+     * the smaller the difference between last played card and (playable) hand card, the better
+     * if the pile is empty, the card is better the higher/lower it is
+     *
+     * @param card the card to see the difference with
+     * @param pile the correctly colored pile to put the card on
+     * @return the difference from top card of the pile to the new one
+     */
+    private int difference (Card card, DirectionDiscardPile pile){
+        if(CardFunction.cardFitsToPlayersPiles(card, pile)) {
+            if(!pile.isEmpty()) {
+                return Math.abs(pile.getTop().getNumber() - card.getNumber());
+            } else if(card.getNumber() > 5) { //if pile is empty and newNumber is high
+                return 10-card.getNumber();
+            } else if(card.getNumber() <= 5) {
+                return card.getNumber(); //if pile is empty and newNumber is low
             }
         }
-        return null;
+        return 100; //if card doesn't fit
+    }
+
+    private int tokenWorth(Token token){
+        if (token != null) {
+            switch (token.getName()) {
+                case "Goblin":
+                    return 3; //TODO: more complex?
+                case "Mirror":
+                    return self.calcTokenPoints(); // return current token points because they would be doubled
+                case "Skullpoint":
+                    return ((Skullpoint) token).getPoints();
+                case "Spiderweb":
+                    return 4; // on average, you move about 4 steps forward
+                case "Spiral":
+                    return 1;
+                case "WishingStone":
+                    return 3; // on average 2,8 points //TODO: more complex?
+            }
+        }
+        return 0;
+    }
+
+    public void setSelf(Player self) {
+        this.self = self;
     }
 }

@@ -1,10 +1,12 @@
 package dhl.model;
 
+import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,9 @@ public class Player {
      */
     public Player(String name, char symbol, PlayerLogic logic){
         this.playerLogic = logic;
+        if (logic instanceof AI){
+            ((AI) logic).setSelf(this);
+        }
         this.name = name;
         this.symbol = symbol;
         goblinSpecialPlayed = false;
@@ -102,7 +107,7 @@ public class Player {
     /**
      * The points from the collected tokens are calculated and added to the victory points
      */
-    public void calcTokenPoints(){
+    public int calcTokenPoints(){
         int stones = 0;
         int mirrors = 0;
         for (Token token : tokens){
@@ -112,7 +117,7 @@ public class Player {
                 mirrors++;
             }
         }
-        victoryPoints += WishingStone.getValue(stones) * (int)Math.pow(2, mirrors);
+        return WishingStone.getValue(stones) * (int)Math.pow(2, mirrors);
     }
 
     /**

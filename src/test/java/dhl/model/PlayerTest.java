@@ -254,12 +254,11 @@ public class PlayerTest {
     public void calcTokenPoints() {
         player.getTokens().add(new WishingStone());
         player.getTokens().add(new Mirror());
-        player.calcTokenPoints();
-        assertEquals(-6, player.getVictoryPoints());
-        player.setVictoryPoints(0);
+        int calculatedPoints = player.calcTokenPoints();
+        assertEquals(-6, calculatedPoints);
         player.getTokens().add(new Mirror());
-        player.calcTokenPoints();
-        assertEquals(-12, player.getVictoryPoints());
+        calculatedPoints = player.calcTokenPoints();
+        assertEquals(-12, calculatedPoints);
     }
 
     @Test
