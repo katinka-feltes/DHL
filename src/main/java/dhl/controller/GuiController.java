@@ -2,10 +2,12 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.*;
+import dhl.model.DirectionDiscardPile;
+import dhl.model.DiscardPile;
+import dhl.model.Game;
+import dhl.model.Player;
 import dhl.view.View;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -143,6 +145,7 @@ public class GuiController {
             handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
         }
     }
+
     /**
      * changes a color from char to string
      * @param color as a char
@@ -219,7 +222,6 @@ public class GuiController {
         classifyChildren(borderPane);
         Node node = (Node) e.getSource();
         System.out.println(node.getId());
-
     }
 
     @FXML
