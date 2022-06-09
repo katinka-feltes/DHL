@@ -1,18 +1,9 @@
 package dhl.view;
 
-import dhl.model.Game;
-import dhl.model.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +12,6 @@ import java.io.IOException;
  * Starting point of the JavaFX GUI
  */
 public class Gui extends Application{
-
     private final String RED = "#741C1C";
     private final String GREEN = "#203420";
     private final String BLUE = "#1A2847";

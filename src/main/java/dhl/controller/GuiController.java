@@ -5,18 +5,21 @@ import dhl.controller.player_logic.Human;
 import dhl.model.Game;
 import dhl.model.Player;
 import dhl.view.View;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,26 +27,9 @@ public class GuiController {
 
     @FXML
     private Label redLabel;
-    @FXML
-    private Button startButton;
-    @FXML
-    private Label greenLabel;
-    @FXML
-    private Label blueLabel;
-    @FXML
-    private Label purpleLabel;
-    @FXML
-    private Label orangeLabel;
-    @FXML
-    private Rectangle redDiscardPile;
-    @FXML
-    private Rectangle greenDiscardPile;
-    @FXML
-    private Rectangle blueDiscardPile;
-    @FXML
-    private Rectangle purpleDiscardPile;
-    @FXML
-    private Rectangle orangeDiscardPile;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private void setDirection() {
@@ -62,21 +48,6 @@ public class GuiController {
     Game model;
     View view;
     char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-
-    @FXML
-    public void initialize() {
-        List<Node> nodes = getAllChildren(borderPane);
-        for (Node node : nodes) {
-            if (node.getId() != null) {
-                if (node.getId().startsWith("name")) {
-                    names.add((TextField) node);
-                }
-                if (node.getId().startsWith("ai")) {
-                    ais.add((CheckBox) node);
-                }
-            }
-        }
-    }
     public List<Node> getAllChildren(Parent parent) {
         ArrayList<Node> children = new ArrayList<>();
         for (Node node : parent.getChildrenUnmodifiable()) {
@@ -87,42 +58,58 @@ public class GuiController {
         return children;
     }
 
-    public void getAllNodesInView() {
-        for (Node node : borderPane.getChildren().filtered(node -> node.getId() != null)) {
-            if (node.getId().startsWith("circle")) {
-                circles.add(Integer.parseInt(node.getId().split("circle")[1]) - 1, (Circle) node);
-            } else if (node.getId().startsWith("token")) {
-                tokens.add(Integer.parseInt(node.getId().split("token")[1]) - 1, (Rectangle) node);
+    public void classifyChildren(Parent parent) {
+        List<Node> nodes = getAllChildren(parent);
+        for (Node node : nodes) {
+            if (node.getId() != null) {
+                if (node.getId().startsWith("circle")) {
+                    circles.add((Circle) node);
+                } else if (node.getId().startsWith("token")) {
+                    tokens.add((Rectangle) node);
+                } else if (node.getId().startsWith("name")) {
+                    names.add((TextField) node);
+                } else if (node.getId().startsWith("ai")) {
+                    ais.add( (CheckBox) node);
+                }
             }
         }
     }
 
-    @FXML
-    public void startGame() {
+    public void startGame(ActionEvent event) throws IOException {
+        classifyChildren(borderPane);
         int aiAmount = 0;
-        String[] playerNames = new String[4];
-        if (names.get(0).getText() == null) {
+        ArrayList<String> playerNames = new ArrayList<>();
+        if (names.get(0).getText().isEmpty()) {
             return;
         }
         if (!names.get(0).getText().isEmpty()) {
-            playerNames[0] = names.get(0).getText();
+            playerNames.add(names.get(0).getText());
         }
 
         for (int i = 0; i < 3; i++) {
             if(ais.get(i).isSelected()) {
                 aiAmount++;
             } else if(!names.get(i+1).getText().isEmpty()) {
-                playerNames[i+1] = names.get(i+1).getText();
+                playerNames.add(names.get(i+1).getText());
             }
         }
         List<Player> players = new ArrayList<>();
-        for (int i = 0; i < playerNames.length; i++) {
-            players.add(new Player(playerNames[i], symbols[i], new Human(view)));
+        for (int i = 0; i < playerNames.size(); i++) {
+            players.add(new Player(playerNames.get(i), symbols[i], new Human(view)));
         }
         for (int i = 0; i < aiAmount; i++) {
-            players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], new AI()));
+            players.add(new Player("AI" + (i + 1), symbols[i + playerNames.size()], new AI()));
         }
         model = new Game(players);
+
+        Parent root = FXMLLoader.load(getClass().getResource("/gui.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void startGamew() {
 
         /** while(!model.gameOver()){
             for (Player activeP: model.getPlayers()){

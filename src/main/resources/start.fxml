@@ -32,89 +32,113 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhl.controller.GuiController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="640.0">
-               <top>
-                  <AnchorPane prefHeight="109.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label alignment="CENTER" layoutX="79.0" layoutY="14.0" text="DIRE HORROR LAND" textFill="#880b0b">
-                           <font>
-                              <Font name="Ink Free" size="50.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </top>
-               <center>
-                  <AnchorPane prefHeight="271.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField fx:id="name1" layoutX="223.0" layoutY="80.0" prefHeight="24.0" prefWidth="193.0">
-                           <font>
-                              <Font name="Euphorigenic" size="10.0" />
-                           </font>
-                        </TextField>
-                        <Label alignment="CENTER" layoutX="119.0" layoutY="34.0" prefHeight="25.0" prefWidth="401.0" text="PLEASE ENTER THE NAMES OF ALL HUMAN PLAYERS :" textAlignment="CENTER">
-                           <font>
-                              <Font name="Ink Free" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="name2" layoutX="223.0" layoutY="121.0" prefHeight="24.0" prefWidth="193.0">
-                           <font>
-                              <Font name="Euphorigenic" size="10.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="name3" layoutX="223.0" layoutY="162.0" prefHeight="24.0" prefWidth="193.0">
-                           <font>
-                              <Font name="Euphorigenic" size="10.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="name4" layoutX="223.0" layoutY="201.0" prefHeight="24.0" prefWidth="193.0">
-                           <font>
-                              <Font name="Euphorigenic" size="10.0" />
-                           </font>
-                        </TextField>
-                        <CheckBox fx:id="ai1" layoutX="454.0" layoutY="121.0" mnemonicParsing="false">
-                           <font>
-                              <Font name="Euphorigenic" size="15.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox fx:id="ai2" layoutX="454.0" layoutY="162.0" mnemonicParsing="false">
-                           <font>
-                              <Font name="Euphorigenic" size="15.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox fx:id="ai3" layoutX="454.0" layoutY="201.0" mnemonicParsing="false">
-                           <font>
-                              <Font name="Euphorigenic" size="15.0" />
-                           </font>
-                        </CheckBox>
-                        <Label alignment="CENTER" layoutX="420.0" layoutY="79.0" prefHeight="25.0" prefWidth="91.0" text="ADD BOTS :" textAlignment="CENTER">
-                           <font>
-                              <Font name="Ink Free" size="15.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="startButton" layoutX="282.0" layoutY="243.0" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Ink Free" size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </center>
-            </BorderPane>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+<BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dhl.controller.GuiController">
+   <top>
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
+               <font>
+                  <Font name="Dead Kansas" size="50.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" text="HUMAN PLAYER NAMES:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Ink Free" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="name1" prefHeight="24.0" prefWidth="193.0">
+                     <font>
+                        <Font name="Euphorigenic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="name2" prefHeight="24.0" prefWidth="193.0">
+                     <font>
+                        <Font name="Euphorigenic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="name3" prefHeight="24.0" prefWidth="193.0">
+                     <font>
+                        <Font name="Euphorigenic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="name4" prefHeight="24.0" prefWidth="193.0">
+                     <font>
+                        <Font name="Euphorigenic" size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" text="ADD BOTS :" textAlignment="CENTER">
+                     <font>
+                        <Font name="Ink Free" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="24.0" />
+                     </VBox.margin>
+                  </Label>
+                  <CheckBox fx:id="ai1" alignment="CENTER" mnemonicParsing="false">
+                     <font>
+                        <Font name="Euphorigenic" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="ai2" mnemonicParsing="false">
+                     <font>
+                        <Font name="Euphorigenic" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="ai3" mnemonicParsing="false">
+                     <font>
+                        <Font name="Euphorigenic" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Ink Free" size="15.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
