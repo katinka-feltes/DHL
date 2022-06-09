@@ -2,6 +2,8 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
+import dhl.model.DirectionDiscardPile;
+import dhl.model.DiscardPile;
 import dhl.model.Game;
 import dhl.model.Player;
 import dhl.view.View;
@@ -35,11 +37,7 @@ public class GuiController {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    private void setDirection() {
-        System.out.println("Lol");
-        redLabel.setText("+");
-    }
+
 
     @FXML
     private BorderPane borderPane;
@@ -47,6 +45,8 @@ public class GuiController {
     private final List<CheckBox> ais = new ArrayList<>();
     private final List<Circle> circles = new ArrayList<>();
     private final List<Rectangle> tokens = new ArrayList<>();
+    private final List<Label> directionDiscardingPiles = new ArrayList<>();
+    private final List<Label> discardPiles = new ArrayList<>();
 
     Game model;
     View view;
@@ -72,7 +72,11 @@ public class GuiController {
                 } else if (node.getId().startsWith("name")) {
                     names.add((TextField) node);
                 } else if (node.getId().startsWith("ai")) {
-                    ais.add( (CheckBox) node);
+                    ais.add((CheckBox) node);
+                } else if (node.getId().startsWith("DirectionDiscardingPile")) {
+                    directionDiscardingPiles.add((Label) node);
+                } else if (node.getId().startsWith("DiscardingPile")) {
+                    discardPiles.add((Label) node);
                 }
             }
         }
@@ -127,5 +131,59 @@ public class GuiController {
                 }
             }
         } **/
+    }
+
+    /**
+     * this method changes the direction label depending on the direction of the used discard pile
+     * @param pile the current direction discard pile
+     */
+     @FXML
+     private void setDirection(DirectionDiscardPile pile) {
+
+         String direction;
+
+         if (pile.getDirection() == 1){
+         direction = "+";
+         } else if (pile.getDirection() == -1) {
+         direction = "-";
+         } else {
+         direction = " ";
+         }
+
+         for (Label label : directionDiscardingPiles) {
+             if (label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
+                 label.setText(direction);
+             }
+         }
+     }
+
+    /**
+     * this method shows the number from the top card on the used direction discard pile
+     * @param pile the current direction discard pile
+     */
+    @FXML
+     private void setDirectionDiscardPileNumber(DirectionDiscardPile pile) {
+         for (Label label : directionDiscardingPiles) {
+             if (label.getId().split("DirectionDiscardPile", "DirectionDiscardPile".length() + 1)[0].equals("C") &&
+                label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
+                 String number = "" + pile.getTop().getNumber();
+                 label.setText(number);
+             }
+         }
+     }
+
+    /**
+     * this method shows the number from the top card on the used discard pile
+     * @param pile the current discard pile
+     */
+    @FXML
+    private void setDiscardPileNumber(DiscardPile pile) {
+        for (Label label : directionDiscardingPiles) {
+            if (label.getId().split("DiscardPile", "DiscardPile".length() + 1)[0].equals("C") &&
+                    label.getId().split("DiscardPile")[0].toCharArray()[0] == pile.getColor()) {
+                String number = "" + pile.getTop().getNumber();
+                label.setText(number);
+            }
+        }
     }
 }
