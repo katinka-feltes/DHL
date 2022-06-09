@@ -9,13 +9,21 @@ import java.util.List;
  * An attribute of a Player (Human or AI) that determines how an action is executed
  */
 public interface PlayerLogic {
-    //TODO: Not always the same choice
+
+    /**
+     * asks the logic to choose which field figure should be moved to (spiral action)
+     * @param question the asked question
+     * @param position the current position of the figure
+     * @param stonesAmount the wishingstone amount of the player (needed by AI for decision)
+     * @return int position the figure should move to
+     */
+    int chooseSpiralPosition(String question, int position, int stonesAmount);
 
     /**
      * asks the logic to choose (yes or no) for the question asked
      * @param question the question to confirm
      */
-    boolean choose(String question); //Computer always yes
+    boolean choose(String question);
 
     /**
      * asks the logic to choose a card

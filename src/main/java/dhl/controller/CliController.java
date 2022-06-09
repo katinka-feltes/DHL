@@ -2,11 +2,11 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.*;
-import dhl.model.tokens.Goblin;
-import dhl.model.tokens.Spiderweb;
-import dhl.model.tokens.Spiral;
-import dhl.model.tokens.Token;
+import dhl.model.Card;
+import dhl.model.Figure;
+import dhl.model.Game;
+import dhl.model.Player;
+import dhl.model.tokens.*;
 import dhl.view.View;
 
 import java.util.ArrayList;
@@ -39,24 +39,23 @@ public class CliController {
      */
     public void startGame() {
         int playerAmount = view.promptInt(2, 4, "How many players?");
-        int aiAmount = view.promptInt(0, playerAmount-1, "How many AI players?");
+        int aiAmount = view.promptInt(0, playerAmount, "How many AI players?");
         String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
-             players.add(new Player(playerNames[i], symbols[i], new Human(view)));
+            players.add(new Player(playerNames[i], symbols[i], new Human(view)));
         }
         for (int i = 0; i < aiAmount; i++) {
             players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], new AI()));
         }
         model = new Game(players);
 
-        while(!model.gameOver()){
-            for (Player activeP: model.getPlayers()){
-                if(!model.gameOver()) {
+        while (!model.gameOver()) {
+            for (Player activeP : model.getPlayers()) {
+                if (!model.gameOver()) {
                     takeTurn(activeP);
-                }
-                else {
-                    for (Player p : model.getPlayers()){
+                } else {
+                    for (Player p : model.getPlayers()) {
                         p.calcTokenPoints();
                     }
                     view.printResults(model);
@@ -97,7 +96,7 @@ public class CliController {
         }
 
         // draw cards up to eight again either from one discarding or from drawing pile
-        if(model.canDrawFromDiscarding(player.getLastTrashed())) {
+        if (model.canDrawFromDiscarding(player.getLastTrashed())) {
             view.printDiscardingPiles(model);
         }
         drawOne(player);
@@ -108,19 +107,20 @@ public class CliController {
      * If the players hand card amount is beneath eight the player draws a card. Either from the discarding piles or
      * from the drawing pile.
      * If the player chooses the discard piles he can choose the color of the pile too.
+     *
      * @param player the current player
      */
     private void drawOne(Player player) {
-        if(model.canDrawFromDiscarding(player.getLastTrashed())
+        if (model.canDrawFromDiscarding(player.getLastTrashed())
                 && player.getHand().size() < 8
-                && player.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")){
+                && player.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")) {
 
             while (true) {
                 try {
                     char color = player.getPlayerLogic().choosePileColor("From what colored pile do you want to draw?");
                     player.drawFromDiscardingPile(model.getDiscardPile(color));
                     break;
-                } catch (Exception e){
+                } catch (Exception e) {
                     view.error(e.getMessage());
                 }
             }
@@ -131,9 +131,10 @@ public class CliController {
 
     /**
      * player chooses card to play and then the figure is moved accordingly
+     *
      * @param player the player that will play a card
      */
-    public void playCard(Player player){
+    public void playCard(Player player) {
 
         Card card;
 
@@ -162,7 +163,7 @@ public class CliController {
                         "(1, 2 or 3 - the figure the furthest away from the start is 1)", player.getFigures());
                 player.placeFigure(card.getColor(), chosenFig);
                 break;
-            } catch (IndexOutOfBoundsException indexE){
+            } catch (IndexOutOfBoundsException indexE) {
                 view.error("This figure can't move this far.");
             } catch (Exception e) {
                 view.error(e.getMessage());
@@ -172,6 +173,7 @@ public class CliController {
 
     /**
      * player chooses one card to trash from his hand and trashes it
+     *
      * @param player the player that trashes a card
      */
     private void trashCard(Player player) {
@@ -189,6 +191,7 @@ public class CliController {
 
     /**
      * Method to wait for acceptance of the question
+     *
      * @param question the question to accept
      */
     private void waitForConfirmation(String question, Player player) {
@@ -201,18 +204,19 @@ public class CliController {
 
     /**
      * this method decides witch token action comes in to play
+     *
      * @param player the current player
      */
-    private void usingToken(Player player){
+    private void usingToken(Player player) {
         //get the token and remove it from the field if it is collectable
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
-        if (token != null){
+        if (token != null) {
             view.out("You found a " + token.getName() + "!");
 
-            switch (token.getName()){
+            switch (token.getName()) {
 
-                case "Spiral" :
+                case "Spiral":
                     doTokenSpiral(player);
                     break;
 
@@ -221,8 +225,12 @@ public class CliController {
                     doGoblinSpecialAction(player);
                     break;
 
-                case "Spiderweb" :
+                case "Spiderweb":
+                    if (spiderwebIsPossible(player)) {
                         doTokenSpiderWeb(player);
+                    } else {
+                        view.out("Sadly you cannot execute the spiderweb action");
+                    }
                     break;
                 default:
                     token.action(player);
@@ -233,20 +241,37 @@ public class CliController {
         }
     }
 
+    private boolean spiderwebIsPossible(Player player) {
+        char color = Game.FIELDS[player.getLastMovedFigure().getPos()].getColor();
+        for(int pos = player.getLastMovedFigure().getPos(); pos <= 36; pos++) {
+            if(Game.FIELDS[pos].getColor() == color) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * this method controls the Token action
+     *
      * @param player the current player
      */
     private void doTokenSpiral(Player player) {
         Figure currentFigure = player.getLastMovedFigure();
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
+        int stones = 0;
+        for (Token tok : player.getTokens()) {
+            if (tok instanceof WishingStone) {
+                stones++;
+            }
+        }
+
         if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
-            int chosenPos = view.promptInt(0, currentFigure.getPos(),
-                    "Where do you want to place your figure?");
-            if (chosenPos != currentFigure.getLatestPos()){
-                ((Spiral)token).setChosenPos(chosenPos);
+            int chosenPos = player.getPlayerLogic().chooseSpiralPosition("Where do you want to place your figure?", currentFigure.getPos(), stones);
+            if (chosenPos != currentFigure.getLatestPos()) {
+                ((Spiral) token).setChosenPos(chosenPos);
                 token.action(player);
                 view.printCurrentBoard(model);
                 usingToken(player);
@@ -258,6 +283,7 @@ public class CliController {
 
     /**
      * this method controls the Token action
+     *
      * @param player the current player
      */
     private void doTokenGoblin(Player player) {
@@ -272,6 +298,7 @@ public class CliController {
 
     /**
      * this method controls the Token action
+     *
      * @param player the current player
      */
     private void doTokenSpiderWeb(Player player) {
@@ -279,7 +306,7 @@ public class CliController {
 
         if (player.getPlayerLogic().choose("Your Figure gets moved to " +
                 "figure to the next field with the same color. Do you want to proceed with your action?")) {
-            ((Spiderweb)token).action(player);
+            ((Spiderweb) token).action(player);
             view.printCurrentBoard(model);
             usingToken(player);
         }
@@ -287,44 +314,46 @@ public class CliController {
 
     /**
      * this method controls the pile decision
+     *
      * @param player the current player
-     * @param token the Goblin token
+     * @param token  the Goblin token
      */
     private void goblinChosenPile(Player player, Token token) {
 
         view.printTopCards(player);
 
-            if (player.getPlayerLogic().choose("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
-                ((Goblin) token).setPileChoice('h');
+        if (player.getPlayerLogic().choose("Do you want to trash one from your hand? (if no you can trash one card from your discard piles).")) {
+            ((Goblin) token).setPileChoice('h');
 
-                    try {
-                        view.printHand(player);
-                        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
-                        ((Goblin) token).setCardChoice(trash);
-                        token.action(player);
-                        drawOne(player);
-                    } catch (Exception e) {
-                        view.error(e.getMessage());
-                    }
-            }else {
-                    ((Goblin)token).setPileChoice(player.getPlayerLogic().choosePileColor("From which pile do you want to trash the top card?"));
-                    if (!player.getPlayedCards(((Goblin)token).getPileChoice()).isEmpty()) {
-                        token.action(player);
-                    } else {
-                        view.error("This pile is empty! Try another color.");
-                        goblinChosenPile(player, token);
-                    }
+            try {
+                view.printHand(player);
+                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+                ((Goblin) token).setCardChoice(trash);
+                token.action(player);
+                drawOne(player);
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        } else {
+            ((Goblin) token).setPileChoice(player.getPlayerLogic().choosePileColor("From which pile do you want to trash the top card?"));
+            if (!player.getPlayedCards(((Goblin) token).getPileChoice()).isEmpty()) {
+                token.action(player);
+            } else {
+                view.error("This pile is empty! Try another color.");
+                goblinChosenPile(player, token);
             }
         }
+    }
 
     /**
      * this method controls the goblin special action
+     *
      * @param player the current player
      */
     private void doGoblinSpecialAction(Player player) {
-        if(!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
+        if (!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
                 player.getPlayerLogic().choose("Do you want to play your goblin-special? (you would earn "
-                        + player.goblinSpecialPoints() + " points)")){
+                        + player.goblinSpecialPoints() + " points)")) {
             player.playGoblinSpecial();
         }
     }

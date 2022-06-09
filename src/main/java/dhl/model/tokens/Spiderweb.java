@@ -40,5 +40,4 @@ public class Spiderweb implements Token {
     public char getSymbol() {
         return SYMBOL;
     }
-
 }
