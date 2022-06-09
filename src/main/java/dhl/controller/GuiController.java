@@ -2,10 +2,7 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.DirectionDiscardPile;
-import dhl.model.DiscardPile;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -45,7 +43,14 @@ public class GuiController {
     private final List<Rectangle> tokens = new ArrayList<>();
     private final List<Label> directionDiscardingPiles = new ArrayList<>();
     private final List<Label> discardPiles = new ArrayList<>();
-    private final List<Label> handCard = new ArrayList<>();
+    private final List<Label> handLabels = new ArrayList<>();
+    private final List<Rectangle> handCards = new ArrayList<>();
+
+    private final String RED = "#d34a41";
+    private final String GREEN = "#6a9a3d";
+    private final String BLUE = "#424ebc";
+    private final String PURPLE = "#a45ab9";
+    private final String ORANGE = "#D05E00";
 
     Game model;
     View view;
@@ -74,10 +79,12 @@ public class GuiController {
                     ais.add((CheckBox) node);
                 } else if (node.getId().startsWith("directionDiscardingPile")) {
                     directionDiscardingPiles.add((Label) node);
-                } else if (node.getId().startsWith("discardPile")) {
+                } else if (node.getId().startsWith("DiscardingPile")) {
                     discardPiles.add((Label) node);
-                } else if (node.getId().startsWith("handCard")) {
-                    handCard.add((Label) node);
+                } else if (node.getId().startsWith("LabelHand")) {
+                    handLabels.add((Label) node);
+                } else if (node.getId().startsWith("cardHand")) {
+                    handCards.add((Rectangle) node);
                 }
             }
         }
@@ -123,10 +130,30 @@ public class GuiController {
 
         activePlayer = model.getPlayers().get(0);
         toDo.setText(activePlayer.getName() + " it's your turn");
+        takeTurn(activePlayer);
     }
 
     private void takeTurn(Player activeP) {
+        for(int i = 0; i <= 7; i++) {
+            handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
+            handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
+        }
+    }
 
+    /**
+     * changes a color from char to string
+     * @param color as a char
+     * @return color as HEX in String
+     */
+    private Color changeColor(char color){
+        switch (color){
+            case 'r': return Color.web(RED);
+            case 'g': return Color.web(GREEN);
+            case 'b': return Color.web(BLUE);
+            case 'p': return Color.web(PURPLE);
+            case 'o': return Color.web(ORANGE);
+            default: return Color.web("BLACK");
+        }
     }
 
     /**
