@@ -116,7 +116,7 @@ public class CliController {
 
             while (true) {
                 try {
-                    char color = view.promptColor("From what colored pile do you want to draw?");
+                    char color = player.getPlayerLogic().choosePileColor("From what colored pile do you want to draw?");
                     player.drawFromDiscardingPile(model.getDiscardPile(color));
                     break;
                 } catch (Exception e){
@@ -306,7 +306,7 @@ public class CliController {
                         view.error(e.getMessage());
                     }
             }else {
-                    ((Goblin)token).setPileChoice(view.promptColor("From which pile do you want to trash the top card?"));
+                    ((Goblin)token).setPileChoice(player.getPlayerLogic().choosePileColor("From which pile do you want to trash the top card?"));
                     if (!player.getPlayedCards(((Goblin)token).getPileChoice()).isEmpty()) {
                         token.action(player);
                     } else {

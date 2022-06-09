@@ -4,6 +4,7 @@ import dhl.model.*;
 import dhl.model.tokens.Skullpoint;
 import dhl.model.tokens.Token;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,15 +23,15 @@ public class AI implements PlayerLogic {
         } else if (question.equals("Are you done with your turn?")) {
             return true;
         } else if (question.startsWith("Do you want to play a card?")) {
-            return true; // always plays a card if it is possible
+            return playableCards().size() > 2; // play a card if there are more than two cards to play
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return false; // always draws from the drawing pile
         } else if (question.startsWith("Your Figure gets moved to figure to the next field with the same color")){
             return true; // always use spiderweb
         } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return false; // don't use all other token because they would need further choices
+            return false; // don't use all other token because they would need further choices //TODO
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
-            return true;
+            return playableCards().size() <= 4; // trash a hand card if at least 4 of them cannot be played
         } else if (question.startsWith("Do you want to play your goblin-special?")) {
             return true; // always play if it is possible, because it doesn't occur often
         } else {
@@ -44,7 +45,7 @@ public class AI implements PlayerLogic {
             calculateNextMove();
             return chosenCard;
         } else if (question.equals("What card do you want to trash?")) {
-            self.getHand().get(0);
+            return bestHandCardToTrash();
         }
         return hand.get(0);
     }
@@ -58,6 +59,20 @@ public class AI implements PlayerLogic {
     @Override
     public Figure chooseFigure(String question, List<Figure> figures) {
         return chosenFigure;
+    }
+
+    /**
+     * @param question the reason to choose the pile
+     * @return
+     */
+    @Override
+    public char choosePileColor(String question) {
+        if (question.equals("")) {
+
+        } else if (question.equals("From what colored pile do you want to draw?")) {
+            // never occurs yet
+        }
+        return 'r';
     }
 
     /**
@@ -131,13 +146,37 @@ public class AI implements PlayerLogic {
                 case "Spiral":
                     return 1;
                 case "WishingStone":
-                    return 3; // on average 2,8 points //TODO: more complex?
+                    return 3; // on average 2,8 points //TODO: more complex? * amount mirrors
             }
         }
         return 0;
     }
 
+    private Card bestHandCardToTrash () {
+        List<Card> notPlayable = new ArrayList<>(self.getHand());
+        notPlayable.removeAll(playableCards());
+        if(!notPlayable.isEmpty()){
+            return notPlayable.get(0);  //TODO: second factor to choose ?
+        }
+        return self.getHand().get(0); //why would it trash if all cards fit
+    }
+
+    /**
+     * checks what cards from hand could be played
+     * @return the cards in a list
+     */
+    private List<Card> playableCards () {
+        List<Card> playable = new ArrayList<>();
+        for (Card c : self.getHand()){
+            if (CardFunction.cardFitsToPlayersPiles(c, self.getPlayedCards(c.getColor()))){
+                playable.add(c);
+            }
+        }
+        return playable;
+    }
+
     public void setSelf(Player self) {
         this.self = self;
     }
+
 }
