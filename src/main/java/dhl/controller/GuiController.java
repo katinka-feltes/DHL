@@ -5,6 +5,7 @@ import dhl.controller.player_logic.Human;
 import dhl.model.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -29,13 +31,13 @@ import java.util.List;
  */
 public class GuiController {
 
-    @FXML
-    private BorderPane borderPane;
-    @FXML
-    private Label toDo;
+    @FXML private Label toDo;
+    @FXML private BorderPane borderPane;
+    @FXML private Label playerName;
+
     private Stage stage;
     private Scene scene;
-    private Player activePlayer;
+    private Player activeP;
 
     private final List<TextField> names = new ArrayList<>();
     private final List<CheckBox> ais = new ArrayList<>();
@@ -128,18 +130,19 @@ public class GuiController {
         stage.centerOnScreen();
         classifyChildren(newRoot);
 
-        activePlayer = model.getPlayers().get(0);
-        toDo.setText(activePlayer.getName() + " it's your turn");
-        takeTurn(activePlayer);
+        takeTurn();
     }
 
-    private void takeTurn(Player activeP) {
-        for(int i = 0; i <= 7; i++) {
+    @FXML
+    private void takeTurn() {
+        activeP = getNextPlayer();
+        playerName.setText(activeP.getName());
+        toDo.setText("it's your turn");
+        for (int i = 0; i <= 7; i++) {
             handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
             handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
         }
     }
-
     /**
      * changes a color from char to string
      * @param color as a char
@@ -212,12 +215,24 @@ public class GuiController {
 
 
     @FXML
-    private void clickedOnCard() {
+    private void onClick(MouseEvent e) {
+        classifyChildren(borderPane);
+        Node node = (Node) e.getSource();
+        System.out.println(node.getId());
 
     }
 
     @FXML
     private int getCardIndex(String cardID) {
        return Integer.parseInt(cardID.split("handCard")[0]);
+    }
+
+    private Player getNextPlayer(){
+        int index = model.getPlayers().indexOf(activeP);
+        if (index == model.getPlayers().size() - 1) {
+            return model.getPlayers().get(0);
+        } else {
+            return model.getPlayers().get(index + 1);
+        }
     }
 }

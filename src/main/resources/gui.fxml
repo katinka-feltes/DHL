@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -45,7 +46,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="1033.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -134,15 +135,15 @@
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
@@ -170,43 +171,43 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="4" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="49" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="54" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="6" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="11" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="16" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="19" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="19" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="21" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="26" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="31" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="21" GridPane.rowIndex="34" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55" GridPane.rowIndex="36" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="34" />
-            <Circle accessibleRole="BUTTON" fill="#1f93ff00" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="36" />
+            <Circle fx:id="circle0" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+            <Circle fx:id="circle1" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+            <Circle fx:id="circle2" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15" GridPane.rowIndex="6" />
+            <Circle fx:id="circle3" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="6" />
+            <Circle fx:id="circle4" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="6" />
+            <Circle fx:id="circle5" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="6" />
+            <Circle fx:id="circle6" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="6" />
+            <Circle fx:id="circle7" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="4" />
+            <Circle fx:id="circle8" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="49" GridPane.rowIndex="6" />
+            <Circle fx:id="circle9" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="54" GridPane.rowIndex="6" />
+            <Circle fx:id="circle10" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="6" />
+            <Circle fx:id="circle11" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="11" />
+            <Circle fx:id="circle12" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="16" />
+            <Circle fx:id="circle13" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="59" GridPane.rowIndex="21" />
+            <Circle fx:id="circle14" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="19" />
+            <Circle fx:id="circle15" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="21" />
+            <Circle fx:id="circle16" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="21" />
+            <Circle fx:id="circle17" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="21" />
+            <Circle fx:id="circle18" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="21" />
+            <Circle fx:id="circle19" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="25" GridPane.rowIndex="21" />
+            <Circle fx:id="circle21" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="21" />
+            <Circle fx:id="circle22" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="19" />
+            <Circle fx:id="circle23" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="21" />
+            <Circle fx:id="circle24" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="26" />
+            <Circle fx:id="circle25" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="31" />
+            <Circle fx:id="circle26" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="36" />
+            <Circle fx:id="circle27" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="36" />
+            <Circle fx:id="circle28" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16" GridPane.rowIndex="36" />
+            <Circle fx:id="circle29" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="21" GridPane.rowIndex="34" />
+            <Circle fx:id="circle30" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
+            <Circle fx:id="circle31" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="30" GridPane.rowIndex="36" />
+            <Circle fx:id="circle32" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="35" GridPane.rowIndex="36" />
+            <Circle fx:id="circle33" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="40" GridPane.rowIndex="36" />
+            <Circle fx:id="circle34" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="36" />
+            <Circle fx:id="circle35" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55" GridPane.rowIndex="36" />
+            <Circle fx:id="circle36" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="34" />
+            <Circle fx:id="circle37" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="45" GridPane.rowIndex="36" />
          </children>
       </GridPane>
    </center>
@@ -214,7 +215,7 @@
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
    <top>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox>
          <children>
             <VBox>
                <children>
@@ -223,25 +224,33 @@
                         <Font name="Dead Kansas" size="60.0" />
                      </font>
                   </Label>
-                  <HBox style="-fx-padding: 5;">
+                  <HBox alignment="CENTER" spacing="50.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </HBox>
+                  <AnchorPane>
                      <children>
-                        <Label text="Player:">
+                        <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" layoutX="188.0" layoutY="3.0" text="playerName" AnchorPane.rightAnchor="264.5" AnchorPane.topAnchor="3.0">
                            <font>
                               <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="playername" text="test playername">
+                        <Label graphicTextGap="50.0" text="Player: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                            <font>
                               <Font name="Corbel" size="15.0" />
                            </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                         </Label>
-                        <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="test &quot;this is what you gotta do&quot;" textFill="#880b0b">
+                        <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" layoutX="357.0" layoutY="5.0" text="this is what you gotta do&quot;" textFill="#880b0b" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                            <font>
                               <Font name="Corbel" size="15.0" />
                            </font>
                         </Label>
                      </children>
-                  </HBox>
+                  </AnchorPane>
                </children>
             </VBox>
          </children>
@@ -259,12 +268,12 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0">
+                        <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" StackPane.alignment="CENTER">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
                         </Rectangle>
-                        <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="JUSTIFY">
+                        <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -288,7 +297,7 @@
                   <StackPane>
                      <children>
                         <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" text="0">
+                        <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0" prefWidth="50.0" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -309,7 +318,7 @@
                   <StackPane>
                      <children>
                         <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0" prefWidth="50.0" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -329,8 +338,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -350,8 +359,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -389,8 +398,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="JUSTIFY">
+                        <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -406,8 +415,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER" contentDisplay="CENTER">
+                        <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" onMouseClicked="#onClick" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -423,8 +432,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" onMouseClicked="#onClick" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -440,8 +449,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -457,8 +466,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -485,26 +494,8 @@
                <children>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand1" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" text="10">
-                           <font>
-                              <Font name="Ink Free" size="45.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" text="Label">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                        <Rectangle id="cardHand2" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand1" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -516,8 +507,8 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand3" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand2" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -529,8 +520,8 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand4" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand3" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -542,8 +533,8 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand5" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand4" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -555,16 +546,8 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand6" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand7" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand5" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
@@ -576,8 +559,34 @@
                   </StackPane>
                   <StackPane>
                      <children>
-                        <Rectangle id="cardHand8" fx:id="cardHand8" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                        <Rectangle id="cardHand6" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" text="0">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand7" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" text="0">
+                           <font>
+                              <Font name="Ink Free" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <Rectangle id="cardHand8" fx:id="cardHand8" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
+                        <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Ink Free" size="35.0" />
                            </font>
