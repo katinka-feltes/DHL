@@ -1,5 +1,6 @@
 package dhl.view;
 
+import dhl.controller.GuiController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,7 +37,7 @@ public class Gui extends Application{
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/start.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

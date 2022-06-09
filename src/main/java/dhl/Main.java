@@ -22,10 +22,10 @@ public class Main {
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {
             c.setView(new Cli());
+            c.startGame();
         } else {
             //c.setView(new Gui());
             Gui.main(args);
         }
-        c.startGame();
     }
 }
