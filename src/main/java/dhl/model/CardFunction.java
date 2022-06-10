@@ -19,7 +19,6 @@ public class CardFunction {
         return hand;
     }
 
-
     /**
      * Get a card from hand
      *

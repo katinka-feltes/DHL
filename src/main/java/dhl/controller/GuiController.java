@@ -3,6 +3,7 @@ package dhl.controller;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.model.*;
+import dhl.model.tokens.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This Class is the Controller of the MVC pattern when the game is played on the GUI.
@@ -60,6 +63,14 @@ public class GuiController {
     private final String BLUE = "#424ebc";
     private final String PURPLE = "#a45ab9";
     private final String ORANGE = "#f2af4b";
+
+    private final Image ImgEmpty = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/empty.png")));
+    private final Image ImgGoblin = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/goblin.png")));
+    private final Image ImgMirror = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/mirror.png")));
+    private final Image ImgSkull = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/skull.png")));
+    private final Image ImgSpiral = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/spiral.png")));
+    private final Image ImgStone = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/stone.png")));
+    private final Image ImgWeb = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/web.png")));
 
     Game model;
     View view;
@@ -139,6 +150,7 @@ public class GuiController {
 
         state = PREPARATION;
         activeP = getNextPlayer();
+        updateTokens();
         takeTurn();
     }
 
@@ -167,14 +179,21 @@ public class GuiController {
         updateCards();
     }
 
+    /**
+     * updates the hand cards, discarding and direction discarding piles
+     * hand cards white when players change
+     */
     private void updateCards() {
         classifyChildren(borderPane);
         if (!state.equals(PREPARATION)) {
-            for (int i = 0; i < activeP.getHand().size(); i++) {
-                handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
-                handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
+            //get sorted hand cards
+            List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
+            for (int i = 0; i < sortedHand.size(); i++) {
+                handLabels.get(i).setText(Integer.toString(sortedHand.get(i).getNumber()));
+                handCards.get(i).setFill(changeColor(sortedHand.get(i).getColor()));
             }
             //TODO: all the other cards
+            updateTokens();
         } else {
             for (int i = 0; i < activeP.getHand().size(); i++) {
                 handLabels.get(i).setText("0");
@@ -187,6 +206,42 @@ public class GuiController {
             setDirectionDiscardPileNumber(pile);
         }
         updateDiscardPiles();
+    }
+
+    /**
+     * updates the tokens on the field
+     */
+    private void updateTokens() {
+        int currentToken = 0;
+        while(currentToken <= 40) {
+            for(Field field: Game.FIELDS) {
+                if(field.getToken() == null) {
+                    tokens.get(currentToken).setImage(ImgEmpty);
+                } else if(field instanceof LargeField && ((LargeField) field).getTokenTwo() != null) {
+                    tokens.get(currentToken).setImage(ImgStone);
+                    currentToken++;
+                    tokens.get(currentToken).setImage(ImgStone);
+                    currentToken++;
+                } else {
+                    if(field.getToken() instanceof Mirror) {
+                        tokens.get(currentToken).setImage(ImgMirror);
+                        currentToken++;
+                    } else if(field.getToken() instanceof Goblin) {
+                        tokens.get(currentToken).setImage(ImgGoblin);
+                        currentToken++;
+                    } else if(field.getToken() instanceof Skullpoint) {
+                        tokens.get(currentToken).setImage(ImgSkull);
+                        currentToken++;
+                    } else if(field.getToken() instanceof Spiral) {
+                        tokens.get(currentToken).setImage(ImgSpiral);
+                        currentToken++;
+                    } else if(field.getToken() instanceof Spiderweb) {
+                        tokens.get(currentToken).setImage(ImgWeb);
+                        currentToken++;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -259,6 +314,9 @@ public class GuiController {
         }
     }
 
+    /**
+     * updates the discarding piles
+     */
     @FXML
     private void updateDiscardPiles() {
         setDiscardPileNumber(model.getDiscardPile('r'));
