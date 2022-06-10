@@ -213,10 +213,11 @@ public class GuiController {
      */
     private void updateTokens() {
         int currentToken = 0;
-        while(currentToken <= 40) {
+        while(currentToken <= 39) {
             for(Field field: Game.FIELDS) {
                 if(field.getToken() == null) {
                     tokens.get(currentToken).setImage(ImgEmpty);
+                    currentToken++;
                 } else if(field instanceof LargeField && ((LargeField) field).getTokenTwo() != null) {
                     tokens.get(currentToken).setImage(ImgStone);
                     currentToken++;
@@ -237,6 +238,9 @@ public class GuiController {
                         currentToken++;
                     } else if(field.getToken() instanceof Spiderweb) {
                         tokens.get(currentToken).setImage(ImgWeb);
+                        currentToken++;
+                    } else if(field.getToken() instanceof WishingStone) {
+                        tokens.get(currentToken).setImage(ImgStone);
                         currentToken++;
                     }
                 }

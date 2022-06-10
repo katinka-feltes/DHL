@@ -48,9 +48,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <center>
-        <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
@@ -403,12 +403,7 @@
 
                     </image>
                 </ImageView>
-                <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="61" GridPane.rowIndex="31">
-                    <image>
-
-                    </image>
-                </ImageView>
-                <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="31">
+                <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31">
                     <image>
 
                     </image>
@@ -422,7 +417,7 @@
     <top>
         <HBox>
             <children>
-                <VBox>
+                <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
                             <font>
@@ -462,130 +457,505 @@
         </HBox>
     </top>
     <left>
-        <VBox BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="PLAYED CARDS">
+                <Label alignment="CENTER" contentDisplay="CENTER" text=" PLAYED CARDS">
                     <font>
                         <Font name="Ink Free" size="18.0" />
                     </font>
                 </Label>
-                <HBox alignment="TOP_CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets />
-                                    </StackPane.margin>
-                                </Rectangle>
-                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                    <StackPane.margin>
-                                        <Insets />
-                                    </StackPane.margin>
-                                    <padding>
-                                        <Insets bottom="30.0" top="20.0" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </StackPane>
-                        <Label id="DirectionDiscardingPileR" fx:id="redLabel" text="Label">
-                            <padding>
-                                <Insets left="5.0" top="15.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets bottom="30.0" top="20.0" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </StackPane>
-                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel" text="Label">
-                            <padding>
-                                <Insets left="5.0" top="15.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0" prefWidth="50.0" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets bottom="30.0" top="20.0" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </StackPane>
-                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel" text="Label">
-                            <padding>
-                                <Insets left="5.0" top="15.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets bottom="30.0" top="20.0" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </StackPane>
-                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel" text="Label">
-                            <padding>
-                                <Insets left="5.0" top="15.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets bottom="30.0" top="20.0" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </StackPane>
-                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel" text="Label">
-                            <padding>
-                                <Insets left="5.0" top="15.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
+            <HBox maxHeight="-Infinity" maxWidth="440.0" minHeight="-Infinity" minWidth="260.0" prefHeight="400.0" prefWidth="300.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                            <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                            <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                                <padding>
+                                                    <Insets bottom="30.0" top="20.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                    </StackPane>
+                                    <Label id="DirectionDiscardingPileP" fx:id="purpleLabel" text="Label">
+                                        <padding>
+                                            <Insets left="5.0" top="15.0" />
+                                        </padding>
+                                    </Label>
+                                </children>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                            <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                                <padding>
+                                                    <Insets bottom="30.0" top="20.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                    </StackPane>
+                                    <Label id="DirectionDiscardingPileG" fx:id="greenLabel" text="Label">
+                                        <padding>
+                                            <Insets left="5.0" top="15.0" />
+                                        </padding>
+                                    </Label>
+                                </children>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                                <StackPane.margin>
+                                                    <Insets />
+                                                </StackPane.margin>
+                                            </Rectangle>
+                                            <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                                <StackPane.margin>
+                                                    <Insets />
+                                                </StackPane.margin>
+                                                <padding>
+                                                    <Insets bottom="30.0" top="20.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                    </StackPane>
+                                    <Label id="DirectionDiscardingPileR" fx:id="redLabel" text="Label">
+                                        <padding>
+                                            <Insets left="5.0" top="15.0" />
+                                        </padding>
+                                    </Label>
+                                </children>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                            <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                                <padding>
+                                                    <Insets bottom="30.0" top="20.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                    </StackPane>
+                                    <Label id="DirectionDiscardingPileB" fx:id="blueLabel" text="Label">
+                                        <padding>
+                                            <Insets left="5.0" top="15.0" />
+                                        </padding>
+                                    </Label>
+                                </children>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                            <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                                <padding>
+                                                    <Insets bottom="30.0" top="20.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                    </StackPane>
+                                    <Label id="DirectionDiscardingPileO" fx:id="orangeLabel" text="Label">
+                                        <padding>
+                                            <Insets left="5.0" top="15.0" />
+                                        </padding>
+                                    </Label>
+                                </children>
+                            </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="purpleDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileP" fx:id="purpleLabel1" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="greenDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileG" fx:id="greenLabel1" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="redDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileR" fx:id="redLabel1" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="blueDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileB" fx:id="blueLabel1" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="orangeDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileO" fx:id="orangeLabel1" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="purpleDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileP" fx:id="purpleLabel11" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="greenDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileG" fx:id="greenLabel11" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="redDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileR" fx:id="redLabel11" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="blueDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileB" fx:id="blueLabel11" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="orangeDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileO" fx:id="orangeLabel11" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="170.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="purpleDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileP" fx:id="purpleLabel111" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="greenDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileG" fx:id="greenLabel111" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="redDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileR" fx:id="redLabel111" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="blueDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileB" fx:id="blueLabel111" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="orangeDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" text="0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label id="DirectionDiscardingPileO" fx:id="orangeLabel111" text="Label">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             </children>
             <padding>
                 <Insets top="30.0" />
@@ -593,24 +963,21 @@
         </VBox>
     </left>
     <right>
-        <VBox BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
-                    <font>
-                        <Font name="Ink Free" size="18.0" />
-                    </font>
-                    <padding>
-                        <Insets top="30.0" />
-                    </padding>
-                </Label>
-                <HBox alignment="TOP_CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
+               <font>
+                  <Font name="Ink Free" size="18.0" />
+               </font>
+            </Label>
+                <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
                         <StackPane>
                             <children>
-                                <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY">
+                                <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" text="0" textAlignment="JUSTIFY">
                                     <font>
-                                        <Font name="Ink Free" size="35.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <padding>
                                         <Insets bottom="30.0" top="20.0" />
@@ -620,14 +987,14 @@
                         </StackPane>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_CENTER">
+                <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
                         <StackPane>
                             <children>
-                                <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" onMouseClicked="#onClick" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER" contentDisplay="CENTER" text="0">
+                                <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" onMouseClicked="#onClick" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" text="0">
                                     <font>
-                                        <Font name="Ink Free" size="35.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <padding>
                                         <Insets bottom="30.0" top="20.0" />
@@ -637,14 +1004,14 @@
                         </StackPane>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_CENTER">
+                <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
                         <StackPane>
                             <children>
-                                <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" onMouseClicked="#onClick" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER" contentDisplay="CENTER" text="0">
+                                <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" onMouseClicked="#onClick" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" text="0">
                                     <font>
-                                        <Font name="Ink Free" size="35.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <padding>
                                         <Insets bottom="30.0" top="20.0" />
@@ -654,14 +1021,14 @@
                         </StackPane>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_CENTER">
+                <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
                         <StackPane>
                             <children>
-                                <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER" contentDisplay="CENTER" text="0">
+                                <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" text="0">
                                     <font>
-                                        <Font name="Ink Free" size="35.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <padding>
                                         <Insets bottom="30.0" top="20.0" />
@@ -671,14 +1038,14 @@
                         </StackPane>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_CENTER">
+                <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
                         <StackPane>
                             <children>
-                                <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                                <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER" contentDisplay="CENTER" text="0">
+                                <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" text="0">
                                     <font>
-                                        <Font name="Ink Free" size="35.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <padding>
                                         <Insets bottom="30.0" top="20.0" />
@@ -691,150 +1058,167 @@
             </children>
         </VBox>
     </right>
-    <bottom>
-        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS">
-                    <font>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+              <VBox alignment="CENTER">
+                  <children>
+                      <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS ">
+                          <font>
+                              <Font name="Ink Free" size="18.0" />
+                          </font>
+                      </Label>
+                      <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1200.0" minHeight="75.0" minWidth="320.0" prefHeight="105.0" prefWidth="550.0">
+                          <children>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand1" fx:id="cardHand0" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand2" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand3" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand4" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand5" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand6" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand7" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" prefHeight="80.0" prefWidth="40.0">
+                                  <children>
+                                      <Rectangle id="cardHand8" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                                      <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
+                                          <font>
+                                              <Font name="Ink Free" size="35.0" />
+                                          </font>
+                                      </Label>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </StackPane>
+                          </children>
+                      </HBox>
+                  </children>
+              </VBox>
+            <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefWidth="300.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="DRAWING PILE">
+                     <font>
                         <Font name="Ink Free" size="18.0" />
-                    </font>
-                </Label>
-                <HBox alignment="CENTER">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand1" fx:id="cardHand0" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand2" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand3" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand4" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand5" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand6" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand7" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <StackPane>
-                            <children>
-                                <Rectangle id="cardHand8" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                                <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" text="0">
-                                    <font>
-                                        <Font name="Ink Free" size="35.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </StackPane>
-                        <VBox alignment="CENTER">
-                            <children>
-                                <StackPane prefHeight="68.0" prefWidth="130.0">
-                                    <children>
-                                        <Ellipse id="choice1" fx:id="choice1" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="28.0" stroke="#2c593182" strokeType="INSIDE" strokeWidth="3.0" />
-                                        <Label id=" labelchoice1" fx:id="labelchoice1" alignment="CENTER" contentDisplay="CENTER" text="DISCARD">
-                                            <font>
-                                                <Font name="Ink Free" size="24.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </StackPane>
-                                <StackPane prefHeight="70.0" prefWidth="130.0">
-                                    <children>
-                                        <Ellipse id="choice2" fx:id="choice2" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="26.0" stroke="#2c5931bf" strokeType="INSIDE" strokeWidth="3.0" />
-                                        <Label id="labelchoice2" fx:id="labelchoice2" alignment="CENTER" contentDisplay="CENTER" text="DRAW">
-                                            <font>
-                                                <Font name="Ink Free" size="24.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </StackPane>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-    </bottom>
+                     </font>
+                  </Label>
+                  <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+                  <VBox alignment="CENTER">
+                      <children>
+                          <StackPane prefHeight="68.0" prefWidth="130.0">
+                              <children>
+                                  <Ellipse id="choice1" fx:id="choice1" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="28.0" stroke="#2c593182" strokeType="INSIDE" strokeWidth="3.0" />
+                                  <Label id=" labelchoice1" fx:id="labelchoice1" alignment="CENTER" contentDisplay="CENTER" text="DISCARD">
+                                      <font>
+                                          <Font name="Ink Free" size="24.0" />
+                                      </font>
+                                  </Label>
+                              </children>
+                              <VBox.margin>
+                                  <Insets />
+                              </VBox.margin>
+                          </StackPane>
+                          <StackPane prefHeight="70.0" prefWidth="130.0">
+                              <children>
+                                  <Ellipse id="choice2" fx:id="choice2" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="26.0" stroke="#2c5931bf" strokeType="INSIDE" strokeWidth="3.0" />
+                                  <Label id="labelchoice2" fx:id="labelchoice2" alignment="CENTER" contentDisplay="CENTER" text="DRAW">
+                                      <font>
+                                          <Font name="Ink Free" size="24.0" />
+                                      </font>
+                                  </Label>
+                              </children>
+                          </StackPane>
+                      </children>
+                  </VBox>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
