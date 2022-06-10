@@ -2,10 +2,7 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.DirectionDiscardPile;
-import dhl.model.DiscardPile;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +20,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +33,7 @@ public class GuiController {
     static final String TRASHORPLAY = "trashOrPlay";
     static final String DONE = "done";
     static final String PLAY = "play";
+    static final String TRASH = "trash";
     static final String ACTION = "action";
     static final String TOKEN = "token";
     static final String CHOOSEHANDCARD = "chooseHandCard";
@@ -101,7 +98,7 @@ public class GuiController {
         }
     }
     @FXML
-    public void startGame(ActionEvent event) throws IOException {
+    public void startGame(ActionEvent event) throws Exception {
         classifyChildren(borderPane);
         int aiAmount = 0;
         ArrayList<String> playerNames = new ArrayList<>();
@@ -145,17 +142,46 @@ public class GuiController {
     }
 
     @FXML
-    private void takeTurn() {
-        if (state.equals(PREPARATION)) {
-            playerName.setText(activeP.getName());
-            toDo.setText("it's your turn");
-        } else if (state.equals(TRASHORPLAY)) {
-            for (int i = 0; i <= 7; i++) {
+    private void takeTurn() throws Exception {
+        switch (state) {
+            case PREPARATION:
+                playerName.setText(activeP.getName());
+                toDo.setText("it's your turn");
+                break;
+            case TRASH:
+                activeP.getHand().remove(chosenCard);
+                activeP.drawFromDrawingPile();
+                state = DONE;
+                toDo.setText("Are you done with your turn?");
+                updateCards();
+                break;
+            case PLAY:
+                try {
+                    activeP.putCardOnDiscardingPile(chosenCard);
+                } catch (Exception e) {
+                    toDo.setText(e.getMessage());
+                }
+                break;
+        }
+        updateCards();
+    }
+
+    private void updateCards() {
+        classifyChildren(borderPane);
+        if (!state.equals(PREPARATION)) {
+            for (int i = 0; i < activeP.getHand().size(); i++) {
                 handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
                 handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
             }
+            //TODO: all the other cards
+        } else {
+            for (int i = 0; i < activeP.getHand().size(); i++) {
+                handLabels.get(i).setText("0");
+                handCards.get(i).setFill(Color.web("#c8d1d9"));
+            }
         }
     }
+
     /**
      * changes a color from char to string
      * @param color as a char
@@ -228,21 +254,21 @@ public class GuiController {
 
 
     @FXML
-    private void onClick(MouseEvent e) {
+    private void onClick(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
         if (state.equals(PREPARATION) && item.getId().startsWith("choice")){
             state = CHOOSEHANDCARD;
         } else if (state.equals(CHOOSEHANDCARD) && item.getId().startsWith("cardHand")) {
-            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[0]));
+            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
             state = TRASHORPLAY;
         } else if (state.equals(TRASHORPLAY) && item.getId().startsWith("choice")) {
             if (item.getId().equals("choice1")) {
-                state = DONE;
-            } else if(item.getId().equals("choice2")) {
+                state = TRASH;
+            } else if (item.getId().equals("choice2")) {
                 state = PLAY;
             }
         }else if (state.equals(PLAY) && item.getId().startsWith("cardHand")) {
-            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[0]));
+            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
             state = TOKEN;
         } else if (state.equals(TOKEN) && item.getId().equals("choice1")) {
             if (tokenFound) {
@@ -256,8 +282,12 @@ public class GuiController {
             } else if (item.getId().equals("choice2")) {
                 state = TOKEN;
             }
+        } else if (state.equals(DONE) && item.getId().equals("choice1")) {
+            state = PREPARATION;
+            activeP = getNextPlayer();
         }
-            takeTurn();
+        takeTurn();
+        System.out.println(state);
     }
 
     @FXML
