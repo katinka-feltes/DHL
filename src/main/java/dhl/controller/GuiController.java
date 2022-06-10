@@ -5,7 +5,6 @@ import dhl.controller.player_logic.Human;
 import dhl.model.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,12 +30,19 @@ import java.util.List;
  */
 public class GuiController {
 
+    static final String PREPARATION = "preparation";
+    static final String TRASHORPLAY = "trashOrPlay";
+    static final String DONE = "done";
+    static final String PLAY = "play";
+    static final String ACTION = "action";
+    static final String TOKEN = "token";
+    static final String CHOOSEHANDCARD = "chooseHandCard";
+    private Card chosenCard;
+    private boolean tokenFound;
     @FXML private Label toDo;
     @FXML private BorderPane borderPane;
     @FXML private Label playerName;
-
-    private Stage stage;
-    private Scene scene;
+    private String state;
     private Player activeP;
 
     private final List<TextField> names = new ArrayList<>();
@@ -122,25 +128,29 @@ public class GuiController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui.fxml"));
         fxmlLoader.setController(this);
         Parent newRoot = fxmlLoader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(newRoot);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(newRoot);
         stage.setScene(scene);
         stage.show();
         stage.setMaximized(true);
         stage.centerOnScreen();
         classifyChildren(newRoot);
 
+        state = PREPARATION;
+        activeP = getNextPlayer();
         takeTurn();
     }
 
     @FXML
     private void takeTurn() {
-        activeP = getNextPlayer();
-        playerName.setText(activeP.getName());
-        toDo.setText("it's your turn");
-        for (int i = 0; i <= 7; i++) {
-            handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
-            handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
+        if (state.equals(PREPARATION)) {
+            playerName.setText(activeP.getName());
+            toDo.setText("it's your turn");
+        } else if (state.equals(TRASHORPLAY)) {
+            for (int i = 0; i <= 7; i++) {
+                handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
+                handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
+            }
         }
     }
     /**
@@ -165,7 +175,6 @@ public class GuiController {
      */
      @FXML
      private void setDirection(DirectionDiscardPile pile) {
-
          String direction;
 
          if (pile.getDirection() == 1){
@@ -216,10 +225,35 @@ public class GuiController {
 
     @FXML
     private void onClick(MouseEvent e) {
-        classifyChildren(borderPane);
-        Node node = (Node) e.getSource();
-        System.out.println(node.getId());
-
+        Node item = (Node) e.getSource();
+        if (state.equals(PREPARATION) && item.getId().startsWith("choice")){
+            state = CHOOSEHANDCARD;
+        } else if (state.equals(CHOOSEHANDCARD) && item.getId().startsWith("cardHand")) {
+            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[0]));
+            state = TRASHORPLAY;
+        } else if (state.equals(TRASHORPLAY) && item.getId().startsWith("choice")) {
+            if (item.getId().equals("choice1")) {
+                state = DONE;
+            } else if(item.getId().equals("choice2")) {
+                state = PLAY;
+            }
+        }else if (state.equals(PLAY) && item.getId().startsWith("cardHand")) {
+            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[0]));
+            state = TOKEN;
+        } else if (state.equals(TOKEN) && item.getId().equals("choice1")) {
+            if (tokenFound) {
+                state = ACTION;
+            } else {
+                state = DONE;
+            }
+        } else if (state.equals(ACTION)) {
+            if (item.getId().equals("choice1")) {
+                state = DONE;
+            } else if (item.getId().equals("choice2")) {
+                state = TOKEN;
+            }
+        }
+            takeTurn();
     }
 
     @FXML
