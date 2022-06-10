@@ -134,17 +134,16 @@ public class Player {
     }
 
     /**
-     * method to check if goblin special could be played
-     * (checking figures, not if already played)
-     * @return true if all figures are on a goblin field
+     * method to check how many figures stand on a field with a goblin
+     *
+     * @return the amount of figures on a goblin field as an int
      */
-    public boolean allFiguresGoblin(){
-        boolean result = true;
+    public int amountFiguresGoblin(){
+        int result = 0;
         for(Figure f : figures){
             // if the figure is not on a goblin field
-            if(! (Game.FIELDS[f.getPos()].getToken() instanceof Goblin)){
-                result = false;
-                break;
+            if(Game.FIELDS[f.getPos()].getToken() instanceof Goblin){
+                result++;
             }
         }
         return result;
@@ -155,7 +154,7 @@ public class Player {
      * @return points as int (0, 5, 10 or 15)
      */
     public int goblinSpecialPoints (){
-        if(allFiguresGoblin() && !goblinSpecialPlayed){
+        if(amountFiguresGoblin()==3 && !goblinSpecialPlayed){
             int fieldOfFig0 = figures.get(0).getPos();
             if(FigureFunction.getFigureAmountOnField(fieldOfFig0, getFigures()) == 3){
                 //  all 3 on the same field

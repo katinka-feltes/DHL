@@ -1,10 +1,13 @@
 package dhl.model;
 
+import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * This Class represents a Game. A Game has a list of players, a playingfield (list of Fields), a list of tokens,
@@ -50,6 +53,9 @@ public class Game {
             new LargeField(10, 'b', 1)
     };
 
+    //the best 3 scores (each one entry): first points, second name, third ai or human
+    private List<String> highscores = new ArrayList<>();
+
     private final DiscardPile discardingPileRed;
     private final DiscardPile discardingPileBlue;
     private final DiscardPile discardingPileGreen;
@@ -78,9 +84,10 @@ public class Game {
 
     /**
      * Constructor for Game with given amount of players (2-4)
-     * @param playerNames the List of all player Names
+     * @param players the List of all player Names
      */
     public Game(List<Player> players) {
+        readHighscores();
         //initializing discard piles and the players list
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
@@ -208,6 +215,47 @@ public class Game {
     }
 
     /**
+     * adds the info if the player was one of the best 3 players
+     * @param points the points that will be compared to current highscores
+     * @param name the name of the player that got the points
+     * @param logic the logic that played
+     */
+    public void updateHighscore(int points, String name, PlayerLogic logic) {
+        String[] temp = logic.getClass().toString().split("\\.");
+        // example: 34 - Janne - Human
+        highscores.add(points + " - " + name + " - " + temp[temp.length-1]);
+        Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(" - ")[0])) > (Integer.parseInt(b.split(" - ")[0])) ? -1  : 0);
+        highscores = highscores.subList(0,3); //trim to the best 3
+    }
+
+    /**
+     * method reads the file which has the highscores saved
+     * and adds them to string-list highscores
+     */
+    private void readHighscores(){
+        File file = new File ("src/main/resources/highscores.txt");
+        highscores.clear();
+        Scanner s = null ;
+        try  {
+            s =  new  Scanner ( file ); // read the file contents
+            while  ( s.hasNextLine())  { // Read the file line by line
+                String line = s.nextLine();
+                highscores.add(line);
+            }
+
+        }  catch (Exception ex)  {
+            System.out.println("Message:" + ex.getMessage());
+        }  finally  {
+            // Close the file whether the reading was successful or not
+            try  {
+                if ( s !=  null) s .close ();
+            }  catch  (Exception ex2)  {
+                System.out.println( "Message 2:"  + ex2 . getMessage());
+            }
+        }
+    }
+
+    /**
      * checks the victory points of every player to elect the winning player.
      * @return the player with the highest score.
      */
@@ -257,5 +305,9 @@ public class Game {
      */
     public int getPlayerAmount() {
         return players.size();
+    }
+
+    public List<String> getHighscores() {
+        return highscores;
     }
 }

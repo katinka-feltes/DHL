@@ -33,7 +33,7 @@ public class AI implements PlayerLogic {
         } else if (question.endsWith("Do you want to proceed with your action?")) {
             return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
-            return playableCards().size() <= 4; // trash a hand card if at least 4 of them cannot be played
+            return playableCards().size() < 3; // trash a hand card if only 2 of them be played
         } else if (question.startsWith("Do you want to play your goblin-special?")) {
             return true; // always play if it is possible, because it doesn't occur often
         } else {
@@ -46,7 +46,7 @@ public class AI implements PlayerLogic {
         int chosenPosition = position;
         int originalPosition = self.getLastMovedFigure().getLatestPos();
         if(stonesAmount < 3) {
-            for(int pos = position; pos > 0; pos--) {
+            for(int pos = position; pos > position - 5; pos--) {
                 if(Game.FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
                     chosenPosition = pos;
                 }
@@ -58,8 +58,8 @@ public class AI implements PlayerLogic {
                 }
             }
         }
-        if(chosenPosition == position) {
-            chosenPosition = position-1;
+        while(chosenPosition == position || chosenPosition == self.getLastMovedFigure().getLatestPos()) {
+            chosenPosition--;
         }
         return chosenPosition;
     }
@@ -94,24 +94,24 @@ public class AI implements PlayerLogic {
     @Override
     public char choosePileColor(String question) {
         if (question.equals("From which pile do you want to trash the top card?")) {
-            char chosenPile = 'b';
-            int diffAuf = 0;
-            int diffAb = 10;
+            char chosenPile = '\u0000'; // set to default value
+            int worstDiff = 0;
             for(DirectionDiscardPile pile: self.getPlayedCards()) {
-                if(pile.getDirection() == 1 && pile.getTop().getNumber() > diffAuf) {
+                if(pile.getDirection() == 1 && pile.getTop().getNumber() > worstDiff) {
                     chosenPile = pile.getColor();
-                    diffAuf = pile.getTop().getNumber();
-                } else if(pile.getDirection() == -1 && pile.getTop().getNumber() < diffAb) {
+                    worstDiff = pile.getTop().getNumber();
+                } else if(pile.getDirection() == -1 && 10-pile.getTop().getNumber() > worstDiff) {
                     chosenPile = pile.getColor();
-                    diffAb = pile.getTop().getNumber();
-                } else if (pile.getDirection() == 0 && !pile.isEmpty()){
+                    worstDiff = 10-pile.getTop().getNumber();
+                } else if (!pile.isEmpty() && chosenPile == '\u0000'){
                     chosenPile = pile.getColor();
                 }
             }
             return chosenPile;
-        } else if (question.equals("From what colored pile do you want to draw?")) {
-            // never occurs yet
         }
+        /* else if (question.equals("From what colored pile do you want to draw?")) {
+            // never occurs yet
+        } */
         return 'r';
     }
 
@@ -187,7 +187,12 @@ public class AI implements PlayerLogic {
         if (token != null) {
             switch (token.getName()) {
                 case "Goblin":
-                    return 3; //TODO: more complex?
+                    if (self.amountFiguresGoblin() == 2 || playableCards().size() < 5) {
+                        return 10; //if both other figures are on a goblin field already or hand cards are very bad
+                    } else if (self.amountFiguresGoblin() == 1 || playableCards().size() < 4) {
+                        return 3; //if one figure already is on a goblin or hand cards are bad
+                    }
+                    break;
                 case "Mirror":
                     return self.calcTokenPoints(); // return current token points because they would be doubled
                 case "Skullpoint":

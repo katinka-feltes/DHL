@@ -105,10 +105,10 @@ public class GuiController {
         classifyChildren(borderPane);
         int aiAmount = 0;
         ArrayList<String> playerNames = new ArrayList<>();
-        if (names.get(0).getText().isEmpty()) {
+        // al least one name has to be entered and one name or ai
+        if (names.get(0).getText().isEmpty() || (names.get(1).getText().isEmpty() && !ais.get(0).isSelected())) {
             return;
-        }
-        if (!names.get(0).getText().isEmpty()) {
+        } else {
             playerNames.add(names.get(0).getText());
         }
 

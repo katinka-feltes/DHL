@@ -9,6 +9,7 @@ import dhl.model.Player;
 import dhl.model.tokens.*;
 import dhl.view.View;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class CliController {
      */
     public void startGame() {
         int playerAmount = view.promptInt(2, 4, "How many players?");
-        int aiAmount = view.promptInt(0, playerAmount, "How many AI players?");
+        int aiAmount = view.promptInt(0, playerAmount-1, "How many AI players?");
         String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
@@ -54,14 +55,17 @@ public class CliController {
             for (Player activeP : model.getPlayers()) {
                 if (!model.gameOver()) {
                     takeTurn(activeP);
-                } else {
-                    for (Player p : model.getPlayers()) {
-                        p.calcTokenPoints();
-                    }
-                    view.printResults(model);
                 }
             }
         }
+        // calculate final victory points and update highscore if necessary
+        for (Player p : model.getPlayers()) {
+            p.calcTokenPoints();
+            model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
+        }
+        view.printResults(model);
+        System.out.println("\nHighscore:" + model.getHighscores());
+        saveUpdatedHighscores();
     }
 
     /**
@@ -243,7 +247,7 @@ public class CliController {
 
     private boolean spiderwebIsPossible(Player player) {
         char color = Game.FIELDS[player.getLastMovedFigure().getPos()].getColor();
-        for(int pos = player.getLastMovedFigure().getPos(); pos <= 36; pos++) {
+        for(int pos = player.getLastMovedFigure().getPos()+1; pos < 36; pos++) {
             if(Game.FIELDS[pos].getColor() == color) {
                 return true;
             }
@@ -351,12 +355,26 @@ public class CliController {
      * @param player the current player
      */
     private void doGoblinSpecialAction(Player player) {
-        if (!player.isGoblinSpecialPlayed() && player.allFiguresGoblin() &&
+        if(!player.isGoblinSpecialPlayed() && player.amountFiguresGoblin()==3 &&
                 player.getPlayerLogic().choose("Do you want to play your goblin-special? (you would earn "
                         + player.goblinSpecialPoints() + " points)")) {
             player.playGoblinSpecial();
         }
     }
+
+    private void saveUpdatedHighscores(){
+        FileWriter file =  null ;
+        try  {
+            file =  new  FileWriter ( "src/main/resources/highscores.txt" );
+            for  ( String line : model.getHighscores() )  {
+                file.write(line + "\n" ); // Write line by line in the file
+            }
+            file.close();
+        }  catch  ( Exception ex )  {
+            System.out.println ( "Message of exception:"  + ex . getMessage ());
+        }
+    }
+
 
     public void setView(View view) {
         this.view = view;
