@@ -78,7 +78,7 @@ public class Game {
 
     /**
      * Constructor for Game with given amount of players (2-4)
-     * @param playerNames the List of all player Names
+     * @param players the List of all player Names
      */
     public Game(List<Player> players) {
         //initializing discard piles and the players list

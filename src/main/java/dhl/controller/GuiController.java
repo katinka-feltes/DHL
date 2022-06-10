@@ -2,10 +2,7 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.DirectionDiscardPile;
-import dhl.model.DiscardPile;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +58,7 @@ public class GuiController {
     private final String GREEN = "#6a9a3d";
     private final String BLUE = "#424ebc";
     private final String PURPLE = "#a45ab9";
-    private final String ORANGE = "#D05E00";
+    private final String ORANGE = "#f2af4b";
 
     Game model;
     View view;
@@ -150,16 +147,24 @@ public class GuiController {
             playerName.setText(activeP.getName());
             toDo.setText("it's your turn");
         } else if (state.equals(TRASHORPLAY)) {
+            //update handcards
             for (int i = 0; i <= 7; i++) {
                 handLabels.get(i).setText(Integer.toString(activeP.getHand().get(i).getNumber()));
                 handCards.get(i).setFill(changeColor(activeP.getHand().get(i).getColor()));
             }
         }
+        //update directiondiscardpiles
+        for(DirectionDiscardPile pile: activeP.getPlayedCards()) {
+            setDirection(pile);
+            setDirectionDiscardPileNumber(pile);
+        }
+        updateDiscardPiles();
     }
+
     /**
-     * changes a color from char to string
+     * changes a color from char to color
      * @param color as a char
-     * @return color as HEX in String
+     * @return color according to string constant
      */
     private Color changeColor(char color){
         switch (color){
@@ -226,6 +231,14 @@ public class GuiController {
         }
     }
 
+    @FXML
+    private void updateDiscardPiles() {
+        setDiscardPileNumber(model.getDiscardPile('r'));
+        setDiscardPileNumber(model.getDiscardPile('g'));
+        setDiscardPileNumber(model.getDiscardPile('b'));
+        setDiscardPileNumber(model.getDiscardPile('p'));
+        setDiscardPileNumber(model.getDiscardPile('o'));
+    }
 
     @FXML
     private void onClick(MouseEvent e) {
