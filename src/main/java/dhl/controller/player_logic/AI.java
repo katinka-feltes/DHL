@@ -58,7 +58,7 @@ public class AI implements PlayerLogic {
                 }
             }
         }
-        while(chosenPosition == position || chosenPosition == self.getLastMovedFigure().getLatestPos()) {
+        while(chosenPosition == position || chosenPosition == originalPosition) {
             chosenPosition--;
         }
         return chosenPosition;
