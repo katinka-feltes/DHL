@@ -32,778 +32,1053 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1029.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/18">
-   <center>
-      <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-         <children>
-            <Circle fx:id="circle0" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-            <Circle fx:id="circle1" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
-            <Circle fx:id="circle2" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15" GridPane.rowIndex="7" />
-            <Circle fx:id="circle3" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="7" />
-            <Circle fx:id="circle4" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="26" GridPane.rowIndex="7" />
-            <Circle fx:id="circle5" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31" GridPane.rowIndex="7" />
-            <Circle fx:id="circle6" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36" GridPane.rowIndex="7" />
-            <Circle fx:id="circle7" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41" GridPane.rowIndex="5" />
-            <Circle fx:id="circle8" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50" GridPane.rowIndex="7" />
-            <Circle fx:id="circle9" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55" GridPane.rowIndex="7" />
-            <Circle fx:id="circle10" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="7" />
-            <Circle fx:id="circle11" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="12" />
-            <Circle fx:id="circle12" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="18" />
-            <Circle fx:id="circle13" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60" GridPane.rowIndex="23" />
-            <Circle fx:id="circle14" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="51" GridPane.rowIndex="21" />
-            <Circle fx:id="circle15" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="46" GridPane.rowIndex="23" />
-            <Circle fx:id="circle16" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41" GridPane.rowIndex="23" />
-            <Circle fx:id="circle17" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36" GridPane.rowIndex="23" />
-            <Circle fx:id="circle18" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31" GridPane.rowIndex="23" />
-            <Circle fx:id="circle19" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="26" GridPane.rowIndex="23" />
-            <Circle fx:id="circle21" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20" GridPane.rowIndex="23" />
-            <Circle fx:id="circle22" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="21" />
-            <Circle fx:id="circle23" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="23" />
-            <Circle fx:id="circle24" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="28" />
-            <Circle fx:id="circle25" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="33" />
-            <Circle fx:id="circle26" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6" GridPane.rowIndex="38" />
-            <Circle fx:id="circle27" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11" GridPane.rowIndex="38" />
-            <Circle fx:id="circle28" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16" GridPane.rowIndex="38" />
-            <Circle fx:id="circle29" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="22" GridPane.rowIndex="36" />
-            <Circle fx:id="circle30" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31" GridPane.rowIndex="38" />
-            <Circle fx:id="circle31" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31" GridPane.rowIndex="38" />
-            <Circle fx:id="circle32" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36" GridPane.rowIndex="38" />
-            <Circle fx:id="circle33" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41" GridPane.rowIndex="38" />
-            <Circle fx:id="circle34" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="51" GridPane.rowIndex="38" />
-            <Circle fx:id="circle35" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="56" GridPane.rowIndex="38" />
-            <Circle fx:id="circle36" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="61" GridPane.rowIndex="36" />
-            <Circle fx:id="circle37" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="46" GridPane.rowIndex="38" />
-            <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/web.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token71" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token72" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/mirror.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/spiral.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/stone.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/goblin.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="31">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token141" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token1411" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="token1412" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="61" GridPane.rowIndex="31">
-               <image>
-                  <Image url="@../../../../../Downloads/skull.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
-   </center>
-   <padding>
-      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-   </padding>
-   <top>
-      <HBox>
-         <children>
-            <VBox>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
-                     <font>
-                        <Font name="Dead Kansas" size="60.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" spacing="50.0">
-                     <padding>
-                        <Insets top="5.0" />
-                     </padding>
-                  </HBox>
-                  <AnchorPane>
-                     <children>
-                        <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" layoutX="188.0" layoutY="3.0" text="playerName" AnchorPane.rightAnchor="264.5" AnchorPane.topAnchor="3.0">
-                           <font>
-                              <Font name="Corbel" size="15.0" />
-                           </font>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+    <center>
+        <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="10.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0"
+                                   prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <children>
+                <Circle fx:id="circle0" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0"
+                        stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1"
+                        GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP"/>
+                <Circle fx:id="circle1" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="10"
+                        GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP"/>
+                <Circle fx:id="circle2" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="15"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle3" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle4" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="26"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle5" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle6" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle7" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0"
+                        stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41"
+                        GridPane.rowIndex="5"/>
+                <Circle fx:id="circle8" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="50"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle9" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0"
+                        stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="55"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle10" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60"
+                        GridPane.rowIndex="7"/>
+                <Circle fx:id="circle11" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60"
+                        GridPane.rowIndex="12"/>
+                <Circle fx:id="circle12" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60"
+                        GridPane.rowIndex="18"/>
+                <Circle fx:id="circle13" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="60"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle14" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="40.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="51"
+                        GridPane.rowIndex="21"/>
+                <Circle fx:id="circle15" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="46"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle16" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle17" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle18" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#a45ab9" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle19" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="26"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle21" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="20"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle22" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="40.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11"
+                        GridPane.rowIndex="21"/>
+                <Circle fx:id="circle23" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6"
+                        GridPane.rowIndex="23"/>
+                <Circle fx:id="circle24" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6"
+                        GridPane.rowIndex="28"/>
+                <Circle fx:id="circle25" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6"
+                        GridPane.rowIndex="33"/>
+                <Circle fx:id="circle26" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="6"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle27" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="11"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle28" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="16"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle29" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="40.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="22"
+                        GridPane.rowIndex="36"/>
+                <Circle fx:id="circle30" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle31" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="31"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle32" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="36"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle33" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#f2af4b" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="41"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle34" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#d34a41" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="51"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle35" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="56"
+                        GridPane.rowIndex="38"/>
+                <Circle fx:id="circle36" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="61"
+                        GridPane.rowIndex="36"/>
+                <Circle fx:id="circle37" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick"
+                        radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="46"
+                        GridPane.rowIndex="38"/>
+                <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/web.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="41">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="45">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50"
+                           GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="55" GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="65" GridPane.rowIndex="7">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="65" GridPane.rowIndex="12">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="65" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="65" GridPane.rowIndex="23">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="55" GridPane.rowIndex="16">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="51" GridPane.rowIndex="16">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="46" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/mirror.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="41" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="36" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="31" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="26" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/spiral.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="20" GridPane.rowIndex="18">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="15" GridPane.rowIndex="16">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="11" GridPane.rowIndex="16">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1"
+                           GridPane.rowIndex="23">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1"
+                           GridPane.rowIndex="28">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1"
+                           GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1"
+                           GridPane.rowIndex="38">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="11" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="16" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/stone.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="22" GridPane.rowIndex="31">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="26" GridPane.rowIndex="31">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="31" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="36" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="41" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/goblin.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="46" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="51" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="56" GridPane.rowIndex="33">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="61" GridPane.rowIndex="31">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                           GridPane.columnIndex="65" GridPane.rowIndex="31">
+                    <image>
+                        <Image url="@../../../../../Downloads/skull.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </GridPane>
+    </center>
+    <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+    </padding>
+    <top>
+        <HBox>
+            <children>
+                <VBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER"
+                               textFill="#880b0b">
+                            <font>
+                                <Font name="Dead Kansas" size="60.0"/>
+                            </font>
                         </Label>
-                        <Label graphicTextGap="50.0" text="Player: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-                           <font>
-                              <Font name="Corbel" size="15.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <HBox alignment="CENTER" spacing="50.0">
+                            <padding>
+                                <Insets top="5.0"/>
+                            </padding>
+                        </HBox>
+                        <AnchorPane>
+                            <children>
+                                <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" layoutX="188.0"
+                                       layoutY="3.0" text="playerName" AnchorPane.rightAnchor="264.5"
+                                       AnchorPane.topAnchor="3.0">
+                                    <font>
+                                        <Font name="Corbel" size="15.0"/>
+                                    </font>
+                                </Label>
+                                <Label graphicTextGap="50.0" text="Player: " AnchorPane.leftAnchor="5.0"
+                                       AnchorPane.topAnchor="5.0">
+                                    <font>
+                                        <Font name="Corbel" size="15.0"/>
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Label>
+                                <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER"
+                                       graphicTextGap="50.0" layoutX="357.0" layoutY="5.0"
+                                       text="this is what you gotta do&quot;" textFill="#880b0b"
+                                       AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                    <font>
+                                        <Font name="Corbel" size="15.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="PLAYED CARDS">
+                    <font>
+                        <Font name="Ink Free" size="26.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets/>
+                                    </StackPane.margin>
+                                </Rectangle>
+                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0" textAlignment="JUSTIFY"
+                                       StackPane.alignment="CENTER">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <StackPane.margin>
+                                        <Insets/>
+                                    </StackPane.margin>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <Label id="DirectionDiscardingPileR" fx:id="redLabel" text="Label">
+                            <padding>
+                                <Insets left="5.0" top="15.0"/>
+                            </padding>
                         </Label>
-                        <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" layoutX="357.0" layoutY="5.0" text="this is what you gotta do&quot;" textFill="#880b0b" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                           <font>
-                              <Font name="Corbel" size="15.0" />
-                           </font>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d"
+                                           height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0"
+                                           width="50.0"/>
+                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER"
+                                       contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0"
+                                       prefWidth="50.0" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel" text="Label">
+                            <padding>
+                                <Insets left="5.0" top="15.0"/>
+                            </padding>
                         </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="PLAYED CARDS">
-               <font>
-                  <Font name="Ink Free" size="26.0" />
-               </font>
-            </Label>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </Rectangle>
-                        <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc"
+                                           height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0"
+                                           width="50.0"/>
+                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER"
+                                       contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0"
+                                       prefWidth="50.0" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel" text="Label">
+                            <padding>
+                                <Insets left="5.0" top="15.0"/>
+                            </padding>
                         </Label>
-                     </children>
-                  </StackPane>
-                  <Label id="DirectionDiscardingPileR" fx:id="redLabel" text="Label">
-                     <padding>
-                        <Insets left="5.0" top="15.0" />
-                     </padding></Label>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0" prefWidth="50.0" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel" text="Label">
+                            <padding>
+                                <Insets left="5.0" top="15.0"/>
+                            </padding>
                         </Label>
-                     </children>
-                  </StackPane>
-                  <Label id="DirectionDiscardingPileG" fx:id="greenLabel" text="Label">
-                     <padding>
-                        <Insets left="5.0" top="15.0" />
-                     </padding></Label>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onClick" prefHeight="66.0" prefWidth="50.0" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel" text="Label">
+                            <padding>
+                                <Insets left="5.0" top="15.0"/>
+                            </padding>
                         </Label>
-                     </children>
-                  </StackPane>
-                  <Label id="DirectionDiscardingPileB" fx:id="blueLabel" text="Label">
-                     <padding>
-                        <Insets left="5.0" top="15.0" />
-                     </padding></Label>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <Label id="DirectionDiscardingPileP" fx:id="purpleLabel" text="Label">
-                     <padding>
-                        <Insets left="5.0" top="15.0" />
-                     </padding></Label>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <Label id="DirectionDiscardingPileO" fx:id="orangeLabel" text="Label">
-                     <padding>
-                        <Insets left="5.0" top="15.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-         <padding>
-            <Insets top="30.0" />
-         </padding>
-      </VBox>
-   </left>
-   <right>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
-               <font>
-                  <Font name="Ink Free" size="26.0" />
-               </font>
-               <padding>
-                  <Insets top="30.0" />
-               </padding>
-            </Label>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="JUSTIFY">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="75.0" onMouseClicked="#onClick" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="75.0" onMouseClicked="#onClick" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
-                        <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="30.0" top="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </right>
-   <bottom>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS">
-               <font>
-                  <Font name="Ink Free" size="26.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand1" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand2" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand3" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand4" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand5" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand6" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand7" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle id="cardHand8" fx:id="cardHand8" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="75.0" />
-                        <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER" text="0">
-                           <font>
-                              <Font name="Ink Free" size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </StackPane>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </bottom>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="30.0"/>
+            </padding>
+        </VBox>
+    </left>
+    <right>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
+                    <font>
+                        <Font name="Ink Free" size="26.0"/>
+                    </font>
+                    <padding>
+                        <Insets top="30.0"/>
+                    </padding>
+                </Label>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="redDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#d34a41"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DiscardingPileRC" fx:id="DiscardingPileRC1" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0" textAlignment="JUSTIFY">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="greenDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#52762e" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DiscardingPileGC" fx:id="DiscardingPileGC1" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="blueDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#424ebc"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#2b3479" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DiscardingPileBC" fx:id="DiscardingPileBC1" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="purpleDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DiscardingPilePC" fx:id="DiscardingPilePC1" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="orangeDiscardPile1" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b"
+                                           height="75.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE"
+                                           strokeWidth="3.0" width="50.0"/>
+                                <Label id="DiscardingPileOC" fx:id="DiscardingPileOC1" alignment="CENTER"
+                                       contentDisplay="CENTER" text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="30.0" top="20.0"/>
+                                    </padding>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </right>
+    <bottom>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS">
+                    <font>
+                        <Font name="Ink Free" size="26.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="CENTER">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand1" fx:id="cardHand0" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand1" fx:id="LabelHand1" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand2" fx:id="cardHand1" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand2" fx:id="LabelHand2" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand3" fx:id="cardHand2" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand3" fx:id="LabelHand3" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand4" fx:id="cardHand3" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand4" fx:id="LabelHand4" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand5" fx:id="cardHand4" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand5" fx:id="LabelHand5" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand6" fx:id="cardHand5" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand6" fx:id="LabelHand6" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand7" fx:id="cardHand6" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand7" fx:id="LabelHand7" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle id="cardHand8" fx:id="cardHand7" arcHeight="5.0" arcWidth="5.0"
+                                           fill="#c8d1d9" height="125.0" onMouseClicked="#onClick" stroke="#81888e"
+                                           strokeType="INSIDE" strokeWidth="3.0" width="75.0"/>
+                                <Label id="LabelHand8" fx:id="LabelHand8" alignment="CENTER" contentDisplay="CENTER"
+                                       text="0">
+                                    <font>
+                                        <Font name="Ink Free" size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <StackPane prefHeight="68.0" prefWidth="130.0">
+                                    <children>
+                                        <Ellipse id="choice1" fx:id="choice1" fill="#858986" onMouseClicked="#onClick"
+                                                 radiusX="65.0" radiusY="28.0" stroke="#2c593182" strokeType="INSIDE"
+                                                 strokeWidth="3.0"/>
+                                        <Label id=" labelchoice1" fx:id="labelchoice1" alignment="CENTER"
+                                               contentDisplay="CENTER" text="DISCARD">
+                                            <font>
+                                                <Font name="Ink Free" size="24.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                </StackPane>
+                                <StackPane prefHeight="70.0" prefWidth="130.0">
+                                    <children>
+                                        <Ellipse id="choice2" fx:id="choice2" fill="#858986" onMouseClicked="#onClick"
+                                                 radiusX="65.0" radiusY="26.0" stroke="#2c5931bf" strokeType="INSIDE"
+                                                 strokeWidth="3.0"/>
+                                        <Label id="labelchoice2" fx:id="labelchoice2" alignment="CENTER"
+                                               contentDisplay="CENTER" text="DRAW">
+                                            <font>
+                                                <Font name="Ink Free" size="24.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </bottom>
 </BorderPane>
