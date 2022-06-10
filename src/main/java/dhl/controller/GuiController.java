@@ -58,7 +58,7 @@ public class GuiController {
     private final String GREEN = "#6a9a3d";
     private final String BLUE = "#424ebc";
     private final String PURPLE = "#a45ab9";
-    private final String ORANGE = "#D05E00";
+    private final String ORANGE = "#f2af4b";
 
     Game model;
     View view;
@@ -180,12 +180,18 @@ public class GuiController {
                 handCards.get(i).setFill(Color.web("#c8d1d9"));
             }
         }
+        //update directiondiscardpiles
+        for(DirectionDiscardPile pile: activeP.getPlayedCards()) {
+            setDirection(pile);
+            setDirectionDiscardPileNumber(pile);
+        }
+        updateDiscardPiles();
     }
 
     /**
-     * changes a color from char to string
+     * changes a color from char to color
      * @param color as a char
-     * @return color as HEX in String
+     * @return color according to string constant
      */
     private Color changeColor(char color){
         switch (color){
@@ -252,6 +258,14 @@ public class GuiController {
         }
     }
 
+    @FXML
+    private void updateDiscardPiles() {
+        setDiscardPileNumber(model.getDiscardPile('r'));
+        setDiscardPileNumber(model.getDiscardPile('g'));
+        setDiscardPileNumber(model.getDiscardPile('b'));
+        setDiscardPileNumber(model.getDiscardPile('p'));
+        setDiscardPileNumber(model.getDiscardPile('o'));
+    }
 
     @FXML
     private void onClick(MouseEvent e) throws Exception {
@@ -286,8 +300,7 @@ public class GuiController {
             state = PREPARATION;
             activeP = getNextPlayer();
         }
-        takeTurn();
-        System.out.println(state);
+            takeTurn();
     }
 
     @FXML
