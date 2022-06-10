@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -48,7 +49,7 @@ public class GuiController {
     private final List<TextField> names = new ArrayList<>();
     private final List<CheckBox> ais = new ArrayList<>();
     private final List<Circle> circles = new ArrayList<>();
-    private final List<Rectangle> tokens = new ArrayList<>();
+    private final List<ImageView> tokens = new ArrayList<>();
     private final List<Label> directionDiscardingPiles = new ArrayList<>();
     private final List<Label> discardPiles = new ArrayList<>();
     private final List<Label> handLabels = new ArrayList<>();
@@ -80,7 +81,7 @@ public class GuiController {
                 if (node.getId().startsWith("circle")) {
                     circles.add((Circle) node);
                 } else if (node.getId().startsWith("token")) {
-                    tokens.add((Rectangle) node);
+                    tokens.add((ImageView) node);
                 } else if (node.getId().startsWith("name")) {
                     names.add((TextField) node);
                 } else if (node.getId().startsWith("ai")) {
