@@ -177,20 +177,20 @@ public class PlayerTest {
 
     @Test
     /**
-     * tests if method allFiguresGoblin works
+     * tests if method amountFiguresGoblin works
      */
-    public void allFiguresGoblin(){
-        assertFalse(player.allFiguresGoblin());
+    public void amountFiguresGoblin(){
+        assertEquals(0, player.amountFiguresGoblin());
         Game.FIELDS[0].setToken(new Goblin());
-        assertTrue(player.allFiguresGoblin());
+        assertEquals(3, player.amountFiguresGoblin());
         Game.FIELDS[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
-        assertTrue(player.allFiguresGoblin());
+        assertEquals(3, player.amountFiguresGoblin());
         Game.FIELDS[10].setToken(new Goblin());
         player.getFigures().get(1).setPos(10);
-        assertTrue(player.allFiguresGoblin());
+        assertEquals(3,player.amountFiguresGoblin());
         Game.FIELDS[10].setToken(null);
-        assertFalse(player.allFiguresGoblin());
+        assertEquals(2, player.amountFiguresGoblin());
     }
 
     @Test
