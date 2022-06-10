@@ -2,7 +2,10 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.*;
+import dhl.model.DirectionDiscardPile;
+import dhl.model.DiscardPile;
+import dhl.model.Game;
+import dhl.model.Player;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -175,6 +178,7 @@ public class GuiController {
      */
      @FXML
      private void setDirection(DirectionDiscardPile pile) {
+
          String direction;
 
          if (pile.getDirection() == 1){
