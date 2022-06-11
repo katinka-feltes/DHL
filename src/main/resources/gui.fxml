@@ -214,199 +214,82 @@
                 <Circle fx:id="circle36" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="40.0" stroke="#424ebc" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="61" GridPane.rowIndex="36" />
                 <Circle fx:id="circle37" accessibleRole="BUTTON" fill="#1f93ff00" onMouseClicked="#onClick" radius="20.0" stroke="#6a9a3d" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="46" GridPane.rowIndex="38" />
                 <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33">
-                    <image>
-
-                    </image>
                 </ImageView>
                 <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31">
-                    <image>
-
-                    </image>
                 </ImageView>
             </children>
         </GridPane>

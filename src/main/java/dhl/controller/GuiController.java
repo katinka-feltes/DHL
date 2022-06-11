@@ -43,9 +43,12 @@ public class GuiController {
     static final String CHOOSEHANDCARD = "chooseHandCard";
     private Card chosenCard;
     private boolean tokenFound;
-    @FXML private Label toDo;
-    @FXML private BorderPane borderPane;
-    @FXML private Label playerName;
+    @FXML
+    private Label toDo;
+    @FXML
+    private BorderPane borderPane;
+    @FXML
+    private Label playerName;
     private String state;
     private Player activeP;
 
@@ -75,6 +78,7 @@ public class GuiController {
     Game model;
     View view;
     char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+
     public List<Node> getAllChildren(Parent parent) {
         ArrayList<Node> children = new ArrayList<>();
         for (Node node : parent.getChildrenUnmodifiable()) {
@@ -109,6 +113,7 @@ public class GuiController {
             }
         }
     }
+
     @FXML
     public void startGame(ActionEvent event) throws Exception {
         classifyChildren(borderPane);
@@ -122,10 +127,10 @@ public class GuiController {
         }
 
         for (int i = 0; i < 3; i++) {
-            if(ais.get(i).isSelected()) {
+            if (ais.get(i).isSelected()) {
                 aiAmount++;
-            } else if(!names.get(i+1).getText().isEmpty()) {
-                playerNames.add(names.get(i+1).getText());
+            } else if (!names.get(i + 1).getText().isEmpty()) {
+                playerNames.add(names.get(i + 1).getText());
             }
         }
         List<Player> players = new ArrayList<>();
@@ -201,7 +206,7 @@ public class GuiController {
             }
         }
         //update directiondiscardpiles
-        for(DirectionDiscardPile pile: activeP.getPlayedCards()) {
+        for (DirectionDiscardPile pile : activeP.getPlayedCards()) {
             setDirection(pile);
             setDirectionDiscardPileNumber(pile);
         }
@@ -213,36 +218,36 @@ public class GuiController {
      */
     private void updateTokens() {
         int currentToken = 0;
-        while(currentToken <= 39) {
-            for(Field field: Game.FIELDS) {
-                if(field.getToken() == null) {
+        while (currentToken <= 39) {
+            for (int i = 1; i <= 35; i++) {
+                if (Game.FIELDS[i].getToken() == null) {
                     tokens.get(currentToken).setImage(ImgEmpty);
                     currentToken++;
-                } else if(field instanceof LargeField && ((LargeField) field).getTokenTwo() != null) {
+                } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
+                    tokens.get(currentToken).setImage(ImgMirror);
+                    currentToken++;
+                } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
+                    tokens.get(currentToken).setImage(ImgGoblin);
+                    currentToken++;
+                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint) {
+                    tokens.get(currentToken).setImage(ImgSkull);
+                    currentToken++;
+                } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
+                    tokens.get(currentToken).setImage(ImgSpiral);
+                    currentToken++;
+                } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
+                    tokens.get(currentToken).setImage(ImgWeb);
+                    currentToken++;
+                } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
                     tokens.get(currentToken).setImage(ImgStone);
                     currentToken++;
+                }
+                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
                     tokens.get(currentToken).setImage(ImgStone);
                     currentToken++;
-                } else {
-                    if(field.getToken() instanceof Mirror) {
-                        tokens.get(currentToken).setImage(ImgMirror);
-                        currentToken++;
-                    } else if(field.getToken() instanceof Goblin) {
-                        tokens.get(currentToken).setImage(ImgGoblin);
-                        currentToken++;
-                    } else if(field.getToken() instanceof Skullpoint) {
-                        tokens.get(currentToken).setImage(ImgSkull);
-                        currentToken++;
-                    } else if(field.getToken() instanceof Spiral) {
-                        tokens.get(currentToken).setImage(ImgSpiral);
-                        currentToken++;
-                    } else if(field.getToken() instanceof Spiderweb) {
-                        tokens.get(currentToken).setImage(ImgWeb);
-                        currentToken++;
-                    } else if(field.getToken() instanceof WishingStone) {
-                        tokens.get(currentToken).setImage(ImgStone);
-                        currentToken++;
-                    }
+                } else if (Game.FIELDS[i] instanceof LargeField) {
+                    tokens.get(currentToken).setImage(ImgEmpty);
+                    currentToken++;
                 }
             }
         }
@@ -250,61 +255,71 @@ public class GuiController {
 
     /**
      * changes a color from char to color
+     *
      * @param color as a char
      * @return color according to string constant
      */
-    private Color changeColor(char color){
-        switch (color){
-            case 'r': return Color.web(RED);
-            case 'g': return Color.web(GREEN);
-            case 'b': return Color.web(BLUE);
-            case 'p': return Color.web(PURPLE);
-            case 'o': return Color.web(ORANGE);
-            default: return Color.web("BLACK");
+    private Color changeColor(char color) {
+        switch (color) {
+            case 'r':
+                return Color.web(RED);
+            case 'g':
+                return Color.web(GREEN);
+            case 'b':
+                return Color.web(BLUE);
+            case 'p':
+                return Color.web(PURPLE);
+            case 'o':
+                return Color.web(ORANGE);
+            default:
+                return Color.web("BLACK");
         }
     }
 
     /**
      * this method changes the direction label depending on the direction of the used discard pile
-     * @param pile the current direction discard pile
-     */
-     @FXML
-     private void setDirection(DirectionDiscardPile pile) {
-
-         String direction;
-
-         if (pile.getDirection() == 1){
-         direction = "+";
-         } else if (pile.getDirection() == -1) {
-         direction = "-";
-         } else {
-         direction = " ";
-         }
-
-         for (Label label : directionDiscardingPiles) {
-             if (label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
-                 label.setText(direction);
-             }
-         }
-     }
-
-    /**
-     * this method shows the number from the top card on the used direction discard pile
+     *
      * @param pile the current direction discard pile
      */
     @FXML
-     private void setDirectionDiscardPileNumber(DirectionDiscardPile pile) {
-         for (Label label : directionDiscardingPiles) {
-             if (label.getId().split("DirectionDiscardPile", "DirectionDiscardPile".length() + 1)[0].equals("C") &&
-                label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
-                 String number = "" + pile.getTop().getNumber();
-                 label.setText(number);
-             }
-         }
-     }
+    private void setDirection(DirectionDiscardPile pile) {
+
+        String direction;
+
+        if (pile.getDirection() == 1) {
+            direction = "+";
+        } else if (pile.getDirection() == -1) {
+            direction = "-";
+        } else {
+            direction = " ";
+        }
+
+        for (Label label : directionDiscardingPiles) {
+            if (label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
+                label.setText(direction);
+            }
+        }
+    }
+
+    /**
+     * this method shows the number from the top card on the used direction discard pile
+     *
+     * @param pile the current direction discard pile
+     */
+    @FXML
+    private void setDirectionDiscardPileNumber(DirectionDiscardPile pile) {
+        for (Label label : directionDiscardingPiles) {
+            if (label.getId().split("DirectionDiscardPile", "DirectionDiscardPile".length() + 1)[0].equals("C") &&
+                    label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
+                String number = "" + pile.getTop().getNumber();
+                label.setText(number);
+            }
+        }
+    }
 
     /**
      * this method shows the number from the top card on the used discard pile
+     *
      * @param pile the current discard pile
      */
     @FXML
@@ -333,7 +348,7 @@ public class GuiController {
     @FXML
     private void onClick(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
-        if (state.equals(PREPARATION) && item.getId().startsWith("choice")){
+        if (state.equals(PREPARATION) && item.getId().startsWith("choice")) {
             state = CHOOSEHANDCARD;
         } else if (state.equals(CHOOSEHANDCARD) && item.getId().startsWith("cardHand")) {
             chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
@@ -344,7 +359,7 @@ public class GuiController {
             } else if (item.getId().equals("choice2")) {
                 state = PLAY;
             }
-        }else if (state.equals(PLAY) && item.getId().startsWith("cardHand")) {
+        } else if (state.equals(PLAY) && item.getId().startsWith("cardHand")) {
             chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
             state = TOKEN;
         } else if (state.equals(TOKEN) && item.getId().equals("choice1")) {
@@ -363,15 +378,15 @@ public class GuiController {
             state = PREPARATION;
             activeP = getNextPlayer();
         }
-            takeTurn();
+        takeTurn();
     }
 
     @FXML
     private int getCardIndex(String cardID) {
-       return Integer.parseInt(cardID.split("handCard")[0]);
+        return Integer.parseInt(cardID.split("handCard")[0]);
     }
 
-    private Player getNextPlayer(){
+    private Player getNextPlayer() {
         int index = model.getPlayers().indexOf(activeP);
         if (index == model.getPlayers().size() - 1) {
             return model.getPlayers().get(0);
