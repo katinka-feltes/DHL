@@ -96,12 +96,16 @@ public class Player {
     /**
      * Allows to place a card on the discarding pile.
      * The card gets sorted to the correct color discarding pile.
+     * ignores if the color does not exist
      * @param card the card that gets discarded.
-     * @throws Exception if the color of the card does not exist.
      */
-    public void putCardOnDiscardingPile(Card card) throws Exception {
-        hand.remove(card);
-        game.getDiscardPile(card.getColor()).add(card);
+    public void putCardOnDiscardingPile(Card card) {
+        try {
+            hand.remove(card);
+            game.getDiscardPile(card.getColor()).add(card);
+        } catch (Exception e){
+            //ignore
+        }
     }
 
     /**

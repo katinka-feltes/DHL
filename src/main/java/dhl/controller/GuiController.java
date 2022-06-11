@@ -37,7 +37,8 @@ enum State {
     ACTION,
     TOKEN,
     DONE,
-    DRAW, GAMEOVER
+    DRAW,
+    GAMEOVER
 }
 
 /**
@@ -45,7 +46,6 @@ enum State {
  * It is responsible for the communication between the Model and the View.
  */
 public class GuiController {
-
 
     private State state;
     private Card chosenCard;
@@ -156,11 +156,15 @@ public class GuiController {
 
         state = State.PREPARATION;
         activeP = getNextPlayer();
+        toDo.setText("Click any item to start your turn.");
         takeTurn();
     }
 
     @FXML
-    private void takeTurn() throws Exception {
+    private void takeTurn() {
+        if(model.gameOver()){
+            state = State.GAMEOVER;
+        }
         switch (state) {
             case PREPARATION:
                 playerName.setText(activeP.getName());
@@ -177,6 +181,12 @@ public class GuiController {
                 try {
                     activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
                     activeP.getHand().remove(chosenCard);
+                    activeP.placeFigure(chosenCard.getColor(), chosenFigure);
+                    state = State.DRAW; //TODO: should check token
+                    toDo.setText("From which pile do you want to draw?");
+                } catch (IndexOutOfBoundsException indexE) {
+                    toDo.setText("This figure can't move this far! Choose a different one or trash.");
+                    state = State.TRASHORPLAY; //choose again what to do with the chosen card
                 } catch (Exception e) {
                     toDo.setText(e.getMessage());
                 }
@@ -194,15 +204,20 @@ public class GuiController {
         if (!state.equals(State.PREPARATION)) {
             //get sorted hand cards
             List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
-            for (int i = 0; i < sortedHand.size(); i++) {
+            for (int i = 0; i < handCards.size(); i++) {
                 Rectangle card = (Rectangle)handCards.get(i).getChildren().get(0);
                 Label cardNumber = (Label)handCards.get(i).getChildren().get(1);
-                cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
-                card.setFill(changeColor(sortedHand.get(i).getColor()));
+                if (i < sortedHand.size()) {
+                    cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
+                    card.setFill(changeColor(sortedHand.get(i).getColor()));
+                } else {
+                    cardNumber.setText("");
+                    card.setFill(Color.web("#c8d1d9"));
+                }
             }
             //TODO: all the other cards
         } else {
-            for (int i = 0; i < activeP.getHand().size(); i++) {
+            for (int i = 0; i < 8; i++) {
                 Rectangle card = (Rectangle)handCards.get(i).getChildren().get(0);
                 Label cardNumber = (Label)handCards.get(i).getChildren().get(1);
                 cardNumber.setText("");
@@ -237,7 +252,7 @@ public class GuiController {
         while (currentToken <= 39) {
             for (int i = 1; i <= 35; i++) {
                 if (Game.FIELDS[i].getToken() == null) {
-                    tokens.get(currentToken).setImage(ImgEmpty);
+                    tokens.get(currentToken).setImage(null);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
                     tokens.get(currentToken).setImage(ImgMirror);
@@ -262,7 +277,7 @@ public class GuiController {
                     tokens.get(currentToken).setImage(ImgStone);
                     currentToken++;
                 } else if (Game.FIELDS[i] instanceof LargeField) {
-                    tokens.get(currentToken).setImage(ImgEmpty);
+                    tokens.get(currentToken).setImage(null);
                     currentToken++;
                 }
             }
@@ -328,23 +343,23 @@ public class GuiController {
     }
 
     @FXML
-    private void onClick(MouseEvent e) throws Exception {
+    private void onClick(MouseEvent e) {
         Node item = (Node) e.getSource();
         System.out.println(state + item.getId());
         if (state  == State.PREPARATION){ //click anything to start thr turn
             state = State.CHOOSEHANDCARD;
+            toDo.setText("Which card to you want to play or trash?");
         } else if (state.equals(State.CHOOSEHANDCARD) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             state = State.TRASHORPLAY;
         } else if (state == State.TRASHORPLAY) {
             if (item.getId().startsWith("discardingPile")) {
-                System.out.println("trash");
                 state = State.TRASH;
             } else if (item.getId().startsWith("circle")) {
                 try{
                     chosenFigure = activeP.getFigureOnField(getIndex(item.getId(), "circle"));
                 } catch (Exception exception){
-
+                    toDo.setText(exception.getMessage());
                 }
                 state = State.PLAY;
             }
@@ -368,11 +383,16 @@ public class GuiController {
             activeP = getNextPlayer();
         } else if (state == State.DRAW) {
             if (item.getId().startsWith("discardingPile")) {
-                activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
+                try {
+                    activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
+                    state = State.DONE;
+                } catch (Exception exc){
+                    toDo.setText(exc.getMessage());
+                }
             } else if (item.getId().equals("drawingPile")) {
                 activeP.drawFromDrawingPile();
+                state = State.DONE;
             }
-            state = State.DONE;
         }
         takeTurn();
     }
@@ -389,7 +409,8 @@ public class GuiController {
 
     @FXML
     private int getIndex(String id, String elementName) {
-        return Integer.parseInt(id.split(elementName)[0]);
+        String [] x = id.split(elementName);
+        return Integer.parseInt(x[1]);
     }
 
     private Player getNextPlayer() {
