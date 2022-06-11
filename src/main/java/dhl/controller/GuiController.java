@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -27,29 +28,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+enum State {
+    PREPARATION,
+    CHOOSEHANDCARD,
+    TRASHORPLAY,
+    TRASH,
+    PLAY,
+    ACTION,
+    TOKEN,
+    DONE,
+    DRAW, GAMEOVER
+}
+
 /**
  * This Class is the Controller of the MVC pattern when the game is played on the GUI.
  * It is responsible for the communication between the Model and the View.
  */
 public class GuiController {
 
-    static final String PREPARATION = "preparation";
-    static final String TRASHORPLAY = "trashOrPlay";
-    static final String DONE = "done";
-    static final String PLAY = "play";
-    static final String TRASH = "trash";
-    static final String ACTION = "action";
-    static final String TOKEN = "token";
-    static final String CHOOSEHANDCARD = "chooseHandCard";
+
+    private State state;
     private Card chosenCard;
+    private Figure chosenFigure;
     private boolean tokenFound;
-    @FXML
-    private Label toDo;
-    @FXML
-    private BorderPane borderPane;
-    @FXML
-    private Label playerName;
-    private String state;
+    @FXML private Label toDo;
+    @FXML private BorderPane borderPane;
+    @FXML private Label playerName;
     private Player activeP;
 
     private final List<TextField> names = new ArrayList<>();
@@ -57,9 +61,8 @@ public class GuiController {
     private final List<Circle> circles = new ArrayList<>();
     private final List<ImageView> tokens = new ArrayList<>();
     private final List<Label> directionDiscardingPiles = new ArrayList<>();
-    private final List<Label> discardPiles = new ArrayList<>();
-    private final List<Label> handLabels = new ArrayList<>();
-    private final List<Rectangle> handCards = new ArrayList<>();
+    private final List<StackPane> discardPiles = new ArrayList<>();
+    private final List<StackPane> handCards = new ArrayList<>();
 
     private final String RED = "#d34a41";
     private final String GREEN = "#6a9a3d";
@@ -103,12 +106,10 @@ public class GuiController {
                     ais.add((CheckBox) node);
                 } else if (node.getId().startsWith("directionDiscardingPile")) {
                     directionDiscardingPiles.add((Label) node);
-                } else if (node.getId().startsWith("DiscardingPile")) {
-                    discardPiles.add((Label) node);
-                } else if (node.getId().startsWith("LabelHand")) {
-                    handLabels.add((Label) node);
-                } else if (node.getId().startsWith("cardHand")) {
-                    handCards.add((Rectangle) node);
+                } else if (node.getId().startsWith("discardingPile")) {
+                    discardPiles.add((StackPane) node);
+                } else if (node.getId().startsWith("handCard")) {
+                    handCards.add((StackPane) node);
                 }
             }
         }
@@ -153,9 +154,8 @@ public class GuiController {
         stage.centerOnScreen();
         classifyChildren(newRoot);
 
-        state = PREPARATION;
+        state = State.PREPARATION;
         activeP = getNextPlayer();
-        updateTokens();
         takeTurn();
     }
 
@@ -168,14 +168,15 @@ public class GuiController {
                 break;
             case TRASH:
                 activeP.getHand().remove(chosenCard);
-                activeP.drawFromDrawingPile();
-                state = DONE;
-                toDo.setText("Are you done with your turn?");
+                activeP.putCardOnDiscardingPile(chosenCard);
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
                 updateCards();
                 break;
             case PLAY:
                 try {
-                    activeP.putCardOnDiscardingPile(chosenCard);
+                    activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
+                    activeP.getHand().remove(chosenCard);
                 } catch (Exception e) {
                     toDo.setText(e.getMessage());
                 }
@@ -190,27 +191,42 @@ public class GuiController {
      */
     private void updateCards() {
         classifyChildren(borderPane);
-        if (!state.equals(PREPARATION)) {
+        if (!state.equals(State.PREPARATION)) {
             //get sorted hand cards
             List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
             for (int i = 0; i < sortedHand.size(); i++) {
-                handLabels.get(i).setText(Integer.toString(sortedHand.get(i).getNumber()));
-                handCards.get(i).setFill(changeColor(sortedHand.get(i).getColor()));
+                Rectangle card = (Rectangle)handCards.get(i).getChildren().get(0);
+                Label cardNumber = (Label)handCards.get(i).getChildren().get(1);
+                cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
+                card.setFill(changeColor(sortedHand.get(i).getColor()));
             }
             //TODO: all the other cards
-            updateTokens();
         } else {
             for (int i = 0; i < activeP.getHand().size(); i++) {
-                handLabels.get(i).setText("0");
-                handCards.get(i).setFill(Color.web("#c8d1d9"));
+                Rectangle card = (Rectangle)handCards.get(i).getChildren().get(0);
+                Label cardNumber = (Label)handCards.get(i).getChildren().get(1);
+                cardNumber.setText("");
+                card.setFill(Color.web("#c8d1d9"));
             }
         }
-        //update directiondiscardpiles
+        // update played cards - direction discard piles
         for (DirectionDiscardPile pile : activeP.getPlayedCards()) {
             setDirection(pile);
             setDirectionDiscardPileNumber(pile);
         }
-        updateDiscardPiles();
+
+        // update discard piles
+        for(StackPane pilePane : discardPiles){
+            DiscardPile pile = getDiscardPileFromID(pilePane.getId());
+            Label lbl = (Label) pilePane.getChildren().get(1);
+            if (pile.isEmpty()){
+                lbl.setText("");
+            } else {
+                lbl.setText(Integer.toString(pile.getTop().getNumber()));
+            }
+        }
+        // update tokens
+        updateTokens();
     }
 
     /**
@@ -259,20 +275,14 @@ public class GuiController {
      * @param color as a char
      * @return color according to string constant
      */
-    private Color changeColor(char color) {
-        switch (color) {
-            case 'r':
-                return Color.web(RED);
-            case 'g':
-                return Color.web(GREEN);
-            case 'b':
-                return Color.web(BLUE);
-            case 'p':
-                return Color.web(PURPLE);
-            case 'o':
-                return Color.web(ORANGE);
-            default:
-                return Color.web("BLACK");
+    private Color changeColor(char color){
+        switch (color){
+            case 'r': return Color.web(RED);
+            case 'g': return Color.web(GREEN);
+            case 'b': return Color.web(BLUE);
+            case 'p': return Color.web(PURPLE);
+            case 'o': return Color.web(ORANGE);
+            default: return Color.web("BLACK");
         }
     }
 
@@ -317,73 +327,69 @@ public class GuiController {
         }
     }
 
-    /**
-     * this method shows the number from the top card on the used discard pile
-     *
-     * @param pile the current discard pile
-     */
-    @FXML
-    private void setDiscardPileNumber(DiscardPile pile) {
-        for (Label label : directionDiscardingPiles) {
-            if (label.getId().split("DiscardPile", "DiscardPile".length() + 1)[0].equals("C") &&
-                    label.getId().split("DiscardPile")[0].toCharArray()[0] == pile.getColor()) {
-                String number = "" + pile.getTop().getNumber();
-                label.setText(number);
-            }
-        }
-    }
-
-    /**
-     * updates the discarding piles
-     */
-    @FXML
-    private void updateDiscardPiles() {
-        setDiscardPileNumber(model.getDiscardPile('r'));
-        setDiscardPileNumber(model.getDiscardPile('g'));
-        setDiscardPileNumber(model.getDiscardPile('b'));
-        setDiscardPileNumber(model.getDiscardPile('p'));
-        setDiscardPileNumber(model.getDiscardPile('o'));
-    }
-
     @FXML
     private void onClick(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
-        if (state.equals(PREPARATION) && item.getId().startsWith("choice")) {
-            state = CHOOSEHANDCARD;
-        } else if (state.equals(CHOOSEHANDCARD) && item.getId().startsWith("cardHand")) {
-            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
-            state = TRASHORPLAY;
-        } else if (state.equals(TRASHORPLAY) && item.getId().startsWith("choice")) {
-            if (item.getId().equals("choice1")) {
-                state = TRASH;
-            } else if (item.getId().equals("choice2")) {
-                state = PLAY;
+        System.out.println(state + item.getId());
+        if (state  == State.PREPARATION){ //click anything to start thr turn
+            state = State.CHOOSEHANDCARD;
+        } else if (state.equals(State.CHOOSEHANDCARD) && item.getId().startsWith("handCard")) {
+            chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
+            state = State.TRASHORPLAY;
+        } else if (state == State.TRASHORPLAY) {
+            if (item.getId().startsWith("discardingPile")) {
+                System.out.println("trash");
+                state = State.TRASH;
+            } else if (item.getId().startsWith("circle")) {
+                try{
+                    chosenFigure = activeP.getFigureOnField(getIndex(item.getId(), "circle"));
+                } catch (Exception exception){
+
+                }
+                state = State.PLAY;
             }
-        } else if (state.equals(PLAY) && item.getId().startsWith("cardHand")) {
-            chosenCard = activeP.getHand().get(Integer.parseInt(item.getId().split("cardHand")[1]));
-            state = TOKEN;
-        } else if (state.equals(TOKEN) && item.getId().equals("choice1")) {
+        }else if (state == State.TRASH && item.getId().startsWith("cardHand")) {
+            chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
+            state = State.TOKEN; //what is this state for? -Katinka
+        } else if (state == State.TOKEN && item.getId().equals("choice1")) {
             if (tokenFound) {
-                state = ACTION;
+                state = State.ACTION;
             } else {
-                state = DONE;
+                state = State.DONE;
             }
-        } else if (state.equals(ACTION)) {
+        } else if (state == State.TOKEN) {
             if (item.getId().equals("choice1")) {
-                state = DONE;
+                state = State.DONE;
             } else if (item.getId().equals("choice2")) {
-                state = TOKEN;
+                state = State.TOKEN;
             }
-        } else if (state.equals(DONE) && item.getId().equals("choice1")) {
-            state = PREPARATION;
+        } else if (state == State.DONE) { //click anything to end turn
+            state = State.PREPARATION;
             activeP = getNextPlayer();
+        } else if (state == State.DRAW) {
+            if (item.getId().startsWith("discardingPile")) {
+                activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
+            } else if (item.getId().equals("drawingPile")) {
+                activeP.drawFromDrawingPile();
+            }
+            state = State.DONE;
         }
         takeTurn();
     }
 
+    /**
+     * gets the matching discard pile to color in id
+     * @param id the piles id with the color as the last character
+     * @return the discard pile from the model
+     */
+    private DiscardPile getDiscardPileFromID(String id) {
+        char[] idArray =  id.toCharArray();
+        return model.getDiscardPile(idArray[idArray.length-1]);
+    }
+
     @FXML
-    private int getCardIndex(String cardID) {
-        return Integer.parseInt(cardID.split("handCard")[0]);
+    private int getIndex(String id, String elementName) {
+        return Integer.parseInt(id.split(elementName)[0]);
     }
 
     private Player getNextPlayer() {

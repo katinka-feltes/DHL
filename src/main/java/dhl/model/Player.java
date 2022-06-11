@@ -192,6 +192,20 @@ public class Player {
         }
         return null;
     }
+
+    /**
+     * @param fieldIndex the index of the field to get the figure from
+     * @return the figure on the field or null if there is none
+     */
+    public Figure getFigureOnField(int fieldIndex) throws Exception {
+        for (Figure f : figures) {
+            if (f.getPos() == fieldIndex) {
+                return f;
+            }
+        }
+        throw new Exception("No figure on this field.");
+    }
+
     public DirectionDiscardPile[] getPlayedCards() {return playedCards;}
 
     public Figure getLastMovedFigure(){
