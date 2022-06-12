@@ -239,6 +239,8 @@ public class GuiController {
         }
         // update tokens
         updateTokens();
+        // update figures
+        updateFigures();
     }
 
     /**
@@ -277,6 +279,20 @@ public class GuiController {
                     tokens.get(currentToken).setImage(null);
                     currentToken++;
                 }
+            }
+        }
+    }
+
+    /**
+     * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
+     */
+    private void updateFigures() {
+        for(TilePane circle: circles) {
+            circle.getChildren().clear();
+        }
+        for(Player player: model.getPlayers()) {
+            for(Figure figure: player.getFigures()) {
+                circles.get(figure.getPos()).getChildren().add(new Label(Character.toString(player.getSymbol())));
             }
         }
     }
