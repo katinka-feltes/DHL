@@ -19,8 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -57,7 +57,7 @@ public class GuiController {
     private Player activeP;
     private final List<TextField> names = new ArrayList<>();
     private final List<CheckBox> ais = new ArrayList<>();
-    private final List<Circle> circles = new ArrayList<>();
+    private final List<TilePane> circles = new ArrayList<>();
     private final List<ImageView> tokens = new ArrayList<>();
     private final List<Label> directionDiscardingPiles = new ArrayList<>();
     private final List<StackPane> discardPiles = new ArrayList<>();
@@ -69,7 +69,6 @@ public class GuiController {
     private static final String PURPLE = "#a45ab9";
     private static final String ORANGE = "#f2af4b";
 
-    private final Image imgEmpty = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/empty.png")));
     private final Image imgGoblin = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/goblin.png")));
     private final Image imgMirror = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/mirror.png")));
     private final Image imgSkull = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/skull.png")));
@@ -96,7 +95,7 @@ public class GuiController {
         for (Node node : nodes) {
             if (node.getId() != null) {
                 if (node.getId().startsWith("circle")) {
-                    circles.add((Circle) node);
+                    circles.add((TilePane) node);
                 } else if (node.getId().startsWith("token")) {
                     tokens.add((ImageView) node);
                 } else if (node.getId().startsWith("name")) {
@@ -193,6 +192,7 @@ public class GuiController {
         }
         updateCards();
     }
+
     /**
      * updates the hand cards, discarding and direction discarding piles
      * hand cards white when players change
@@ -227,7 +227,6 @@ public class GuiController {
             setDirection(pile);
             setDirectionDiscardPileNumber(pile);
         }
-
         // update discard piles
         for(StackPane pilePane : discardPiles){
             DiscardPile pile = getDiscardPileFromID(pilePane.getId());
