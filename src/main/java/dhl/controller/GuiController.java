@@ -55,7 +55,6 @@ public class GuiController {
     @FXML private BorderPane borderPane;
     @FXML private Label playerName;
     private Player activeP;
-
     private final List<TextField> names = new ArrayList<>();
     private final List<CheckBox> ais = new ArrayList<>();
     private final List<Circle> circles = new ArrayList<>();
@@ -64,19 +63,19 @@ public class GuiController {
     private final List<StackPane> discardPiles = new ArrayList<>();
     private final List<StackPane> handCards = new ArrayList<>();
 
-    private final String RED = "#d34a41";
-    private final String GREEN = "#6a9a3d";
-    private final String BLUE = "#424ebc";
-    private final String PURPLE = "#a45ab9";
-    private final String ORANGE = "#f2af4b";
+    private static final String RED = "#d34a41";
+    private static final String GREEN = "#6a9a3d";
+    private static final String BLUE = "#424ebc";
+    private static final String PURPLE = "#a45ab9";
+    private static final String ORANGE = "#f2af4b";
 
-    private final Image ImgEmpty = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/empty.png")));
-    private final Image ImgGoblin = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/goblin.png")));
-    private final Image ImgMirror = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/mirror.png")));
-    private final Image ImgSkull = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/skull.png")));
-    private final Image ImgSpiral = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/spiral.png")));
-    private final Image ImgStone = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/stone.png")));
-    private final Image ImgWeb = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/web.png")));
+    private final Image imgEmpty = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/empty.png")));
+    private final Image imgGoblin = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/goblin.png")));
+    private final Image imgMirror = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/mirror.png")));
+    private final Image imgSkull = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/skull.png")));
+    private final Image imgSpiral = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/spiral.png")));
+    private final Image imgStone = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/stone.png")));
+    private final Image imgWeb = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/web.png")));
 
     Game model;
     View view;
@@ -162,13 +161,13 @@ public class GuiController {
 
     @FXML
     private void takeTurn() {
+        System.out.print(state);
         if(model.gameOver()){
             state = State.GAMEOVER;
         }
         switch (state) {
             case PREPARATION:
                 playerName.setText(activeP.getName());
-                toDo.setText("it's your turn");
                 break;
             case TRASH:
                 activeP.getHand().remove(chosenCard);
@@ -179,22 +178,21 @@ public class GuiController {
                 break;
             case PLAY:
                 try {
+                    activeP.placeFigure(chosenCard.getColor(), chosenFigure);
                     activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
                     activeP.getHand().remove(chosenCard);
-                    activeP.placeFigure(chosenCard.getColor(), chosenFigure);
                     state = State.DRAW; //TODO: should check token
                     toDo.setText("From which pile do you want to draw?");
                 } catch (IndexOutOfBoundsException indexE) {
                     toDo.setText("This figure can't move this far! Choose a different one or trash.");
                     state = State.TRASHORPLAY; //choose again what to do with the chosen card
                 } catch (Exception e) {
-                    toDo.setText(e.getMessage());
+                    state = State.TRASHORPLAY;
                 }
                 break;
         }
         updateCards();
     }
-
     /**
      * updates the hand cards, discarding and direction discarding piles
      * hand cards white when players change
@@ -255,26 +253,26 @@ public class GuiController {
                     tokens.get(currentToken).setImage(null);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
-                    tokens.get(currentToken).setImage(ImgMirror);
+                    tokens.get(currentToken).setImage(imgMirror);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
-                    tokens.get(currentToken).setImage(ImgGoblin);
+                    tokens.get(currentToken).setImage(imgGoblin);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Skullpoint) {
-                    tokens.get(currentToken).setImage(ImgSkull);
+                    tokens.get(currentToken).setImage(imgSkull);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
-                    tokens.get(currentToken).setImage(ImgSpiral);
+                    tokens.get(currentToken).setImage(imgSpiral);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
-                    tokens.get(currentToken).setImage(ImgWeb);
+                    tokens.get(currentToken).setImage(imgWeb);
                     currentToken++;
                 } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
-                    tokens.get(currentToken).setImage(ImgStone);
+                    tokens.get(currentToken).setImage(imgStone);
                     currentToken++;
                 }
                 if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
-                    tokens.get(currentToken).setImage(ImgStone);
+                    tokens.get(currentToken).setImage(imgStone);
                     currentToken++;
                 } else if (Game.FIELDS[i] instanceof LargeField) {
                     tokens.get(currentToken).setImage(null);
@@ -303,7 +301,6 @@ public class GuiController {
 
     /**
      * this method changes the direction label depending on the direction of the used discard pile
-     *
      * @param pile the current direction discard pile
      */
     @FXML
@@ -328,13 +325,12 @@ public class GuiController {
 
     /**
      * this method shows the number from the top card on the used direction discard pile
-     *
      * @param pile the current direction discard pile
      */
     @FXML
     private void setDirectionDiscardPileNumber(DirectionDiscardPile pile) {
         for (Label label : directionDiscardingPiles) {
-            if (label.getId().split("DirectionDiscardPile", "DirectionDiscardPile".length() + 1)[0].equals("C") &&
+            if (label.getId().split("DirectionDiscardPile")[0].equals("C") &&
                     label.getId().split("DirectionDiscardPile")[0].toCharArray()[0] == pile.getColor()) {
                 String number = "" + pile.getTop().getNumber();
                 label.setText(number);
@@ -344,13 +340,15 @@ public class GuiController {
 
     @FXML
     private void onClick(MouseEvent e) {
+        chosenFigure = null;
         Node item = (Node) e.getSource();
-        System.out.println(state + item.getId());
+        System.out.println(" " + item.getId());
         if (state  == State.PREPARATION){ //click anything to start thr turn
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
         } else if (state.equals(State.CHOOSEHANDCARD) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
+            toDo.setText("place card on field or trash it");
             state = State.TRASHORPLAY;
         } else if (state == State.TRASHORPLAY) {
             if (item.getId().startsWith("discardingPile")) {
@@ -365,7 +363,7 @@ public class GuiController {
             }
         }else if (state == State.TRASH && item.getId().startsWith("cardHand")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-            state = State.TOKEN; //what is this state for? -Katinka
+            state = State.DONE; //what is this state for? -Katinka
         } else if (state == State.TOKEN && item.getId().equals("choice1")) {
             if (tokenFound) {
                 state = State.ACTION;
@@ -375,8 +373,6 @@ public class GuiController {
         } else if (state == State.TOKEN) {
             if (item.getId().equals("choice1")) {
                 state = State.DONE;
-            } else if (item.getId().equals("choice2")) {
-                state = State.TOKEN;
             }
         } else if (state == State.DONE) { //click anything to end turn
             state = State.PREPARATION;
@@ -399,11 +395,11 @@ public class GuiController {
 
     /**
      * gets the matching discard pile to color in id
-     * @param id the piles id with the color as the last character
+     * @param id the piles' id with the color as the last character
      * @return the discard pile from the model
      */
     private DiscardPile getDiscardPileFromID(String id) {
-        char[] idArray =  id.toCharArray();
+        char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length-1]);
     }
 
