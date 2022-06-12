@@ -32,22 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Ellipse?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -406,21 +398,16 @@
             <children>
                 <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND 🕷" textAlignment="CENTER" textFill="#880b0b">
                             <font>
                                 <Font name="Dead Kansas" size="40.0" />
                             </font>
                         </Label>
-                        <HBox alignment="CENTER" spacing="50.0">
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
                             <padding>
                                 <Insets top="5.0" />
                             </padding>
                      <children>
-                                <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" text="playerName">
-                                    <font>
-                                        <Font name="Corbel" size="15.0" />
-                                    </font>
-                                </Label>
                                 <Label graphicTextGap="50.0" text="Player: ">
                                     <font>
                                         <Font name="Corbel" size="15.0" />
@@ -429,10 +416,21 @@
                                         <Insets />
                                     </opaqueInsets>
                                 </Label>
+                                <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" text="playerName">
+                                    <font>
+                                        <Font name="Corbel" size="15.0" />
+                                    </font>
+                                </Label>
                                 <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#880b0b">
                                     <font>
                                         <Font name="Corbel" size="15.0" />
                                     </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
                                 </Label>
                      </children>
                         </HBox>
@@ -1175,33 +1173,6 @@
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
-                </VBox>
-                <VBox alignment="CENTER">
-                    <children>
-                        <StackPane prefHeight="68.0" prefWidth="130.0">
-                            <children>
-                                <Ellipse id="choice1" fx:id="choice1" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="28.0" stroke="#2c593182" strokeType="INSIDE" strokeWidth="3.0" />
-                                <Label id=" labelchoice1" fx:id="labelchoice1" alignment="CENTER" contentDisplay="CENTER" text="DISCARD">
-                                    <font>
-                                        <Font name="Ink Free" size="24.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                        </StackPane>
-                        <StackPane prefHeight="70.0" prefWidth="130.0">
-                            <children>
-                                <Ellipse id="choice2" fx:id="choice2" fill="#858986" onMouseClicked="#onClick" radiusX="65.0" radiusY="26.0" stroke="#2c5931bf" strokeType="INSIDE" strokeWidth="3.0" />
-                                <Label id="labelchoice2" fx:id="labelchoice2" alignment="CENTER" contentDisplay="CENTER" text="DRAW">
-                                    <font>
-                                        <Font name="Ink Free" size="24.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </StackPane>
-                    </children>
                 </VBox>
             </children>
         </HBox>

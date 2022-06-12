@@ -233,10 +233,10 @@ public class Game {
      * and adds them to string-list highscores
      */
     private void readHighscores(){
-        File file = new File ("src/main/resources/highscores.txt");
         highscores.clear();
         Scanner s = null ;
         try  {
+            File file = new File ("src/main/resources/highscores.txt");
             s =  new  Scanner ( file ); // read the file contents
             while  ( s.hasNextLine())  { // Read the file line by line
                 String line = s.nextLine();

@@ -2,10 +2,7 @@ package dhl.controller;
 
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
-import dhl.model.Card;
-import dhl.model.Figure;
-import dhl.model.Game;
-import dhl.model.Player;
+import dhl.model.*;
 import dhl.model.tokens.*;
 import dhl.view.View;
 
@@ -181,16 +178,9 @@ public class CliController {
      * @param player the player that trashes a card
      */
     private void trashCard(Player player) {
-        while (true) {
-            try {
-                Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
-                player.setLastTrashed(trash);
-                player.putCardOnDiscardingPile(player.getLastTrashed());
-                break;
-            } catch (Exception e) {
-                view.error(e.getMessage());
-            }
-        }
+        Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
+        player.setLastTrashed(trash);
+        player.putCardOnDiscardingPile(player.getLastTrashed());
     }
 
     /**
@@ -230,8 +220,12 @@ public class CliController {
                     break;
 
                 case "Spiderweb":
-                    if (spiderwebIsPossible(player)) {
-                        doTokenSpiderWeb(player);
+                    if (FigureFunction.spiderwebIsPossible(player.getLastMovedFigure()) &&
+                            player.getPlayerLogic().choose("Your Figure gets moved to " +
+                                "figure to the next field with the same color. Do you want to proceed with your action?")) {
+                        token.action(player);
+                        view.printCurrentBoard(model);
+                        usingToken(player);
                     } else {
                         view.out("Sadly you cannot execute the spiderweb action");
                     }
@@ -245,16 +239,6 @@ public class CliController {
         }
     }
 
-    private boolean spiderwebIsPossible(Player player) {
-        char color = Game.FIELDS[player.getLastMovedFigure().getPos()].getColor();
-        for(int pos = player.getLastMovedFigure().getPos()+1; pos < 36; pos++) {
-            if(Game.FIELDS[pos].getColor() == color) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * this method controls the Token action
      *
@@ -264,6 +248,7 @@ public class CliController {
         Figure currentFigure = player.getLastMovedFigure();
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
+        //something for the AI but that method was too complex TODO: this is weird
         int stones = 0;
         for (Token tok : player.getTokens()) {
             if (tok instanceof WishingStone) {
@@ -281,6 +266,7 @@ public class CliController {
                 usingToken(player);
             } else {
                 view.error("You can not go to the field you came from!");
+                //TODO: rekursion?
             }
         }
     }
@@ -298,22 +284,6 @@ public class CliController {
             goblinChosenPile(player, token);
         }
 
-    }
-
-    /**
-     * this method controls the Token action
-     *
-     * @param player the current player
-     */
-    private void doTokenSpiderWeb(Player player) {
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
-
-        if (player.getPlayerLogic().choose("Your Figure gets moved to " +
-                "figure to the next field with the same color. Do you want to proceed with your action?")) {
-            ((Spiderweb) token).action(player);
-            view.printCurrentBoard(model);
-            usingToken(player);
-        }
     }
 
     /**

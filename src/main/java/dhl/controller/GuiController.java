@@ -34,9 +34,9 @@ enum State {
     TRASHORPLAY,
     TRASH,
     PLAY,
-    ACTION,
-    TOKEN,
-    DONE,
+    SPIDERWEB,
+    SPIRAL,
+    GOBLIN,
     DRAW,
     GAMEOVER
 }
@@ -50,7 +50,6 @@ public class GuiController {
     private State state;
     private Card chosenCard;
     private Figure chosenFigure;
-    private boolean tokenFound;
     @FXML private Label toDo;
     @FXML private BorderPane borderPane;
     @FXML private Label playerName;
@@ -160,13 +159,15 @@ public class GuiController {
 
     @FXML
     private void takeTurn() {
-        System.out.print(state);
         if(model.gameOver()){
             state = State.GAMEOVER;
+            return;
         }
         switch (state) {
             case PREPARATION:
+                activeP = getNextPlayer();
                 playerName.setText(activeP.getName());
+                toDo.setText("it's your turn. Click any card to start.");
                 break;
             case TRASH:
                 activeP.getHand().remove(chosenCard);
@@ -180,17 +181,57 @@ public class GuiController {
                     activeP.placeFigure(chosenCard.getColor(), chosenFigure);
                     activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
                     activeP.getHand().remove(chosenCard);
-                    state = State.DRAW; //TODO: should check token
-                    toDo.setText("From which pile do you want to draw?");
+                    state = State.DRAW;
+                    useToken();
                 } catch (IndexOutOfBoundsException indexE) {
                     toDo.setText("This figure can't move this far! Choose a different one or trash.");
                     state = State.TRASHORPLAY; //choose again what to do with the chosen card
                 } catch (Exception e) {
                     state = State.TRASHORPLAY;
+                    toDo.setText(e.getMessage());
                 }
                 break;
         }
         updateCards();
+    }
+
+    private void useToken() {
+        Token token = Game.FIELDS[chosenFigure.getPos()].collectToken();
+
+        if (token == null) {
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
+            return;
+        }
+
+        switch (token.getName()){
+
+            case "Spiral":
+                state = State.SPIRAL;
+                toDo.setText("Click the field you want to go back to (except the one you came from) " +
+                        "or the one you are on to not use the action.");
+                break;
+
+            case "Goblin":
+                state = State.GOBLIN; //TODO: this and not forget special action
+                toDo.setText("OH OH not implemented yet. Click any card to continue.");
+                break;
+
+            case "Spiderweb":
+                if (FigureFunction.spiderwebIsPossible(activeP.getLastMovedFigure())) {
+                    state = State.SPIDERWEB;
+                    toDo.setText("Click any field to go to the next same colored field. To say no click one discarding pile.");
+                } else {
+                    state = State.DRAW;
+                    toDo.setText("From which pile do you want to draw?");
+                }
+                break;
+            default:
+                token.action(activeP);
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
+                break;
+        }
     }
 
     /**
@@ -355,17 +396,22 @@ public class GuiController {
 
     @FXML
     private void onClick(MouseEvent e) {
-        chosenFigure = null;
+        // chosenFigure = null; TODO: this at a different time
         Node item = (Node) e.getSource();
-        System.out.println(" " + item.getId());
-        if (state  == State.PREPARATION){ //click anything to start thr turn
+        System.out.println(state + item.getId());
+
+        if (state  == State.PREPARATION){ //click anything to start the turn
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
-        } else if (state.equals(State.CHOOSEHANDCARD) && item.getId().startsWith("handCard")) {
+        }
+
+        else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-            toDo.setText("place card on field or trash it");
+            toDo.setText("Click a figure to move or trash it.");
             state = State.TRASHORPLAY;
-        } else if (state == State.TRASHORPLAY) {
+        }
+
+        else if (state == State.TRASHORPLAY) {
             if (item.getId().startsWith("discardingPile")) {
                 state = State.TRASH;
             } else if (item.getId().startsWith("circle")) {
@@ -376,33 +422,51 @@ public class GuiController {
                 }
                 state = State.PLAY;
             }
-        }else if (state == State.TRASH && item.getId().startsWith("cardHand")) {
-            chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-            state = State.DONE; //what is this state for? -Katinka
-        } else if (state == State.TOKEN && item.getId().equals("choice1")) {
-            if (tokenFound) {
-                state = State.ACTION;
+        }
+
+        else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
+            Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
+            int chosenPos = getIndex(item.getId(), "circle");
+            if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
+            } else if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
+                ((Spiral) token).setChosenPos(chosenPos);
+                token.action(activeP);
+                updateCards();
+                useToken(); //sets the new state
             } else {
-                state = State.DONE;
+                toDo.setText("You can not go to the field you came from!");
             }
-        } else if (state == State.TOKEN) {
-            if (item.getId().equals("choice1")) {
-                state = State.DONE;
+        }
+
+        else if (state == State.SPIDERWEB) {
+            if(item.getId().startsWith("circle")){
+                Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+                updateCards();
+                useToken(); // sets the new state
+            } else {
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
             }
-        } else if (state == State.DONE) { //click anything to end turn
-            state = State.PREPARATION;
-            activeP = getNextPlayer();
-        } else if (state == State.DRAW) {
+        }
+
+        else if (state == State.GOBLIN) {
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
+        }
+
+        else if (state == State.DRAW) {
             if (item.getId().startsWith("discardingPile")) {
                 try {
                     activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
-                    state = State.DONE;
+                    state = State.PREPARATION;
                 } catch (Exception exc){
                     toDo.setText(exc.getMessage());
                 }
             } else if (item.getId().equals("drawingPile")) {
                 activeP.drawFromDrawingPile();
-                state = State.DONE;
+                state = State.PREPARATION;
             }
         }
         takeTurn();

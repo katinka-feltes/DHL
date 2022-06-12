@@ -42,4 +42,14 @@ public class FigureFunction {
         figures.sort(Comparator.comparing(Figure::getPos));
         return figures.get(figures.size() - figurePos);
     }
+
+    public static boolean spiderwebIsPossible(Figure figure) {
+        char color = Game.FIELDS[figure.getPos()].getColor();
+        for(int pos = figure.getPos()+1; pos < 36; pos++) {
+            if(Game.FIELDS[pos].getColor() == color) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
