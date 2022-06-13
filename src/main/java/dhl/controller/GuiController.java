@@ -86,9 +86,9 @@ public class GuiController {
         return children;
     }
 
-    public List<Node> classifyChildren(Parent parent, String searchId) {
+    public List<Node> classifyChildren(String searchId) {
         List<Node> nodes = new ArrayList<>();
-        for (Node node : getAllChildren(parent)) {
+        for (Node node : getAllChildren(root)) {
             if (node.getId() != null && node.getId().startsWith(searchId)) {
                 nodes.add(node);
             }
@@ -101,8 +101,8 @@ public class GuiController {
 
         char[] symbols = {'☠', '♛', '⚔', '❤'};
 
-        List<Node> names = classifyChildren(root, "name");
-        List<Node> ais = classifyChildren(root, "ai");
+        List<Node> names = classifyChildren("name");
+        List<Node> ais = classifyChildren("ai");
         int aiAmount = 0;
         ArrayList<String> playerNames = new ArrayList<>();
         // al least one name has to be entered and one name or ai
@@ -243,7 +243,16 @@ public class GuiController {
                 play();
                 break;
         }
+        //update cards
         updateCards();
+        //update discarding piles
+        updateDiscardPiles();
+        // update tokens
+        updateTokens();
+        // update figures
+        updateFigures();
+        // update scores
+        updateScores();
     }
 
     private void takeTurnAI() {
@@ -324,7 +333,6 @@ public class GuiController {
         activeP.putCardOnDiscardingPile(card); //places card on pile and removes it from hand
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
-        updateCards();
     }
 
     private void useToken() {
@@ -373,7 +381,7 @@ public class GuiController {
     private void updateCards() {
 
         //update hand cards
-        List<Node> handCards = classifyChildren(root, "handCard");
+        List<Node> handCards = classifyChildren("handCard");
         if (!state.equals(State.PREPARATION)) {
             //get sorted hand cards
             List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
@@ -397,29 +405,6 @@ public class GuiController {
             }
         }
 
-        // TODO: update played cards - direction discard piles
-        for (DirectionDiscardPile pile : activeP.getPlayedCards()) {
-            setDirection(pile);
-            setDirectionDiscardPileNumber(pile);
-        }
-
-        // update discard piles
-        for (Node pane : classifyChildren(root, "discardingPile")) {
-            DiscardPile pile = getDiscardPileFromID(pane.getId());
-            Label lbl = (Label) ((StackPane)pane).getChildren().get(1);
-            if (pile.isEmpty()) {
-                lbl.setText("");
-            } else {
-                lbl.setText(Integer.toString(pile.getTop().getNumber()));
-            }
-        }
-
-        // update tokens
-        updateTokens();
-        // update figures
-        updateFigures();
-        // update scores
-        updateScores();
     }
 
     /**
@@ -427,7 +412,7 @@ public class GuiController {
      */
     private void updateTokens() {
         int currentToken = 0;
-        List<Node> tokens = classifyChildren(root, "token");
+        List<Node> tokens = classifyChildren("token");
         while (currentToken <= 39) {
             for (int i = 1; i <= 35; i++) {
                 if (Game.FIELDS[i].getToken() == null) {
@@ -463,12 +448,27 @@ public class GuiController {
             }
         }
     }
+    private void updateDiscardPiles() {
+        int currentPlayerIndex = model.getPlayers().indexOf(activeP);
+        List<Node> discardPiles = classifyChildren("playedCardsNumber");
+        for (Node pile : discardPiles) {
+            DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
+            if (!playedCards.isEmpty()) {
+                Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
+                if (pile.getId().equals("playedCardsNumber" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
+                    ((Label)pile).setText("" + lastPlayedCard.getNumber());
+                } else {
+                    ((Label)pile).setText("");
+                }
+            }
+        }
+    }
 
     /**
      * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
      */
     private void updateFigures() {
-        List<Node> circles = classifyChildren(root, "circle");
+        List<Node> circles = classifyChildren("circle");
         //clear all fields
         for (Node circle : circles) {
             ((TilePane)circle).getChildren().clear();
@@ -485,8 +485,8 @@ public class GuiController {
      * updates scores with corresponding player names
      */
     private void updateScores() {
-        List<Node> scores = classifyChildren(root, "scorePlayer");
-        List<Node> scoreNames = classifyChildren(root, "scoreName");
+        List<Node> scores = classifyChildren("scorePlayer");
+        List<Node> scoreNames = classifyChildren("scoreName");
         for (int i = 0; i < 4; i++) {
             if (i > model.getPlayers().size() - 1) {
                 ((Label)scoreNames.get(i)).setText("");
@@ -502,7 +502,7 @@ public class GuiController {
      * adds the player names on end screen (in order: winning - losing)
      */
     private void createEndScores() {
-        List<Node> endScores = classifyChildren(root, "endscores");
+        List<Node> endScores = classifyChildren("endscores");
         for (int i = 0; i < 4; i++) {
             if (i > model.getPlayers().size() - 1) {
                 ((Label)endScores.get(i)).setText("");
@@ -545,39 +545,6 @@ public class GuiController {
     }
 
     /**
-     * this method changes the direction label depending on the direction of the used discard pile
-     *
-     * @param pile the current direction discard pile
-     */
-    @FXML
-    private void setDirection(DirectionDiscardPile pile) {
-
-        String direction = pile.getDirectionString();
-
-        for (Node label : classifyChildren(root, "discardingPile")) {
-            if (label.getId().split("DirectionDiscardingPile")[0].toCharArray()[0] == pile.getColor()) {
-                ((Label)label).setText(direction);
-            }
-        }
-    }
-
-    /**
-     * this method shows the number from the top card on the used direction discard pile
-     *
-     * @param pile the current direction discard pile
-     */
-    @FXML
-    private void setDirectionDiscardPileNumber(DirectionDiscardPile pile) {
-        for (Node label : classifyChildren(root, "discardingPile")) {
-            if (label.getId().split("DirectionDiscardingPile")[0].equals("C") &&
-                    label.getId().split("DirectionDiscardingPile")[0].toCharArray()[0] == pile.getColor()) {
-                String number = "" + pile.getTop().getNumber();
-                ((Label)label).setText(number);
-            }
-        }
-    }
-
-    /**
      * gets the matching discard pile to color in id
      *
      * @param id the piles' id with the color as the last character
@@ -587,8 +554,11 @@ public class GuiController {
         char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length - 1]);
     }
+    private DirectionDiscardPile getPlayedCardsFromID(String id) {
+        char[] idArray = id.toCharArray();
+        return activeP.getPlayedCards(idArray[idArray.length - 1]);
+    }
 
-    @FXML
     private int getIndex(String id, String elementName) {
         String[] x = id.split(elementName);
         return Integer.parseInt(x[1]);

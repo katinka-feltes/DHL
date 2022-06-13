@@ -32,14 +32,22 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -287,7 +295,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="33">
+                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
@@ -297,7 +305,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="38">
+                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
@@ -539,135 +547,13 @@
                     <children>
                         <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="playedCards1" text="PlayerName" />
-                                <HBox fx:id="playedCards1p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="playedCards1Numberr" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards1g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards1r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                </Rectangle>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards1b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards1o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
-                            <children>
                                 <Label text="PlayerName" />
-                                <HBox fx:id="playedCards2p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Label fx:id="playedCardsNumber1p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -677,19 +563,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label text="+-">
+                                        <Label fx:id="playedCardsDir1p" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox fx:id="playedCards2g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label fx:id="playedCardsNumber1g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -699,14 +585,14 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label text="+-">
+                                        <Label fx:id="playedCardsDir1g" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox fx:id="playedCards2r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
@@ -715,7 +601,7 @@
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label fx:id="playedCardsNumber1r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -728,19 +614,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label text="+-">
+                                        <Label fx:id="playedCardsDir1r" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox fx:id="playedCards2b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label fx:id="playedCardsNumber1b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -750,19 +636,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label fx:id="blueLabel1" text="+-">
+                                        <Label fx:id="playedCardsDir1b" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox fx:id="playedCards2o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Label fx:id="playedCardsNumber1o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -772,7 +658,7 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label text="+-">
+                                        <Label fx:id="playedCardsDir1o" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
@@ -781,250 +667,372 @@
                                 </HBox>
                             </children>
                         </VBox>
-                        <VBox layoutX="90.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
-                            <children>
-                                <Label text="PlayerName" />
-                                <HBox fx:id="playedCards3p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards3g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards3r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                </Rectangle>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards3b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards3o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="DiscardingPileOC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <VBox layoutX="170.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
-                            <children>
-                                <Label text="PlayerName" />
-                                <HBox fx:id="playedCards4p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards4g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards4r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                </Rectangle>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards4b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label fx:id="blueLabel111" text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox fx:id="playedCards4o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
-                                    <children>
-                                        <StackPane>
-                                            <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                    <padding>
-                                                        <Insets bottom="30.0" top="20.0" />
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </StackPane>
-                                        <Label text="+-">
-                                            <padding>
-                                                <Insets left="5.0" top="15.0" />
-                                            </padding>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber2p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir2p" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber2g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir2g" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label fx:id="playedCardsNumber2r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir2r" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber2b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir2b" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber2o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir2o" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber3p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir3p" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber3g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir3g" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label fx:id="playedCardsNumber3r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir3r" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber3b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir3b" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber3o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir3o" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
+                     <children>
+                        <Label text="PlayerName" />
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber4p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir4p" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber4g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir4g" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Label fx:id="playedCardsNumber4r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir4r" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber4b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir4b" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label fx:id="playedCardsNumber4o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="playedCardsDir4o" text="+-">
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                     </children>
                 </HBox>
             </children>
