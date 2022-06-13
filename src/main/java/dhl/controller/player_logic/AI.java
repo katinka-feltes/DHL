@@ -28,8 +28,6 @@ public class AI implements PlayerLogic {
             return playableCards().size() > 2; // play a card if there are more than two cards to play
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return false; // always draws from the drawing pile
-        } else if (question.startsWith("Your Figure gets moved to figure to the next field with the same color")) {
-            return true; // always use spiderweb
         } else if (question.endsWith("Do you want to proceed with your action?")) {
             return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
@@ -42,7 +40,15 @@ public class AI implements PlayerLogic {
     }
 
     @Override
-    public int chooseSpiralPosition(String question, int position, int stonesAmount) {
+    public int chooseSpiralPosition(String question, int position) {
+
+        int stonesAmount = 0;
+        for (Token tok : self.getTokens()) {
+            if (tok instanceof WishingStone) {
+                stonesAmount++;
+            }
+        }
+
         int chosenPosition = position;
         int originalPosition = self.getLastMovedFigure().getLatestPos();
         if(stonesAmount < 3) {

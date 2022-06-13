@@ -6,7 +6,6 @@ import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
-import dhl.model.tokens.WishingStone;
 import dhl.view.View;
 
 import java.util.ArrayList;
@@ -248,17 +247,9 @@ public class CliController {
         Figure currentFigure = player.getLastMovedFigure();
         Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
-        //something for the AI but that method was too complex TODO: this is weird
-        int stones = 0;
-        for (Token tok : player.getTokens()) {
-            if (tok instanceof WishingStone) {
-                stones++;
-            }
-        }
-
         if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
-            int chosenPos = player.getPlayerLogic().chooseSpiralPosition("Where do you want to place your figure?", currentFigure.getPos(), stones);
+            int chosenPos = player.getPlayerLogic().chooseSpiralPosition("Where do you want to place your figure?", currentFigure.getPos());
             if (chosenPos != currentFigure.getLatestPos()) {
                 ((Spiral) token).setChosenPos(chosenPos);
                 token.action(player);

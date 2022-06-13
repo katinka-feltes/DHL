@@ -25,7 +25,7 @@ public class Human implements PlayerLogic {
     }
 
     @Override
-    public int chooseSpiralPosition(String question, int position, int stonesAmount) {
+    public int chooseSpiralPosition(String question, int position) {
         return view.promptInt(0, position, question);
     }
 

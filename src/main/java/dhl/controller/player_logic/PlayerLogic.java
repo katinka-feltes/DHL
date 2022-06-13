@@ -14,10 +14,9 @@ public interface PlayerLogic {
      * asks the logic to choose which field figure should be moved to (spiral action)
      * @param question the asked question
      * @param position the current position of the figure
-     * @param stonesAmount the wishingstone amount of the player (needed by AI for decision)
      * @return int position the figure should move to
      */
-    int chooseSpiralPosition(String question, int position, int stonesAmount);
+    int chooseSpiralPosition(String question, int position);
 
     /**
      * asks the logic to choose (yes or no) for the question asked

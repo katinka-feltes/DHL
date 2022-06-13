@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -132,7 +133,7 @@ public class GuiController {
         loadNewScene(event, "/gui.fxml", true);
 
         state = State.PREPARATION;
-        activeP = getNextPlayer();
+        activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         takeTurn();
     }
@@ -181,24 +182,16 @@ public class GuiController {
                 }
             }
         } else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
-            Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
             int chosenPos = getIndex(item.getId(), "circle");
             if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
                 state = State.DRAW;
                 toDo.setText("From which pile do you want to draw?");
-            } else if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
-                ((Spiral) token).setChosenPos(chosenPos);
-                token.action(activeP);
-                updateCards();
-                useToken(); //sets the new state
             } else {
-                toDo.setText("You can not go to the field you came from!");
+                useSpiral(chosenPos);
             }
         } else if (state == State.SPIDERWEB) {
             if (item.getId().startsWith("circle")) {
-                Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
-                updateCards();
-                useToken(); // sets the new state
+                useSpiderweb();
             } else {
                 state = State.DRAW;
                 toDo.setText("From which pile do you want to draw?");
@@ -237,30 +230,100 @@ public class GuiController {
             case PREPARATION:
                 activeP = getNextPlayer();
                 playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
+                if(activeP.getPlayerLogic() instanceof AI){
+                    takeTurnAI();
+                    break;
+                }
                 toDo.setText("it's your turn. Click any card to start.");
                 break;
             case TRASH:
-                activeP.putCardOnDiscardingPile(chosenCard); //places card on pile and removes it from hand
-                state = State.DRAW;
-                toDo.setText("From which pile do you want to draw?");
-                updateCards();
+                trash(chosenCard);
                 break;
             case PLAY:
-                try {
-                    activeP.placeFigure(chosenCard.getColor(), chosenFigure);
-                    activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
-                    activeP.getHand().remove(chosenCard);
-                    state = State.DRAW;
-                    useToken();
-                } catch (IndexOutOfBoundsException indexE) {
-                    toDo.setText("This figure can't move this far! Choose a different one or trash.");
-                    state = State.TRASHORPLAY; //choose again what to do with the chosen card
-                } catch (Exception e) {
-                    state = State.TRASHORPLAY;
-                    toDo.setText(e.getMessage());
-                }
+                play();
                 break;
         }
+        updateCards();
+    }
+
+    private void takeTurnAI() {
+        AI ai = (AI)activeP.getPlayerLogic();
+        if(ai.choose("Do you want to play a card?")){
+            try {
+                chosenCard = ai.chooseCard("What card do you want to play?", null);
+                chosenFigure = ai.chooseFigure("", null);
+                
+                play();
+
+                //ai always wants to use token
+                while (state != State.DRAW) {
+                    switch (state) {
+                        case SPIDERWEB:
+                            useSpiderweb();
+                            break;
+                        case GOBLIN:
+                            state = state.DRAW;
+                            break;
+                        case SPIRAL:
+                            useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
+                    }
+                }
+
+            } catch (Exception e){
+                System.out.println("The ai made a incorrect choice that should not occur.");
+            }
+        } else {
+            trash(ai.chooseCard("What card do you want to trash?", null));
+        }
+
+        // draw to end turn
+        activeP.drawFromDrawingPile();
+        state = State.PREPARATION;
+        toDo.setText("The AI finished its turn. Click any card to start yours.");
+        takeTurn();
+    }
+
+    private void play() {
+        try {
+            activeP.placeFigure(chosenCard.getColor(), chosenFigure);
+
+            activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
+            activeP.getHand().remove(chosenCard);
+
+            useToken();
+
+        } catch (IndexOutOfBoundsException indexE) {
+            toDo.setText("This figure can't move this far! Choose a different one or trash.");
+            state = State.TRASHORPLAY; //choose again what to do with the chosen card
+        } catch (Exception e) {
+            state = State.TRASHORPLAY;
+            toDo.setText(e.getMessage());
+        }
+    }
+
+    private void useSpiderweb() {
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        updateCards();
+        useToken(); // sets the new state
+    }
+
+    private void useSpiral (int chosenPos){
+        Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
+
+        if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
+            ((Spiral) token).setChosenPos(chosenPos);
+            token.action(activeP);
+            updateCards();
+            useToken(); //sets the new state
+        } else {
+            toDo.setText("You can not go to the field you came from!");
+        }
+    }
+
+    private void trash(Card card) {
+        activeP.putCardOnDiscardingPile(card); //places card on pile and removes it from hand
+        state = State.DRAW;
+        toDo.setText("From which pile do you want to draw?");
         updateCards();
     }
 
