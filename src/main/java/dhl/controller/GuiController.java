@@ -450,15 +450,15 @@ public class GuiController {
     }
     private void updateDiscardPiles() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP);
-        List<Node> discardPiles = classifyChildren("playedCardsNumber");
+        List<Node> discardPiles = classifyChildren("playedCards");
         for (Node pile : discardPiles) {
             DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
             if (!playedCards.isEmpty()) {
                 Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
                 if (pile.getId().equals("playedCardsNumber" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
                     ((Label)pile).setText("" + lastPlayedCard.getNumber());
-                } else {
-                    ((Label)pile).setText("");
+                } else if (pile.getId().equals("playedCardsDir" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
+                ((Label) pile).setText("" + playedCards.getDirectionString());
                 }
             }
         }
