@@ -37,6 +37,8 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -46,7 +48,7 @@
    <top>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
+            <Label alignment="CENTER" text="🕷DIRE HORROR LAND🕷" textAlignment="CENTER" textFill="#880b0b">
                <font>
                   <Font name="Dead Kansas" size="50.0" />
                </font>
@@ -57,6 +59,22 @@
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@zombie2.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@zombie3.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="20.0" top="45.0" />
+               </HBox.margin>
+            </ImageView>
             <VBox alignment="CENTER">
                <children>
                   <Label alignment="CENTER" text="HUMAN PLAYER NAMES:" textAlignment="CENTER">

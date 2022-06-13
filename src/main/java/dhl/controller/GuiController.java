@@ -6,6 +6,7 @@ import dhl.model.*;
 import dhl.model.tokens.*;
 import dhl.view.View;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +97,6 @@ public class GuiController {
         return nodes;
     }
 
-
     @FXML
     public void startGame(ActionEvent event) throws Exception {
         List<Node> names = classifyChildren(root, "name");
@@ -127,7 +128,16 @@ public class GuiController {
         }
         model = new Game(players);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui.fxml"));
+        loadNewScene(event, "/gui.fxml");
+
+        state = State.PREPARATION;
+        activeP = getNextPlayer();
+        toDo.setText("Click any item to start your turn.");
+        takeTurn();
+    }
+
+    private void loadNewScene(Event event, String sceneFile) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneFile));
         fxmlLoader.setController(this);
         root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -136,14 +146,10 @@ public class GuiController {
         stage.show();
         stage.setMaximized(true);
         stage.centerOnScreen();
-
-        state = State.PREPARATION;
-        activeP = getNextPlayer();
-        toDo.setText("Click any item to start your turn.");
-        takeTurn();
     }
+
     @FXML
-    private void onClick(MouseEvent e) {
+    private void onClick(MouseEvent e) throws IOException {
         // chosenFigure = null; TODO: this at a different time
         Node item = (Node) e.getSource();
         System.out.println(state + item.getId());
@@ -205,14 +211,19 @@ public class GuiController {
                 state = State.PREPARATION;
             }
         }
-        takeTurn();
+        if(!model.gameOver()) {
+            takeTurn();
+        } else {
+            for (Player p : model.getPlayers()) {
+                p.calcTokenPoints();
+                model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
+            }
+            loadNewScene(e, "/end.fxml");
+        }
     }
+
     @FXML
     private void takeTurn() {
-        if (model.gameOver()) {
-            state = State.GAMEOVER;
-            return;
-        }
         switch (state) {
             case PREPARATION:
                 activeP = getNextPlayer();
@@ -396,7 +407,7 @@ public class GuiController {
      * updates scores with corresponding player names
      */
     private void updateScores() {
-        List<Node> scores = classifyChildren(root, "scoresPlayer");
+        List<Node> scores = classifyChildren(root, "scorePlayer");
         List<Node> scoreNames = classifyChildren(root, "scoreName");
         for (int i = 0; i < 4; i++) {
             if (i > model.getPlayers().size() - 1) {

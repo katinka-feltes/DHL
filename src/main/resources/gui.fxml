@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -405,7 +406,7 @@
             <children>
                 <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND 🕷" textAlignment="CENTER" textFill="#880b0b">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND 🕷" textAlignment="CENTER">
                             <font>
                                 <Font name="Dead Kansas" size="40.0" />
                             </font>
@@ -428,7 +429,7 @@
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#880b0b">
+                                <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#d34a41">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
@@ -447,7 +448,7 @@
                <children>
                   <HBox prefHeight="95.0" prefWidth="100.0">
                      <children>
-                        <Label prefHeight="29.0" prefWidth="80.0" text="Scores:" textFill="#880b0b">
+                        <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
                            <font>
                               <Font name="Dead Kansas" size="20.0" />
                            </font>
@@ -459,7 +460,7 @@
                            <children>
                               <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
                                  <children>
-                                    <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Beispielplayername" textFill="#880b0b">
+                                    <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="b">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -467,7 +468,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" text="100" textFill="#880b0b">
+                                    <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" text="100">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -476,7 +477,7 @@
                               </HBox>
                               <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
                                  <children>
-                                    <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Beispielplayername" textFill="#880b0b">
+                                    <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -484,7 +485,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" text="100" textFill="#880b0b">
+                                    <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" text="100">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -493,7 +494,7 @@
                               </HBox>
                               <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
                                  <children>
-                                    <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Beispielplayername" textFill="#880b0b">
+                                    <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -501,7 +502,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" text="100" textFill="#880b0b">
+                                    <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" text="100">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -510,7 +511,7 @@
                               </HBox>
                               <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
                                  <children>
-                                    <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Beispielplayername" textFill="#880b0b">
+                                    <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -518,7 +519,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" text="100" textFill="#880b0b">
+                                    <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" text="100">
                                        <font>
                                           <Font name="Ink Free" size="12.0" />
                                        </font>
@@ -1139,6 +1140,14 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
+            <ImageView fitHeight="143.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@zombie1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="120.0" />
+               </HBox.margin>
+            </ImageView>
                 <VBox alignment="CENTER">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS ">
