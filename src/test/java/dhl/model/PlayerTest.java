@@ -2,8 +2,6 @@ package dhl.model;
 
 import dhl.controller.player_logic.Human;
 import dhl.model.tokens.Goblin;
-import dhl.model.tokens.Mirror;
-import dhl.model.tokens.WishingStone;
 import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -244,10 +242,10 @@ public class PlayerTest {
      */
     public void calcTokenPoints() {
         player.increaseStoneAmount();
-        player.increaseMirrorAmount(););
+        player.increaseMirrorAmount();
         int calculatedPoints = player.calcTokenPoints();
         assertEquals(-6, calculatedPoints);
-        player.increaseMirrorAmount(););
+        player.increaseMirrorAmount();
         calculatedPoints = player.calcTokenPoints();
         assertEquals(-12, calculatedPoints);
     }

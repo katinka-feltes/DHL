@@ -213,7 +213,7 @@ public class AI implements PlayerLogic {
      * chooses which card from hand should be trashed
      * @return card which should be trashed
      */
-    private Card bestHandCardToTrash() {
+    public Card bestHandCardToTrash() {
         List<Card> notPlayable = new ArrayList<>(self.getHand());
         notPlayable.removeAll(playableCards());
         if (!notPlayable.isEmpty()) {

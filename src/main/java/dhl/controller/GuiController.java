@@ -131,7 +131,7 @@ public class GuiController {
         }
         model = new Game(players);
 
-        loadNewScene(event, "/gui.fxml", true);
+        loadNewScene(event, "/gui.fxml", true, true);
 
         state = State.PREPARATION;
         activeP = model.getPlayers().get(0);
@@ -145,9 +145,11 @@ public class GuiController {
      * @param sceneFile scene that should be loaded
      * @param max if setMaximized should be set or not
      */
-    private void loadNewScene(Event event, String sceneFile, boolean max) throws IOException {
+    private void loadNewScene(Event event, String sceneFile, boolean max, boolean setController) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneFile));
-        fxmlLoader.setController(this);
+        if (setController) {
+            fxmlLoader.setController(this);
+        }
         root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 640, 400);
@@ -198,8 +200,25 @@ public class GuiController {
                 toDo.setText("From which pile do you want to draw?");
             }
         } else if (state == State.GOBLIN) {
-            state = State.DRAW;
-            toDo.setText("From which pile do you want to draw?");
+            if (item.getId().startsWith("handCard")) {
+                useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
+            } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
+                useGoblinPile(getPlayedCardsFromID(item.getId()));
+            } else if (item.getId().startsWith("playedCardsNumber")) {
+                toDo.setText("This is not your played cards pile.");
+            } else if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
+                toDo.setText("Do you want to play your goblin special action (and get " + activeP.goblinSpecialPoints()
+                        + " points?" + "\nIf yes, click a field. If no, click any discarding pile");
+                if(item.getId().startsWith("circle")) {
+                    activeP.playGoblinSpecial();
+                } else {
+                    state = State.DRAW;
+                    toDo.setText("From which pile do you want to draw?");
+                }
+            } else {
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
+            }
         } else if (state == State.DRAW) {
             if (item.getId().startsWith("discardingPile")) {
                 try {
@@ -213,14 +232,18 @@ public class GuiController {
                 state = State.PREPARATION;
             }
         }
+        if(item.getId().startsWith("menu")) {
+            loadNewScene(e, "/start.fxml", false, false);
+            return;
+        }
         if(!model.gameOver()) {
             takeTurn();
-        } else {
+        } else { //game over screen
             for (Player p : model.getPlayers()) {
                 p.calcTokenPoints();
                 model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
             }
-            loadNewScene(e, "/end.fxml", false);
+            loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
         }
     }
@@ -274,7 +297,16 @@ public class GuiController {
                             useSpiderweb();
                             break;
                         case GOBLIN:
-                            state = state.DRAW;
+                            if(ai.choose("Do you want to trash one from your hand?")) {
+                                useGoblinHand(ai.bestHandCardToTrash());
+                            } else {
+                                useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
+                            }
+                            if(!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
+                                if(ai.choose("Do you want to play your goblin-special?")) {
+                                    activeP.playGoblinSpecial();
+                                }
+                            }
                             break;
                         case SPIRAL:
                             useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
@@ -318,6 +350,33 @@ public class GuiController {
         useToken(); // sets the new state
     }
 
+    /**
+     * executes goblin action if player chose a hand card to trash
+     * @param card the player picked to trash
+     */
+    private void useGoblinHand(Card card) {
+        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
+        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        state = State.DRAW;
+        toDo.setText("From which pile do you want to draw?");
+    }
+
+    /**
+     * executes goblin action if player chose a played cards top card to trash
+     * @param pile the player wants to trash the top card from
+     */
+    private void useGoblinPile(DirectionDiscardPile pile) {
+        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        state = State.DRAW;
+        toDo.setText("From which pile do you want to draw?");
+    }
+
+    /**
+     * executes spiral action
+     * @param chosenPos position the player chose for his figure to move to
+     */
     private void useSpiral (int chosenPos){
         Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
 
@@ -331,6 +390,10 @@ public class GuiController {
         }
     }
 
+    /**
+     * trashs a card the player chose
+     * @param card card the player chose to trash
+     */
     private void trash(Card card) {
         activeP.putCardOnDiscardingPile(card); //places card on pile and removes it from hand
         state = State.DRAW;
@@ -355,8 +418,9 @@ public class GuiController {
                 break;
 
             case "Goblin":
-                state = State.GOBLIN; //TODO: this and not forget special action
-                toDo.setText("OH OH not implemented yet. Click any card to continue.");
+                state = State.GOBLIN;
+                toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
+                        " To say no click one discarding pile.");
                 break;
 
             case "Spiderweb":
@@ -450,6 +514,7 @@ public class GuiController {
             }
         }
     }
+
     private void updateDiscardPiles() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP);
         List<Node> discardPiles = classifyChildren("playedCards");
@@ -576,6 +641,12 @@ public class GuiController {
         char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length - 1]);
     }
+    /**
+     * gets the matching direction discard pile to color in id
+     *
+     * @param id the piles' id with the color as the last character
+     * @return the direction discard pile from the player
+     */
     private DirectionDiscardPile getPlayedCardsFromID(String id) {
         char[] idArray = id.toCharArray();
         return activeP.getPlayedCards(idArray[idArray.length - 1]);

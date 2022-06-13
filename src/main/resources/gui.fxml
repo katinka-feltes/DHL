@@ -402,11 +402,21 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <top>
-        <HBox minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="95.0" prefWidth="1176.0" spacing="100.0">
+        <HBox minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="1176.0">
             <children>
+            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#onClick" prefHeight="29.0" prefWidth="55.0" text="Menu">
+               <font>
+                  <Font name="Dead Kansas" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="95.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@spiderweb.png" />
+               </image>
+            </ImageView>
                 <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND 🕷" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER">
                             <font>
                                 <Font name="Dead Kansas" size="40.0" />
                             </font>
