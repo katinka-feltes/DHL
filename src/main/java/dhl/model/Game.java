@@ -226,7 +226,9 @@ public class Game {
         // example: 34 - Janne - Human
         highscores.add(points + " - " + name + " - " + temp[temp.length-1]);
         Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(" - ")[0])) > (Integer.parseInt(b.split(" - ")[0])) ? -1  : 0);
-        highscores = highscores.subList(0,3); //trim to the best 3
+        if (highscores.size() > 3) {
+            highscores = highscores.subList(0,3); //trim to the best 3
+        }
 
         // update the file
         FileWriter file =  null ;

@@ -155,6 +155,8 @@ public class GuiController {
         System.out.println(state + item.getId());
 
         if (state == State.PREPARATION) { //click anything to start the turn
+            chosenFigure = null;
+            chosenCard = null;
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
