@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,8 +40,7 @@ enum State {
     SPIDERWEB,
     SPIRAL,
     GOBLIN,
-    DRAW,
-    GAMEOVER
+    DRAW
 }
 
 /**
@@ -128,7 +128,7 @@ public class GuiController {
         }
         model = new Game(players);
 
-        loadNewScene(event, "/gui.fxml");
+        loadNewScene(event, "/gui.fxml", true);
 
         state = State.PREPARATION;
         activeP = getNextPlayer();
@@ -136,15 +136,21 @@ public class GuiController {
         takeTurn();
     }
 
-    private void loadNewScene(Event event, String sceneFile) throws IOException {
+    /**
+     * loads a new scene
+     * @param event event that triggers the new scene
+     * @param sceneFile scene that should be loaded
+     * @param max if setMaximized should be set or not
+     */
+    private void loadNewScene(Event event, String sceneFile, boolean max) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneFile));
         fxmlLoader.setController(this);
         root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 640, 400);
         stage.setScene(scene);
         stage.show();
-        stage.setMaximized(true);
+        stage.setMaximized(max);
         stage.centerOnScreen();
     }
 
@@ -218,7 +224,8 @@ public class GuiController {
                 p.calcTokenPoints();
                 model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
             }
-            loadNewScene(e, "/end.fxml");
+            loadNewScene(e, "/end.fxml", false);
+            createEndScores();
         }
     }
 
@@ -418,6 +425,35 @@ public class GuiController {
                 ((Label)scores.get(i)).setText(Integer.toString(model.getPlayers().get(i).getVictoryPoints()));
             }
         }
+    }
+
+    /**
+     * adds the player names on end screen (in order: winning - losing)
+     */
+    private void createEndScores() {
+        List<Node> endScores = classifyChildren(root, "endscores");
+        for (int i = 0; i < 4; i++) {
+            if (i > model.getPlayers().size() - 1) {
+                ((Label)endScores.get(i)).setText("");
+            } else {
+                List<String> winnerList = calculateWinners();
+                ((Label)endScores.get(i)).setText(winnerList.get(i));
+            }
+        }
+    }
+
+    /**
+     * creates a list of player names ordered by victory points
+     * @return string list with player names (0=winner, end of list=loser)
+     */
+    private List<String> calculateWinners() {
+        List<String> winnerList = new ArrayList<>();
+        List<Player> playerList = model.getPlayers();
+        playerList.sort(Comparator.comparing(Player::getVictoryPoints));
+        for(int i=playerList.size()-1; i>=0; i--) {
+            winnerList.add(playerList.get(i).getName());
+        }
+        return winnerList;
     }
 
     /**

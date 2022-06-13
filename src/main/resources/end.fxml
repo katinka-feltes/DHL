@@ -79,7 +79,7 @@
                <children>
                   <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="280.0" style="-fx-border-color: gold; -fx-border-style: dashed;">
                      <children>
-                        <Label fx:id="endscores11" alignment="CENTER" text="The winner is:" textAlignment="CENTER" textFill="#880b0b">
+                        <Label alignment="CENTER" text="The winner is:" textAlignment="CENTER" textFill="#880b0b">
                            <font>
                               <Font name="Ink Free" size="15.0" />
                            </font>
@@ -107,7 +107,7 @@
                         <Font name="Ink Free" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="endscores3" alignment="CENTER" text="vierter" textAlignment="CENTER">
+                  <Label fx:id="endscores4" alignment="CENTER" text="vierter" textAlignment="CENTER">
                      <font>
                         <Font name="Ink Free" size="15.0" />
                      </font>

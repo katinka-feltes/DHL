@@ -235,7 +235,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="18">
+                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
