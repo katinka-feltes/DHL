@@ -95,6 +95,7 @@ public class Player {
 
     /**
      * Allows to place a card on the discarding pile.
+     * Removes the card from hand and sets last trashed card.
      * The card gets sorted to the correct color discarding pile.
      * ignores if the color does not exist
      * @param card the card that gets discarded.
@@ -103,6 +104,7 @@ public class Player {
         try {
             hand.remove(card);
             game.getDiscardPile(card.getColor()).add(card);
+            lastTrashed = card;
         } catch (Exception e){
             //ignore
         }

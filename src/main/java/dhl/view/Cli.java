@@ -250,14 +250,7 @@ public class Cli implements View {
             System.out.print(color + "+-" + TABULATOR);
         }
         else {
-            String direction;
-            if (pile.getDirection() == 0) {
-                direction =  "+-";
-            } else if (pile.getDirection() == 1) {
-                direction = "+";
-            } else {
-                direction = "-";
-            }
+            String direction = pile.getDirectionString();
             System.out.print(color + pile.getTop().getNumber() + direction + " \t");
         }
     }

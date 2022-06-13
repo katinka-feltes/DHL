@@ -3,10 +3,12 @@ package dhl.controller;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.model.*;
-import dhl.model.tokens.*;
+import dhl.model.tokens.Goblin;
+import dhl.model.tokens.Spiral;
+import dhl.model.tokens.Token;
+import dhl.model.tokens.WishingStone;
 import dhl.view.View;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +64,6 @@ public class CliController {
         }
         view.printResults(model);
         System.out.println("\nHighscore:" + model.getHighscores());
-        saveUpdatedHighscores();
     }
 
     /**
@@ -179,8 +180,7 @@ public class CliController {
      */
     private void trashCard(Player player) {
         Card trash = player.getPlayerLogic().chooseCard("What card do you want to trash?", player.getHand());
-        player.setLastTrashed(trash);
-        player.putCardOnDiscardingPile(player.getLastTrashed());
+        player.putCardOnDiscardingPile(trash);
     }
 
     /**
@@ -331,20 +331,6 @@ public class CliController {
             player.playGoblinSpecial();
         }
     }
-
-    private void saveUpdatedHighscores(){
-        FileWriter file =  null ;
-        try  {
-            file =  new  FileWriter ( "src/main/resources/highscores.txt" );
-            for  ( String line : model.getHighscores() )  {
-                file.write(line + "\n" ); // Write line by line in the file
-            }
-            file.close();
-        }  catch  ( Exception ex )  {
-            System.out.println ( "Message of exception:"  + ex . getMessage ());
-        }
-    }
-
 
     public void setView(View view) {
         this.view = view;
