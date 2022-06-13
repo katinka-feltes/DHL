@@ -3,8 +3,6 @@ package dhl.model;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
-import dhl.model.tokens.Mirror;
-import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public class Player {
     private Figure lastMovedFigure;
     private boolean goblinSpecialPlayed;
     private final List<Figure> figures = new ArrayList<>();
-    private final List<Token> tokens;
+    private final int[] tokens = {0, 0}; //amount WishingStones, amount Mirrors
 
     /**
      * the constructor of the player
@@ -54,7 +52,6 @@ public class Player {
         figures.add(new Figure(symbol));
         figures.add(new Figure(symbol));
         figures.add(new Figure(symbol));
-        tokens = new ArrayList<>();
     }
 
     /**
@@ -114,15 +111,9 @@ public class Player {
      * The points from the collected tokens are calculated and added to the victory points
      */
     public int calcTokenPoints(){
-        int stones = 0;
-        int mirrors = 0;
-        for (Token token : tokens){
-            if(token instanceof WishingStone){
-                stones++;
-            } else if(token instanceof Mirror){
-                mirrors++;
-            }
-        }
+        int stones = tokens[0];
+        int mirrors = tokens[1];
+
         return WishingStone.getValue(stones) * (int)Math.pow(2, mirrors);
     }
 
@@ -212,40 +203,37 @@ public class Player {
         throw new Exception("No figure on this field.");
     }
 
-    public DirectionDiscardPile[] getPlayedCards() {return playedCards;}
 
-    public Figure getLastMovedFigure(){
-        return lastMovedFigure;
+    /**
+     * method increases the players amount of collected wishing stones by one
+     */
+    public void increaseStoneAmount(){
+        tokens[0]++;
     }
-    public List<Figure> getFigures() {
-        return figures;
+    /**
+     * method increases the players amount of collected mirrors by one
+     */
+    public void increaseMirrorAmount(){
+        tokens[1]++;
     }
+    public int[] getTokens() {return tokens;}
+    public DirectionDiscardPile[] getPlayedCards() {return playedCards;}
+    public Figure getLastMovedFigure(){return lastMovedFigure;}
+    public List<Figure> getFigures() {return figures;}
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public List<Card> getHand() {
-        return hand;
-    }
-    public Game getGame() {
-        return game;
-    }
+    public List<Card> getHand() {return hand;}
+    public Game getGame() {return game;}
     public void setLastTrashed(Card lastTrashed) {
         this.lastTrashed = lastTrashed;
     }
-    public Card getLastTrashed() {
-        return lastTrashed;
-    }
+    public Card getLastTrashed() {return lastTrashed;}
     public int getVictoryPoints() {
         return victoryPoints;
     }
     public void setVictoryPoints(int victoryPoints) {
         this.victoryPoints = victoryPoints;
-    }
-    public List<Token> getTokens() {
-        return tokens;
     }
     public boolean isGoblinSpecialPlayed() {
         return goblinSpecialPlayed;
@@ -254,7 +242,6 @@ public class Player {
         return symbol;
     }
     public PlayerLogic getPlayerLogic() {return playerLogic;}
-
     public void setGame(Game game) {
         this.game = game;
     }

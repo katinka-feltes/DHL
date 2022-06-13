@@ -93,14 +93,13 @@ public class TokenTest {
      */
     public void actionCollectables(){
         // test mirror action
-        assertEquals(0,player.getTokens().size());
+        assertEquals(0,player.getTokens()[0]);
+        assertEquals(0,player.getTokens()[1]);
         mirror.action(player);
-        assertEquals(1,player.getTokens().size());
-        assertEquals(mirror, player.getTokens().get(0));
-        // test wishingstone
+        assertEquals(1,player.getTokens()[1]);
+        // test wishing stone
         stone.action(player);
-        assertEquals(2,player.getTokens().size());
-        assertEquals(stone, player.getTokens().get(1));
+        assertEquals(1,player.getTokens()[0]);
     }
 
     @Test

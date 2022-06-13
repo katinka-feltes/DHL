@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -253,6 +254,8 @@ public class GuiController {
         updateFigures();
         // update scores
         updateScores();
+        
+        updateCollectedTokens();
     }
 
     private void takeTurnAI() {
@@ -288,7 +291,6 @@ public class GuiController {
         // draw to end turn
         activeP.drawFromDrawingPile();
         state = State.PREPARATION;
-        toDo.setText("The AI finished its turn. Click any card to start yours.");
         takeTurn();
     }
 
@@ -302,7 +304,7 @@ public class GuiController {
             useToken();
 
         } catch (IndexOutOfBoundsException indexE) {
-            toDo.setText("This figure can't move this far! Choose a different one or trash.");
+            toDo.setText("This figure can't move this far! \nChoose a different one or trash.");
             state = State.TRASHORPLAY; //choose again what to do with the chosen card
         } catch (Exception e) {
             state = State.TRASHORPLAY;
@@ -349,7 +351,7 @@ public class GuiController {
             case "Spiral":
                 state = State.SPIRAL;
                 toDo.setText("Click the field you want to go back to (except the one you came from) " +
-                        "or the one you are on to not use the action.");
+                        "\nor the one you are on to not use the action.");
                 break;
 
             case "Goblin":
@@ -360,7 +362,7 @@ public class GuiController {
             case "Spiderweb":
                 if (FigureFunction.spiderwebIsPossible(activeP.getLastMovedFigure())) {
                     state = State.SPIDERWEB;
-                    toDo.setText("Click any field to go to the next same colored field. To say no click one discarding pile.");
+                    toDo.setText("Click any field to go to the next same colored field. \nTo say no click one discarding pile.");
                 } else {
                     state = State.DRAW;
                     toDo.setText("From which pile do you want to draw?");
@@ -461,6 +463,26 @@ public class GuiController {
                 ((Label) pile).setText("" + playedCards.getDirectionString());
                 }
             }
+        }
+    }
+
+    private void updateCollectedTokens(){
+        HBox tokenBox = (HBox)classifyChildren("collectedToken").get(0);
+        //clear earlier tokens
+        tokenBox.getChildren().clear();
+        //print every wishing stone
+        for (int i = 0; i < activeP.getTokens()[0]; i++){
+            ImageView img = new ImageView(imgStone);
+            img.setFitHeight(40);
+            img.setFitWidth(40);
+            tokenBox.getChildren().add(img);
+        }
+        // for every mirror
+        for (int i = 0; i < activeP.getTokens()[1]; i++){
+            ImageView img = new ImageView(imgMirror);
+            img.setFitHeight(40);
+            img.setFitWidth(40);
+            tokenBox.getChildren().add(img);
         }
     }
 

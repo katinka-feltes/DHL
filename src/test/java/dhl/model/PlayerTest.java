@@ -73,15 +73,6 @@ public class PlayerTest {
 
     @Test
     /**
-     * tests if method setName works
-     */
-    public void setName() {
-        player.setName("Test");
-        assertEquals("Test", player.getName());
-    }
-
-    @Test
-    /**
      * tests if method getHand works
      */
     public void getHand() {
@@ -252,11 +243,11 @@ public class PlayerTest {
      * tests if method calcTokenPoints works
      */
     public void calcTokenPoints() {
-        player.getTokens().add(new WishingStone());
-        player.getTokens().add(new Mirror());
+        player.increaseStoneAmount();
+        player.increaseMirrorAmount(););
         int calculatedPoints = player.calcTokenPoints();
         assertEquals(-6, calculatedPoints);
-        player.getTokens().add(new Mirror());
+        player.increaseMirrorAmount(););
         calculatedPoints = player.calcTokenPoints();
         assertEquals(-12, calculatedPoints);
     }

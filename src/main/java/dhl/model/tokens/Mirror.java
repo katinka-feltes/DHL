@@ -30,7 +30,7 @@ public class Mirror implements Token {
      */
     @Override
     public void action(Player player) {
-        player.getTokens().add(this);
+        player.increaseMirrorAmount();
     }
     @Override
     public char getSymbol() {

@@ -402,7 +402,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <top>
-        <HBox minWidth="-Infinity" prefHeight="95.0" prefWidth="1176.0">
+        <HBox minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="95.0" prefWidth="1176.0" spacing="100.0">
             <children>
                 <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
                     <children>
@@ -429,7 +429,7 @@
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="toDo" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#d34a41">
+                                <Label fx:id="toDo" alignment="TOP_RIGHT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#d34a41">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
@@ -444,93 +444,116 @@
                         </HBox>
                     </children>
                 </VBox>
-            <VBox prefHeight="95.0" prefWidth="416.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="300.0">
                <children>
-                  <HBox prefHeight="95.0" prefWidth="100.0">
+                  <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
+                     <font>
+                        <Font name="Dead Kansas" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="150.0">
                      <children>
-                        <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
-                           <font>
-                              <Font name="Dead Kansas" size="20.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="50.0" right="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <VBox prefHeight="95.0" prefWidth="262.0">
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
                            <children>
-                              <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
-                                 <children>
-                                    <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="b">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" text="100">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
-                                 <children>
-                                    <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" text="100">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
-                                 <children>
-                                    <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" text="100">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="95.0" prefWidth="192.0" style="-fx-fill-width: true;">
-                                 <children>
-                                    <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Beispielplayername">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" text="100">
-                                       <font>
-                                          <Font name="Ink Free" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="name">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" text="100">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                              </Label>
                            </children>
-                        </VBox>
+                        </HBox>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
+                           <children>
+                              <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" text="100">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
+                           <children>
+                              <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" text="100">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
+                           <children>
+                              <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" text="100">
+                                 <font>
+                                    <Font name="Ink Free" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="140.0" text="Collected Token:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="collectedToken" prefHeight="100.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
                      </children>
                   </HBox>
                </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </VBox>
             </children>
         </HBox>
@@ -1277,6 +1300,9 @@
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
                 </VBox>
             </children>
         </HBox>

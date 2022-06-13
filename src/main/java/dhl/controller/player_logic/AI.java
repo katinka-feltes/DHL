@@ -42,12 +42,7 @@ public class AI implements PlayerLogic {
     @Override
     public int chooseSpiralPosition(String question, int position) {
 
-        int stonesAmount = 0;
-        for (Token tok : self.getTokens()) {
-            if (tok instanceof WishingStone) {
-                stonesAmount++;
-            }
-        }
+        int stonesAmount = self.getTokens()[0];
 
         int chosenPosition = position;
         int originalPosition = self.getLastMovedFigure().getLatestPos();

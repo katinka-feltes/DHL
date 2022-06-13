@@ -40,7 +40,7 @@ public class WishingStone implements Token{
      */
     @Override
     public void action( Player player) {
-        player.getTokens().add(this);
+        player.increaseStoneAmount();
     }
 
     @Override
