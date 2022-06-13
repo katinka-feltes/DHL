@@ -198,21 +198,21 @@ public class GuiController {
                 toDo.setText("From which pile do you want to draw?");
             }
         } else if (state == State.GOBLIN) {
+            if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
+                toDo.setText("Do you want to play your goblin special action (and get " + activeP.goblinSpecialPoints()
+                        + " points?" + "\nIf yes, click a field. If no, click any discarding pile");
+                if (item.getId().startsWith("circle")) {
+                    activeP.playGoblinSpecial();
+                }
+            }
+            toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
+                    " To say no click one discarding pile.");
             if (item.getId().startsWith("handCard")) {
                 useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
             } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
                 useGoblinPile(getPlayedCardsFromID(item.getId()));
             } else if (item.getId().startsWith("playedCardsNumber")) {
                 toDo.setText("This is not your played cards pile.");
-            } else if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
-                toDo.setText("Do you want to play your goblin special action (and get " + activeP.goblinSpecialPoints()
-                        + " points?" + "\nIf yes, click a field. If no, click any discarding pile");
-                if(item.getId().startsWith("circle")) {
-                    activeP.playGoblinSpecial();
-                } else {
-                    state = State.DRAW;
-                    toDo.setText("From which pile do you want to draw?");
-                }
             } else {
                 state = State.DRAW;
                 toDo.setText("From which pile do you want to draw?");
@@ -281,7 +281,7 @@ public class GuiController {
         updateScores();
 
         updateDiscardPiles();
-        
+
         updateCollectedTokens();
     }
 
@@ -291,7 +291,7 @@ public class GuiController {
             try {
                 chosenCard = ai.chooseCard("What card do you want to play?", null);
                 chosenFigure = ai.chooseFigure("", null);
-                
+
                 play();
 
                 //ai always wants to use token
@@ -301,22 +301,21 @@ public class GuiController {
                             useSpiderweb();
                             break;
                         case GOBLIN:
-                            if(ai.choose("Do you want to trash one from your hand?")) {
-                                useGoblinHand(ai.bestHandCardToTrash());
-                            } else {
-                                useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
-                            }
                             if(!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
                                 if(ai.choose("Do you want to play your goblin-special?")) {
                                     activeP.playGoblinSpecial();
                                 }
+                            }
+                            if(ai.choose("Do you want to trash one from your hand?")) {
+                                useGoblinHand(ai.bestHandCardToTrash());
+                            } else {
+                                useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
                             }
                             break;
                         case SPIRAL:
                             useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
                     }
                 }
-
             } catch (Exception e){
                 System.out.println("The ai made a incorrect choice that should not occur.");
             }
@@ -326,7 +325,6 @@ public class GuiController {
 
         // draw to end turn
         activeP.drawFromDrawingPile();
-        updateAll();
         state = State.PREPARATION;
         activeP = getNextPlayer();
         playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
