@@ -106,10 +106,8 @@ public class GuiController {
         List<Node> ais = classifyChildren("ai");
         int aiAmount = 0;
         ArrayList<String> playerNames = new ArrayList<>();
-        // al least one name has to be entered and one name or ai
-        if (((TextField)names.get(0)).getText().isEmpty() ||
-                (((TextField)names.get(0)).getText().isEmpty() &&
-                        !((CheckBox)ais.get(0)).isSelected())) {
+        // at least one name has to be entered and one name or ai
+        if (((TextField)names.get(0)).getText().isEmpty() || (((TextField)names.get(1)).getText().isEmpty() && !((CheckBox)ais.get(0)).isSelected())) {
             return;
         } else {
             playerNames.add(((TextField)names.get(0)).getText());
@@ -162,11 +160,11 @@ public class GuiController {
     @FXML
     private void onClick(MouseEvent e) throws IOException {
         Node item = (Node) e.getSource();
-        System.out.println(state + item.getId());
 
         if (state == State.PREPARATION) { //click anything to start the turn
             chosenFigure = null;
             chosenCard = null;
+            activeP.setLastTrashed(null);
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
@@ -246,6 +244,7 @@ public class GuiController {
             loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
         }
+        updateAll();
     }
 
     @FXML
@@ -267,16 +266,21 @@ public class GuiController {
                 play();
                 break;
         }
+    }
+
+    private void updateAll() {
         //update cards
         updateCards();
         //update discarding piles
-        updateDiscardPiles();
+        updatePlayedCards();
         // update tokens
         updateTokens();
         // update figures
         updateFigures();
         // update scores
         updateScores();
+
+        updateDiscardPiles();
         
         updateCollectedTokens();
     }
@@ -322,8 +326,10 @@ public class GuiController {
 
         // draw to end turn
         activeP.drawFromDrawingPile();
+        updateAll();
         state = State.PREPARATION;
-        takeTurn();
+        activeP = getNextPlayer();
+        playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
 
     private void play() {
@@ -514,10 +520,22 @@ public class GuiController {
             }
         }
     }
-
     private void updateDiscardPiles() {
+        for(Node stackPane : classifyChildren("discardingPile")) {
+            DiscardPile pile = getDiscardPileFromID(stackPane.getId());
+            Label lbl = (Label) ((StackPane)stackPane).getChildren().get(1);
+            if (pile.isEmpty()){
+                lbl.setText("");
+            } else {
+                lbl.setText(Integer.toString(pile.getTop().getNumber()));
+            }
+        }
+    }
+
+    private void updatePlayedCards() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP);
         List<Node> discardPiles = classifyChildren("playedCards");
+        List<Node> namesPlayedCards = classifyChildren("namePlayedCards");
         for (Node pile : discardPiles) {
             DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
             if (!playedCards.isEmpty()) {
@@ -525,8 +543,15 @@ public class GuiController {
                 if (pile.getId().equals("playedCardsNumber" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
                     ((Label)pile).setText("" + lastPlayedCard.getNumber());
                 } else if (pile.getId().equals("playedCardsDir" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
-                ((Label) pile).setText("" + playedCards.getDirectionString());
+                    ((Label) pile).setText("" + playedCards.getDirectionString());
                 }
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if (i >= model.getPlayers().size()) {
+                ((Label)namesPlayedCards.get(i)).setText("");
+            } else {
+                ((Label)namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
             }
         }
     }
