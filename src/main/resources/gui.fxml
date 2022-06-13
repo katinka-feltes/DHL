@@ -46,7 +46,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -546,13 +546,13 @@
                     <children>
                         <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="cardsPlayer1" text="PlayerName" />
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <Label text="PlayerName" />
+                                <HBox fx:id="playedCards1p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="purpleDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -562,19 +562,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards1g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="greenDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -584,23 +584,23 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards1r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="redDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -613,19 +613,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileR" fx:id="redLabel" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards1b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="blueDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -635,19 +635,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards1o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="orangeDiscardPile" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -657,7 +657,7 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
@@ -668,13 +668,13 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="cardsPlayer2" text="PlayerName" />
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <Label text="PlayerName" />
+                                <HBox fx:id="playedCards2p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="purpleDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -684,19 +684,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel1" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards2g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="greenDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -706,23 +706,23 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel1" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards2r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="redDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -735,19 +735,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileR" fx:id="redLabel1" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards2b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="blueDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -757,19 +757,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel1" text="+-">
+                                        <Label fx:id="blueLabel1" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards2o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="orangeDiscardPile2" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC2" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -779,7 +779,7 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel1" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
@@ -790,13 +790,13 @@
                         </VBox>
                         <VBox layoutX="90.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="cardsPlayer3" text="PlayerName" />
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <Label text="PlayerName" />
+                                <HBox fx:id="playedCards3p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="purpleDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -806,19 +806,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel11" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards3g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="greenDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -828,23 +828,23 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel11" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards3r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="redDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -857,19 +857,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileR" fx:id="redLabel11" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards3b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="blueDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -879,19 +879,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel11" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards3o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="orangeDiscardPile21" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label fx:id="DiscardingPileOC21" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -901,7 +901,7 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel11" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
@@ -912,13 +912,13 @@
                         </VBox>
                         <VBox layoutX="170.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="cardsPlayer4" text="PlayerName" />
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <Label text="PlayerName" />
+                                <HBox fx:id="playedCards4p" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="purpleDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPilePC" fx:id="DiscardingPilePC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -928,19 +928,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileP" fx:id="purpleLabel111" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards4g" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="greenDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileGC" fx:id="DiscardingPileGC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -950,23 +950,23 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileG" fx:id="greenLabel111" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards4r" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="redDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label id="DirectionDiscardingPileRC" fx:id="DiscardingPileRC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -979,19 +979,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileR" fx:id="redLabel111" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards4b" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="blueDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileBC" fx:id="DiscardingPileBC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -1001,19 +1001,19 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileB" fx:id="blueLabel111" text="+-">
+                                        <Label fx:id="blueLabel111" text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
+                                <HBox fx:id="playedCards4o" maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane>
                                             <children>
-                                                <Rectangle fx:id="orangeDiscardPile211" arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label id="DirectionDiscardingPileOC" fx:id="DiscardingPileOC211" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -1023,7 +1023,7 @@
                                                 </Label>
                                             </children>
                                         </StackPane>
-                                        <Label id="DirectionDiscardingPileO" fx:id="orangeLabel111" text="+-">
+                                        <Label text="+-">
                                             <padding>
                                                 <Insets left="5.0" top="15.0" />
                                             </padding>
