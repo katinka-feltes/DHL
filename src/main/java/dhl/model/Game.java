@@ -4,6 +4,7 @@ import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -226,6 +227,18 @@ public class Game {
         highscores.add(points + " - " + name + " - " + temp[temp.length-1]);
         Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(" - ")[0])) > (Integer.parseInt(b.split(" - ")[0])) ? -1  : 0);
         highscores = highscores.subList(0,3); //trim to the best 3
+
+        // update the file
+        FileWriter file =  null ;
+        try  {
+            file =  new  FileWriter ( "src/main/resources/highscores.txt" );
+            for  ( String line :highscores )  {
+                file.write(line + "\n" ); // Write line by line in the file
+            }
+            file.close();
+        }  catch  ( Exception ex )  {
+            System.out.println ( "Message of exception:"  + ex . getMessage ());
+        }
     }
 
     /**

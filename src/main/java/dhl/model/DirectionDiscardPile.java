@@ -67,6 +67,20 @@ public class DirectionDiscardPile extends DiscardPile{
         super.pile.add(card);
     }
 
+    /**
+     * return the direction as of +, - or +-
+     * @return string of the direction to print
+     */
+    public String getDirectionString (){
+        if (direction == 1) {
+            return "+";
+        } else if (direction == -1) {
+            return  "-";
+        } else {
+            return "+-";
+        }
+    }
+
     public int getDirection(){
         return direction;
     }

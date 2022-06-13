@@ -52,7 +52,6 @@ public class GuiController {
     private State state;
     private Card chosenCard;
     private Figure chosenFigure;
-    char[] symbols = {'☠', '♛', '⚔', '❤'};
     private Player activeP;
     @FXML
     private Label toDo;
@@ -99,6 +98,9 @@ public class GuiController {
 
     @FXML
     public void startGame(ActionEvent event) throws Exception {
+
+        char[] symbols = {'☠', '♛', '⚔', '❤'};
+
         List<Node> names = classifyChildren(root, "name");
         List<Node> ais = classifyChildren(root, "ai");
         int aiAmount = 0;
@@ -144,13 +146,11 @@ public class GuiController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        stage.setMaximized(true);
         stage.centerOnScreen();
     }
 
     @FXML
     private void onClick(MouseEvent e) throws IOException {
-        // chosenFigure = null; TODO: this at a different time
         Node item = (Node) e.getSource();
         System.out.println(state + item.getId());
 
@@ -167,10 +167,10 @@ public class GuiController {
             } else if (item.getId().startsWith("circle")) {
                 try {
                     chosenFigure = activeP.getFigureOnField(getIndex(item.getId(), "circle"));
+                    state = State.PLAY;
                 } catch (Exception exception) {
                     toDo.setText(exception.getMessage());
                 }
-                state = State.PLAY;
             }
         } else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
             Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
@@ -231,8 +231,7 @@ public class GuiController {
                 toDo.setText("it's your turn. Click any card to start.");
                 break;
             case TRASH:
-                activeP.getHand().remove(chosenCard);
-                activeP.putCardOnDiscardingPile(chosenCard);
+                activeP.putCardOnDiscardingPile(chosenCard); //places card on pile and removes it from hand
                 state = State.DRAW;
                 toDo.setText("From which pile do you want to draw?");
                 updateCards();
@@ -290,7 +289,7 @@ public class GuiController {
             default:
                 token.action(activeP);
                 state = State.DRAW;
-                toDo.setText("From which pile do you want to draw?");
+                toDo.setText("You fount a " + token.getName()+ ". From which pile do you want to draw?");
                 break;
         }
     }
@@ -300,6 +299,8 @@ public class GuiController {
      * hand cards white when players change
      */
     private void updateCards() {
+
+        //update hand cards
         List<Node> handCards = classifyChildren(root, "handCard");
         if (!state.equals(State.PREPARATION)) {
             //get sorted hand cards
@@ -315,7 +316,6 @@ public class GuiController {
                     card.setFill(Color.web("#c8d1d9"));
                 }
             }
-            //TODO: all the other cards
         } else {
             for (int i = 0; i < 8; i++) {
                 Rectangle card = (Rectangle) ((StackPane)handCards.get(i)).getChildren().get(0);
@@ -324,11 +324,13 @@ public class GuiController {
                 card.setFill(Color.web("#c8d1d9"));
             }
         }
-        // update played cards - direction discard piles
+
+        // TODO: update played cards - direction discard piles
         for (DirectionDiscardPile pile : activeP.getPlayedCards()) {
             setDirection(pile);
             setDirectionDiscardPileNumber(pile);
         }
+
         // update discard piles
         for (Node pane : classifyChildren(root, "discardingPile")) {
             DiscardPile pile = getDiscardPileFromID(pane.getId());
@@ -339,6 +341,7 @@ public class GuiController {
                 lbl.setText(Integer.toString(pile.getTop().getNumber()));
             }
         }
+
         // update tokens
         updateTokens();
         // update figures
@@ -377,6 +380,7 @@ public class GuiController {
                     ((ImageView)tokens.get(currentToken)).setImage(imgStone);
                     currentToken++;
                 }
+                //if large field, check the second token
                 if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
                     ((ImageView)tokens.get(currentToken)).setImage(imgStone);
                     currentToken++;
@@ -393,9 +397,11 @@ public class GuiController {
      */
     private void updateFigures() {
         List<Node> circles = classifyChildren(root, "circle");
+        //clear all fields
         for (Node circle : circles) {
             ((TilePane)circle).getChildren().clear();
         }
+        //print the figure symbols
         for (Player player : model.getPlayers()) {
             for (Figure figure : player.getFigures()) {
                 ((TilePane)circles.get(figure.getPos())).getChildren().add(new Label(Character.toString(player.getSymbol())));
@@ -426,20 +432,14 @@ public class GuiController {
      * @param color as a char
      * @return color according to string constant
      */
-    private Color changeColor(char color) {
-        switch (color) {
-            case 'r':
-                return Color.web(RED);
-            case 'g':
-                return Color.web(GREEN);
-            case 'b':
-                return Color.web(BLUE);
-            case 'p':
-                return Color.web(PURPLE);
-            case 'o':
-                return Color.web(ORANGE);
-            default:
-                return Color.web("BLACK");
+    private Color changeColor(char color){
+        switch (color){
+            case 'r': return Color.web(RED);
+            case 'g': return Color.web(GREEN);
+            case 'b': return Color.web(BLUE);
+            case 'p': return Color.web(PURPLE);
+            case 'o': return Color.web(ORANGE);
+            default: return Color.web("BLACK");
         }
     }
 
@@ -451,15 +451,7 @@ public class GuiController {
     @FXML
     private void setDirection(DirectionDiscardPile pile) {
 
-        String direction;
-
-        if (pile.getDirection() == 1) {
-            direction = "+";
-        } else if (pile.getDirection() == -1) {
-            direction = "-";
-        } else {
-            direction = " ";
-        }
+        String direction = pile.getDirectionString();
 
         for (Node label : classifyChildren(root, "discardingPile")) {
             if (label.getId().split("DirectionDiscardingPile")[0].toCharArray()[0] == pile.getColor()) {
