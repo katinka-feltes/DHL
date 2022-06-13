@@ -326,6 +326,7 @@ public class GuiController {
         // draw to end turn
         activeP.drawFromDrawingPile();
         state = State.PREPARATION;
+        updateAll();
         activeP = getNextPlayer();
         playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
