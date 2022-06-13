@@ -50,8 +50,6 @@ public class GuiController {
     private State state;
     private Card chosenCard;
     private Figure chosenFigure;
-    private final List<Label> scoreNames = new ArrayList<>();
-    private final List<Label> scores = new ArrayList<>();
     char[] symbols = {'☠', '♛', '⚔', '❤'};
     private Player activeP;
     @FXML
@@ -398,13 +396,15 @@ public class GuiController {
      * updates scores with corresponding player names
      */
     private void updateScores() {
+        List<Node> scores = classifyChildren(root, "scoresPlayer");
+        List<Node> scoreNames = classifyChildren(root, "scoreName");
         for (int i = 0; i < 4; i++) {
             if (i > model.getPlayers().size() - 1) {
-                scoreNames.get(i).setText("");
-                scores.get(i).setText("");
+                ((Label)scoreNames.get(i)).setText("");
+                ((Label)scores.get(i)).setText("");
             } else {
-                scoreNames.get(i).setText(model.getPlayers().get(i).getName());
-                scores.get(i).setText(Integer.toString(model.getPlayers().get(i).getVictoryPoints()));
+                ((Label)scoreNames.get(i)).setText(model.getPlayers().get(i).getName());
+                ((Label)scores.get(i)).setText(Integer.toString(model.getPlayers().get(i).getVictoryPoints()));
             }
         }
     }
