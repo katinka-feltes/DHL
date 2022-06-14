@@ -257,7 +257,7 @@ public class CliController {
                 usingToken(player);
             } else {
                 view.error("You can not go to the field you came from!");
-                //TODO: rekursion?
+                //recursion?
             }
         }
     }

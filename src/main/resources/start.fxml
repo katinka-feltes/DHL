@@ -32,9 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -85,26 +88,98 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="name1" prefHeight="24.0" prefWidth="193.0">
-                     <font>
-                        <Font name="Euphorigenic" size="10.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="name2" prefHeight="24.0" prefWidth="193.0">
-                     <font>
-                        <Font name="Euphorigenic" size="10.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="name3" prefHeight="24.0" prefWidth="193.0">
-                     <font>
-                        <Font name="Euphorigenic" size="10.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="name4" prefHeight="24.0" prefWidth="193.0">
-                     <font>
-                        <Font name="Euphorigenic" size="10.0" />
-                     </font>
-                  </TextField>
+                  <HBox prefHeight="24.0" prefWidth="221.0">
+                     <children>
+                        <TextField fx:id="name1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="193.0">
+                           <font>
+                              <Font name="Euphorigenic" size="10.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="choiceBox1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="48.0" value="☠">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="☠" />
+                                 <String fx:value="♛" />
+                                 <String fx:value="⚔" />
+                                 <String fx:value="❤" />
+                                 <String fx:value="☂" />
+                                 <String fx:value="☿" />
+                                 <String fx:value="ズ" />
+                                 <String fx:value="㈩" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="221.0">
+                     <children>
+                        <TextField fx:id="name2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="193.0">
+                           <font>
+                              <Font name="Euphorigenic" size="10.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="choiceBox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="48.0" value="⚔">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="☠" />
+                                 <String fx:value="♛" />
+                                 <String fx:value="⚔" />
+                                 <String fx:value="❤" />
+                                 <String fx:value="☂" />
+                                 <String fx:value="☿" />
+                                 <String fx:value="ズ" />
+                                 <String fx:value="㈩" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="221.0">
+                     <children>
+                        <TextField fx:id="name3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="24.0" prefWidth="193.0">
+                           <font>
+                              <Font name="Euphorigenic" size="10.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="choiceBox3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="48.0" value="☿">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="☠" />
+                                 <String fx:value="♛" />
+                                 <String fx:value="⚔" />
+                                 <String fx:value="❤" />
+                                 <String fx:value="☂" />
+                                 <String fx:value="☿" />
+                                 <String fx:value="ズ" />
+                                 <String fx:value="㈩" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="221.0">
+                     <children>
+                        <TextField fx:id="name4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="193.0">
+                           <font>
+                              <Font name="Euphorigenic" size="10.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="choiceBox4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="48.0" value="♛">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="☠" />
+                                 <String fx:value="♛" />
+                                 <String fx:value="⚔" />
+                                 <String fx:value="❤" />
+                                 <String fx:value="☂" />
+                                 <String fx:value="☿" />
+                                 <String fx:value="ズ" />
+                                 <String fx:value="㈩" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <VBox alignment="CENTER">

@@ -203,7 +203,7 @@ public class AI implements PlayerLogic {
                 case "Spiral":
                     return 1;
                 case "WishingStone":
-                    return 3; // on average 2,8 points //TODO: more complex? * amount mirrors
+                    return 3; // on average 2,8 points
             }
         }
         return 0;
@@ -217,7 +217,7 @@ public class AI implements PlayerLogic {
         List<Card> notPlayable = new ArrayList<>(self.getHand());
         notPlayable.removeAll(playableCards());
         if (!notPlayable.isEmpty()) {
-            return notPlayable.get(0);  //TODO: second factor to choose ?
+            return notPlayable.get(0);
         }
         return self.getHand().get(0); //why would it trash if all cards fit
     }

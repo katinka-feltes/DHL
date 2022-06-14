@@ -21,17 +21,22 @@ public interface PlayerLogic {
     /**
      * asks the logic to choose (yes or no) for the question asked
      * @param question the question to confirm
+     * @return true if the logic chooses so
      */
     boolean choose(String question);
 
     /**
      * asks the logic to choose a card
+     * @param question The reason to choose a card
+     * @param hand the hand to choose a card from
      * @return the chosen card as a string
      */
     Card chooseCard(String question, List<Card> hand);
 
     /**
      * asks the logic to choose a figure
+     * @param question the reason to choose the figure
+     * @param figures the figures to choose from
      * @return the chosen figure as an int corresponding to the position on the playingfield. 1 being the furthest away
      * from the start.
      */

@@ -113,6 +113,10 @@ public class GameTest {
     }
 
     @Test
+    /**
+     * also tests if method canDrawFromDiscarding works
+     * false when all piles empty and true if one card different to last trashed exists
+     */
     public void canDrawFromDiscardingOtherOptions() {
         //false if all piles are empty
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));

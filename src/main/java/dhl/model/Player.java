@@ -33,6 +33,7 @@ public class Player {
      *
      * @param name   the players name
      * @param symbol the players symbol
+     * @param logic ai or human
      */
     public Player(String name, char symbol, PlayerLogic logic){
         this.playerLogic = logic;
@@ -49,9 +50,9 @@ public class Player {
         playedCards[3] = new DirectionDiscardPile('p');
         playedCards[4] = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
-        figures.add(new Figure(symbol));
-        figures.add(new Figure(symbol));
-        figures.add(new Figure(symbol));
+        figures.add(new Figure());
+        figures.add(new Figure());
+        figures.add(new Figure());
     }
 
     /**
@@ -103,12 +104,13 @@ public class Player {
             game.getDiscardPile(card.getColor()).add(card);
             lastTrashed = card;
         } catch (Exception e){
-            //ignore
+            //do nothing
         }
     }
 
     /**
-     * The points from the collected tokens are calculated and added to the victory points
+     * The points from the collected tokens are calculated
+     * @return the calculated points to be gained from the token
      */
     public int calcTokenPoints(){
         int stones = tokens[0];
@@ -190,19 +192,6 @@ public class Player {
         return null;
     }
 
-    /**
-     * @param fieldIndex the index of the field to get the figure from
-     * @return the figure on the field or null if there is none
-     */
-    public Figure getFigureOnField(int fieldIndex) throws Exception {
-        for (Figure f : figures) {
-            if (f.getPos() == fieldIndex) {
-                return f;
-            }
-        }
-        throw new Exception("No figure on this field.");
-    }
-
 
     /**
      * method increases the players amount of collected wishing stones by one
@@ -216,8 +205,8 @@ public class Player {
     public void increaseMirrorAmount(){
         tokens[1]++;
     }
-    public int[] getTokens() {return tokens;}
-    public DirectionDiscardPile[] getPlayedCards() {return playedCards;}
+    public int[] getTokens() {return tokens.clone();}
+    public DirectionDiscardPile[] getPlayedCards() {return playedCards.clone();}
     public Figure getLastMovedFigure(){return lastMovedFigure;}
     public List<Figure> getFigures() {return figures;}
     public String getName() {

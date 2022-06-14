@@ -11,6 +11,7 @@ public class CardFunction {
     /**
      * sorts the hand of the player by number and color
      *
+     * @param hand the list with cars to sort
      * @return hand sorted by number and color as an ArrayList
      */
     public static List<Card> sortHand(List<Card> hand) {
@@ -23,6 +24,7 @@ public class CardFunction {
      * Get a card from hand
      *
      * @param cardAsString the card to get from the hand as a string
+     * @param hand the list of cards to get card from
      * @return the Card
      * @throws Exception if card is not in Hand
      */

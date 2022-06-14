@@ -4,17 +4,14 @@ package dhl.model;
  * This Class represents a Figure. A Figure has a position, a last position and a color.
  */
 public class Figure {
-    private final char color;
     private int pos;
     private int latestPos;
 
     /**
      * Constructor for the Figure
-     * @param color the color that the figure will have
      */
-    public Figure(char color) {
+    public Figure() {
         pos = 0;
-        this.color = color;
     }
 
     /**

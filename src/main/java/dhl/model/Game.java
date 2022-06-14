@@ -224,8 +224,9 @@ public class Game {
     public void updateHighscore(int points, String name, PlayerLogic logic) {
         String[] temp = logic.getClass().toString().split("\\.");
         // example: 34 - Janne - Human
-        highscores.add(points + " - " + name + " - " + temp[temp.length-1]);
-        Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(" - ")[0])) > (Integer.parseInt(b.split(" - ")[0])) ? -1  : 0);
+        String separator = " - ";
+        highscores.add(points + separator + name + separator + temp[temp.length-1]);
+        Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1  : 0);
         if (highscores.size() > 3) {
             highscores = highscores.subList(0,3); //trim to the best 3
         }

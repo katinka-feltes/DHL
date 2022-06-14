@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -100,33 +101,32 @@ public class GuiController {
     @FXML
     public void startGame(ActionEvent event) throws Exception {
 
-        char[] symbols = {'☠', '♛', '⚔', '❤'};
-
+        List<Node> choiceBoxes = classifyChildren("choiceBox");
         List<Node> names = classifyChildren("name");
         List<Node> ais = classifyChildren("ai");
-        int aiAmount = 0;
-        ArrayList<String> playerNames = new ArrayList<>();
+
+        List<Player> players = new ArrayList<>();
+
         // at least one name has to be entered and one name or ai
         if (((TextField)names.get(0)).getText().isEmpty() || (((TextField)names.get(1)).getText().isEmpty() && !((CheckBox)ais.get(0)).isSelected())) {
             return;
-        } else {
-            playerNames.add(((TextField)names.get(0)).getText());
+        } else { //if all criteria are passed, the first player who must be human is added
+            String enteredName = ((TextField)names.get(0)).getText();
+            char symbol = ((String)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem()).charAt(0);
+            players.add(new Player(enteredName, symbol, new Human(view)));
         }
 
-        for (int i = 0; i < 3; i++) {
-            if (((CheckBox)ais.get(i)).isSelected()) {
-                aiAmount++;
-            } else if (!((TextField)names.get(i + 1)).getText().isEmpty()) {
-                playerNames.add(((TextField)names.get(i + 1)).getText());
+        // add the other 3 players if they are entered
+        for (int i = 1; i < 4; i++) {
+            char symbol = ((String)((ChoiceBox)choiceBoxes.get(i)).getSelectionModel().getSelectedItem()).charAt(0);
+            if (((CheckBox)ais.get(i-1)).isSelected()) { //if the player should be an ai
+                players.add(new Player("AI" + (i), symbol, new AI()));
+            } else if (!((TextField)names.get(i)).getText().isEmpty()) {
+                String enteredName = ((TextField)names.get(i)).getText();
+                players.add(new Player(enteredName, symbol, new Human(view)));
             }
         }
-        List<Player> players = new ArrayList<>();
-        for (int i = 0; i < playerNames.size(); i++) {
-            players.add(new Player(playerNames.get(i), symbols[i], new Human(view)));
-        }
-        for (int i = 0; i < aiAmount; i++) {
-            players.add(new Player("AI" + (i + 1), symbols[i + playerNames.size()], new AI()));
-        }
+
         model = new Game(players);
 
         loadNewScene(event, "/gui.fxml", true, true);
@@ -176,7 +176,7 @@ public class GuiController {
                 state = State.TRASH;
             } else if (item.getId().startsWith("circle")) {
                 try {
-                    chosenFigure = activeP.getFigureOnField(getIndex(item.getId(), "circle"));
+                    chosenFigure = FigureFunction.getFigureOnField(getIndex(item.getId(), "circle"), activeP.getFigures());
                     state = State.PLAY;
                 } catch (Exception exception) {
                     toDo.setText(exception.getMessage());
@@ -198,16 +198,11 @@ public class GuiController {
                 toDo.setText("From which pile do you want to draw?");
             }
         } else if (state == State.GOBLIN) {
-            if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
-                toDo.setText("Do you want to play your goblin special action (and get " + activeP.goblinSpecialPoints()
-                        + " points?" + "\nIf yes, click a field. If no, click any discarding pile");
-                if (item.getId().startsWith("circle")) {
-                    activeP.playGoblinSpecial();
-                }
-            }
-            toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
-                    " To say no click one discarding pile.");
-            if (item.getId().startsWith("handCard")) {
+            if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3 ) {
+                activeP.playGoblinSpecial();
+                toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
+                        " To say no click one discarding pile.");
+            } else if (item.getId().startsWith("handCard")) {
                 useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
             } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
                 useGoblinPile(getPlayedCardsFromID(item.getId()));
@@ -424,8 +419,15 @@ public class GuiController {
 
             case "Goblin":
                 state = State.GOBLIN;
-                toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
-                        " To say no click one discarding pile.");
+                if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
+                    toDo.setText("Do you want to play your goblin special action " +
+                            "(and get " + activeP.goblinSpecialPoints() + ") points. \nIf yes, click a field. " +
+                            "If no, just click the card you want to trash with the goblin action" +
+                            "\nor one discarding pile to do nothing. ");
+                } else {
+                    toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
+                            " To say no click one discarding pile.");
+                }
                 break;
 
             case "Spiderweb":
