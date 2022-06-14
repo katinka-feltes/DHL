@@ -1,5 +1,6 @@
 package dhl.model;
 
+import dhl.Constants;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.*;
 
@@ -15,48 +16,9 @@ import java.util.Scanner;
  * a Drwaingpile and a list of discard piles. It is one of the main classes of the project.
  */
 public class Game {
-    public static final Field[] FIELDS = {
-            new LargeField(0, 'w', 0),
-            new Field(-4, 'p'),
-            new Field(-4, 'o'),
-            new Field(-4, 'r'),
-            new Field(-4, 'g'),
-            new Field(-4, 'b'),
-            new Field(-4, 'p'),
-            new LargeField(-3, 'p', 2),
-            new Field(-3, 'o'),
-            new Field(-3, 'r'),
-            new Field(-2, 'g'),
-            new Field(-2, 'b'),
-            new Field(-2, 'p'),
-            new Field(-2, 'o'),
-            new LargeField(1, 'o', 2),
-            new Field(1, 'r'),
-            new Field(1, 'g'),
-            new Field(2, 'b'),
-            new Field(2, 'p'),
-            new Field(2, 'o'),
-            new Field(2, 'r'),
-            new LargeField(3, 'r', 2),
-            new Field(3, 'g'),
-            new Field(3, 'b'),
-            new Field(3, 'p'),
-            new Field(5, 'o'),
-            new Field(5, 'r'),
-            new Field(5, 'g'),
-            new LargeField(5, 'g', 2),
-            new Field(6, 'b'),
-            new Field(6, 'p'),
-            new Field(6, 'o'),
-            new Field(7, 'r'),
-            new Field(7, 'g'),
-            new Field(7, 'b'),
-            new LargeField(10, 'b', 1)
-    };
 
     //the best 3 scores (each one entry): first points, second name, third ai or human
-    private List<String> highscores = new ArrayList<>();
-
+    private List<String> highScores = new ArrayList<>();
     private final DiscardPile discardingPileRed;
     private final DiscardPile discardingPileBlue;
     private final DiscardPile discardingPileGreen;
@@ -207,7 +169,7 @@ public class Game {
     public void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
-        for (Field field : FIELDS) {
+        for (Field field : Constants.FIELDS) {
             if (!(field instanceof LargeField)) {
                 field.setToken(this.tokens.get(i));
                 i++;
@@ -225,17 +187,17 @@ public class Game {
         String[] temp = logic.getClass().toString().split("\\.");
         // example: 34 - Janne - Human
         String separator = " - ";
-        highscores.add(points + separator + name + separator + temp[temp.length-1]);
-        Collections.sort(highscores, (a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1  : 0);
-        if (highscores.size() > 3) {
-            highscores = highscores.subList(0,3); //trim to the best 3
+        highScores.add(points + separator + name + separator + temp[temp.length-1]);
+        Collections.sort(highScores, (a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1  : 0);
+        if (highScores.size() > 3) {
+            highScores = highScores.subList(0,3); //trim to the best 3
         }
 
         // update the file
         FileWriter file =  null ;
         try  {
             file =  new  FileWriter ( "src/main/resources/highscores.txt" );
-            for  ( String line :highscores )  {
+            for  ( String line :highScores )  {
                 file.write(line + "\n" ); // Write line by line in the file
             }
             file.close();
@@ -249,14 +211,14 @@ public class Game {
      * and adds them to string-list highscores
      */
     private void readHighscores(){
-        highscores.clear();
+        highScores.clear();
         Scanner s = null ;
         try  {
             File file = new File ("src/main/resources/highscores.txt");
             s =  new  Scanner ( file ); // read the file contents
             while  ( s.hasNextLine())  { // Read the file line by line
                 String line = s.nextLine();
-                highscores.add(line);
+                highScores.add(line);
             }
 
         }  catch (Exception ex)  {
@@ -324,6 +286,6 @@ public class Game {
     }
 
     public List<String> getHighscores() {
-        return highscores;
+        return highScores;
     }
 }

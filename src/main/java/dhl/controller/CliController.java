@@ -1,5 +1,6 @@
 package dhl.controller;
 
+import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.model.*;
@@ -19,19 +20,6 @@ public class CliController {
     View view;
     Game model;
 
-    //add player to the players-list
-    //other symbols
-    //♛ \u265B BLACK CHESS QUEEN
-    //♜ \u265C BLACK CHESS ROOK
-    //♝ \u265D BLACK CHESS BISHOP
-    //♞ \u265E BLACK CHESS KNIGHT
-    //our symbols
-    //♠ \u2660 BLACK SPADE SUIT
-    //♣ \u2663 BLACK CLUB SUIT
-    //♥ \u2665 BLACK HEART SUIT
-    //♦ \u2666 BLACK DIAMOND SUIT
-    char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
-
     /**
      * This method starts and keeps the game running.
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
@@ -42,10 +30,10 @@ public class CliController {
         String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < playerNames.length; i++) {
-            players.add(new Player(playerNames[i], symbols[i], new Human(view)));
+            players.add(new Player(playerNames[i], Constants.symbols[i], new Human(view)));
         }
         for (int i = 0; i < aiAmount; i++) {
-            players.add(new Player("AI" + (i + 1), symbols[i + playerNames.length], new AI()));
+            players.add(new Player("AI" + (i + 1), Constants.symbols[i + playerNames.length], new AI()));
         }
         model = new Game(players);
 
@@ -202,7 +190,7 @@ public class CliController {
      */
     private void usingToken(Player player) {
         //get the token and remove it from the field if it is collectable
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (token != null) {
             view.out("You found a " + token.getName() + "!");
@@ -245,7 +233,7 @@ public class CliController {
      */
     private void doTokenSpiral(Player player) {
         Figure currentFigure = player.getLastMovedFigure();
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
@@ -268,7 +256,7 @@ public class CliController {
      * @param player the current player
      */
     private void doTokenGoblin(Player player) {
-        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (player.getPlayerLogic().choose("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {

@@ -1,5 +1,6 @@
 package dhl.controller.player_logic;
 
+import dhl.Constants;
 import dhl.model.*;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Skullpoint;
@@ -48,13 +49,13 @@ public class AI implements PlayerLogic {
         int originalPosition = self.getLastMovedFigure().getLatestPos();
         if(stonesAmount < 3) {
             for(int pos = position; pos > position - 5; pos--) {
-                if(Game.FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
+                if(Constants.FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
         } else {
             for(int pos = position; pos > 0; pos--) {
-                if(Game.FIELDS[pos].getToken() instanceof Mirror && pos != originalPosition) {
+                if(Constants.FIELDS[pos].getToken() instanceof Mirror && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
@@ -125,11 +126,11 @@ public class AI implements PlayerLogic {
             for (Card card : self.getHand()) { //for every card from hand
                 int steps = steps(figure, card.getColor()); //how far the figure would move with the current card
                 if(steps == -100) {break;} // if the card would move the figure too far
-                int pointDifference = Game.FIELDS[figure.getPos() + steps].getPoints() - Game.FIELDS[figure.getPos()].getPoints();
+                int pointDifference = Constants.FIELDS[figure.getPos() + steps].getPoints() - Constants.FIELDS[figure.getPos()].getPoints();
 
                 int points = steps + ((int)0.7 * pointDifference); //steps plus the gained points due to the steps
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
-                points += tokenWorth(Game.FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
+                points += tokenWorth(Constants.FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;
                     chosenFigure = figure;
@@ -149,7 +150,7 @@ public class AI implements PlayerLogic {
     private int steps(Figure f, char color) {
         int steps = 1;
         try {
-            while (Game.FIELDS[f.getPos() + steps].getColor() != color) {
+            while (Constants.FIELDS[f.getPos() + steps].getColor() != color) {
                 steps++;
             }
         } catch (Exception e){

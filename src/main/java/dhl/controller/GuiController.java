@@ -1,7 +1,9 @@
 package dhl.controller;
 
+import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
+import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.*;
 import dhl.model.tokens.*;
 import dhl.view.View;
@@ -16,7 +18,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -31,7 +32,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
+
+import static dhl.Constants.*;
 
 enum State {
     PREPARATION,
@@ -50,7 +52,6 @@ enum State {
  * It is responsible for the communication between the Model and the View.
  */
 public class GuiController {
-
     private State state;
     private Card chosenCard;
     private Figure chosenFigure;
@@ -59,20 +60,6 @@ public class GuiController {
     private Label toDo;
     @FXML
     private BorderPane root;
-
-    private static final String RED = "#d34a41";
-    private static final String GREEN = "#6a9a3d";
-    private static final String BLUE = "#424ebc";
-    private static final String PURPLE = "#a45ab9";
-    private static final String ORANGE = "#f2af4b";
-
-    private final Image imgGoblin = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/goblin.png")));
-    private final Image imgMirror = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/mirror.png")));
-    private final Image imgSkull = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/skull.png")));
-    private final Image imgSpiral = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/spiral.png")));
-    private final Image imgStone = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/stone.png")));
-    private final Image imgWeb = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/web.png")));
-
     Game model;
     View view;
     @FXML
@@ -132,9 +119,9 @@ public class GuiController {
         loadNewScene(event, "/gui.fxml", true, true);
 
         state = State.PREPARATION;
-        activeP = model.getPlayers().get(0);
+        activeP = model.getPlayers().get(model.getPlayerAmount()-1);
         toDo.setText("Click any item to start your turn.");
-        takeTurn();
+        updateAll();
     }
 
     /**
@@ -160,24 +147,32 @@ public class GuiController {
     @FXML
     private void onClick(MouseEvent e) throws IOException {
         Node item = (Node) e.getSource();
-
-        if (state == State.PREPARATION) { //click anything to start the turn
+        if(model.gameOver()) { //game over screen
+            for (Player p : model.getPlayers()) {
+                p.calcTokenPoints();
+                model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
+            }
+            loadNewScene(e, "/end.fxml", false, true);
+            createEndScores();
+        } else if (state == State.PREPARATION) { //click anything to start the turn
             chosenFigure = null;
             chosenCard = null;
             activeP.setLastTrashed(null);
+            activeP = getNextPlayer();
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
+            takeTurnAI();
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             toDo.setText("Click a figure to move or trash it.");
             state = State.TRASHORPLAY;
         } else if (state == State.TRASHORPLAY) {
             if (item.getId().startsWith("discardingPile")) {
-                state = State.TRASH;
+                trash(chosenCard);
             } else if (item.getId().startsWith("circle")) {
                 try {
                     chosenFigure = FigureFunction.getFigureOnField(getIndex(item.getId(), "circle"), activeP.getFigures());
-                    state = State.PLAY;
+                    play();
                 } catch (Exception exception) {
                     toDo.setText(exception.getMessage());
                 }
@@ -216,12 +211,14 @@ public class GuiController {
             if (item.getId().startsWith("discardingPile")) {
                 try {
                     activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
-                    state = State.PREPARATION;
                 } catch (Exception exc) {
                     toDo.setText(exc.getMessage());
+                    return;
                 }
             } else if (item.getId().equals("drawingPile")) {
                 activeP.drawFromDrawingPile();
+            }
+            if(activeP.getHand().size() == 8){
                 state = State.PREPARATION;
             }
         }
@@ -229,38 +226,7 @@ public class GuiController {
             loadNewScene(e, "/start.fxml", false, false);
             return;
         }
-        if(!model.gameOver()) {
-            takeTurn();
-        } else { //game over screen
-            for (Player p : model.getPlayers()) {
-                p.calcTokenPoints();
-                model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
-            }
-            loadNewScene(e, "/end.fxml", false, true);
-            createEndScores();
-        }
         updateAll();
-    }
-
-    @FXML
-    private void takeTurn() {
-        switch (state) {
-            case PREPARATION:
-                activeP = getNextPlayer();
-                playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
-                if(activeP.getPlayerLogic() instanceof AI){
-                    takeTurnAI();
-                    break;
-                }
-                toDo.setText("it's your turn. Click any card to start.");
-                break;
-            case TRASH:
-                trash(chosenCard);
-                break;
-            case PLAY:
-                play();
-                break;
-        }
     }
 
     private void updateAll() {
@@ -281,52 +247,54 @@ public class GuiController {
     }
 
     private void takeTurnAI() {
-        AI ai = (AI)activeP.getPlayerLogic();
-        if(ai.choose("Do you want to play a card?")){
-            try {
-                chosenCard = ai.chooseCard("What card do you want to play?", null);
-                chosenFigure = ai.chooseFigure("", null);
+        PlayerLogic ai = activeP.getPlayerLogic();
+        if (ai instanceof AI) {
+            if(ai.choose("Do you want to play a card?")) {
+                try {
+                    chosenCard = ai.chooseCard("What card do you want to play?", null);
+                    chosenFigure = ai.chooseFigure("", null);
 
-                play();
+                    play();
 
-                //ai always wants to use token
-                while (state != State.DRAW) {
-                    switch (state) {
-                        case SPIDERWEB:
-                            useSpiderweb();
-                            break;
-                        case GOBLIN:
-                            if(!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
-                                if(ai.choose("Do you want to play your goblin-special?")) {
-                                    activeP.playGoblinSpecial();
+                    //ai always wants to use token
+                    while (state != State.DRAW) {
+                        switch (state) {
+                            case SPIDERWEB:
+                                useSpiderweb();
+                                break;
+                            case GOBLIN:
+                                if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
+                                    if (ai.choose("Do you want to play your goblin-special?")) {
+                                        activeP.playGoblinSpecial();
+                                    }
                                 }
-                            }
-                            if(ai.choose("Do you want to trash one from your hand?")) {
-                                useGoblinHand(ai.bestHandCardToTrash());
-                            } else {
-                                useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
-                            }
-                            break;
-                        case SPIRAL:
-                            useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
+                                if (ai.choose("Do you want to trash one from your hand?")) {
+                                    useGoblinHand(((AI) ai).bestHandCardToTrash());
+                                } else {
+                                    useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
+                                }
+                                break;
+                            case SPIRAL:
+                                useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
+                        }
                     }
+                } catch (Exception e) {
+                    System.out.println("The ai made a incorrect choice that should not occur.");
                 }
-            } catch (Exception e){
-                System.out.println("The ai made a incorrect choice that should not occur.");
+            } else {
+                trash(ai.chooseCard("What card do you want to trash?", null));
             }
-        } else {
-            trash(ai.chooseCard("What card do you want to trash?", null));
+            // draw to end turn
+            activeP.drawFromDrawingPile();
+            state = State.PREPARATION;
+            toDo.setText("The AI is done with its turn. Press any Card to continue.");
+            updateAll();
+            playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
         }
-
-        // draw to end turn
-        activeP.drawFromDrawingPile();
-        state = State.PREPARATION;
-        updateAll();
-        activeP = getNextPlayer();
-        playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
 
     private void play() {
+        toDo.setText("it's your turn. Click any card to start.");
         try {
             activeP.placeFigure(chosenCard.getColor(), chosenFigure);
 
@@ -345,7 +313,7 @@ public class GuiController {
     }
 
     private void useSpiderweb() {
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         updateCards();
         useToken(); // sets the new state
     }
@@ -355,9 +323,9 @@ public class GuiController {
      * @param card the player picked to trash
      */
     private void useGoblinHand(Card card) {
-        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
-        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
+        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
+        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
@@ -367,8 +335,8 @@ public class GuiController {
      * @param pile the player wants to trash the top card from
      */
     private void useGoblinPile(DirectionDiscardPile pile) {
-        ((Goblin)Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
+        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
@@ -378,7 +346,7 @@ public class GuiController {
      * @param chosenPos position the player chose for his figure to move to
      */
     private void useSpiral (int chosenPos){
-        Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
+        Token token = Constants.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
 
         if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
             ((Spiral) token).setChosenPos(chosenPos);
@@ -401,7 +369,7 @@ public class GuiController {
     }
 
     private void useToken() {
-        Token token = Game.FIELDS[chosenFigure.getPos()].collectToken();
+        Token token = Constants.FIELDS[chosenFigure.getPos()].collectToken();
 
         if (token == null) {
             state = State.DRAW;
@@ -488,33 +456,33 @@ public class GuiController {
         List<Node> tokens = classifyChildren("token");
         while (currentToken <= 39) {
             for (int i = 1; i <= 35; i++) {
-                if (Game.FIELDS[i].getToken() == null) {
+                if (Constants.FIELDS[i].getToken() == null) {
                     ((ImageView)tokens.get(currentToken)).setImage(null);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgMirror);
+                } else if (Constants.FIELDS[i].getToken() instanceof Mirror) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_MIRROR);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgGoblin);
+                } else if (Constants.FIELDS[i].getToken() instanceof Goblin) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_GOBLIN);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgSkull);
+                } else if (Constants.FIELDS[i].getToken() instanceof Skullpoint) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgSpiral);
+                } else if (Constants.FIELDS[i].getToken() instanceof Spiral) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SPIRAL);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgWeb);
+                } else if (Constants.FIELDS[i].getToken() instanceof Spiderweb) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_WEB);
                     currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgStone);
+                } else if (Constants.FIELDS[i].getToken() instanceof WishingStone) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
                     currentToken++;
                 }
                 //if large field, check the second token
-                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
-                    ((ImageView)tokens.get(currentToken)).setImage(imgStone);
+                if (Constants.FIELDS[i] instanceof LargeField && ((LargeField) Constants.FIELDS[i]).getTokenTwo() != null) {
+                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
                     currentToken++;
-                } else if (Game.FIELDS[i] instanceof LargeField) {
+                } else if (Constants.FIELDS[i] instanceof LargeField) {
                     ((ImageView)tokens.get(currentToken)).setImage(null);
                     currentToken++;
                 }
@@ -534,18 +502,20 @@ public class GuiController {
     }
 
     private void updatePlayedCards() {
-        int currentPlayerIndex = model.getPlayers().indexOf(activeP);
+        int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
         List<Node> discardPiles = classifyChildren("playedCards");
         List<Node> namesPlayedCards = classifyChildren("namePlayedCards");
         for (Node pile : discardPiles) {
             DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
             if (!playedCards.isEmpty()) {
                 Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
-                if (pile.getId().equals("playedCardsNumber" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
+                if (pile.getId().equals("playedCardsNumber" + currentPlayerIndex + lastPlayedCard.getColor())) {
                     ((Label)pile).setText("" + lastPlayedCard.getNumber());
-                } else if (pile.getId().equals("playedCardsDir" + (currentPlayerIndex + 1) + lastPlayedCard.getColor())) {
+                } else if (pile.getId().equals("playedCardsDir" + currentPlayerIndex + lastPlayedCard.getColor())) {
                     ((Label) pile).setText("" + playedCards.getDirectionString());
                 }
+            } else {
+                ((Label)pile).setText("");
             }
         }
         for (int i = 0; i < 4; i++) {
@@ -563,14 +533,14 @@ public class GuiController {
         tokenBox.getChildren().clear();
         //print every wishing stone
         for (int i = 0; i < activeP.getTokens()[0]; i++){
-            ImageView img = new ImageView(imgStone);
+            ImageView img = new ImageView(IMG_STONE);
             img.setFitHeight(40);
             img.setFitWidth(40);
             tokenBox.getChildren().add(img);
         }
         // for every mirror
         for (int i = 0; i < activeP.getTokens()[1]; i++){
-            ImageView img = new ImageView(imgMirror);
+            ImageView img = new ImageView(IMG_MIRROR);
             img.setFitHeight(40);
             img.setFitWidth(40);
             tokenBox.getChildren().add(img);
