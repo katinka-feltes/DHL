@@ -1,6 +1,5 @@
 package dhl.controller;
 
-import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.controller.player_logic.PlayerLogic;
@@ -35,6 +34,9 @@ import java.util.List;
 
 import static dhl.Constants.*;
 
+/**
+ * This enum contains all the possible states a player can be in.
+ */
 enum State {
     PREPARATION,
     CHOOSEHANDCARD,
@@ -56,15 +58,29 @@ public class GuiController {
     private Card chosenCard;
     private Figure chosenFigure;
     private Player activeP;
+    /**
+     * This Label shows what the player has to do.
+     */
     @FXML
     private Label toDo;
+    /**
+     * This is the root Pane of the current stage
+     */
     @FXML
     private BorderPane root;
     Game model;
     View view;
+    /**
+     * contains the name of the current player
+     */
     @FXML
     private Label playerName;
 
+    /**
+     * gets all the children of a given Parent
+     * @param parent the parent you want to get the children from
+     * @return a list of all the children of the parent
+     */
     public List<Node> getAllChildren(Parent parent) {
         ArrayList<Node> children = new ArrayList<>();
         for (Node node : parent.getChildrenUnmodifiable()) {
@@ -75,6 +91,11 @@ public class GuiController {
         return children;
     }
 
+    /**
+     * classifies all the children of the root pane as per a given String
+     * @param searchId the classification string
+     * @return all the matching children that start with the given string
+     */
     public List<Node> classifyChildren(String searchId) {
         List<Node> nodes = new ArrayList<>();
         for (Node node : getAllChildren(root)) {
@@ -85,8 +106,13 @@ public class GuiController {
         return nodes;
     }
 
+    /**
+     * This method is called when the user clicks on the "Start Game" button.
+     * @param event the click on the Button
+     * @throws IOException if the FXML file is not found
+     */
     @FXML
-    public void startGame(ActionEvent event) throws Exception {
+    public void startGame(ActionEvent event) throws IOException {
 
         List<Node> choiceBoxes = classifyChildren("choiceBox");
         List<Node> names = classifyChildren("name");
@@ -95,7 +121,7 @@ public class GuiController {
         List<Player> players = new ArrayList<>();
 
         // at least one name has to be entered and one name or ai
-        if (((TextField)names.get(0)).getText().isEmpty() || (((TextField)names.get(1)).getText().isEmpty() && !((CheckBox)ais.get(0)).isSelected())) {
+        if (((TextField)names.get(0)).getText().isEmpty() || ((TextField)names.get(1)).getText().isEmpty() && !((CheckBox)ais.get(0)).isSelected()) {
             return;
         } else { //if all criteria are passed, the first player who must be human is added
             String enteredName = ((TextField)names.get(0)).getText();
@@ -129,6 +155,7 @@ public class GuiController {
      * @param event event that triggers the new scene
      * @param sceneFile scene that should be loaded
      * @param max if setMaximized should be set or not
+     * @throws IOException if the FXML file is not found
      */
     private void loadNewScene(Event event, String sceneFile, boolean max, boolean setController) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneFile));
@@ -144,8 +171,13 @@ public class GuiController {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method is called when the user clicks on any clickable item in the Game.
+     * @param e the click on the item
+     * @throws IOException if the FXML file is not found
+     */
     @FXML
-    private void onClick(MouseEvent e) throws IOException {
+    public void onClick(MouseEvent e) throws IOException {
         Node item = (Node) e.getSource();
         if(model.gameOver()) { //game over screen
             for (Player p : model.getPlayers()) {
@@ -244,6 +276,8 @@ public class GuiController {
         updateDiscardPiles();
 
         updateCollectedTokens();
+
+        playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
 
     private void takeTurnAI() {
@@ -263,10 +297,9 @@ public class GuiController {
                                 useSpiderweb();
                                 break;
                             case GOBLIN:
-                                if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
-                                    if (ai.choose("Do you want to play your goblin-special?")) {
-                                        activeP.playGoblinSpecial();
-                                    }
+                                if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3 &&
+                                    ai.choose("Do you want to play your goblin-special?")) {
+                                    activeP.playGoblinSpecial();
                                 }
                                 if (ai.choose("Do you want to trash one from your hand?")) {
                                     useGoblinHand(((AI) ai).bestHandCardToTrash());
@@ -289,7 +322,6 @@ public class GuiController {
             state = State.PREPARATION;
             toDo.setText("The AI is done with its turn. Press any Card to continue.");
             updateAll();
-            playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
         }
     }
 
@@ -313,7 +345,7 @@ public class GuiController {
     }
 
     private void useSpiderweb() {
-        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         updateCards();
         useToken(); // sets the new state
     }
@@ -323,9 +355,9 @@ public class GuiController {
      * @param card the player picked to trash
      */
     private void useGoblinHand(Card card) {
-        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
-        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
-        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
+        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
@@ -335,8 +367,8 @@ public class GuiController {
      * @param pile the player wants to trash the top card from
      */
     private void useGoblinPile(DirectionDiscardPile pile) {
-        ((Goblin)Constants.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
-        Constants.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
+        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
@@ -346,7 +378,7 @@ public class GuiController {
      * @param chosenPos position the player chose for his figure to move to
      */
     private void useSpiral (int chosenPos){
-        Token token = Constants.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
+        Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
 
         if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
             ((Spiral) token).setChosenPos(chosenPos);
@@ -369,7 +401,7 @@ public class GuiController {
     }
 
     private void useToken() {
-        Token token = Constants.FIELDS[chosenFigure.getPos()].collectToken();
+        Token token = Game.FIELDS[chosenFigure.getPos()].collectToken();
 
         if (token == null) {
             state = State.DRAW;
@@ -456,33 +488,33 @@ public class GuiController {
         List<Node> tokens = classifyChildren("token");
         while (currentToken <= 39) {
             for (int i = 1; i <= 35; i++) {
-                if (Constants.FIELDS[i].getToken() == null) {
+                if (Game.FIELDS[i].getToken() == null) {
                     ((ImageView)tokens.get(currentToken)).setImage(null);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof Mirror) {
+                } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_MIRROR);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof Goblin) {
+                } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_GOBLIN);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof Skullpoint) {
+                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof Spiral) {
+                } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_SPIRAL);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof Spiderweb) {
+                } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_WEB);
                     currentToken++;
-                } else if (Constants.FIELDS[i].getToken() instanceof WishingStone) {
+                } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
                     currentToken++;
                 }
                 //if large field, check the second token
-                if (Constants.FIELDS[i] instanceof LargeField && ((LargeField) Constants.FIELDS[i]).getTokenTwo() != null) {
+                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
                     ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
                     currentToken++;
-                } else if (Constants.FIELDS[i] instanceof LargeField) {
+                } else if (Game.FIELDS[i] instanceof LargeField) {
                     ((ImageView)tokens.get(currentToken)).setImage(null);
                     currentToken++;
                 }

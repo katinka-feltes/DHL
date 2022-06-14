@@ -2,12 +2,13 @@ package dhl.view;
 
 //Suppressed warnings for the following import:
 
-import dhl.Constants;
 import dhl.model.*;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
+import static dhl.model.Game.FIELDS;
 
 /**
  * Starting point of the command line interface
@@ -317,23 +318,23 @@ public class Cli implements View {
 
         // print points of the fields
         for (int i = rowStart; i <= rowEnd; i++) {
-            System.out.print(Constants.FIELDS[i].getPoints() + TABULATOR);
+            System.out.print(FIELDS[i].getPoints() + TABULATOR);
         }
         System.out.println();
 
         // print colors of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print(Constants.FIELDS[i].getColor() + TABULATOR);
+            System.out.print(FIELDS[i].getColor() + TABULATOR);
         }
         System.out.println();
 
         // print tokens of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            if(Constants.FIELDS[i].getToken() != null) {
-                if (Constants.FIELDS[i] instanceof LargeField && ((LargeField) Constants.FIELDS[i]).getTokenTwo() != null) {
-                    System.out.print(Constants.FIELDS[i].getToken().getSymbol() + " " + Constants.FIELDS[i].getToken().getSymbol());
+            if(FIELDS[i].getToken() != null) {
+                if (FIELDS[i] instanceof LargeField && ((LargeField) FIELDS[i]).getTokenTwo() != null) {
+                    System.out.print(FIELDS[i].getToken().getSymbol() + " " + FIELDS[i].getToken().getSymbol());
                 } else {
-                    System.out.print(Constants.FIELDS[i].getToken().getSymbol());
+                    System.out.print(FIELDS[i].getToken().getSymbol());
                 }
             }
             System.out.print(TABULATOR);

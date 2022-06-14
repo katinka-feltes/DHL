@@ -1,9 +1,9 @@
 package dhl.model;
 
-import dhl.Constants;
-
 import java.util.Comparator;
 import java.util.List;
+
+import static dhl.model.Game.FIELDS;
 
 /**
  * This Class implements the function of the figures in the game
@@ -69,9 +69,9 @@ public class FigureFunction {
      * @return true if the another field of the current color exists within the field
      */
     public static boolean spiderwebIsPossible(Figure figure) {
-        char color = Constants.FIELDS[figure.getPos()].getColor();
+        char color = FIELDS[figure.getPos()].getColor();
         for(int pos = figure.getPos()+1; pos < 36; pos++) {
-            if(Constants.FIELDS[pos].getColor() == color) {
+            if(FIELDS[pos].getColor() == color) {
                 return true;
             }
         }

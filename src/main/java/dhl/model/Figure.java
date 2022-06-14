@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.Constants;
+import static dhl.model.Game.FIELDS;
 
 /**
  * This Class represents a Figure. A Figure has a position, a last position and a color.
@@ -22,7 +22,7 @@ public class Figure {
      */
     public void move(char color) {
         int steps = 1;
-        while (Constants.FIELDS[pos + steps].getColor() != color) {
+        while (FIELDS[pos + steps].getColor() != color) {
             steps++;
         }
         latestPos = pos;

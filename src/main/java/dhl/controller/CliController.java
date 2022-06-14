@@ -190,7 +190,7 @@ public class CliController {
      */
     private void usingToken(Player player) {
         //get the token and remove it from the field if it is collectable
-        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (token != null) {
             view.out("You found a " + token.getName() + "!");
@@ -233,7 +233,7 @@ public class CliController {
      */
     private void doTokenSpiral(Player player) {
         Figure currentFigure = player.getLastMovedFigure();
-        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
@@ -256,7 +256,7 @@ public class CliController {
      * @param player the current player
      */
     private void doTokenGoblin(Player player) {
-        Token token = Constants.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
+        Token token = Game.FIELDS[player.getLastMovedFigure().getPos()].collectToken();
 
         if (player.getPlayerLogic().choose("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {

@@ -1,6 +1,5 @@
 package dhl.model;
 
-import dhl.Constants;
 import dhl.controller.player_logic.Human;
 import dhl.model.tokens.Goblin;
 import dhl.view.Cli;
@@ -171,15 +170,15 @@ public class PlayerTest {
      */
     public void amountFiguresGoblin(){
         assertEquals(0, player.amountFiguresGoblin());
-        Constants.FIELDS[0].setToken(new Goblin());
+        Game.FIELDS[0].setToken(new Goblin());
         assertEquals(3, player.amountFiguresGoblin());
-        Constants.FIELDS[5].setToken(new Goblin());
+        Game.FIELDS[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         assertEquals(3, player.amountFiguresGoblin());
-        Constants.FIELDS[10].setToken(new Goblin());
+        Game.FIELDS[10].setToken(new Goblin());
         player.getFigures().get(1).setPos(10);
         assertEquals(3,player.amountFiguresGoblin());
-        Constants.FIELDS[10].setToken(null);
+        Game.FIELDS[10].setToken(null);
         assertEquals(2, player.amountFiguresGoblin());
     }
 
@@ -188,15 +187,15 @@ public class PlayerTest {
      * tests if method goblinSpecialPoints works
      */
     public void goblinSpecialPoints(){
-        Constants.FIELDS[0].setToken(new Goblin());
+        Game.FIELDS[0].setToken(new Goblin());
         assertEquals(5 , player.goblinSpecialPoints());
-        Constants.FIELDS[5].setToken(new Goblin());
+        Game.FIELDS[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         assertEquals(10 , player.goblinSpecialPoints());
-        Constants.FIELDS[10].setToken(new Goblin());
+        Game.FIELDS[10].setToken(new Goblin());
         player.getFigures().get(1).setPos(10);
         assertEquals(15 , player.goblinSpecialPoints());
-        Constants.FIELDS[10].setToken(null);
+        Game.FIELDS[10].setToken(null);
         assertEquals(0 , player.goblinSpecialPoints());
     }
 
@@ -206,8 +205,8 @@ public class PlayerTest {
      */
     public void playGoblinSpecial(){
         assertFalse(player.isGoblinSpecialPlayed());
-        Constants.FIELDS[0].setToken(new Goblin());
-        Constants.FIELDS[5].setToken(new Goblin());
+        Game.FIELDS[0].setToken(new Goblin());
+        Game.FIELDS[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         player.playGoblinSpecial();
         assertEquals(10 , player.getVictoryPoints());

@@ -1,6 +1,5 @@
 package dhl.model;
 
-import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
@@ -8,6 +7,8 @@ import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static dhl.model.Game.FIELDS;
 
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
@@ -86,10 +87,10 @@ public class Player {
      * @param figure the figure to move
      */
     public void placeFigure(char fieldColor, Figure figure) {
-        victoryPoints -= Constants.FIELDS[figure.getPos()].getPoints();
+        victoryPoints -= FIELDS[figure.getPos()].getPoints();
         figure.move(fieldColor);
         lastMovedFigure = figure;
-        victoryPoints += Constants.FIELDS[figure.getPos()].getPoints();
+        victoryPoints += FIELDS[figure.getPos()].getPoints();
     }
 
     /**
@@ -142,7 +143,7 @@ public class Player {
         int result = 0;
         for(Figure f : figures){
             // if the figure is not on a goblin field
-            if(Constants.FIELDS[f.getPos()].getToken() instanceof Goblin){
+            if(FIELDS[f.getPos()].getToken() instanceof Goblin){
                 result++;
             }
         }
