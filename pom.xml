@@ -183,6 +183,9 @@
                         <!-- Ignore GUI classes for coverage -->
                         <exclude>dhl/view/**/*</exclude> <!-- adapted to our folder structure -->
                         <exclude>dhl/Main.class</exclude>
+                        <!-- Ignore the Controller classes because the public methods cannot be tested.
+                        They would need several inputs according to unpredictable tokens and hand cards.-->
+                        <exclude>dhl/controller/**/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>

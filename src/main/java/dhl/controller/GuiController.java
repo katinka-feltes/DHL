@@ -145,7 +145,7 @@ public class GuiController {
         loadNewScene(event, "/gui.fxml", true, true);
 
         state = State.PREPARATION;
-        activeP = model.getPlayers().get(model.getPlayerAmount()-1);
+        activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         updateAll();
     }
@@ -190,7 +190,6 @@ public class GuiController {
             chosenFigure = null;
             chosenCard = null;
             activeP.setLastTrashed(null);
-            activeP = getNextPlayer();
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
             takeTurnAI();
@@ -251,6 +250,8 @@ public class GuiController {
                 activeP.drawFromDrawingPile();
             }
             if(activeP.getHand().size() == 8){
+                activeP = getNextPlayer();
+                toDo.setText("Click any item to start your turn.");
                 state = State.PREPARATION;
             }
         }
@@ -319,6 +320,7 @@ public class GuiController {
             }
             // draw to end turn
             activeP.drawFromDrawingPile();
+            activeP = getNextPlayer();
             state = State.PREPARATION;
             toDo.setText("The AI is done with its turn. Press any Card to continue.");
             updateAll();
