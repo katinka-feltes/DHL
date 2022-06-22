@@ -187,79 +187,104 @@ public class GuiController {
             loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
         } else if (state == State.PREPARATION) { //click anything to start the turn
-            chosenFigure = null;
-            chosenCard = null;
-            activeP.setLastTrashed(null);
-            state = State.CHOOSEHANDCARD;
-            toDo.setText("Which card to you want to play or trash?");
-            takeTurnAI();
+            preparation();
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             toDo.setText("Click a figure to move or trash it.");
             state = State.TRASHORPLAY;
         } else if (state == State.TRASHORPLAY) {
-            if (item.getId().startsWith("discardingPile")) {
-                trash(chosenCard);
-            } else if (item.getId().startsWith("circle")) {
-                try {
-                    chosenFigure = FigureFunction.getFigureOnField(getIndex(item.getId(), "circle"), activeP.getFigures());
-                    play();
-                } catch (Exception exception) {
-                    toDo.setText(exception.getMessage());
-                }
-            }
+            trashOrPlay(item);
         } else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
-            int chosenPos = getIndex(item.getId(), "circle");
-            if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
-                state = State.DRAW;
-                toDo.setText("From which pile do you want to draw?");
-            } else {
-                useSpiral(chosenPos);
-            }
+            spiral(item);
         } else if (state == State.SPIDERWEB) {
-            if (item.getId().startsWith("circle")) {
-                useSpiderweb();
-            } else {
-                state = State.DRAW;
-                toDo.setText("From which pile do you want to draw?");
-            }
+            spiderweb(item);
         } else if (state == State.GOBLIN) {
-            if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3 ) {
-                activeP.playGoblinSpecial();
-                toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
-                        " To say no click one discarding pile.");
-            } else if (item.getId().startsWith("handCard")) {
-                useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
-            } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
-                useGoblinPile(getPlayedCardsFromID(item.getId()));
-            } else if (item.getId().startsWith("playedCardsNumber")) {
-                toDo.setText("This is not your played cards pile.");
-            } else {
-                state = State.DRAW;
-                toDo.setText("From which pile do you want to draw?");
-            }
+            goblin(item);
         } else if (state == State.DRAW) {
-            if (item.getId().startsWith("discardingPile")) {
-                try {
-                    activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
-                } catch (Exception exc) {
-                    toDo.setText(exc.getMessage());
-                    return;
-                }
-            } else if (item.getId().equals("drawingPile")) {
-                activeP.drawFromDrawingPile();
-            }
-            if(activeP.getHand().size() == 8){
-                activeP = getNextPlayer();
-                toDo.setText("Click any item to start your turn.");
-                state = State.PREPARATION;
-            }
+            if (draw(item)) return;
         }
         if(item.getId().startsWith("menu")) {
             loadNewScene(e, "/start.fxml", false, false);
             return;
         }
         updateAll();
+    }
+
+    private boolean draw(Node item) {
+        if (item.getId().startsWith("discardingPile")) {
+            try {
+                activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
+            } catch (Exception exc) {
+                toDo.setText(exc.getMessage());
+                return true;
+            }
+        } else if (item.getId().equals("drawingPile")) {
+            activeP.drawFromDrawingPile();
+        }
+        if(activeP.getHand().size() == 8){
+            activeP = getNextPlayer();
+            toDo.setText("Click any item to start your turn.");
+            state = State.PREPARATION;
+        }
+        return false;
+    }
+
+    private void goblin(Node item) {
+        if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3 ) {
+            activeP.playGoblinSpecial();
+            toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
+                    " To say no click one discarding pile.");
+        } else if (item.getId().startsWith("handCard")) {
+            useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
+        } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
+            useGoblinPile(getPlayedCardsFromID(item.getId()));
+        } else if (item.getId().startsWith("playedCardsNumber")) {
+            toDo.setText("This is not your played cards pile.");
+        } else {
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
+        }
+    }
+
+    private void spiderweb(Node item) {
+        if (item.getId().startsWith("circle")) {
+            useSpiderweb();
+        } else {
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
+        }
+    }
+
+    private void spiral(Node item) {
+        int chosenPos = getIndex(item.getId(), "circle");
+        if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
+        } else {
+            useSpiral(chosenPos);
+        }
+    }
+
+    private void trashOrPlay(Node item) {
+        if (item.getId().startsWith("discardingPile")) {
+            trash(chosenCard);
+        } else if (item.getId().startsWith("circle")) {
+            try {
+                chosenFigure = FigureFunction.getFigureOnField(getIndex(item.getId(), "circle"), activeP.getFigures());
+                play();
+            } catch (Exception exception) {
+                toDo.setText(exception.getMessage());
+            }
+        }
+    }
+
+    private void preparation() {
+        chosenFigure = null;
+        chosenCard = null;
+        activeP.setLastTrashed(null);
+        state = State.CHOOSEHANDCARD;
+        toDo.setText("Which card to you want to play or trash?");
+        takeTurnAI();
     }
 
     private void updateAll() {

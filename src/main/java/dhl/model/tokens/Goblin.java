@@ -42,7 +42,7 @@ public class Goblin implements Token {
                 player.putCardOnDiscardingPile(card);
                 player.setLastTrashed(card);
             } else {
-                Card trashCard = player.getPlayedCards(pile).getAndRemoveTop();
+                Card trashCard = player.getPlayedCards(pile).getAndRemoveTop(); //TODO: fix direction
                 game.getDiscardPile(pile).add(trashCard);
                 player.setLastTrashed(game.getDiscardPile(pile).getTop());
             }
