@@ -702,7 +702,7 @@
                         </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                      <children>
-                        <Label fx:id="namePlayedCards1namePlayedCards2" text="PlayerName" />
+                        <Label fx:id="namePlayedCards2" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
                               <StackPane>

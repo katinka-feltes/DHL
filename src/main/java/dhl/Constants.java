@@ -17,11 +17,10 @@ public class Constants {
     public static final String ORANGE = "#f2af4b";
     public static final Image IMG_GOBLIN = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/goblin.png")));
     public static final Image IMG_MIRROR = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/mirror.png")));
-    public static final Image IMG_SKULL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull.png")));
-    public static final Image IMG_SKULL1 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull1.png")));
-    public static final Image IMG_SKULL2 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull2.png")));
-    public static final Image IMG_SKULL3 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull3.png")));
-    public static final Image IMG_SKULL4 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull4.png")));
+    public static final Image IMG_SKULL1 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull1.PNG")));
+    public static final Image IMG_SKULL2 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull2.PNG")));
+    public static final Image IMG_SKULL3 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull3.PNG")));
+    public static final Image IMG_SKULL4 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull4.PNG")));
     public static final Image IMG_SPIRAL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/spiral.png")));
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));

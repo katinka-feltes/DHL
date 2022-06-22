@@ -519,28 +519,49 @@ public class GuiController {
         }
     }
 
+    /**
+     * updates all played cards on the field
+     */
     private void updatePlayedCards() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
-        List<Node> discardPiles = classifyChildren("playedCards");
         List<Node> namesPlayedCards = classifyChildren("namePlayedCards");
-        for (Node pile : discardPiles) {
+        String collum = "";
+
+        for (Node pile : namesPlayedCards) {
+            if (pile.getId().endsWith("" + currentPlayerIndex)) {
+                collum = "" + currentPlayerIndex;
+            }
+        }
+        List<Node> discardPilesNum = classifyChildren("playedCardsNumber" + collum);
+        List<Node> discardPilesDir = classifyChildren("playedCardsDir" + collum);
+        for (Node pile : discardPilesNum) {
             DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
             if (!playedCards.isEmpty()) {
                 Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
-                if (pile.getId().equals("playedCardsNumber" + currentPlayerIndex + lastPlayedCard.getColor())) {
-                    ((Label)pile).setText("" + lastPlayedCard.getNumber());
-                } else if (pile.getId().equals("playedCardsDir" + currentPlayerIndex + lastPlayedCard.getColor())) {
+                if (pile.getId().equals("playedCardsNumber" + collum + lastPlayedCard.getColor())) {
+                    ((Label) pile).setText("" + lastPlayedCard.getNumber());
+                }
+            } else {
+                ((Label) pile).setText("");
+            }
+        }
+
+        for (Node pile : discardPilesDir) {
+            DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
+            if (!playedCards.isEmpty()) {
+                Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
+                if (pile.getId().equals("playedCardsDir" + collum + lastPlayedCard.getColor())) {
                     ((Label) pile).setText("" + playedCards.getDirectionString());
                 }
             } else {
-                ((Label)pile).setText("");
+                ((Label) pile).setText("");
             }
         }
         for (int i = 0; i < 4; i++) {
             if (i >= model.getPlayers().size()) {
-                ((Label)namesPlayedCards.get(i)).setText("");
+                ((Label) namesPlayedCards.get(i)).setText("");
             } else {
-                ((Label)namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
+                ((Label) namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
             }
         }
     }
