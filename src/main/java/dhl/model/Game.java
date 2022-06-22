@@ -5,10 +5,7 @@ import dhl.model.tokens.*;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -272,17 +269,13 @@ public class Game {
     }
 
     /**
-     * checks the victory points of every player to elect the winning player.
-     * @return the player with the highest score.
+     * sorts the players by victory points
+     * @return sorted list of players (0=winner, end of list=loser)
      */
-    public Player getWinningPlayer() {
-        Player winningP = players.get(0);
-        for (Player p : players) {
-            if (p.getVictoryPoints() > winningP.getVictoryPoints()) {
-                winningP = p;
-            }
-        }
-        return winningP;
+    public List<Player> getSortedPlayers(){
+        List<Player> playerList = new ArrayList<>(players);
+        playerList.sort(Comparator.comparing(Player::getVictoryPoints).reversed());
+        return playerList;
     }
 
     /**

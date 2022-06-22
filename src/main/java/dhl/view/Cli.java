@@ -207,7 +207,8 @@ public class Cli implements View {
     @Override
     public void printResults(Game game) {
         System.out.println();
-        System.out.println("GAME OVER! The winner is " + game.getWinningPlayer().getName() + ".");
+        Player winner = game.getSortedPlayers().get(0);
+        System.out.println("GAME OVER! The winner is " + winner.getName() + ".");
 
         //print points
         System.out.print("Points: ");
