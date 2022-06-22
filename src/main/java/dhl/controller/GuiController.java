@@ -1,6 +1,5 @@
 package dhl.controller;
 
-import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.controller.player_logic.PlayerLogic;
@@ -24,27 +23,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This enum contains all the possible states a player can be in.
- */
-enum State {
-    PREPARATION,
-    CHOOSEHANDCARD,
-    TRASHORPLAY,
-    SPIDERWEB,
-    SPIRAL,
-    GOBLIN,
-    DRAW
-}
+import static dhl.view.GuiUpdate.updateCards;
 
 /**
  * This Class is the Controller of the MVC pattern when the game is played on the GUI.
@@ -65,7 +50,7 @@ public class GuiController {
      */
     @FXML
     private BorderPane root;
-    Game model;
+    static Game model;
     View view;
     /**
      * contains the name of the current player
@@ -190,7 +175,11 @@ public class GuiController {
             activeP.setLastTrashed(null);
             state = State.CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
-            takeTurnAI();
+
+            PlayerLogic pl = activeP.getPlayerLogic();
+            if (pl instanceof AI) {
+                takeTurnAI((AI) pl);
+            }
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             toDo.setText("Click a figure to move or trash it.");
@@ -203,8 +192,8 @@ public class GuiController {
             spiderweb(item);
         } else if (state == State.GOBLIN) {
             goblin(item);
-        } else if (state == State.DRAW) {
-            if (draw(item)) return;
+        } else if (state == State.DRAW && draw(item)) {
+            return;
         }
         if(item.getId().startsWith("menu")) {
             loadNewScene(e, "/start.fxml", false, false);
@@ -283,81 +272,90 @@ public class GuiController {
 
     private void updateAll() {
         //update cards
-        updateCards();
+        updateCards(classifyChildren("handCard"), state, activeP);
         //update discarding piles
-        updatePlayedCards();
+        updatePlayedCardsAndNames();
         // update tokens
-        List<Node> tokens = classifyChildren("token");
-        GuiUpdate.updateTokens(tokens);
+        GuiUpdate.updateTokens(classifyChildren("token"));
         // update figures
-        List<Node> circles = classifyChildren("circle");
-        GuiUpdate.updateFigures(circles, model.getPlayers());
+        GuiUpdate.updateFigures(classifyChildren("circle"), model.getPlayers());
         // update scores
-        List<Node> scores = classifyChildren("scorePlayer");
-        List<Node> scoreNames = classifyChildren("scoreName");
-        GuiUpdate.updateScores(scores, scoreNames, model.getPlayers());
+        GuiUpdate.updateScores(classifyChildren("scorePlayer"), classifyChildren("scoreName"), model.getPlayers());
         //update discard piles
-        updateDiscardPiles();
+        GuiUpdate.updateDiscardPiles(classifyChildren("discardingPile"));
         //update collected tokens
-        HBox tokenBox = (HBox)classifyChildren("collectedToken").get(0);
-        GuiUpdate.updateCollectedTokens(activeP, tokenBox);
+        GuiUpdate.updateCollectedTokens(activeP, (HBox)classifyChildren("collectedToken").get(0));
         //write name and symbol of active player
         playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
 
-    private void takeTurnAI() {
-        PlayerLogic ai = activeP.getPlayerLogic();
-        if (ai instanceof AI) {
-            if(ai.choose("Do you want to play a card?")) {
-                try {
-                    chosenCard = ai.chooseCard("What card do you want to play?", null);
-                    chosenFigure = ai.chooseFigure("", null);
+    /**
+     * a method for the AI to take a turn. Only call this if the current player is an AI
+     */
+    private void takeTurnAI(AI ai) {
+        if(ai.choose("Do you want to play a card?")) {
+            try {
+                chosenCard = ai.chooseCard("What card do you want to play?", null);
+                chosenFigure = ai.chooseFigure("", null);
 
-                    play();
+                play();
 
-                    //ai always wants to use token
-                    while (state != State.DRAW) {
-                        switch (state) {
-                            case SPIDERWEB:
-                                useSpiderweb();
-                                break;
-                            case GOBLIN:
-                                if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3 &&
-                                    ai.choose("Do you want to play your goblin-special?")) {
-                                    activeP.playGoblinSpecial();
-                                }
-                                if (ai.choose("Do you want to trash one from your hand?")) {
-                                    useGoblinHand(((AI) ai).bestHandCardToTrash());
-                                } else {
-                                    useGoblinPile(activeP.getPlayedCards(ai.choosePileColor("From which pile do you want to trash the top card?")));
-                                }
-                                break;
-                            case SPIRAL:
-                                useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
-                        }
+                //ai always wants to use token
+                while (state != State.DRAW) {
+                    switch (state) {
+                        case SPIDERWEB:
+                            useSpiderweb();
+                            break;
+                        case GOBLIN:
+                            goblinAi(ai);
+                            break;
+                        case SPIRAL:
+                            useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
+                            break;
                     }
-                } catch (Exception e) {
-                    System.out.println("The ai made a incorrect choice that should not occur.");
                 }
-            } else {
-                trash(ai.chooseCard("What card do you want to trash?", null));
+            } catch (Exception e) {
+                System.err.println("The ai made a incorrect choice that should not occur.");
             }
-            // draw to end turn
-            activeP.drawFromDrawingPile();
-            activeP = getNextPlayer();
-            state = State.PREPARATION;
-            toDo.setText("The AI is done with its turn. Press any Card to continue.");
-            updateAll();
+        } else {
+            trash(ai.chooseCard("What card do you want to trash?", null));
+        }
+        // draw to end turn
+        updateAll();
+        activeP.drawFromDrawingPile();
+        activeP = getNextPlayer();
+        state = State.PREPARATION;
+        toDo.setText("The AI is done with its turn. Press any Card to continue.");
+    }
+
+    /**
+     *
+     * @param ai the playerlogic of the current player if it's an ai
+     */
+    private void goblinAi(AI ai) {
+        if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3 &&
+            ai.choose("Do you want to play your goblin-special?")) {
+            activeP.playGoblinSpecial();
+        }
+        if (ai.choose("Do you want to trash one from your hand?")) {
+            useGoblinHand(ai.bestHandCardToTrash());
+        } else {
+            char pilecolor = ai.choosePileColor("From which pile do you want to trash the top card?");
+            useGoblinPile(activeP.getPlayedCards(pilecolor));
+
+            int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
+            List<Node> currentDiscardPile = classifyChildren("playedCardsNumber" +currentPlayerIndex + pilecolor);
+            ((Label)currentDiscardPile.get(0)).setText("");
         }
     }
 
     private void play() {
         toDo.setText("it's your turn. Click any card to start.");
         try {
-            activeP.placeFigure(chosenCard.getColor(), chosenFigure);
-
             activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
             activeP.getHand().remove(chosenCard);
+
+            activeP.placeFigure(chosenCard.getColor(), chosenFigure);
 
             useToken();
 
@@ -372,7 +370,7 @@ public class GuiController {
 
     private void useSpiderweb() {
         Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
-        updateCards();
+        updateCards(classifyChildren("handCard"), state, activeP);
         useToken(); // sets the new state
     }
 
@@ -397,6 +395,17 @@ public class GuiController {
         Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
+
+        int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
+        List<Node> currentDiscardPileName = classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor());
+        List<Node> currentDiscardPileDir = classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor());
+        ((Label) currentDiscardPileDir.get(0)).setText("" + pile.getDirectionString());
+        if (pile.isEmpty()) {
+            ((Label) currentDiscardPileName.get(0)).setText("");
+        } else {
+            ((Label) currentDiscardPileName.get(0)).setText("" + pile.getTop().getNumber());
+        }
+
     }
 
     /**
@@ -409,7 +418,7 @@ public class GuiController {
         if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
             ((Spiral) token).setChosenPos(chosenPos);
             token.action(activeP);
-            updateCards();
+            updateCards(classifyChildren("handCard"), state, activeP);
             useToken(); //sets the new state
         } else {
             toDo.setText("You can not go to the field you came from!");
@@ -472,92 +481,23 @@ public class GuiController {
                 break;
         }
     }
-
-    /**
-     * updates the hand cards, hand cards grey when players change
-     */
-    private void updateCards() {
-        //update hand cards
-        List<Node> handCards = classifyChildren("handCard");
-        if (!state.equals(State.PREPARATION)) {
-            //get sorted hand cards
-            List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
-            for (int i = 0; i < handCards.size(); i++) {
-                Rectangle card = (Rectangle) ((StackPane)handCards.get(i)).getChildren().get(0);
-                Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
-                if (i < sortedHand.size()) {
-                    cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
-                    card.setFill(Constants.charToColor(sortedHand.get(i).getColor()));
-                } else {
-                    cardNumber.setText("");
-                    card.setFill(Color.web("#c8d1d9"));
-                }
-            }
-        } else {
-            for (int i = 0; i < 8; i++) {
-                Rectangle card = (Rectangle) ((StackPane)handCards.get(i)).getChildren().get(0);
-                Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
-                cardNumber.setText("");
-                card.setFill(Color.web("#c8d1d9"));
-            }
-        }
-    }
-
-    private void updateDiscardPiles() {
-        for(Node stackPane : classifyChildren("discardingPile")) {
-            DiscardPile pile = getDiscardPileFromID(stackPane.getId());
-            Label lbl = (Label) ((StackPane)stackPane).getChildren().get(1);
-            if (pile.isEmpty()){
-                lbl.setText("");
-            } else {
-                lbl.setText(Integer.toString(pile.getTop().getNumber()));
-            }
-        }
-    }
-
-    /**
-     * updates all played cards on the field
-     */
-    private void updatePlayedCards() {
+    private void updatePlayedCardsAndNames() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
+        if (chosenCard != null && activeP.getPlayedCards(chosenCard.getColor()).getTop() != null &&
+                (state == State.DRAW || state == State.SPIRAL || state == State.SPIDERWEB || state == State.GOBLIN)) {
+            char currentCardColor = activeP.getPlayedCards(chosenCard.getColor()).getTop().getColor();
+            List<Node> currentDiscardPileNumber = classifyChildren("playedCardsNumber" + currentPlayerIndex + currentCardColor);
+            List<Node> currentDiscardPileDir = classifyChildren("playedCardsDir" + currentPlayerIndex + currentCardColor);
+
+            ((Label) currentDiscardPileNumber.get(0)).setText("" + chosenCard.getNumber());
+            ((Label) currentDiscardPileDir.get(0)).setText("" + activeP.getPlayedCards(currentCardColor).getDirectionString());
+        }
         List<Node> namesPlayedCards = classifyChildren("namePlayedCards");
-        String collum = "";
-
-        for (Node pile : namesPlayedCards) {
-            if (pile.getId().endsWith("" + currentPlayerIndex)) {
-                collum = "" + currentPlayerIndex;
-            }
-        }
-        List<Node> discardPilesNum = classifyChildren("playedCardsNumber" + collum);
-        List<Node> discardPilesDir = classifyChildren("playedCardsDir" + collum);
-        for (Node pile : discardPilesNum) {
-            DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
-            if (!playedCards.isEmpty()) {
-                Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
-                if (pile.getId().equals("playedCardsNumber" + collum + lastPlayedCard.getColor())) {
-                    ((Label) pile).setText("" + lastPlayedCard.getNumber());
-                }
-            } else {
-                ((Label) pile).setText("");
-            }
-        }
-
-        for (Node pile : discardPilesDir) {
-            DirectionDiscardPile playedCards = getPlayedCardsFromID(pile.getId());
-            if (!playedCards.isEmpty()) {
-                Card lastPlayedCard = activeP.getPlayedCards(playedCards.getTop().getColor()).getTop();
-                if (pile.getId().equals("playedCardsDir" + collum + lastPlayedCard.getColor())) {
-                    ((Label) pile).setText("" + playedCards.getDirectionString());
-                }
-            } else {
-                ((Label) pile).setText("");
-            }
-        }
         for (int i = 0; i < 4; i++) {
             if (i >= model.getPlayers().size()) {
-                ((Label) namesPlayedCards.get(i)).setText("");
+                ((Label)namesPlayedCards.get(i)).setText("");
             } else {
-                ((Label) namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
+                ((Label)namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
             }
         }
     }
@@ -583,7 +523,7 @@ public class GuiController {
      * @param id the piles' id with the color as the last character
      * @return the discard pile from the model
      */
-    private DiscardPile getDiscardPileFromID(String id) {
+    public static DiscardPile getDiscardPileFromID(String id) {
         char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length - 1]);
     }
@@ -611,4 +551,5 @@ public class GuiController {
             return model.getPlayers().get(index + 1);
         }
     }
+
 }

@@ -1,14 +1,17 @@
 package dhl.view;
 
-import dhl.model.Figure;
-import dhl.model.Game;
-import dhl.model.LargeField;
-import dhl.model.Player;
+import dhl.Constants;
+import dhl.controller.GuiController;
+import dhl.controller.State;
+import dhl.model.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -88,6 +91,45 @@ public class GuiUpdate {
             } else {
                 ((Label)scoreNames.get(i)).setText(players.get(i).getName());
                 ((Label)scores.get(i)).setText(Integer.toString(players.get(i).getVictoryPoints()));
+            }
+        }
+    }
+
+    public static void updateDiscardPiles(List<Node> stackPanes) {
+        for(Node stackPane : stackPanes) {
+            DiscardPile pile = GuiController.getDiscardPileFromID(stackPane.getId());
+            Label lbl = (Label) ((StackPane)stackPane).getChildren().get(1);
+            if (pile.isEmpty()){
+                lbl.setText("");
+            } else {
+                lbl.setText(Integer.toString(pile.getTop().getNumber()));
+            }
+        }
+    }
+    /**
+     * updates the hand cards, hand cards grey when players change
+     */
+    public static void updateCards(List<Node> handCards, State state , Player activeP) {
+        if (!state.equals(State.PREPARATION)) {
+            //get sorted hand cards
+            List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
+            for (int i = 0; i < handCards.size(); i++) {
+                Rectangle card = (Rectangle) ((StackPane)handCards.get(i)).getChildren().get(0);
+                Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
+                if (i < sortedHand.size()) {
+                    cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
+                    card.setFill(Constants.charToColor(sortedHand.get(i).getColor()));
+                } else {
+                    cardNumber.setText("");
+                    card.setFill(Color.web("#c8d1d9"));
+                }
+            }
+        } else {
+            for (int i = 0; i < 8; i++) {
+                Rectangle card = (Rectangle) ((StackPane)handCards.get(i)).getChildren().get(0);
+                Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
+                cardNumber.setText("");
+                card.setFill(Color.web("#c8d1d9"));
             }
         }
     }
