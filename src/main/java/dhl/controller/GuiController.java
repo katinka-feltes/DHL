@@ -31,7 +31,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -119,7 +118,8 @@ public class GuiController {
         List<Player> players = new ArrayList<>();
 
         // at least one name has to be entered and one name or ai
-        if (((TextField)names.get(0)).getText().isEmpty() || ((TextField)names.get(1)).getText().isEmpty() && !((CheckBox)ais.get(0)).isSelected()) {
+        if (((TextField)names.get(0)).getText().isEmpty() || ((TextField)names.get(1)).getText().isEmpty()
+                && !((CheckBox)ais.get(0)).isSelected()) {
             return;
         } else { //if all criteria are passed, the first player who must be human is added
             String enteredName = ((TextField)names.get(0)).getText();
@@ -131,7 +131,7 @@ public class GuiController {
         for (int i = 1; i < 4; i++) {
             char symbol = ((String)((ChoiceBox)choiceBoxes.get(i)).getSelectionModel().getSelectedItem()).charAt(0);
             if (((CheckBox)ais.get(i-1)).isSelected()) { //if the player should be an ai
-                players.add(new Player("AI" + (i), symbol, new AI()));
+                players.add(new Player("COM" + (i), symbol, new AI()));
             } else if (!((TextField)names.get(i)).getText().isEmpty()) {
                 String enteredName = ((TextField)names.get(i)).getText();
                 players.add(new Player(enteredName, symbol, new Human(view)));
@@ -185,7 +185,12 @@ public class GuiController {
             loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
         } else if (state == State.PREPARATION) { //click anything to start the turn
-            preparation();
+            chosenFigure = null;
+            chosenCard = null;
+            activeP.setLastTrashed(null);
+            state = State.CHOOSEHANDCARD;
+            toDo.setText("Which card to you want to play or trash?");
+            takeTurnAI();
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             toDo.setText("Click a figure to move or trash it.");
@@ -274,15 +279,6 @@ public class GuiController {
                 toDo.setText(exception.getMessage());
             }
         }
-    }
-
-    private void preparation() {
-        chosenFigure = null;
-        chosenCard = null;
-        activeP.setLastTrashed(null);
-        state = State.CHOOSEHANDCARD;
-        toDo.setText("Which card to you want to play or trash?");
-        takeTurnAI();
     }
 
     private void updateAll() {
@@ -554,24 +550,10 @@ public class GuiController {
             if (i > model.getPlayers().size() - 1) {
                 ((Label)endScores.get(i)).setText("");
             } else {
-                List<String> winnerList = calculateWinners();
-                ((Label)endScores.get(i)).setText(winnerList.get(i));
+                List<Player> winnerList = model.getSortedPlayers();
+                ((Label)endScores.get(i)).setText(winnerList.get(i).getName());
             }
         }
-    }
-
-    /**
-     * creates a list of player names ordered by victory points
-     * @return string list with player names (0=winner, end of list=loser)
-     */
-    private List<String> calculateWinners() {
-        List<String> winnerList = new ArrayList<>();
-        List<Player> playerList = model.getPlayers();
-        playerList.sort(Comparator.comparing(Player::getVictoryPoints));
-        for(int i=playerList.size()-1; i>=0; i--) {
-            winnerList.add(playerList.get(i).getName());
-        }
-        return winnerList;
     }
 
     /**

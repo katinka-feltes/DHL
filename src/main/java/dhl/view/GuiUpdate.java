@@ -4,7 +4,6 @@ import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.LargeField;
 import dhl.model.Player;
-import dhl.model.tokens.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -21,47 +20,18 @@ public class GuiUpdate {
      * updates the tokens on the field
      */
     public static void updateTokens(List<Node> tokens) {
-        int currentToken = 0;
-        while (currentToken <= 39) {
+        int tokenIndex = 0;
+        while (tokenIndex <= 39) {
             for (int i = 1; i <= 35; i++) {
-                if (Game.FIELDS[i].getToken() == null) {
-                    ((ImageView)tokens.get(currentToken)).setImage(null);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_MIRROR);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_GOBLIN);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint && ((Skullpoint) Game.FIELDS[i].getToken()).getPoints() == 1) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL1);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint && ((Skullpoint) Game.FIELDS[i].getToken()).getPoints() == 2) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL2);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint && ((Skullpoint) Game.FIELDS[i].getToken()).getPoints() == 3) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL3);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint && ((Skullpoint) Game.FIELDS[i].getToken()).getPoints() == 4) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL4);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SPIRAL);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_WEB);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
-                    currentToken++;
-                }
+                ((ImageView)tokens.get(tokenIndex)).setImage(getTokenImage(Game.FIELDS[i].getToken()));
+                tokenIndex++;
                 //if large field, check the second token
                 if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
-                    currentToken++;
+                    ((ImageView)tokens.get(tokenIndex)).setImage(IMG_STONE);
+                    tokenIndex++;
                 } else if (Game.FIELDS[i] instanceof LargeField) {
-                    ((ImageView)tokens.get(currentToken)).setImage(null);
-                    currentToken++;
+                    ((ImageView)tokens.get(tokenIndex)).setImage(null);
+                    tokenIndex++;
                 }
             }
         }

@@ -175,8 +175,8 @@ public class GameTest {
     public void getWinningPlayer() {
         player1.setVictoryPoints(20);
         player2.setVictoryPoints(10);
-        assertEquals(player1, game.getWinningPlayer());
+        assertEquals(player1, game.getSortedPlayers().get(0));
         player2.setVictoryPoints(30);
-        assertEquals(player2, game.getWinningPlayer());
+        assertEquals(player2, game.getSortedPlayers().get(0));
     }
 }

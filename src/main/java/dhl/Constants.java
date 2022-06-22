@@ -1,6 +1,7 @@
 package dhl;
 
 import dhl.controller.GuiController;
+import dhl.model.tokens.*;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
@@ -17,11 +18,10 @@ public class Constants {
     public static final String ORANGE = "#f2af4b";
     public static final Image IMG_GOBLIN = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/goblin.png")));
     public static final Image IMG_MIRROR = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/mirror.png")));
-    public static final Image IMG_SKULL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull.png")));
     public static final Image IMG_SKULL1 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull1.png")));
     public static final Image IMG_SKULL2 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull2.png")));
     public static final Image IMG_SKULL3 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull3.png")));
-    public static final Image IMG_SKULL4 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull4.png")));
+    public static final Image IMG_SKULL4 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull4.PNG")));
     public static final Image IMG_SPIRAL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/spiral.png")));
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));
@@ -44,5 +44,41 @@ public class Constants {
             case 'o': return Color.web(ORANGE);
             default: return Color.web("BLACK");
         }
+    }
+
+    /**
+     * gets the correct image to get given token
+     * @param token the token to get the matching img for
+     * @return Image that shows the given token
+     */
+    public static Image getTokenImage(Token token) {
+        if (token instanceof Mirror) {
+            return IMG_MIRROR;
+        } else if (token instanceof Goblin) {
+            return IMG_GOBLIN;
+        } else if (token instanceof Skullpoint) {
+            return getSkullImage(((Skullpoint) token).getPoints());
+        } else if (token instanceof Spiral) {
+            return IMG_SPIRAL;
+        } else if (token instanceof Spiderweb) {
+            return IMG_WEB;
+        } else if (token instanceof WishingStone) {
+            return IMG_STONE;
+        }
+        return null;
+    }
+
+    private static Image getSkullImage(int skullpoints) {
+        switch (skullpoints){
+            case 1:
+                return IMG_SKULL1;
+            case 2:
+                return IMG_SKULL2;
+            case 3:
+                return IMG_SKULL3;
+            case 4:
+                return IMG_SKULL4;
+        }
+        return null;
     }
 }
