@@ -1,10 +1,14 @@
 package dhl.controller;
 
+import dhl.Constants;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.*;
-import dhl.model.tokens.*;
+import dhl.model.tokens.Goblin;
+import dhl.model.tokens.Spiral;
+import dhl.model.tokens.Token;
+import dhl.view.GuiUpdate;
 import dhl.view.View;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -17,12 +21,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -32,8 +34,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static dhl.Constants.*;
-
 /**
  * This enum contains all the possible states a player can be in.
  */
@@ -41,8 +41,6 @@ enum State {
     PREPARATION,
     CHOOSEHANDCARD,
     TRASHORPLAY,
-    TRASH,
-    PLAY,
     SPIDERWEB,
     SPIRAL,
     GOBLIN,
@@ -293,16 +291,21 @@ public class GuiController {
         //update discarding piles
         updatePlayedCards();
         // update tokens
-        updateTokens();
+        List<Node> tokens = classifyChildren("token");
+        GuiUpdate.updateTokens(tokens);
         // update figures
-        updateFigures();
+        List<Node> circles = classifyChildren("circle");
+        GuiUpdate.updateFigures(circles, model.getPlayers());
         // update scores
-        updateScores();
-
+        List<Node> scores = classifyChildren("scorePlayer");
+        List<Node> scoreNames = classifyChildren("scoreName");
+        GuiUpdate.updateScores(scores, scoreNames, model.getPlayers());
+        //update discard piles
         updateDiscardPiles();
-
-        updateCollectedTokens();
-
+        //update collected tokens
+        HBox tokenBox = (HBox)classifyChildren("collectedToken").get(0);
+        GuiUpdate.updateCollectedTokens(activeP, tokenBox);
+        //write name and symbol of active player
         playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
     }
 
@@ -475,11 +478,9 @@ public class GuiController {
     }
 
     /**
-     * updates the hand cards, discarding and direction discarding piles
-     * hand cards white when players change
+     * updates the hand cards, hand cards grey when players change
      */
     private void updateCards() {
-
         //update hand cards
         List<Node> handCards = classifyChildren("handCard");
         if (!state.equals(State.PREPARATION)) {
@@ -490,7 +491,7 @@ public class GuiController {
                 Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
                 if (i < sortedHand.size()) {
                     cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
-                    card.setFill(changeColor(sortedHand.get(i).getColor()));
+                    card.setFill(Constants.charToColor(sortedHand.get(i).getColor()));
                 } else {
                     cardNumber.setText("");
                     card.setFill(Color.web("#c8d1d9"));
@@ -504,50 +505,8 @@ public class GuiController {
                 card.setFill(Color.web("#c8d1d9"));
             }
         }
-
     }
 
-    /**
-     * updates the tokens on the field
-     */
-    private void updateTokens() {
-        int currentToken = 0;
-        List<Node> tokens = classifyChildren("token");
-        while (currentToken <= 39) {
-            for (int i = 1; i <= 35; i++) {
-                if (Game.FIELDS[i].getToken() == null) {
-                    ((ImageView)tokens.get(currentToken)).setImage(null);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Mirror) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_MIRROR);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Goblin) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_GOBLIN);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Skullpoint) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SKULL);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiral) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_SPIRAL);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof Spiderweb) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_WEB);
-                    currentToken++;
-                } else if (Game.FIELDS[i].getToken() instanceof WishingStone) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
-                    currentToken++;
-                }
-                //if large field, check the second token
-                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
-                    ((ImageView)tokens.get(currentToken)).setImage(IMG_STONE);
-                    currentToken++;
-                } else if (Game.FIELDS[i] instanceof LargeField) {
-                    ((ImageView)tokens.get(currentToken)).setImage(null);
-                    currentToken++;
-                }
-            }
-        }
-    }
     private void updateDiscardPiles() {
         for(Node stackPane : classifyChildren("discardingPile")) {
             DiscardPile pile = getDiscardPileFromID(stackPane.getId());
@@ -586,60 +545,6 @@ public class GuiController {
         }
     }
 
-    private void updateCollectedTokens(){
-        HBox tokenBox = (HBox)classifyChildren("collectedToken").get(0);
-        //clear earlier tokens
-        tokenBox.getChildren().clear();
-        //print every wishing stone
-        for (int i = 0; i < activeP.getTokens()[0]; i++){
-            ImageView img = new ImageView(IMG_STONE);
-            img.setFitHeight(40);
-            img.setFitWidth(40);
-            tokenBox.getChildren().add(img);
-        }
-        // for every mirror
-        for (int i = 0; i < activeP.getTokens()[1]; i++){
-            ImageView img = new ImageView(IMG_MIRROR);
-            img.setFitHeight(40);
-            img.setFitWidth(40);
-            tokenBox.getChildren().add(img);
-        }
-    }
-
-    /**
-     * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
-     */
-    private void updateFigures() {
-        List<Node> circles = classifyChildren("circle");
-        //clear all fields
-        for (Node circle : circles) {
-            ((TilePane)circle).getChildren().clear();
-        }
-        //print the figure symbols
-        for (Player player : model.getPlayers()) {
-            for (Figure figure : player.getFigures()) {
-                ((TilePane)circles.get(figure.getPos())).getChildren().add(new Label(Character.toString(player.getSymbol())));
-            }
-        }
-    }
-
-    /**
-     * updates scores with corresponding player names
-     */
-    private void updateScores() {
-        List<Node> scores = classifyChildren("scorePlayer");
-        List<Node> scoreNames = classifyChildren("scoreName");
-        for (int i = 0; i < 4; i++) {
-            if (i > model.getPlayers().size() - 1) {
-                ((Label)scoreNames.get(i)).setText("");
-                ((Label)scores.get(i)).setText("");
-            } else {
-                ((Label)scoreNames.get(i)).setText(model.getPlayers().get(i).getName());
-                ((Label)scores.get(i)).setText(Integer.toString(model.getPlayers().get(i).getVictoryPoints()));
-            }
-        }
-    }
-
     /**
      * adds the player names on end screen (in order: winning - losing)
      */
@@ -667,23 +572,6 @@ public class GuiController {
             winnerList.add(playerList.get(i).getName());
         }
         return winnerList;
-    }
-
-    /**
-     * changes a color from char to color
-     *
-     * @param color as a char
-     * @return color according to string constant
-     */
-    private Color changeColor(char color){
-        switch (color){
-            case 'r': return Color.web(RED);
-            case 'g': return Color.web(GREEN);
-            case 'b': return Color.web(BLUE);
-            case 'p': return Color.web(PURPLE);
-            case 'o': return Color.web(ORANGE);
-            default: return Color.web("BLACK");
-        }
     }
 
     /**
