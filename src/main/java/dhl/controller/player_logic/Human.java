@@ -51,13 +51,13 @@ public class Human implements PlayerLogic {
         return FigureFunction.getFigureByPos(figurePos, figures);
     }
 
-    /**
-     * @param question the reason to choose the pile
-     * @return the chat the human enters
-     */
+    @Override
+    public int chooseOracleSteps(String question, int oracleNumber) {
+        return view.promptInt(1, oracleNumber, question);
+    }
+
     @Override
     public char choosePileColor(String question) {
         return view.promptColor(question);
     }
-
 }

@@ -143,9 +143,25 @@ public class   CliController {
         }
 
         // oracle or figure
-        //oracle: which number
+        while (true) {
+            try {
+                boolean chosen = player.getPlayerLogic().choose("Do you want to move a figure? " +
+                        "(If no, you move the witch)");
+                if(chosen) {
+                    //chose figure
+                    moveFigure(player, card);
+                } else {
+                    //chose oracle
+                    moveOracle(player, card);
+                }
+                break;
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+    }
 
-        //figure: which field
+    private void moveFigure(Player player, Card card) {
         while (true) {
             try {
                 Figure chosenFig = player.getPlayerLogic().chooseFigure("Which figure do you want to move? " +
@@ -154,6 +170,21 @@ public class   CliController {
                 break;
             } catch (IndexOutOfBoundsException indexE) {
                 view.error("This figure can't move this far.");
+            } catch (Exception e) {
+                view.error(e.getMessage());
+            }
+        }
+    }
+
+    private void moveOracle(Player player, Card card) {
+        while (true) {
+            try {
+                int steps = player.getPlayerLogic().chooseOracleSteps("How far do you want to move the witch? " +
+                        "(It can move up to " + card.getOracleNumber() + " steps)", card.getOracleNumber());
+                model.moveOracle(steps);
+                break;
+            } catch (IndexOutOfBoundsException indexE) {
+                view.error("The oracle can't move past the last field.");
             } catch (Exception e) {
                 view.error(e.getMessage());
             }

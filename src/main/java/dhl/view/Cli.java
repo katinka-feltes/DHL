@@ -288,11 +288,11 @@ public class Cli implements View {
         System.out.println();
 
         //print the boards first row (from 0-11)
-        printBoardPart(0,11, players);
+        printBoardPart(0,11, game);
         //print the boards first row (from 12-23)
-        printBoardPart(12,23, players);
+        printBoardPart(12,23, game);
         //print the boards first row (from 24-35)
-        printBoardPart(24,35, players);
+        printBoardPart(24,35, game);
 
         //print points
         System.out.print("Points: ");
@@ -308,9 +308,9 @@ public class Cli implements View {
      *
      * @param rowStart the first field of the board that will be printed
      * @param rowEnd the last field of the board that will be printed
-     * @param players the players of the game
+     * @param game the game
      */
-    private void printBoardPart(int rowStart, int rowEnd, List<Player> players){
+    private void printBoardPart(int rowStart, int rowEnd, Game game){
         // print index
         for (int i = rowStart; i <= rowEnd; i++){
             System.out.print("(" + i + ") \t");
@@ -342,8 +342,8 @@ public class Cli implements View {
         }
         System.out.println();
 
-        //Print figures of the players
-        for (Player p: players) {
+        //print figures of the players
+        for (Player p: game.getPlayers()) {
             for (int i = rowStart; i <= rowEnd; i++){
                 int figureAmount = FigureFunction.getFigureAmountOnField(i, p.getFigures());
                 for (int j = 0; j < figureAmount; j++){
@@ -357,5 +357,15 @@ public class Cli implements View {
             }
             System.out.println();
         }
+
+        //print oracle
+        for(int i = rowStart; i <= rowEnd; i++) {
+            if(i == game.getOracle()) {
+                System.out.print("♛");
+            } else {
+                System.out.print(TABULATOR);
+            }
+        }
+        System.out.println();
     }
 }

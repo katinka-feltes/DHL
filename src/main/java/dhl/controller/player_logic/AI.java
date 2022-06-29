@@ -34,6 +34,8 @@ public class AI implements PlayerLogic {
             return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return playableCards().size() < 3; // trash a hand card if only 2 of them be played
+        } else if (question.startsWith("Do you want to move a figure?")) {
+            return true; //TODO: if AI wants to move figure or oracle (true=figure; false=oracle)
         } else {
             return question.startsWith("Do you want to play your goblin-special?");// always play if it is possible, because it doesn't occur often
         }
@@ -86,6 +88,12 @@ public class AI implements PlayerLogic {
     @Override
     public Figure chooseFigure(String question, List<Figure> figures) {
         return chosenFigure;
+    }
+
+    @Override
+    public int chooseOracleSteps(String question, int oracleNumber) {
+        //TODO: how far the AI wants to move the oracle
+        return 1;
     }
 
     /**

@@ -43,6 +43,14 @@ public interface PlayerLogic {
     Figure chooseFigure(String question, List<Figure> figures);
 
     /**
+     * asks the logic to choose how far the oracle should move
+     * @param question the oracle choose question
+     * @param oracleNumber the most amount of steps the oracle can move
+     * @return chosen amount of steps as an Integer
+     */
+    int chooseOracleSteps(String question, int oracleNumber);
+
+    /**
      * asks the logic to choose a pile
      * @param question the reason to choose the pile
      * @return a teh color of the chosen pile as a char
