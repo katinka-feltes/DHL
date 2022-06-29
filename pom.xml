@@ -185,7 +185,8 @@
                         <exclude>dhl/Main.class</exclude>
                         <!-- Ignore the Controller classes because the public methods cannot be tested.
                         They would need several inputs according to unpredictable tokens and hand cards.-->
-                        <exclude>dhl/controller/**/*</exclude>
+                        <exclude>dhl/controller/CliController.class</exclude>
+                        <exclude>dhl/controller/GuiController.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>

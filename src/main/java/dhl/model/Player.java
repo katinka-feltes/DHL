@@ -94,6 +94,19 @@ public class Player {
     }
 
     /**
+     * moves the game's oracle figure forward
+     * and adds 5 points to the victory points if a figure is on the new field
+     * @param steps the amount of steps the oracle shall move
+     * @throws Exception if the figure would leave the field
+     */
+    public void placeOracle(int steps) throws Exception{
+        game.moveOracle(steps);
+        if (FigureFunction.getFigureAmountOnField(game.getOracle(), figures) > 0){
+            victoryPoints+=5;
+        }
+    }
+
+    /**
      * Allows to place a card on the discarding pile.
      * Removes the card from hand and sets last trashed card.
      * The card gets sorted to the correct color discarding pile.

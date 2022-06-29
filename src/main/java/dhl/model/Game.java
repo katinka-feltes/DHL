@@ -64,6 +64,7 @@ public class Game {
     private final List<Player> players;
 
     private final List<Token> tokens;
+    private int oracle; // the index of the field the oracle is standing on
 
     /**
      * This method sets the game for each player and also creates their deck.
@@ -86,7 +87,7 @@ public class Game {
      */
     public Game(List<Player> players) {
         readHighscores();
-        //initializing discard piles and the players list
+        //initializing discard piles, the players list and the oracle
         discardingPileRed = new DiscardPile('r');
         discardingPileBlue = new DiscardPile('b');
         discardingPileGreen = new DiscardPile('g');
@@ -94,6 +95,7 @@ public class Game {
         discardingPileOrange = new DiscardPile('o');
         drawingPile = new DrawingPile();
         this.players = players;
+        oracle = 0;
 
         tokens = new ArrayList<>();
 
@@ -201,7 +203,7 @@ public class Game {
     /**
      * this method randomises the order of the tokens and places them on the fields
      */
-    public void placeTokens() {
+    private void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
         for (Field field : FIELDS) {
@@ -314,6 +316,20 @@ public class Game {
      */
     public int getPlayerAmount() {
         return players.size();
+    }
+
+    public int getOracle() {return oracle;}
+
+    /**
+     * moves the oracle the given amount of steps forward
+     * @param steps the amount of steps the oracle should move forward
+     * @throws Exception if the oracle would leave the field
+     */
+    public void moveOracle(int steps) throws Exception{
+        if(oracle+steps >= FIELDS.length){
+            throw new Exception("The oracle cannot move this far!");
+        }
+        oracle+=steps;
     }
 
     public List<String> getHighscores() {
