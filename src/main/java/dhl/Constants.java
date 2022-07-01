@@ -25,6 +25,7 @@ public class Constants {
     public static final Image IMG_SPIRAL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/spiral.png")));
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));
+    public static final Image IMG_DISC = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/diskette.png")));
     //add player to the players-list
 
     public static final char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
