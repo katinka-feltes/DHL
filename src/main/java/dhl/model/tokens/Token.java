@@ -2,10 +2,12 @@ package dhl.model.tokens;
 
 import dhl.model.Player;
 
+import java.io.Serializable;
+
 /**
  * This Interface provides the basic functionality of a Token.
  */
-public interface Token {
+public interface Token extends Serializable{
 
     /**
      * @return true if the token will be collected, false otherwise

@@ -1,15 +1,15 @@
 package dhl.model;
 
-import java.util.Collections;
-import java.util.Stack;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * This Class represents a Drawing Pile. It is realised as a Stack. When you create it it gets shuffled.
  * You can draw cards from the Top
  */
-public class DrawingPile {
+public class DrawingPile implements Serializable {
 
-    private final Stack<Card> cards;
+    private final List<Card> cards;
 
     /**
      * Constructor of the class
@@ -17,7 +17,7 @@ public class DrawingPile {
      */
     public DrawingPile() {
         char[] colors2x = {'r', 'g', 'b', 'p', 'o', 'r', 'g', 'b', 'p', 'o'};
-        cards = new Stack<>();
+        cards = new ArrayList<>();
         for (char color : colors2x) {
             for (int i = 0; i <= 10; i++) {
                 cards.add(new Card(i, color)) ;
@@ -31,7 +31,7 @@ public class DrawingPile {
      * @return the top card from the drawing pile
      */
     public Card draw() {
-        return cards.pop();
+        return cards.get(0);
     }
 
 
@@ -43,7 +43,7 @@ public class DrawingPile {
         return cards.isEmpty();
     }
 
-    public Stack<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 }

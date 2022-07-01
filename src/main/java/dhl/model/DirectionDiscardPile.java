@@ -7,6 +7,7 @@ package dhl.model;
 public class DirectionDiscardPile extends DiscardPile{
 
     private int direction; //-1 if decreasing, 0 if not set and 1 if increasing
+    private int directionSet; //the index of the moment the direction was set
 
     /**
      * The constructor for DiscardPile
@@ -58,13 +59,24 @@ public class DirectionDiscardPile extends DiscardPile{
             //difference between card to add and top card of pile, larger 0 if added card is higher
             if(difference > 0){
                 direction = 1;
+                directionSet = pile.size() + 1;
             } else if(difference < 0){
                 direction = -1;
+                directionSet = pile.size() + 1;
             }
         }
 
         //add card to pile
-        super.pile.add(card);
+        pile.add(card);
+    }
+
+    @Override
+    public Card getAndRemoveTop() {
+        if(pile.size() <= 2 || pile.size() == directionSet) {
+            direction = 0;
+            directionSet = 0;
+        }
+        return super.getAndRemoveTop();
     }
 
     /**

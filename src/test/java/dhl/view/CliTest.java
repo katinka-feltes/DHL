@@ -20,20 +20,20 @@ public class CliTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    @BeforeEach
     /**
      * creates a new Cli and a Game with 2 players
      */
+    @BeforeEach
     public void setUp() {
         c = new Cli();
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
 
-    @Test
     /**
      * tests if method promptColor works
      */
+    @Test
     public void promptColor() {
         String input;
         InputStream bytes;
@@ -46,10 +46,10 @@ public class CliTest {
         assertEquals('b', ch);
     }
 
-    @Test
     /**
      * tests if method promptCardString works
      */
+    @Test
     public void promptCardString() {
         String input;
         InputStream bytes;

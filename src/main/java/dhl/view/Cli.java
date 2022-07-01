@@ -4,6 +4,7 @@ package dhl.view;
 
 import dhl.model.*;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -13,8 +14,7 @@ import static dhl.model.Game.FIELDS;
 /**
  * Starting point of the command line interface
  */
-@SuppressWarnings("ClassEscapesDefinedScope")
-public class Cli implements View {
+public class Cli implements View, Serializable {
 
     private static final String TABULATOR = "\t\t";
 

@@ -135,7 +135,7 @@ public class AI implements PlayerLogic {
                 if(steps == -100) {break;} // if the card would move the figure too far
                 int pointDifference = FIELDS[figure.getPos() + steps].getPoints() - FIELDS[figure.getPos()].getPoints();
 
-                int points = steps + ((int)0.7 * pointDifference); //steps plus the gained points due to the steps
+                int points = steps + pointDifference; //steps plus the gained points due to the steps
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
                 points += tokenWorth(FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
@@ -212,6 +212,8 @@ public class AI implements PlayerLogic {
                     return 1;
                 case "WishingStone":
                     return 3; // on average 2,8 points
+                default:
+                    //do nothing
             }
         }
         return 0;

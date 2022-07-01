@@ -1,12 +1,13 @@
 package dhl.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This Class represents a Discard Pile. You can discard any card on it you want.
+ * This Class represents a Discard Pile. You can discard any card on it, you want.
  */
-public class DiscardPile {
+public class DiscardPile  implements Serializable {
     protected final List<Card> pile;
     protected final char color;
 

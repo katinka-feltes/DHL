@@ -312,6 +312,8 @@ public class GuiController {
                         case SPIRAL:
                             useSpiral(ai.chooseSpiralPosition("", chosenFigure.getPos()));
                             break;
+                        default:
+                            //do nothing
                     }
                 }
             } catch (Exception e) {
@@ -398,7 +400,7 @@ public class GuiController {
 
         int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
         List<Node> currentDiscardPileName = classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor());
-        List<Node> currentDiscardPileDir = classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor());
+        List<Node> currentDiscardPileDir = classifyChildren("playedCardsDir" +currentPlayerIndex + pile.getColor());
         ((Label) currentDiscardPileDir.get(0)).setText("" + pile.getDirectionString());
         if (pile.isEmpty()) {
             ((Label) currentDiscardPileName.get(0)).setText("");

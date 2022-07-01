@@ -5,6 +5,7 @@ import dhl.model.tokens.*;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -12,7 +13,7 @@ import java.util.*;
  * This Class represents a Game. A Game has a list of players, a playingfield (list of Fields), a list of tokens,
  * a Drwaingpile and a list of discard piles. It is one of the main classes of the project.
  */
-public class Game {
+public class Game implements Serializable {
 
     public static final Field[] FIELDS = {
             new LargeField(0, 'w', 0),
@@ -59,7 +60,6 @@ public class Game {
     private final DiscardPile discardingPileGreen;
     private final DiscardPile discardingPilePurple;
     private final DiscardPile discardingPileOrange;
-
     private final DrawingPile drawingPile;
     private final List<Player> players;
 
@@ -225,21 +225,20 @@ public class Game {
         // example: 34 - Janne - Human
         String separator = " - ";
         highScores.add(points + separator + name + separator + temp[temp.length-1]);
-        Collections.sort(highScores, (a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1  : 0);
+        highScores.sort((a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1 : 0);
         if (highScores.size() > 3) {
             highScores = highScores.subList(0,3); //trim to the best 3
         }
 
         // update the file
-        FileWriter file =  null ;
-        try  {
-            file =  new  FileWriter ( "src/main/resources/highscores.txt" );
-            for  ( String line :highScores )  {
+        try {
+            FileWriter file = new FileWriter ("src/main/resources/highscores.txt");
+            for (String line :highScores)  {
                 file.write(line + "\n" ); // Write line by line in the file
             }
             file.close();
-        }  catch  ( Exception ex )  {
-            System.out.println ( "Message of exception:"  + ex . getMessage ());
+        } catch (Exception ex)  {
+            System.out.println("Message of exception:" + ex.getMessage());
         }
     }
 
@@ -247,13 +246,13 @@ public class Game {
      * method reads the file which has the highscores saved
      * and adds them to string-list highscores
      */
-    private void readHighscores(){
+    private void readHighscores() {
         highScores.clear();
         Scanner s = null ;
-        try  {
-            File file = new File ("src/main/resources/highscores.txt");
+        try {
+            File file = new File("src/main/resources/highscores.txt");
             s =  new  Scanner ( file ); // read the file contents
-            while  ( s.hasNextLine())  { // Read the file line by line
+            while ( s.hasNextLine())  { // Read the file line by line
                 String line = s.nextLine();
                 highScores.add(line);
             }

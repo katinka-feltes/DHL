@@ -1,9 +1,11 @@
 package dhl.model;
 
+import java.io.Serializable;
+
 /**
  * This Class represents a Card. A Card has a number and a color.
  */
-public class Card {
+public class Card implements Serializable {
     private final int number;
     private final char color;
     private final int oracleNumber;

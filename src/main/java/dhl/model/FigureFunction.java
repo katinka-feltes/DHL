@@ -9,6 +9,8 @@ import static dhl.model.Game.FIELDS;
  * This Class implements the function of the figures in the game
  */
 public class FigureFunction {
+    private FigureFunction(){
+    }
 
     /**
      * @param fieldIndex the index of the field to get the figure-amount from

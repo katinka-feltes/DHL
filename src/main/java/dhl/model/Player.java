@@ -5,6 +5,7 @@ import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.WishingStone;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +16,10 @@ import static dhl.model.Game.FIELDS;
  * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),
  * a list of figures and the last played figure and finally a list of tokens.
  */
-public class Player {
+public class Player implements Serializable {
 
     private final PlayerLogic playerLogic;
-    private String name;
+    private final String name;
     private final char symbol;
     private Game game;
     private final DirectionDiscardPile[] playedCards = new DirectionDiscardPile[5];

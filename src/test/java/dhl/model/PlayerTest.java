@@ -19,10 +19,10 @@ public class PlayerTest {
     Game game;
     Player player;
 
-    @BeforeEach
     /**
      * creates a new game with 2 players
      */
+    @BeforeEach
     public void setup() {
         List<Player> players = new ArrayList<>();
         players.add(new Player("test1", 'v', new Human(new Cli())));
@@ -31,10 +31,10 @@ public class PlayerTest {
         player = game.getPlayers().get(0);
     }
 
-    @Test
     /**
      * tests if method placeFigure works
      */
+    @Test
     public void placeFigure() {
         Figure fig = FigureFunction.getFigureByPos(1, player.getFigures());
         player.placeFigure('r', fig);
@@ -46,10 +46,11 @@ public class PlayerTest {
         assertEquals(4, fig.getPos());
     }
 
-    @Test
+
     /**
      * tests if method getFigureAmountOnField from class FigureFunction works
      */
+    @Test
     public void getFigureAmountOnField() {
         player.getFigures().get(0).setPos(5);
         player.getFigures().get(1).setPos(7);
@@ -61,18 +62,18 @@ public class PlayerTest {
         assertEquals(3, FigureFunction.getFigureAmountOnField(7, player.getFigures()));
     }
 
-    @Test
     /**
      * tests if method getName works
      */
+    @Test
     public void getName() {
         assertEquals("test1", player.getName());
     }
 
-    @Test
     /**
      * tests if method getHand works
      */
+    @Test
     public void getHand() {
         game.setup();
         assertEquals(8, player.getHand().size());
@@ -81,27 +82,27 @@ public class PlayerTest {
         }
     }
 
-    @Test
     /**
      * tests if method getVictoryPoints works
      */
+    @Test
     public void getVictoryPoints() {
         assertEquals(0, player.getVictoryPoints());
     }
 
-    @Test
     /**
      * tests if method setVictoryPoints works
      */
+    @Test
     public void setVictoryPoints() {
         player.setVictoryPoints(10);
         assertEquals(10, player.getVictoryPoints());
     }
 
-    @Test
     /**
      * tests if method getFigureByPos in class FigureFunction works
      */
+    @Test
     public void getFigureByPos() {
         player.getFigures().get(0).setPos(3);
         player.getFigures().get(1).setPos(5);
@@ -114,19 +115,19 @@ public class PlayerTest {
         assertEquals(FigureFunction.getFigureByPos(2, player.getFigures()), player.getFigures().get(1));
     }
 
-    @Test
     /**
      * tests if method getLastMovedFigure works
      */
+    @Test
     public void getLastMovedFigure() {
         player.placeFigure('r', FigureFunction.getFigureByPos(1, player.getFigures()));
         assertEquals(FigureFunction.getFigureByPos(1, player.getFigures()), player.getLastMovedFigure());
     }
 
-    @Test
     /**
      * tests if method drawFromDiscardingPile works
      */
+    @Test
     public void drawFromDiscardingPile() throws Exception {
         player.getHand().clear();
         // add card to wrong pile
@@ -142,20 +143,22 @@ public class PlayerTest {
         assertEquals(2, player.getHand().get(0).getNumber());
     }
 
-    @Test
+
     /**
      * tests if method drawFromDrawingPile works
      */
+    @Test
     public void drawFromDrawingPile() {
         player.getHand().clear();
         player.drawFromDrawingPile();
         assertEquals(1, player.getHand().size());
     }
 
-    @Test
+
     /**
      * tests if method canPlay works
      */
+    @Test
     public void canPlay() {
         player.getHand().clear();
         player.getHand().add(new Card(2, 'r'));
@@ -164,10 +167,10 @@ public class PlayerTest {
         assertFalse(player.canPlay());
     }
 
-    @Test
     /**
      * tests if method amountFiguresGoblin works
      */
+    @Test
     public void amountFiguresGoblin(){
         assertEquals(0, player.amountFiguresGoblin());
         Game.FIELDS[0].setToken(new Goblin());
@@ -182,10 +185,11 @@ public class PlayerTest {
         assertEquals(2, player.amountFiguresGoblin());
     }
 
-    @Test
+
     /**
      * tests if method goblinSpecialPoints works
      */
+    @Test
     public void goblinSpecialPoints(){
         Game.FIELDS[0].setToken(new Goblin());
         assertEquals(5 , player.goblinSpecialPoints());
@@ -199,10 +203,10 @@ public class PlayerTest {
         assertEquals(0 , player.goblinSpecialPoints());
     }
 
-    @Test
     /**
      * tests if method playGoblinSpecial works
      */
+    @Test
     public void playGoblinSpecial(){
         assertFalse(player.isGoblinSpecialPlayed());
         Game.FIELDS[0].setToken(new Goblin());
@@ -214,10 +218,10 @@ public class PlayerTest {
 
     }
 
-    @Test
     /**
      * tests if method cardFitsToAnyPile works
      */
+    @Test
     public void cardFitsToAnyPile() {
         player.getHand().clear();
         player.getHand().add(new Card(0, 't'));
@@ -236,10 +240,10 @@ public class PlayerTest {
         player.getHand().clear();
     }
 
-    @Test
     /**
      * tests if method calcTokenPoints works
      */
+    @Test
     public void calcTokenPoints() {
         player.increaseStoneAmount();
         player.increaseMirrorAmount();
@@ -250,10 +254,11 @@ public class PlayerTest {
         assertEquals(-12, calculatedPoints);
     }
 
-    @Test
+
     /**
      * tests if method getSortedHand works
      */
+    @Test
     public void getSortedHand() {
         player.getHand().removeAll(player.getHand());
         player.getHand().add(new Card(1, 'r'));
@@ -265,7 +270,7 @@ public class PlayerTest {
         player.getHand().add(new Card(0, 'b'));
         player.getHand().add(new Card(0, 'o'));
 
-        List<Card> sortedHand = new ArrayList<Card>(CardFunction.sortHand(player.getHand()));
+        List<Card> sortedHand = new ArrayList<>(CardFunction.sortHand(player.getHand()));
         assertEquals('b', sortedHand.get(0).getColor());
         assertEquals(0, sortedHand.get(0).getNumber());
         assertEquals('b', sortedHand.get(1).getColor());
@@ -273,10 +278,10 @@ public class PlayerTest {
         assertEquals(2, sortedHand.get(sortedHand.size()-1).getNumber());
     }
 
-    @Test
     /**
      * tests if method getCardFromHand works
      */
+    @Test
     public void getCardFromHand() throws Exception {
         player.getHand().clear();
         player.getHand().add(new Card(2, 'r'));

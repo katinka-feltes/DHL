@@ -1,11 +1,13 @@
 package dhl.model;
 
+import java.io.Serializable;
+
 import static dhl.model.Game.FIELDS;
 
 /**
  * This Class represents a Figure. A Figure has a position, a last position and a color.
  */
-public class Figure {
+public class Figure implements Serializable {
     private int pos;
     private int latestPos;
 

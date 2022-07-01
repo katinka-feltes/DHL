@@ -23,10 +23,10 @@ public class TokenTest {
     private Game game;
     private Player player;
 
-    @BeforeEach
     /**
      * creates one of each tokens and a game with 2 players
      */
+    @BeforeEach
     public void setup(){
         goblin = new Goblin();
         mirror = new Mirror();
@@ -43,19 +43,19 @@ public class TokenTest {
         player = game.getPlayers().get(0);
     }
 
-    @Test
     /**
      * tests if method isCollectable works for collectable tokens
      */
+    @Test
     public void isCollectable() {
         assertTrue(mirror.isCollectable());
         assertTrue(stone.isCollectable());
     }
 
-    @Test
     /**
      * tests if method isCollectable works for not-collectable tokens
      */
+    @Test
     public void isNotCollectable() {
         assertFalse(goblin.isCollectable());
         assertFalse(skull.isCollectable());
@@ -63,10 +63,10 @@ public class TokenTest {
         assertFalse(spiral.isCollectable());
     }
 
-    @Test
     /**
      * tests if method getName works
      */
+    @Test
     public void getName() {
         assertEquals("Goblin", goblin.getName());
         assertEquals("Mirror", mirror.getName());
@@ -75,10 +75,10 @@ public class TokenTest {
         assertEquals("WishingStone", stone.getName());
     }
 
-    @Test
     /**
      * tests if method getSymbol works
      */
+    @Test
     public void getSymbol() {
         assertEquals('G', goblin.getSymbol());
         assertEquals('M', mirror.getSymbol());
@@ -87,10 +87,10 @@ public class TokenTest {
         assertEquals('\u058E', spiral.getSymbol());
     }
 
-    @Test
     /**
      * tests if action of collectable tokens (mirror + wishingstone) works
      */
+    @Test
     public void actionCollectables(){
         // test mirror action
         assertEquals(0,player.getTokens()[0]);
@@ -102,20 +102,20 @@ public class TokenTest {
         assertEquals(1,player.getTokens()[0]);
     }
 
-    @Test
     /**
      * tests if action of skullpoint token works
      */
+    @Test
     public void actionSkullpoints(){
         assertEquals(0, player.getVictoryPoints());
         skull.action(player);
         assertEquals(1, player.getVictoryPoints());
     }
 
-    @Test
     /**
      * tests if action of spiderweb works
      */
+    @Test
     public void actionSpiderweb(){
         Figure figure1 = player.getFigures().get(0);
         Figure figure2 = player.getFigures().get(1);
@@ -128,10 +128,10 @@ public class TokenTest {
         assertEquals(figure1.getPos(), figure2.getPos());
     }
 
-    @Test
     /**
      * tests if action of spiral works
      */
+    @Test
     public void actionSpiral(){
         Figure figure = player.getFigures().get(0);
         player.placeFigure('p', figure); // move figure to the field with index 1
@@ -144,10 +144,10 @@ public class TokenTest {
         assertEquals(3, figure.getPos());
     }
 
-    @Test
     /**
      * tests if action of goblin works when player chooses a pile
      */
+    @Test
     public void goblinActionChosePile() throws Exception{
 
         goblin.action(player); // nothing should happen if no pile is set
@@ -181,7 +181,7 @@ public class TokenTest {
     }
 
     /**
-     * tests if action of goblin works when player chooses a handcard
+     * tests the Goblin if Hand was chosen
      */
     @Test
     public void goblinActionChoseHand() {
@@ -195,10 +195,10 @@ public class TokenTest {
         assertEquals(card, game.getDiscardPile('p').getTop());
     }
 
-    @Test
     /**
      * tests if method setPileChoice works
      */
+    @Test
     public void setPileChoice() {
         ((Goblin) goblin).setPileChoice('r');
         assertEquals('r', ((Goblin) goblin).getPileChoice());

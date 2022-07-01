@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class FieldTest {
 
-    @Test
     /**
      * tests if method collectToken works for collectable
      * tokens on normal fields
      */
+    @Test
     public void collectCollectableTokenFromField() {
         Field f = new Field(5, 'r');
         //set collectable token
@@ -26,11 +26,11 @@ public class FieldTest {
         assertNull(f.collectToken());
     }
 
-    @Test
     /**
      * tests if method collectToken works for not-collectable
      * tokens on normal fields
      */
+    @Test
     public void collectNotCollectableTokenFromField() {
         Field f = new Field(5, 'r');
         //set not collectable token
@@ -45,6 +45,7 @@ public class FieldTest {
     /**
      * tests if method collectToken works on large fields
      */
+    @Test
     public void collectTokenLargeField() {
         //test large field collect token
         LargeField lf = new LargeField(7, 'b', 2);

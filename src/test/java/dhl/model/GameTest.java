@@ -19,10 +19,10 @@ public class GameTest {
     private Player player1;
     private Player player2;
 
-    @BeforeEach
     /**
      * creates a new game with 3 players
      */
+    @BeforeEach
     public void setup() {
         List<Player> players = new ArrayList<>();
         players.add(new Player("test1", 'v', new Human(new Cli())));
@@ -40,10 +40,10 @@ public class GameTest {
                 game.getDiscardPile('r').pile.size();
     }
 
-    @Test
     /**
      * tests if method gameOver works
      */
+    @Test
     public void gameOver() {
         //checks if game ends when one player has all 3 in finish area
         List<Figure> figures = player1.getFigures();
@@ -67,11 +67,11 @@ public class GameTest {
         assertTrue(game.gameOver());
     }
 
-    @Test
     /**
      * tests if method putCardOnDiscardingPile works
      */
-    public void putCardOnDiscardingPile() throws Exception {
+    @Test
+    public void putCardOnDiscardingPile() {
         player1.getHand().clear();
         player1.getHand().add(new Card(1, 'r'));
         player1.getHand().add(new Card(1, 'g'));
@@ -85,11 +85,11 @@ public class GameTest {
         assertEquals(5, getSizeOfDiscardingPiles());
     }
 
-    @Test
     /**
      * tests if method canDrawFromDiscarding works
      * false when lastTrashed = top card of same colored pile and others empty
      */
+    @Test
     public void canDrawFromDiscardingLastTrashed() {
         player1.setLastTrashed(new Card(5, 'b'));
         game.getDiscardPile('b').pile.add(player1.getLastTrashed());
@@ -112,11 +112,11 @@ public class GameTest {
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
     }
 
-    @Test
     /**
      * also tests if method canDrawFromDiscarding works
      * false when all piles empty and true if one card different to last trashed exists
      */
+    @Test
     public void canDrawFromDiscardingOtherOptions() {
         //false if all piles are empty
         assertFalse(game.canDrawFromDiscarding(player1.getLastTrashed()));
@@ -127,10 +127,10 @@ public class GameTest {
         assertTrue(game.canDrawFromDiscarding(player1.getLastTrashed()));
     }
 
-    @Test
     /**
      * tests if method getDrawingPile works
      */
+    @Test
     public void getDrawingPile() {
         assertEquals(86, game.getDrawingPile().getCards().size());
         player1.getHand().removeAll(player1.getHand());
@@ -139,28 +139,28 @@ public class GameTest {
         assertEquals(84, game.getDrawingPile().getCards().size());
     }
 
-    @Test
     /**
      * tests if method getPlayers works
      */
+    @Test
     public void getPlayers() {
         assertEquals(3, game.getPlayers().size());
         game.getPlayers().remove(player1);
         assertEquals(2, game.getPlayers().size());
     }
 
-    @Test
     /**
      * tests if method getPlayerAmount works
      */
+    @Test
     public void getPlayerAmount() {
         assertEquals(3, game.getPlayerAmount());
     }
 
-    @Test
     /**
      * tests if method setup works
      */
+    @Test
     public void createDecks() {
         game.setup();
         for (Player player1 : game.getPlayers()) {
@@ -168,10 +168,10 @@ public class GameTest {
         }
     }
 
-    @Test
     /**
      * tests if method getWinningPlayer works
      */
+    @Test
     public void getWinningPlayer() {
         player1.setVictoryPoints(20);
         player2.setVictoryPoints(10);

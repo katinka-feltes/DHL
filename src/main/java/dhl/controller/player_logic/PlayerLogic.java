@@ -3,12 +3,13 @@ package dhl.controller.player_logic;
 import dhl.model.Card;
 import dhl.model.Figure;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * An attribute of a Player (Human or AI) that determines how an action is executed
  */
-public interface PlayerLogic {
+public interface PlayerLogic extends Serializable {
 
     /**
      * asks the logic to choose which field figure should be moved to (spiral action)
