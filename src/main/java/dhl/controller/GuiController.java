@@ -20,7 +20,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -41,6 +40,7 @@ public class GuiController {
     private Card chosenCard;
     private Figure chosenFigure;
     private Player activeP;
+
     /**
      * This Label shows what the player has to do.
      */
@@ -161,7 +161,7 @@ public class GuiController {
      * @throws IOException if the FXML file is not found
      */
     @FXML
-    public void onClick(MouseEvent e) throws IOException {
+    public void onClick(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
         if(model.gameOver()) { //game over screen
             for (Player p : model.getPlayers()) {
@@ -183,10 +183,12 @@ public class GuiController {
             }
         } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-            toDo.setText("Click a figure to move or trash it.");
+            toDo.setText("Click a figure to move, the zombie at the bottom to move the zombie figure or trash it.");
             state = State.TRASHORPLAY;
         } else if (state == State.TRASHORPLAY) {
             trashOrPlay(item);
+        } else if (state == State.ORACLE) {
+            oracle(item);
         } else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
             spiral(item);
         } else if (state == State.SPIDERWEB) {
@@ -202,6 +204,7 @@ public class GuiController {
         }
         updateAll();
     }
+
     /**
     @FXML
     private void highlightWhileHover(MouseEvent e){
@@ -276,6 +279,28 @@ public class GuiController {
             } catch (Exception exception) {
                 toDo.setText(exception.getMessage());
             }
+        } else if (item.getId().startsWith("zombie")) {
+            toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
+                    chosenCard.getOracleNumber() + " steps forward");
+            state = State.ORACLE;
+        }
+    }
+
+    /**
+     * what happens in state oracle after item is clicked
+     * @param item the clicked item
+     * @throws Exception if the figure would leave the field
+     */
+    private void oracle(Node item) throws Exception {
+        toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
+                chosenCard.getOracleNumber() + " steps forward");
+        activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
+        activeP.getHand().remove(chosenCard);
+        int chosenPosition = getIndex(item.getId(), "circle");
+        if(chosenPosition <= model.getOracle()+chosenCard.getOracleNumber() && chosenPosition > model.getOracle()) {
+            activeP.placeOracle(chosenPosition - model.getOracle());
+            state = State.DRAW;
+            toDo.setText("From which pile do you want to draw?");
         }
     }
 
@@ -287,7 +312,7 @@ public class GuiController {
         // update tokens
         GuiUpdate.updateTokens(classifyChildren("token"));
         // update figures
-        GuiUpdate.updateFigures(classifyChildren("circle"), model.getPlayers());
+        GuiUpdate.updateFigures(classifyChildren("circle"), model.getPlayers(), model.getOracle());
         // update scores
         GuiUpdate.updateScores(classifyChildren("scorePlayer"), classifyChildren("scoreName"), model.getPlayers());
         //update discard piles
@@ -492,6 +517,7 @@ public class GuiController {
                 break;
         }
     }
+
     private void updatePlayedCardsAndNames() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
         if (chosenCard != null && activeP.getPlayedCards(chosenCard.getColor()).getTop() != null &&
@@ -538,6 +564,7 @@ public class GuiController {
         char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length - 1]);
     }
+
     /**
      * gets the matching direction discard pile to color in id
      *
@@ -562,7 +589,4 @@ public class GuiController {
             return model.getPlayers().get(index + 1);
         }
     }
-
-
-
 }

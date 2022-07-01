@@ -20,6 +20,7 @@ public class Constants {
     public static final String BLUE = "#424ebc";
     public static final String PURPLE = "#a45ab9";
     public static final String ORANGE = "#f2af4b";
+    public static final Image IMG_ZOMBIE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/zombie.png")));
     public static final Image IMG_GOBLIN = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/goblin.png")));
     public static final Image IMG_MIRROR = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/mirror.png")));
     public static final Image IMG_SKULL1 = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/skull1.PNG")));
@@ -29,7 +30,7 @@ public class Constants {
     public static final Image IMG_SPIRAL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/spiral.png")));
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));
-    public static final Image IMG_DISC = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/diskette.png")));
+   // public static final Image IMG_DISC = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/diskette.png")));
     //add player to the players-list
 
     public static final char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
@@ -50,6 +51,7 @@ public class Constants {
             default: return Color.web("BLACK");
         }
     }
+
     /**
      * gets the correct image to get given token
      * @param token the token to get the matching img for

@@ -1192,13 +1192,10 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-            <ImageView fitHeight="143.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="zombie" accessibleRole="BUTTON" fitHeight="143.0" fitWidth="160.0" onMouseClicked="#onClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@zombie1.png" />
                </image>
-               <HBox.margin>
-                  <Insets right="120.0" />
-               </HBox.margin>
             </ImageView>
                 <VBox alignment="CENTER" prefHeight="104.0" prefWidth="718.0">
                     <children>

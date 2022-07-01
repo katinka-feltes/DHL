@@ -67,7 +67,7 @@ public class GuiUpdate {
     /**
      * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
      */
-    public static void updateFigures(List<Node> circles, List<Player> players) {
+    public static void updateFigures(List<Node> circles, List<Player> players, int oraclePosition) {
         //clear all fields
         for (Node circle : circles) {
             ((TilePane)circle).getChildren().clear();
@@ -78,6 +78,11 @@ public class GuiUpdate {
                 ((TilePane)circles.get(figure.getPos())).getChildren().add(new Label(Character.toString(player.getSymbol())));
             }
         }
+        //print the oracle symbol
+        ImageView image = new ImageView(IMG_ZOMBIE);
+        image.setFitHeight(15);
+        image.setFitWidth(15);
+        ((TilePane)circles.get(oraclePosition)).getChildren().add(image);
     }
 
     /**
@@ -106,6 +111,7 @@ public class GuiUpdate {
             }
         }
     }
+
     /**
      * updates the hand cards, hand cards grey when players change
      */

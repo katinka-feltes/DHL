@@ -72,14 +72,6 @@ public class   CliController {
 
             playCard(player);
 
-            // updating the board
-            view.printCurrentBoard(model);
-            view.printTopCards(player);
-            view.printHand(player);
-
-            // collecting or using tokens
-            usingToken(player);
-
         } else {
             trashCard(player);
         }
@@ -102,7 +94,7 @@ public class   CliController {
     private void drawOne(Player player) {
         if (model.canDrawFromDiscarding(player.getLastTrashed())
                 && player.getHand().size() < 8
-                && player.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles? (if not, you draw from the drawing pile)")) {
+                && player.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles? (if no, you draw from the drawing pile)")) {
 
             while (true) {
                 try {
@@ -146,10 +138,18 @@ public class   CliController {
         while (true) {
             try {
                 boolean chosen = player.getPlayerLogic().choose("Do you want to move a figure? " +
-                        "(If no, you move the witch)");
+                        "(if no, you move the zombie)");
                 if(chosen) {
                     //chose figure
                     moveFigure(player, card);
+
+                    // updating the board
+                    view.printCurrentBoard(model);
+                    view.printTopCards(player);
+                    view.printHand(player);
+
+                    // collecting or using tokens
+                    usingToken(player);
                 } else {
                     //chose oracle
                     moveOracle(player, card);
@@ -179,9 +179,9 @@ public class   CliController {
     private void moveOracle(Player player, Card card) {
         while (true) {
             try {
-                int steps = player.getPlayerLogic().chooseOracleSteps("How far do you want to move the witch? " +
+                int steps = player.getPlayerLogic().chooseOracleSteps("How far do you want to move the zombie? " +
                         "(It can move up to " + card.getOracleNumber() + " steps)", card.getOracleNumber());
-                model.moveOracle(steps);
+                player.placeOracle(steps);
                 break;
             } catch (IndexOutOfBoundsException indexE) {
                 view.error("The oracle can't move past the last field.");
@@ -215,7 +215,7 @@ public class   CliController {
     }
 
     /**
-     * this method decides witch token action comes in to play
+     * this method decides which token action is played
      *
      * @param player the current player
      */

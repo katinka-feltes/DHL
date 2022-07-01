@@ -7,6 +7,7 @@ public enum State {
     PREPARATION,
     CHOOSEHANDCARD,
     TRASHORPLAY,
+    ORACLE,
     SPIDERWEB,
     SPIRAL,
     GOBLIN,
