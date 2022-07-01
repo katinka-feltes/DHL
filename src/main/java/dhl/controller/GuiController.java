@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -201,6 +202,14 @@ public class GuiController {
         }
         updateAll();
     }
+    /**
+    @FXML
+    private void highlightWhileHover(MouseEvent e){
+         Node node = (Node) e.getSource();
+         Glow glow;
+         node.setEffect(glow);
+
+    }*/
 
     private boolean draw(Node item) {
         if (item.getId().startsWith("discardingPile")) {
@@ -553,5 +562,7 @@ public class GuiController {
             return model.getPlayers().get(index + 1);
         }
     }
+
+
 
 }

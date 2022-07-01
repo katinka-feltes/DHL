@@ -402,7 +402,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <top>
-        <HBox minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="1176.0">
+        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0">
             <children>
             <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#onClick" prefHeight="29.0" prefWidth="55.0" text="Menu">
                <font>
@@ -564,6 +564,25 @@
                <padding>
                   <Insets left="30.0" />
                </padding>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="110.0" prefWidth="106.0">
+               <children>
+                  <ImageView fx:id="saveButtton" fitHeight="38.0" fitWidth="47.0" onMouseClicked="#onClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@diskette.png" />
+                     </image>
+                  </ImageView>
+                  <StackPane fx:id="nextPlayerButton" onMouseClicked="#onClick" prefHeight="79.0" prefWidth="106.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc3c2" height="66.0" stroke="#585c5b85" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-width: 100; -fx-arc-height: 100;" width="125.0" />
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="111.0" text="NEXT PLAYER">
+                           <font>
+                              <Font name="Ink Free" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
             </VBox>
             </children>
         </HBox>
@@ -1181,14 +1200,14 @@
                   <Insets right="120.0" />
                </HBox.margin>
             </ImageView>
-                <VBox alignment="CENTER">
+                <VBox alignment="CENTER" prefHeight="104.0" prefWidth="718.0">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS ">
                             <font>
                                 <Font name="Ink Free" size="18.0" />
                             </font>
                         </Label>
-                        <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1200.0" minHeight="75.0" minWidth="320.0" prefHeight="105.0" prefWidth="550.0">
+                        <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1200.0" minHeight="75.0" minWidth="320.0" prefHeight="75.0" prefWidth="652.0">
                             <children>
                                 <StackPane fx:id="handCard0" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
                                     <children>
@@ -1298,7 +1317,7 @@
                         </HBox>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefWidth="300.0">
+                <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefHeight="104.0" prefWidth="328.0">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="DRAWING PILE">
                             <font>
