@@ -175,182 +175,182 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <children>
-                <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
+                <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
+                <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
+                <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
+                <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
+                <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
+                <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
+                <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
+                <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
+                <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
+                <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
+                <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
+                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
+                <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
+                <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
+                <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
+                <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
+                <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
+                <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
+                <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
+                <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
+                <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
+                <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
+                <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
+                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
+                <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
+                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
+                <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
+                <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
+                <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
+                <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
+                <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
+                <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
+                <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
+                <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </TilePane>
-                <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
+                <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
                     <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
@@ -567,14 +567,14 @@
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="110.0" prefWidth="106.0">
                <children>
-                  <ImageView fx:id="saveButtton" fitHeight="38.0" fitWidth="47.0" onMouseClicked="#onClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="saveButtton" fitHeight="38.0" fitWidth="47.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@diskette.png" />
                      </image>
                   </ImageView>
                   <StackPane fx:id="nextPlayerButton" onMouseClicked="#onClick" prefHeight="79.0" prefWidth="106.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc3c2" height="66.0" stroke="#585c5b85" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-width: 100; -fx-arc-height: 100;" width="125.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc3c2" height="66.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#585c5b85" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-width: 100; -fx-arc-height: 100;" width="125.0" />
                         <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="111.0" text="NEXT PLAYER">
                            <font>
                               <Font name="Ink Free" size="18.0" />
@@ -1103,7 +1103,7 @@
                 </Label>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPiler" onMouseClicked="#onClick">
+                        <StackPane fx:id="discardingPiler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
                                 <Label fx:id="discardPiler" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" textAlignment="JUSTIFY">
@@ -1115,12 +1115,15 @@
                                     </padding>
                                 </Label>
                             </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                         </StackPane>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileg" onMouseClicked="#onClick">
+                        <StackPane fx:id="discardingPileg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
                                 <Label fx:id="discardPileg" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
@@ -1132,12 +1135,15 @@
                                     </padding>
                                 </Label>
                             </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                         </StackPane>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileb" onMouseClicked="#onClick">
+                        <StackPane fx:id="discardingPileb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
                                 <Label fx:id="discradPileb" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
@@ -1149,12 +1155,15 @@
                                     </padding>
                                 </Label>
                             </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                         </StackPane>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPilep" onMouseClicked="#onClick">
+                        <StackPane fx:id="discardingPilep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
                                 <Label fx:id="discardPilep" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
@@ -1166,12 +1175,15 @@
                                     </padding>
                                 </Label>
                             </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                         </StackPane>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileo" onMouseClicked="#onClick">
+                        <StackPane fx:id="discardingPileo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
                                 <Label fx:id="discardPileo" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
@@ -1183,6 +1195,9 @@
                                     </padding>
                                 </Label>
                             </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                         </StackPane>
                     </children>
                 </HBox>
@@ -1206,7 +1221,7 @@
                         </Label>
                         <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1200.0" minHeight="75.0" minWidth="320.0" prefHeight="75.0" prefWidth="652.0">
                             <children>
-                                <StackPane fx:id="handCard0" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard0" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1219,7 +1234,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard1" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard1" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1232,7 +1247,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard2" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard2" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-width: 50; -fx-pref-height: 75;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1245,7 +1260,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard3" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard3" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1258,7 +1273,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard4" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard4" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1271,7 +1286,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard5" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard5" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1284,7 +1299,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard6" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard6" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1297,7 +1312,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard7" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="40.0">
+                                <StackPane fx:id="handCard7" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -1321,7 +1336,7 @@
                                 <Font name="Ink Free" size="18.0" />
                             </font>
                         </Label>
-                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                     </children>
                     <opaqueInsets>
                         <Insets />

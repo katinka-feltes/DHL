@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -29,6 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dhl.controller.State.*;
 import static dhl.view.GuiUpdate.updateCards;
 
 /**
@@ -64,7 +66,7 @@ public class GuiController {
      * @param parent the parent you want to get the children from
      * @return a list of all the children of the parent
      */
-    public List<Node> getAllChildren(Parent parent) {
+    public static List<Node> getAllChildren(Parent parent) {
         ArrayList<Node> children = new ArrayList<>();
         for (Node node : parent.getChildrenUnmodifiable()) {
             children.add(node);
@@ -128,7 +130,7 @@ public class GuiController {
 
         loadNewScene(event, "/gui.fxml", true, true);
 
-        state = State.PREPARATION;
+        state = PREPARATION;
         activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         updateAll();
@@ -170,7 +172,7 @@ public class GuiController {
             }
             loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
-        } else if (state == State.PREPARATION) { //click anything to start the turn
+        } else if (state == PREPARATION) { //click anything to start the turn
             chosenFigure = null;
             chosenCard = null;
             activeP.setLastTrashed(null);
@@ -206,13 +208,38 @@ public class GuiController {
     }
 
     /**
+     * this method highlights the items that are clickable in each state
+     * @param e the hovering cursor
+     */
     @FXML
     private void highlightWhileHover(MouseEvent e){
-         Node node = (Node) e.getSource();
-         Glow glow;
-         node.setEffect(glow);
+        Node item = (Node) e.getSource();
+        if (state == PREPARATION) {
+            setGlow(item);
+        } else if (state == CHOOSEHANDCARD && item.getId().startsWith("handCard")){
+            setGlow(item);
+        } else if (state == TRASHORPLAY && (item.getId().startsWith("discardingPile") ||
+        item.getId().startsWith("circle"))) {
+            setGlow(item);
+        } else if ((state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle")) {
+            setGlow(item);
+        } else if (state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile"))) {
+            setGlow(item);
+        } else if (state == DRAW && item.getId().startsWith("drawingPile")) {
+            setGlow(item);
+        }
+    }
 
-    }*/
+    @FXML
+    private void setGlow(Node item) {
+        Glow glow = new Glow();
+        glow.setLevel(0.6);
+        if (item.getEffect() == null){
+            item.setEffect(glow);
+        }else {
+            item.setEffect(null);
+        }
+    }
 
     private boolean draw(Node item) {
         if (item.getId().startsWith("discardingPile")) {
@@ -228,7 +255,7 @@ public class GuiController {
         if(activeP.getHand().size() == 8){
             activeP = getNextPlayer();
             toDo.setText("Click any item to start your turn.");
-            state = State.PREPARATION;
+            state = PREPARATION;
         }
         return false;
     }
@@ -321,6 +348,8 @@ public class GuiController {
         GuiUpdate.updateCollectedTokens(activeP, (HBox)classifyChildren("collectedToken").get(0));
         //write name and symbol of active player
         playerName.setText(activeP.getName() + ": " + activeP.getSymbol());
+        //reset all effects
+        GuiUpdate.resetEffects(root);
     }
 
     /**
@@ -360,7 +389,7 @@ public class GuiController {
         updateAll();
         activeP.drawFromDrawingPile();
         activeP = getNextPlayer();
-        state = State.PREPARATION;
+        state = PREPARATION;
         toDo.setText("The AI is done with its turn. Press any Card to continue.");
     }
 

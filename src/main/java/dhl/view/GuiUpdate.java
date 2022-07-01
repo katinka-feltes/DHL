@@ -4,9 +4,11 @@ import dhl.Constants;
 import dhl.controller.GuiController;
 import dhl.controller.State;
 import dhl.model.*;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
@@ -139,5 +141,17 @@ public class GuiUpdate {
             }
         }
     }
+
+    /**
+     * this method resets all effects from all gui objects
+     * @param borderPane the parent of all children
+     */
+    @FXML
+    public static void resetEffects(BorderPane borderPane) {
+        for (Node node : GuiController.getAllChildren(borderPane)) {
+            node.setEffect(null);
+        }
+    }
+
 }
 
