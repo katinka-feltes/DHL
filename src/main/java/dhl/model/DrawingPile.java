@@ -31,7 +31,7 @@ public class DrawingPile implements Serializable {
      * @return the top card from the drawing pile
      */
     public Card draw() {
-        return cards.get(0);
+        return cards.remove(0);
     }
 
 
