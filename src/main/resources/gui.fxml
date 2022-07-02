@@ -569,17 +569,22 @@
             <VBox alignment="TOP_RIGHT" prefHeight="110.0" prefWidth="106.0">
                <children>
 
-                  <Button mnemonicParsing="false" onAction="#save" text="save" />
-                  <StackPane fx:id="nextPlayerButton" onMouseClicked="#onClick" prefHeight="79.0" prefWidth="106.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc3c2" height="66.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#585c5b85" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-width: 100; -fx-arc-height: 100;" width="125.0" />
-                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="111.0" text="NEXT PLAYER">
-                           <font>
-                              <Font name="Ink Free" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
+                  <Button mnemonicParsing="false" onAction="#save" prefHeight="8.0" prefWidth="14.0">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@diskette.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="38.0" prefWidth="106.0" text="NEXT PLAYER">
+                     <font>
+                        <Font name="Ink Free" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
             </children>
@@ -1334,7 +1339,10 @@
                                 <Font name="Ink Free" size="18.0" />
                             </font>
                         </Label>
-                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
+                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0">
+                     <VBox.margin>
+                        <Insets right="35.0" />
+                     </VBox.margin></Rectangle>
                     </children>
                     <opaqueInsets>
                         <Insets />

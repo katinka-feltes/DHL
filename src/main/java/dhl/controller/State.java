@@ -12,5 +12,5 @@ public enum State {
     SPIRAL,
     GOBLIN,
     DRAW,
-    SAVE
+    NEXT
 }

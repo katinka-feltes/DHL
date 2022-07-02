@@ -200,6 +200,9 @@ public class GuiController {
             goblin(item);
         } else if (state == State.DRAW && draw(item)) {
             return;
+        } else if (state == NEXT && item.getId().startsWith("nextButton")) {
+            toDo.setText("Click on any item to start your turn.");
+            state = PREPARATION;
         }
         if(item.getId().startsWith("menu")) {
             loadNewScene(e, "/start.fxml", false, false);
@@ -231,6 +234,8 @@ public class GuiController {
             setGlow(item);
         } else if (state == DRAW && item.getId().startsWith("drawingPile")) {
             setGlow(item);
+        }else {
+            setGlow(item);
         }
     }
 
@@ -258,8 +263,8 @@ public class GuiController {
         }
         if(activeP.getHand().size() == 8){
             activeP = getNextPlayer();
-            toDo.setText("Click any item to start your turn.");
-            state = PREPARATION;
+            toDo.setText("Click on 'NEXT PLAYER' to end your turn.");
+            state = NEXT;
         }
         return false;
     }
@@ -393,8 +398,8 @@ public class GuiController {
         updateAll();
         activeP.drawFromDrawingPile();
         activeP = getNextPlayer();
-        state = PREPARATION;
-        toDo.setText("The AI is done with its turn. Press any Card to continue.");
+        state = NEXT;
+        toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
     }
 
     /**
