@@ -1,5 +1,6 @@
 package dhl.controller;
 
+import dhl.Save;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.controller.player_logic.PlayerLogic;
@@ -214,6 +215,9 @@ public class GuiController {
     @FXML
     private void highlightWhileHover(MouseEvent e){
         Node item = (Node) e.getSource();
+        if(item == null){
+            return;
+        }
         if (state == PREPARATION) {
             setGlow(item);
         } else if (state == CHOOSEHANDCARD && item.getId().startsWith("handCard")){
@@ -617,5 +621,42 @@ public class GuiController {
         } else {
             return model.getPlayers().get(index + 1);
         }
+    }
+
+    /**
+     * This method is called when the user clicks on the "Save" button.
+     * @param event the click on the Button
+     */
+    @FXML
+    public void save(ActionEvent event)  {
+        try {
+            Save.serializeDataOut(model);
+            toDo.setText("Save successful.\n" + toDo.getText());
+        }
+        catch (Exception e){
+            System.out.println("error with save");
+        }
+    }
+
+    /**
+     * This method is called when the user clicks on the "Load last saved Game" button.
+     * @param event the click on the Button
+     * @throws IOException if the FXML file is not found
+     */
+    @FXML
+    public void loadFromSaved(ActionEvent event) throws IOException {
+        model = Save.serializeDataIn();
+
+        if(model == null){
+            System.out.println("Error loading the game.");
+            return;
+        }
+
+        loadNewScene(event, "/gui.fxml", true, true);
+
+        state = State.PREPARATION;
+        activeP = model.getPlayers().get(0);
+        toDo.setText("Click any item to start your turn.");
+        updateAll();
     }
 }

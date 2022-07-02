@@ -31,7 +31,7 @@ public class AI implements PlayerLogic {
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return false; // always draws from the drawing pile
         } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return true; // always wants to proceed
+            return true; // always wants to proceed TODO: spiral no if spiral is on first field or so
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return playableCards().size() < 3; // trash a hand card if only 2 of them be played
         } else if (question.startsWith("Do you want to move a figure?")) {

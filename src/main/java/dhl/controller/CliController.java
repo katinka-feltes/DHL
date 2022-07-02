@@ -1,6 +1,7 @@
 package dhl.controller;
 
 import dhl.Constants;
+import dhl.Save;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
 import dhl.model.*;
@@ -25,23 +26,34 @@ public class   CliController {
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
      */
     public void startGame() {
-        int playerAmount = view.promptInt(2, 4, "How many players?");
-        int aiAmount = view.promptInt(0, playerAmount-1, "How many AI players?");
-        String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
-        List<Player> players = new ArrayList<>();
-        for (int i = 0; i < playerNames.length; i++) {
-            players.add(new Player(playerNames[i], Constants.symbols[i], new Human(view)));
+        if(view.promptPlayersChoice("load?") && Save.serializeDataIn()!=null){
+            model = Save.serializeDataIn();
+        } else {
+            int playerAmount = view.promptInt(2, 4, "How many players?");
+            int aiAmount = view.promptInt(0, playerAmount - 1, "How many AI players?");
+            String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
+            List<Player> players = new ArrayList<>();
+            for (int i = 0; i < playerNames.length; i++) {
+                players.add(new Player(playerNames[i], Constants.symbols[i], new Human(view)));
+            }
+            for (int i = 0; i < aiAmount; i++) {
+                players.add(new Player("AI" + (i + 1), Constants.symbols[i + playerNames.length], new AI()));
+            }
+            model = new Game(players);
         }
-        for (int i = 0; i < aiAmount; i++) {
-            players.add(new Player("AI" + (i + 1), Constants.symbols[i + playerNames.length], new AI()));
-        }
-        model = new Game(players);
 
         while (!model.gameOver()) {
             for (Player activeP : model.getPlayers()) {
                 if (!model.gameOver()) {
                     takeTurn(activeP);
                 }
+            }
+            if (view.promptPlayersChoice("exit and save?")){
+                try {Save.serializeDataOut(model);}
+                catch (Exception e){
+                    System.out.println("error with save");
+                }
+                break;
             }
         }
         // calculate final victory points and update highscore if necessary
@@ -345,4 +357,6 @@ public class   CliController {
     public void setView(View view) {
         this.view = view;
     }
+
+
 }
