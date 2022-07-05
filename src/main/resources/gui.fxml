@@ -405,7 +405,7 @@
     <top>
         <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0">
             <children>
-            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#onClick" prefHeight="29.0" prefWidth="55.0" text="Menu">
+            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#loadMenu" prefHeight="29.0" prefWidth="55.0" text="Menu">
                <font>
                   <Font name="Dead Kansas" size="20.0" />
                </font>

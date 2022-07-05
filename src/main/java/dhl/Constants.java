@@ -1,6 +1,8 @@
 package dhl;
 
 import dhl.controller.GuiController;
+import dhl.model.Field;
+import dhl.model.LargeField;
 import dhl.model.tokens.*;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -33,6 +35,44 @@ public class Constants {
     //add player to the players-list
 
     public static final char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+
+    public static final Field[] BASIC_FIELD = {
+            new LargeField(0, 'w', 0),
+            new Field(-4, 'p'),
+            new Field(-4, 'o'),
+            new Field(-4, 'r'),
+            new Field(-4, 'g'),
+            new Field(-4, 'b'),
+            new Field(-4, 'p'),
+            new LargeField(-3, 'p', 2),
+            new Field(-3, 'o'),
+            new Field(-3, 'r'),
+            new Field(-2, 'g'),
+            new Field(-2, 'b'),
+            new Field(-2, 'p'),
+            new Field(-2, 'o'),
+            new LargeField(1, 'o', 2),
+            new Field(1, 'r'),
+            new Field(1, 'g'),
+            new Field(2, 'b'),
+            new Field(2, 'p'),
+            new Field(2, 'o'),
+            new Field(2, 'r'),
+            new LargeField(3, 'r', 2),
+            new Field(3, 'g'),
+            new Field(3, 'b'),
+            new Field(3, 'p'),
+            new Field(5, 'o'),
+            new Field(5, 'r'),
+            new Field(5, 'g'),
+            new LargeField(5, 'g', 2),
+            new Field(6, 'b'),
+            new Field(6, 'p'),
+            new Field(6, 'o'),
+            new Field(7, 'r'),
+            new Field(7, 'g'),
+            new Field(7, 'b'),
+            new LargeField(10, 'b', 1)};
 
     /**
      * changes a color from char to color

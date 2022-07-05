@@ -24,17 +24,17 @@ public class GuiUpdate {
     /**
      * updates the tokens on the field
      */
-    public static void updateTokens(List<Node> tokens) {
+    public static void updateTokens(List<Node> tokens, Field[] fields) {
         int tokenIndex = 0;
         while (tokenIndex <= 39) {
             for (int i = 1; i <= 35; i++) {
-                ((ImageView)tokens.get(tokenIndex)).setImage(getTokenImage(Game.FIELDS[i].getToken()));
+                ((ImageView)tokens.get(tokenIndex)).setImage(getTokenImage(fields[i].getToken()));
                 tokenIndex++;
                 //if large field, check the second token
-                if (Game.FIELDS[i] instanceof LargeField && ((LargeField) Game.FIELDS[i]).getTokenTwo() != null) {
+                if (fields[i] instanceof LargeField && ((LargeField) fields[i]).getTokenTwo() != null) {
                     ((ImageView)tokens.get(tokenIndex)).setImage(IMG_STONE);
                     tokenIndex++;
-                } else if (Game.FIELDS[i] instanceof LargeField) {
+                } else if (fields[i] instanceof LargeField) {
                     ((ImageView)tokens.get(tokenIndex)).setImage(null);
                     tokenIndex++;
                 }
@@ -102,9 +102,13 @@ public class GuiUpdate {
         }
     }
 
-    public static void updateDiscardPiles(List<Node> stackPanes) {
+    public static void updateDiscardPiles(List<Node> stackPanes, Game game) {
         for(Node stackPane : stackPanes) {
-            DiscardPile pile = GuiController.getDiscardPileFromID(stackPane.getId());
+
+            //get Discard Pile from ID
+            char[] idArray = stackPane.getId().toCharArray();
+            DiscardPile pile = game.getDiscardPile(idArray[idArray.length - 1]);
+
             Label lbl = (Label) ((StackPane)stackPane).getChildren().get(1);
             if (pile.isEmpty()){
                 lbl.setText("");

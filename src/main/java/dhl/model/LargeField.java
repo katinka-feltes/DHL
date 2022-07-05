@@ -3,10 +3,12 @@ package dhl.model;
 import dhl.model.tokens.Token;
 import dhl.model.tokens.WishingStone;
 
+import java.io.Serializable;
+
 /**
  * This Class represents a Large Field. A Large Field is a Field with another Token on it.
  */
-public class LargeField extends Field {
+public class LargeField extends Field implements Serializable {
     private Token tokenTwo = null;
 
     /**

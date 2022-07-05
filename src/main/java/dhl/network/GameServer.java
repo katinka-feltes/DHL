@@ -1,12 +1,11 @@
 package dhl.network;
 
 import dhl.Constants;
-import dhl.controller.player_logic.Human;
 import dhl.model.Game;
 import dhl.model.Player;
-import dhl.view.Cli;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -54,9 +53,5 @@ public class GameServer {
     }
     public static void main(String[] args) {
         new GameServer();
-        Client c = new Client();
-        c.addPlayers();
-        c.addPlayers();
-        c.startGame();
     }
 }

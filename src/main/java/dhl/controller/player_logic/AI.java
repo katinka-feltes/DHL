@@ -1,5 +1,6 @@
 package dhl.controller.player_logic;
 
+import dhl.Constants;
 import dhl.model.*;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Skullpoint;
@@ -8,8 +9,6 @@ import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static dhl.model.Game.FIELDS;
 
 /**
  * The logic for the AI agent
@@ -44,19 +43,21 @@ public class AI implements PlayerLogic {
     @Override
     public int chooseSpiralPosition(String question, int position) {
 
+        Field[] fields = self.getGame().getFields();
+
         int stonesAmount = self.getTokens()[0];
 
         int chosenPosition = position;
         int originalPosition = self.getLastMovedFigure().getLatestPos();
         if(stonesAmount < 3) {
             for(int pos = position; pos > position - 5; pos--) {
-                if(FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
+                if(fields[pos].getToken() instanceof WishingStone && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
         } else {
             for(int pos = position; pos > 0; pos--) {
-                if(FIELDS[pos].getToken() instanceof Mirror && pos != originalPosition) {
+                if(fields[pos].getToken() instanceof Mirror && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
@@ -128,16 +129,17 @@ public class AI implements PlayerLogic {
      * checks which playable hand card is the best option according to the AI's played cards
      */
     private void calculateNextMove() {
+        Field[] fields = self.getGame().getFields();
         int bestOption = -100; //best calculated points by combination of figure and card
         for (Figure figure : self.getFigures()) { //for every figure
             for (Card card : self.getHand()) { //for every card from hand
                 int steps = steps(figure, card.getColor()); //how far the figure would move with the current card
                 if(steps == -100) {break;} // if the card would move the figure too far
-                int pointDifference = FIELDS[figure.getPos() + steps].getPoints() - FIELDS[figure.getPos()].getPoints();
+                int pointDifference = fields[figure.getPos() + steps].getPoints() - fields[figure.getPos()].getPoints();
 
                 int points = steps + pointDifference; //steps plus the gained points due to the steps
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
-                points += tokenWorth(FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
+                points += tokenWorth(fields[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;
                     chosenFigure = figure;
@@ -157,7 +159,7 @@ public class AI implements PlayerLogic {
     private int steps(Figure f, char color) {
         int steps = 1;
         try {
-            while (FIELDS[f.getPos() + steps].getColor() != color) {
+            while (Constants.BASIC_FIELD[f.getPos() + steps].getColor() != color) {
                 steps++;
             }
         } catch (Exception e){
@@ -247,7 +249,5 @@ public class AI implements PlayerLogic {
         return playable;
     }
 
-    public void setSelf(Player self) {
-        this.self = self;
-    }
+    public void setSelf(Player self) {this.self = self;}
 }

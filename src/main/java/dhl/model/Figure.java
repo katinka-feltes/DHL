@@ -1,8 +1,8 @@
 package dhl.model;
 
-import java.io.Serializable;
+import dhl.Constants;
 
-import static dhl.model.Game.FIELDS;
+import java.io.Serializable;
 
 /**
  * This Class represents a Figure. A Figure has a position, a last position and a color.
@@ -24,7 +24,7 @@ public class Figure implements Serializable {
      */
     public void move(char color) {
         int steps = 1;
-        while (FIELDS[pos + steps].getColor() != color) {
+        while (Constants.BASIC_FIELD[pos + steps].getColor() != color) {
             steps++;
         }
         latestPos = pos;

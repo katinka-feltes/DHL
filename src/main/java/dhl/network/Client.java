@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class Client {
     public void addPlayers(){
-        try(Socket socket = new Socket("localhost", Constants.PORT_NUMBER)) {
+        try(Socket socket = new Socket("0.0.0.0", Constants.PORT_NUMBER)) {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             Player player = new Player("Hat geklappt", 't', new Human(new Cli()));
             out.writeObject(player);
@@ -19,11 +19,17 @@ public class Client {
         }
     }
     public void startGame(){
-        try(Socket socket = new Socket("localhost", Constants.PORT_NUMBER)) {
+        try(Socket socket = new Socket("0.0.0.0", Constants.PORT_NUMBER)) {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject("start");
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Client c = new Client();
+        c.addPlayers();
+        c.startGame();
     }
 }

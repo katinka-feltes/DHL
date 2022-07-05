@@ -2,10 +2,12 @@ package dhl.model;
 
 import dhl.model.tokens.Token;
 
+import java.io.Serializable;
+
 /**
  * This Class represents a Field. A Field has points, a color and a token.
  */
-public class Field {
+public class Field implements Serializable {
     private final int points;
     private final char color;
     private Token token;
