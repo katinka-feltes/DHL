@@ -310,18 +310,24 @@ public class GuiController {
     /**
      * what happens in state oracle after item is clicked
      * @param item the clicked item
-     * @throws Exception if the figure would leave the field
+     * @throws Exception if the figure would leave the field or if card does not fit to pile
      */
     private void oracle(Node item) throws Exception {
-        toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
-                chosenCard.getOracleNumber() + " steps forward");
-        activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
-        activeP.getHand().remove(chosenCard);
-        int chosenPosition = getIndex(item.getId(), "circle");
-        if(chosenPosition <= model.getOracle()+chosenCard.getOracleNumber() && chosenPosition > model.getOracle()) {
-            activeP.placeOracle(chosenPosition - model.getOracle());
-            state = State.DRAW;
-            toDo.setText("From which pile do you want to draw?");
+        try{
+            activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
+            activeP.getHand().remove(chosenCard);
+
+            toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
+                    chosenCard.getOracleNumber() + " steps forward");
+            int chosenPosition = getIndex(item.getId(), "circle");
+            if(chosenPosition <= model.getOracle()+chosenCard.getOracleNumber() && chosenPosition > model.getOracle()) {
+                activeP.placeOracle(chosenPosition - model.getOracle());
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
+            }
+        } catch (Exception e) {
+            state = State.TRASHORPLAY;
+            toDo.setText(e.getMessage());
         }
     }
 
