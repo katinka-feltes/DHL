@@ -2,7 +2,6 @@ package dhl.model;
 
 import dhl.controller.player_logic.Human;
 import dhl.model.tokens.Goblin;
-import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,8 +24,8 @@ public class PlayerTest {
     @BeforeEach
     public void setup() {
         List<Player> players = new ArrayList<>();
-        players.add(new Player("test1", 'v', new Human(new Cli())));
-        players.add(new Player("test2", 'b', new Human(new Cli())));
+        players.add(new Player("test1", 'v', new Human()));
+        players.add(new Player("test2", 'b', new Human()));
         game = new Game(players);
         player = game.getPlayers().get(0);
     }

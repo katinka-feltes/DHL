@@ -3,7 +3,6 @@ package dhl.controller.player_logic;
 import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Player;
-import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +27,7 @@ class HumanTest {
      * creates a new Cli and a Game with 2 players
      */
     public void setUp() {
-        h = new Human(new Cli());
+        h = new Human();
 
         p = new Player("p1", 'x', h);
 

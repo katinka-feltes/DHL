@@ -5,7 +5,6 @@ import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Game;
 import dhl.model.Player;
-import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,8 +35,8 @@ public class TokenTest {
         stone = new WishingStone();
 
         List<Player> players = new ArrayList<>();
-        players.add(new Player("test1", 'v', new Human(new Cli())));
-        players.add(new Player("test2", 'b', new Human(new Cli())));
+        players.add(new Player("test1", 'v', new Human()));
+        players.add(new Player("test2", 'b', new Human()));
         game = new Game(players);
 
         player = game.getPlayers().get(0);

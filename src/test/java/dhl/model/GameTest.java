@@ -1,7 +1,6 @@
 package dhl.model;
 
 import dhl.controller.player_logic.Human;
-import dhl.view.Cli;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,9 +24,9 @@ public class GameTest {
     @BeforeEach
     public void setup() {
         List<Player> players = new ArrayList<>();
-        players.add(new Player("test1", 'v', new Human(new Cli())));
-        players.add(new Player("test2", 'b', new Human(new Cli())));
-        players.add(new Player("test3", 'g', new Human(new Cli())));
+        players.add(new Player("test1", 'v', new Human()));
+        players.add(new Player("test2", 'b', new Human()));
+        players.add(new Player("test3", 'g', new Human()));
         game = new Game(players);
         player1 = game.getPlayers().get(0);
         player2 = game.getPlayers().get(1);

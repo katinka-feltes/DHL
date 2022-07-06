@@ -43,6 +43,7 @@ public class GuiController {
     private Card chosenCard;
     private Figure chosenFigure;
     private Player activeP;
+    private List<Player> staticPlayers = new ArrayList<>();
 
     /**
      * This Label shows what the player has to do.
@@ -130,7 +131,7 @@ public class GuiController {
         model = new Game(players);
 
         loadNewScene(event, "/gui.fxml", true, true);
-
+        staticPlayers.addAll(players);
         state = PREPARATION;
         activeP = model.getPlayers().get(0);
         toDo.setText("Click 'NEXT PLAYER' to start your turn.");
@@ -554,7 +555,13 @@ public class GuiController {
     }
 
     private void updatePlayedCardsAndNames() {
-        int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
+        int currentPlayerIndex = 0;
+        for (int i = 0; i < staticPlayers.size(); i++) {
+            if (staticPlayers.get(i).getName().equals(activeP.getName())){
+                currentPlayerIndex = i + 1;
+            }
+        }
+
         if (chosenCard != null && activeP.getPlayedCards(chosenCard.getColor()).getTop() != null &&
                 (state == DRAW || state == SPIRAL || state == SPIDERWEB || state == GOBLIN)) {
             char currentCardColor = activeP.getPlayedCards(chosenCard.getColor()).getTop().getColor();
@@ -566,10 +573,10 @@ public class GuiController {
         }
         List<Node> namesPlayedCards = classifyChildren("namePlayedCards");
         for (int i = 0; i < 4; i++) {
-            if (i >= model.getPlayers().size()) {
+            if (i >= staticPlayers.size()) {
                 ((Label)namesPlayedCards.get(i)).setText("");
             } else {
-                ((Label)namesPlayedCards.get(i)).setText(model.getPlayers().get(i).getName());
+                ((Label)namesPlayedCards.get(i)).setText(staticPlayers.get(i).getName());
             }
         }
     }
