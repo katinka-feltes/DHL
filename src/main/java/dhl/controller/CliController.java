@@ -242,6 +242,11 @@ public class   CliController {
             switch (token.getName()) {
 
                 case "Spiral":
+
+                    if(player.getLastMovedFigure().getPos() == 1) {
+                        view.out("You cannot execute the Spiral action since you can't move to the field you came from");
+                        break;
+                    }
                     doTokenSpiral(player);
                     break;
 

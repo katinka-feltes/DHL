@@ -1,5 +1,7 @@
 package dhl.model;
 
+import dhl.Constants;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -16,11 +18,12 @@ public class DrawingPile implements Serializable {
      * creates a new drawing pile
      */
     public DrawingPile() {
-        char[] colors2x = {'r', 'g', 'b', 'p', 'o', 'r', 'g', 'b', 'p', 'o'};
         cards = new ArrayList<>();
-        for (char color : colors2x) {
-            for (int i = 0; i <= 10; i++) {
-                cards.add(new Card(i, color)) ;
+        for (int j = 0; j<2; j++) {
+            for (char color : Constants.COLORS) {
+                for (int i = 0; i <= 10; i++) {
+                    cards.add(new Card(i, color));
+                }
             }
         }
         Collections.shuffle(cards);

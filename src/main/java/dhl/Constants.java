@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Constants {
     public static final int PORT_NUMBER = 4444;
 
-
+    public static final char[] COLORS = {'r','g','b','p','o'};
     public static final String RED = "#d34a41";
     public static final String GREEN = "#6a9a3d";
     public static final String BLUE = "#424ebc";

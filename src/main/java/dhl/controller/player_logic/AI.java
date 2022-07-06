@@ -20,6 +20,7 @@ public class AI implements PlayerLogic {
     Figure chosenFigure;
     boolean playOracle;
     int oracleSteps;
+    char chosenDiscard;
     Player self;
 
     @Override
@@ -31,15 +32,15 @@ public class AI implements PlayerLogic {
         } else if (question.startsWith("Do you want to play a card?")) {
             return playableCards().size() > 2; // play a card if there are more than two cards to play
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
-            return false; // always draws from the drawing pile
+            return chooseDrawing(); // decides which pile to draw from
         } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return true; // always wants to proceed TODO: spiral no if spiral is on first field or so
+            return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
-            return playableCards().size() < 3; // trash a hand card if only 2 of them be played
+            return playableCards().size() < 3; // trash a hand card if only 2 of them can be played
         } else if (question.startsWith("Do you want to move a figure?")) { // true = figure; false = oracle
             return !playOracle;
         } else {
-            return question.startsWith("Do you want to play your goblin-special?");// always play if it is possible, because it doesn't occur often
+            return question.startsWith("Do you want to play your goblin-special?"); // always play if possible, because it doesn't occur often
         }
     }
 
@@ -100,6 +101,50 @@ public class AI implements PlayerLogic {
     }
 
     /**
+     * decides if drawing from drawing or discarding pile is smarter
+     * discarding is good if a top card fits good to played cards and not many of that color on hand
+     * @return true to draw from discarding, false to draw from drawing pile
+     */
+    private boolean chooseDrawing() {
+        int bestDrawOption = 10; //best pile to draw from
+        char colorOfBestOption = 'b'; //color of best pile to draw from
+        for(char color: Constants.COLORS) {
+            int currentDrawOption = 10; //how good drawing from current pile would be
+            Card topCard = self.getGame().getDiscardPile(color).getTop(); //top card of current pile
+            if(topCard != null) {
+                //calculates how good drawing from discard pile would be:
+                //small difference to (possible) played cards pile is good and if there aren't many of that color on hand
+                currentDrawOption = difference(topCard, self.getPlayedCards(topCard.getColor()))
+                        + amountOfColoredCards(topCard.getColor());
+            }
+            if(currentDrawOption < bestDrawOption) { //if drawing from current pile is best option
+                bestDrawOption = currentDrawOption;
+                colorOfBestOption = color;
+            }
+        }
+        if(bestDrawOption < 5) { //if <=5 drawing from discarding is a good option and AI chooses this
+            chosenDiscard = colorOfBestOption;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * calculates how many cards in player's hand are of given color
+     * @param color color the cards should have
+     * @return amount of cards of given color
+     */
+    private int amountOfColoredCards(char color) {
+        int amount = 0;
+        for(Card card: self.getHand()) {
+            if(card.getColor() == color) {
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    /**
      * @param question the reason to choose the pile
      * @return char color of the chosen pile
      */
@@ -121,9 +166,9 @@ public class AI implements PlayerLogic {
             }
             return chosenPile;
         }
-        /* else if (question.equals("From what colored pile do you want to draw?")) {
-            // never occurs yet
-        } */
+        else if (question.equals("From what colored pile do you want to draw?")) {
+            return chosenDiscard;
+        }
         return 'r';
     }
 

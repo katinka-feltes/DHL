@@ -362,7 +362,7 @@ public class GuiController {
     /**
      * a method for the AI to take a turn. Only call this if the current player is an AI
      */
-    private void takeTurnAI(AI ai) {
+    private void takeTurnAI(AI ai) throws Exception {
         if(ai.choose("Do you want to play a card?")) {
             try {
                 chosenCard = ai.chooseCard("What card do you want to play?", null);
@@ -394,7 +394,12 @@ public class GuiController {
         }
         // draw to end turn
         updateAll();
-        activeP.drawFromDrawingPile();
+        if(activeP.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles?")) {
+            activeP.drawFromDiscardingPile(model.getDiscardPile(
+                    activeP.getPlayerLogic().choosePileColor("From what colored pile do you want to draw?")));
+        } else {
+            activeP.drawFromDrawingPile();
+        }
         activeP = model.nextPlayer();
         state = PREPARATION;
         toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
