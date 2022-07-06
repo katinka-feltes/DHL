@@ -242,8 +242,13 @@
                <Insets bottom="20.0" />
             </BorderPane.margin>
             <HBox.margin>
-               <Insets left="50.0" />
+               <Insets left="50.0" right="50.0" />
             </HBox.margin>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#loadHighscores" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Show Highscores" textAlignment="CENTER" textFill="#880b0b">
+            <font>
+               <Font name="Ink Free" size="15.0" />
+            </font>
          </Button>
          <BorderPane.margin>
             <Insets bottom="50.0" />

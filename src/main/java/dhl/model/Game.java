@@ -18,7 +18,7 @@ public class Game implements Serializable {
 
     private Field[] fields;
     //the best 3 scores (each one entry): first points, second name, third ai or human
-    private List<String> highScores = new ArrayList<>();
+    private static List<String> highscores = new ArrayList<>();
     private final DiscardPile discardingPileRed;
     private final DiscardPile discardingPileBlue;
     private final DiscardPile discardingPileGreen;
@@ -179,46 +179,18 @@ public class Game implements Serializable {
     }
 
     /**
-     * adds the info if the player was one of the best 3 players
-     * @param points the points that will be compared to current highscores
-     * @param name the name of the player that got the points
-     * @param logic the logic that played
-     */
-    public void updateHighscore(int points, String name, PlayerLogic logic) {
-        String[] temp = logic.getClass().toString().split("\\.");
-        // example: 34 - Janne - Human
-        String separator = " - ";
-        highScores.add(points + separator + name + separator + temp[temp.length-1]);
-        highScores.sort((a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1 : 0);
-        if (highScores.size() > 3) {
-            highScores = highScores.subList(0,3); //trim to the best 3
-        }
-
-        // update the file
-        try {
-            FileWriter file = new FileWriter ("src/main/resources/highscores.txt");
-            for (String line :highScores)  {
-                file.write(line + "\n" ); // Write line by line in the file
-            }
-            file.close();
-        } catch (Exception ex)  {
-            System.out.println("Message of exception:" + ex.getMessage());
-        }
-    }
-
-    /**
      * method reads the file which has the highscores saved
      * and adds them to string-list highscores
      */
-    private void readHighscores() {
-        highScores.clear();
+    private static void readHighscores() {
+        highscores.clear();
         Scanner s = null ;
         try {
             File file = new File("src/main/resources/highscores.txt");
             s =  new  Scanner ( file ); // read the file contents
             while ( s.hasNextLine())  { // Read the file line by line
                 String line = s.nextLine();
-                highScores.add(line);
+                highscores.add(line);
             }
 
         }  catch (Exception ex)  {
@@ -231,6 +203,11 @@ public class Game implements Serializable {
                 System.out.println( "Message 2:"  + ex2 . getMessage());
             }
         }
+    }
+
+    public static List<String> getHighscores() {
+        readHighscores();
+        return highscores;
     }
 
     /**
@@ -309,8 +286,32 @@ public class Game implements Serializable {
         oracle+=steps;
     }
 
-    public List<String> getHighscores() {
-        return highScores;
+    /**
+     * adds the info if the player was one of the best 3 players
+     * @param points the points that will be compared to current highscores
+     * @param name the name of the player that got the points
+     * @param logic the logic that played
+     */
+    public void updateHighscore(int points, String name, PlayerLogic logic) {
+        String[] temp = logic.getClass().toString().split("\\.");
+        // example: 34 - Janne - Human
+        String separator = " - ";
+        highscores.add(points + separator + name + separator + temp[temp.length-1]);
+        highscores.sort((a, b) -> (Integer.parseInt(a.split(separator)[0])) > (Integer.parseInt(b.split(separator)[0])) ? -1 : 0);
+        if (highscores.size() > 3) {
+            highscores = highscores.subList(0,3); //trim to the best 3
+        }
+
+        // update the file
+        try {
+            FileWriter file = new FileWriter ("src/main/resources/highscores.txt");
+            for (String line : highscores)  {
+                file.write(line + "\n" ); // Write line by line in the file
+            }
+            file.close();
+        } catch (Exception ex)  {
+            System.out.println("Message of exception:" + ex.getMessage());
+        }
     }
 
     public Field[] getFields() {

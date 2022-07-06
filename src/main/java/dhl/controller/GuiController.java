@@ -25,6 +25,7 @@ import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -655,6 +656,23 @@ public class GuiController {
         activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         updateAll();
+    }
+
+    /**
+     * This method is called when the user clicks on the "Load Highscores" button.
+     * @param event the click on the Button
+     * @throws IOException if the FXML file is not found
+     */
+    @FXML
+    public void loadHighscores(ActionEvent event) throws IOException {
+        loadNewScene(event, "/highscores.fxml", false, true);
+        List<Node> scoresInList = classifyChildren("scoresField");
+        VBox scores = (VBox)scoresInList.get(0);
+        scores.getChildren().clear();
+        List<String> highscores = Game.getHighscores();
+        for(String score : highscores) {
+            scores.getChildren().add(new Label(score));
+        }
     }
 
     /**
