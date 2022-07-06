@@ -133,7 +133,7 @@ public class GuiController {
 
         state = PREPARATION;
         activeP = model.getPlayers().get(0);
-        toDo.setText("Click any item to start your turn.");
+        toDo.setText("Click 'NEXT PLAYER' to start your turn.");
         updateAll();
     }
 
@@ -173,37 +173,35 @@ public class GuiController {
             }
             loadNewScene(e, "/end.fxml", false, true);
             createEndScores();
-        } else if (state == PREPARATION) { //click anything to start the turn
+        } else if (state == PREPARATION && item.getId().startsWith("nextButton")) { //click anything to start the turn
             chosenFigure = null;
             chosenCard = null;
             activeP.setLastTrashed(null);
-            state = State.CHOOSEHANDCARD;
+            state = CHOOSEHANDCARD;
             toDo.setText("Which card to you want to play or trash?");
 
             PlayerLogic pl = activeP.getPlayerLogic();
             if (pl instanceof AI) {
                 takeTurnAI((AI) pl);
             }
-        } else if ((state == State.CHOOSEHANDCARD || state == State.TRASHORPLAY) && item.getId().startsWith("handCard")) {
+        } else if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
             chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
             toDo.setText("Click a figure to move, the zombie at the bottom to move the zombie figure or trash it.");
-            state = State.TRASHORPLAY;
-        } else if (state == State.TRASHORPLAY) {
+            state = TRASHORPLAY;
+        } else if (state == TRASHORPLAY) {
             trashOrPlay(item);
-        } else if (state == State.ORACLE) {
+        } else if (state == ORACLE) {
             oracle(item);
-        } else if (state == State.SPIRAL && item.getId().startsWith("circle")) {
+        } else if (state == SPIRAL && item.getId().startsWith("circle")) {
             spiral(item);
-        } else if (state == State.SPIDERWEB) {
+        } else if (state == SPIDERWEB) {
             spiderweb(item);
-        } else if (state == State.GOBLIN) {
+        } else if (state == GOBLIN) {
             goblin(item);
-        } else if (state == State.DRAW && draw(item)) {
+        } else if (state == DRAW && draw(item)){
             return;
-        } else if (state == NEXT && item.getId().startsWith("nextButton")) {
-            toDo.setText("Click on any item to start your turn.");
-            state = PREPARATION;
         }
+
         if(item.getId().startsWith("menu")) {
             loadNewScene(e, "/start.fxml", false, false);
             return;
@@ -221,7 +219,7 @@ public class GuiController {
         if(item == null){
             return;
         }
-        if (state == PREPARATION ||(state == CHOOSEHANDCARD && item.getId().startsWith("handCard")) ||
+        if ((state == PREPARATION && item.getId().startsWith("nextButton")) ||(state == CHOOSEHANDCARD && item.getId().startsWith("handCard")) ||
                 (state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle")))
                 || ((state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle"))
                 || (state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile")))
@@ -251,9 +249,10 @@ public class GuiController {
             activeP.drawFromDrawingPile();
         }
         if(activeP.getHand().size() == 8){
-            activeP = model.nextPlayer();
-            toDo.setText("Click any item to start your turn.");
             state = PREPARATION;
+            activeP = model.nextPlayer();
+            toDo.setText("Click on 'NEXT PLAYER' to start your turn.");
+
         }
         return false;
     }
@@ -273,7 +272,7 @@ public class GuiController {
         } else if (item.getId().startsWith("playedCardsNumber")) {
             toDo.setText("This is not your played cards pile.");
         } else {
-            state = State.DRAW;
+            state = DRAW;
             toDo.setText("From which pile do you want to draw?");
         }
     }
@@ -282,7 +281,7 @@ public class GuiController {
         if (item.getId().startsWith("circle")) {
             useSpiderweb();
         } else {
-            state = State.DRAW;
+            state = DRAW;
             toDo.setText("From which pile do you want to draw?");
         }
     }
@@ -290,7 +289,7 @@ public class GuiController {
     private void spiral(Node item) {
         int chosenPos = getIndex(item.getId(), "circle");
         if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
-            state = State.DRAW;
+            state = DRAW;
             toDo.setText("From which pile do you want to draw?");
         } else {
             useSpiral(chosenPos);
@@ -310,7 +309,7 @@ public class GuiController {
         } else if (item.getId().startsWith("zombie")) {
             toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
                     chosenCard.getOracleNumber() + " steps forward");
-            state = State.ORACLE;
+            state = ORACLE;
         }
     }
 
@@ -397,7 +396,7 @@ public class GuiController {
         activeP.drawFromDrawingPile();
         activeP = model.nextPlayer();
         state = PREPARATION;
-        toDo.setText("The AI is done with its turn. Press any Card to continue.");
+        toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
     }
 
     /**
@@ -433,9 +432,9 @@ public class GuiController {
 
         } catch (IndexOutOfBoundsException indexE) {
             toDo.setText("This figure can't move this far! \nChoose a different one or trash.");
-            state = State.TRASHORPLAY; //choose again what to do with the chosen card
+            state = TRASHORPLAY; //choose again what to do with the chosen card
         } catch (Exception e) {
-            state = State.TRASHORPLAY;
+            state = TRASHORPLAY;
             toDo.setText(e.getMessage());
         }
     }
@@ -503,7 +502,7 @@ public class GuiController {
      */
     private void trash(Card card) {
         activeP.putCardOnDiscardingPile(card); //places card on pile and removes it from hand
-        state = State.DRAW;
+        state = DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
 
@@ -511,7 +510,7 @@ public class GuiController {
         Token token = model.getFields()[chosenFigure.getPos()].collectToken();
 
         if (token == null) {
-            state = State.DRAW;
+            state = DRAW;
             toDo.setText("From which pile do you want to draw?");
             return;
         }
@@ -519,13 +518,13 @@ public class GuiController {
         switch (token.getName()) {
 
             case "Spiral":
-                state = State.SPIRAL;
+                state = SPIRAL;
                 toDo.setText("Click the field you want to go back to (except the one you came from) " +
                         "\nor the one you are on to not use the action.");
                 break;
 
             case "Goblin":
-                state = State.GOBLIN;
+                state = GOBLIN;
                 if (!activeP.isGoblinSpecialPlayed() && activeP.amountFiguresGoblin() == 3) {
                     toDo.setText("Do you want to play your goblin special action " +
                             "(and get " + activeP.goblinSpecialPoints() + ") points. \nIf yes, click a field. " +
@@ -539,16 +538,16 @@ public class GuiController {
 
             case "Spiderweb":
                 if (FigureFunction.spiderwebIsPossible(activeP.getLastMovedFigure())) {
-                    state = State.SPIDERWEB;
+                    state = SPIDERWEB;
                     toDo.setText("Click any field to go to the next same colored field. \nTo say no click one discarding pile.");
                 } else {
-                    state = State.DRAW;
+                    state = DRAW;
                     toDo.setText("From which pile do you want to draw?");
                 }
                 break;
             default:
                 token.action(activeP);
-                state = State.DRAW;
+                state = DRAW;
                 toDo.setText("You found a " + token.getName()+ ". From which pile do you want to draw?");
                 break;
         }
@@ -557,7 +556,7 @@ public class GuiController {
     private void updatePlayedCardsAndNames() {
         int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
         if (chosenCard != null && activeP.getPlayedCards(chosenCard.getColor()).getTop() != null &&
-                (state == State.DRAW || state == State.SPIRAL || state == State.SPIDERWEB || state == State.GOBLIN)) {
+                (state == DRAW || state == SPIRAL || state == SPIDERWEB || state == GOBLIN)) {
             char currentCardColor = activeP.getPlayedCards(chosenCard.getColor()).getTop().getColor();
             List<Node> currentDiscardPileNumber = classifyChildren("playedCardsNumber" + currentPlayerIndex + currentCardColor);
             List<Node> currentDiscardPileDir = classifyChildren("playedCardsDir" + currentPlayerIndex + currentCardColor);
@@ -640,7 +639,7 @@ public class GuiController {
 
         loadNewScene(event, "/gui.fxml", true, true);
 
-        state = State.PREPARATION;
+        state = PREPARATION;
         activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         updateAll();

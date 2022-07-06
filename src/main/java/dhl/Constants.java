@@ -15,8 +15,7 @@ import java.util.Objects;
 public class Constants {
     public static final int PORT_NUMBER = 4444;
 
-    private Constants() {
-    }
+
     public static final String RED = "#d34a41";
     public static final String GREEN = "#6a9a3d";
     public static final String BLUE = "#424ebc";
@@ -33,6 +32,9 @@ public class Constants {
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));
     //add player to the players-list
+
+    private Constants() {
+    }
 
     public static final char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
 

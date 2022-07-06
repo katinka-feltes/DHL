@@ -403,19 +403,19 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <top>
-        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0">
+        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0" BorderPane.alignment="TOP_RIGHT">
             <children>
             <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#loadMenu" prefHeight="29.0" prefWidth="55.0" text="Menu">
                <font>
                   <Font name="Dead Kansas" size="20.0" />
                </font>
             </Label>
-            <ImageView fitHeight="95.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+            <ImageView fitHeight="101.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
                <image>
                   <Image url="@spiderweb.png" />
                </image>
             </ImageView>
-                <VBox maxHeight="120.0" minHeight="70.0" prefHeight="100.0">
+                <VBox maxHeight="120.0" minHeight="70.0" prefHeight="110.0" prefWidth="502.0">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER">
                             <font>
@@ -455,14 +455,14 @@
                         </HBox>
                     </children>
                 </VBox>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="300.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="250.0">
                <children>
                   <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
                      <font>
                         <Font name="Dead Kansas" size="20.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="50.0" right="20.0" />
+                        <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="150.0">
@@ -539,7 +539,7 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="110.0" prefWidth="146.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="140.0" text="Collected Token:">
                      <font>
@@ -565,27 +565,6 @@
                <padding>
                   <Insets left="30.0" />
                </padding>
-            </VBox>
-            <VBox alignment="TOP_RIGHT" prefHeight="110.0" prefWidth="106.0">
-               <children>
-
-                  <Button mnemonicParsing="false" onAction="#save" prefHeight="8.0" prefWidth="14.0">
-                     <graphic>
-                        <ImageView fitHeight="45.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@diskette.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="38.0" prefWidth="106.0" text="NEXT PLAYER">
-                     <font>
-                        <Font name="Ink Free" size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
             </VBox>
             </children>
         </HBox>
@@ -1210,6 +1189,24 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
+
+            <Button mnemonicParsing="false" onAction="#save" prefHeight="8.0" prefWidth="14.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@diskette.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
+               <font>
+                  <Font name="Ink Free" size="14.0" />
+               </font>
+            </Button>
             <ImageView fx:id="zombie" accessibleRole="BUTTON" fitHeight="143.0" fitWidth="160.0" onMouseClicked="#onClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@zombie1.png" />
@@ -1332,7 +1329,7 @@
                         </HBox>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefHeight="104.0" prefWidth="328.0">
+                <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefHeight="104.0" prefWidth="175.0">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="DRAWING PILE">
                             <font>

@@ -18,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.List;
 
 import static dhl.Constants.*;
+import static dhl.controller.State.PREPARATION;
 
 public class GuiUpdate {
 
@@ -122,7 +123,7 @@ public class GuiUpdate {
      * updates the hand cards, hand cards grey when players change
      */
     public static void updateCards(List<Node> handCards, State state , Player activeP) {
-        if (!state.equals(State.PREPARATION)) {
+        if (!state.equals(PREPARATION)) {
             //get sorted hand cards
             List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
             for (int i = 0; i < handCards.size(); i++) {
