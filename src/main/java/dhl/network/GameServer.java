@@ -6,36 +6,34 @@ import dhl.model.Player;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameServer {
-    private ServerSocket serverSocket;
-    private final int port = Constants.PORT_NUMBER;
+    private ServerSocket ss;
     List<Player> players = new ArrayList<>();
     boolean start = false;
     private Game game;
 
-    public GameServer() {
+    public GameServer(String ip) {
         try {
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server is listening on port "+Constants.PORT_NUMBER);
+            ss = new ServerSocket();
+            ss.bind(new InetSocketAddress(InetAddress.getByName(ip), Constants.PORT_NUMBER));
+            System.out.println("Server is listening on " + ss.getLocalSocketAddress());
             Thread serverThread = new Thread(() -> {
-                while (!start) {
+                Object received = "";
+                while (!received.equals("start")) {
                     try {
-                        Socket s = serverSocket.accept();
+                        Socket s = ss.accept();
                         ObjectInputStream in = new ObjectInputStream(s.getInputStream());
                         System.out.println("Client " + s.getLocalAddress() + " has connected");
-                        Object recieved = in.readObject();
-                        if (recieved instanceof Player && players.size() < 4) {
-                            System.out.println(recieved);
-                            Player player = (Player) recieved;
+                        received= in.readObject();
+                        if (received instanceof Player && players.size() < 4) {
+                            Player player = (Player) received;
                             System.out.println(player.getName());
                             players.add(player);
-                        } else if (recieved.equals("start") && players.size() > 1) {
-                            System.out.println(recieved);
+                        } else if (received.equals("start") && players.size() > 1) {
                             start = true;
                         }
                     } catch (IOException | ClassNotFoundException e) {
@@ -51,7 +49,10 @@ public class GameServer {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) {
-        new GameServer();
+    public static void main(String[] args) throws UnknownHostException {
+        System.out.println(InetAddress.getLocalHost().getHostAddress());
+        new GameServer(InetAddress.getLocalHost().getHostAddress());
+        Client c = new Client();
+        c.addPlayer(InetAddress.getLocalHost().getHostAddress());
     }
 }
