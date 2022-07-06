@@ -26,15 +26,16 @@ public class   CliController {
      * The game starts with the input of the players names. While the game is not over the active player can take turn.
      */
     public void startGame() {
-        if(view.promptPlayersChoice("load?") && Save.serializeDataIn()!=null){
+        if(view.promptPlayersChoice("load?")){
             model = Save.serializeDataIn();
-        } else {
+        }
+        if (model == null){ //if no game was loaded already (error with load or not wanted to load)
             int playerAmount = view.promptInt(2, 4, "How many players?");
             int aiAmount = view.promptInt(0, playerAmount - 1, "How many AI players?");
             String[] playerNames = view.inputPlayersNames(playerAmount - aiAmount);
             List<Player> players = new ArrayList<>();
             for (int i = 0; i < playerNames.length; i++) {
-                players.add(new Player(playerNames[i], Constants.symbols[i], new Human(view)));
+                players.add(new Player(playerNames[i], Constants.symbols[i], new Human()));
             }
             for (int i = 0; i < aiAmount; i++) {
                 players.add(new Player("AI" + (i + 1), Constants.symbols[i + playerNames.length], new AI()));

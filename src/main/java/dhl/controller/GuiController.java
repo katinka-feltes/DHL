@@ -113,7 +113,7 @@ public class GuiController {
         } else { //if all criteria are passed, the first player who must be human is added
             String enteredName = ((TextField)names.get(0)).getText();
             char symbol = ((String)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem()).charAt(0);
-            players.add(new Player(enteredName, symbol, new Human(view)));
+            players.add(new Player(enteredName, symbol, new Human()));
         }
 
         // add the other 3 players if they are entered
@@ -123,7 +123,7 @@ public class GuiController {
                 players.add(new Player("COM" + (i), symbol, new AI()));
             } else if (!((TextField)names.get(i)).getText().isEmpty()) {
                 String enteredName = ((TextField)names.get(i)).getText();
-                players.add(new Player(enteredName, symbol, new Human(view)));
+                players.add(new Player(enteredName, symbol, new Human()));
             }
         }
 
