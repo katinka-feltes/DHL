@@ -54,7 +54,7 @@ public class GuiController {
      */
     @FXML
     private BorderPane root;
-    static Game model;
+    private Game model;
     View view;
     /**
      * contains the name of the current player
@@ -221,39 +221,28 @@ public class GuiController {
         if(item == null){
             return;
         }
-        if (state == PREPARATION) {
-            setGlow(item);
-        } else if (state == CHOOSEHANDCARD && item.getId().startsWith("handCard")){
-            setGlow(item);
-        } else if (state == TRASHORPLAY && (item.getId().startsWith("discardingPile") ||
-        item.getId().startsWith("circle"))) {
-            setGlow(item);
-        } else if ((state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle")) {
-            setGlow(item);
-        } else if (state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile"))) {
-            setGlow(item);
-        } else if (state == DRAW && item.getId().startsWith("drawingPile")) {
-            setGlow(item);
-        }else {
-            setGlow(item);
-        }
-    }
-
-    @FXML
-    private void setGlow(Node item) {
-        Glow glow = new Glow();
-        glow.setLevel(0.6);
-        if (item.getEffect() == null){
-            item.setEffect(glow);
-        }else {
-            item.setEffect(null);
+        if (state == PREPARATION ||(state == CHOOSEHANDCARD && item.getId().startsWith("handCard")) ||
+                (state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle")))
+                || ((state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle"))
+                || (state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile")))
+                ||  (state == DRAW && item.getId().startsWith("drawingPile"))) {
+            Glow glow = new Glow();
+            glow.setLevel(0.6);
+            if (item.getEffect() == null){
+                item.setEffect(glow);
+            }else {
+                item.setEffect(null);
+            };
         }
     }
 
     private boolean draw(Node item) {
         if (item.getId().startsWith("discardingPile")) {
             try {
-                activeP.drawFromDiscardingPile(getDiscardPileFromID(item.getId())); //draw one card from chosen pile
+                //get discard pile from id
+                char[] idArray = item.getId().toCharArray();
+                DiscardPile chosenPile = model.getDiscardPile(idArray[idArray.length - 1]);
+                activeP.drawFromDiscardingPile(chosenPile); //draw one card from chosen pile
             } catch (Exception exc) {
                 toDo.setText(exc.getMessage());
                 return true;
@@ -262,9 +251,9 @@ public class GuiController {
             activeP.drawFromDrawingPile();
         }
         if(activeP.getHand().size() == 8){
-            activeP = getNextPlayer();
-            toDo.setText("Click on 'NEXT PLAYER' to end your turn.");
-            state = NEXT;
+            activeP = model.nextPlayer();
+            toDo.setText("Click any item to start your turn.");
+            state = PREPARATION;
         }
         return false;
     }
@@ -277,7 +266,10 @@ public class GuiController {
         } else if (item.getId().startsWith("handCard")) {
             useGoblinHand(activeP.getHand().get(getIndex(item.getId(), "handCard")));
         } else if (item.getId().startsWith("playedCardsNumber" + (model.getPlayers().indexOf(activeP)+1))) {
-            useGoblinPile(getPlayedCardsFromID(item.getId()));
+            //get played cards from the id
+            char[] idArray = item.getId().toCharArray();
+            DirectionDiscardPile playedCards =  activeP.getPlayedCards(idArray[idArray.length - 1]);
+            useGoblinPile(playedCards);
         } else if (item.getId().startsWith("playedCardsNumber")) {
             toDo.setText("This is not your played cards pile.");
         } else {
@@ -325,18 +317,24 @@ public class GuiController {
     /**
      * what happens in state oracle after item is clicked
      * @param item the clicked item
-     * @throws Exception if the figure would leave the field
+     * @throws Exception if the figure would leave the field or if card does not fit to pile
      */
     private void oracle(Node item) throws Exception {
-        toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
-                chosenCard.getOracleNumber() + " steps forward");
-        activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
-        activeP.getHand().remove(chosenCard);
-        int chosenPosition = getIndex(item.getId(), "circle");
-        if(chosenPosition <= model.getOracle()+chosenCard.getOracleNumber() && chosenPosition > model.getOracle()) {
-            activeP.placeOracle(chosenPosition - model.getOracle());
-            state = State.DRAW;
-            toDo.setText("From which pile do you want to draw?");
+        try{
+            activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
+            activeP.getHand().remove(chosenCard);
+
+            toDo.setText("Click on the field you want to move the zombie to.\nIt can move up to " +
+                    chosenCard.getOracleNumber() + " steps forward");
+            int chosenPosition = getIndex(item.getId(), "circle");
+            if(chosenPosition <= model.getOracle()+chosenCard.getOracleNumber() && chosenPosition > model.getOracle()) {
+                activeP.placeOracle(chosenPosition - model.getOracle());
+                state = State.DRAW;
+                toDo.setText("From which pile do you want to draw?");
+            }
+        } catch (Exception e) {
+            state = State.TRASHORPLAY;
+            toDo.setText(e.getMessage());
         }
     }
 
@@ -346,13 +344,13 @@ public class GuiController {
         //update discarding piles
         updatePlayedCardsAndNames();
         // update tokens
-        GuiUpdate.updateTokens(classifyChildren("token"));
+        GuiUpdate.updateTokens(classifyChildren("token"), model.getFields());
         // update figures
         GuiUpdate.updateFigures(classifyChildren("circle"), model.getPlayers(), model.getOracle());
         // update scores
         GuiUpdate.updateScores(classifyChildren("scorePlayer"), classifyChildren("scoreName"), model.getPlayers());
         //update discard piles
-        GuiUpdate.updateDiscardPiles(classifyChildren("discardingPile"));
+        GuiUpdate.updateDiscardPiles(classifyChildren("discardingPile"), model);
         //update collected tokens
         GuiUpdate.updateCollectedTokens(activeP, (HBox)classifyChildren("collectedToken").get(0));
         //write name and symbol of active player
@@ -397,9 +395,9 @@ public class GuiController {
         // draw to end turn
         updateAll();
         activeP.drawFromDrawingPile();
-        activeP = getNextPlayer();
-        state = NEXT;
-        toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
+        activeP = model.nextPlayer();
+        state = PREPARATION;
+        toDo.setText("The AI is done with its turn. Press any Card to continue.");
     }
 
     /**
@@ -443,7 +441,7 @@ public class GuiController {
     }
 
     private void useSpiderweb() {
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
         updateCards(classifyChildren("handCard"), state, activeP);
         useToken(); // sets the new state
     }
@@ -453,9 +451,9 @@ public class GuiController {
      * @param card the player picked to trash
      */
     private void useGoblinHand(Card card) {
-        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice('h');
-        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setCardChoice(card);
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setPileChoice('h');
+        ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setCardChoice(card);
+        model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
     }
@@ -465,8 +463,8 @@ public class GuiController {
      * @param pile the player wants to trash the top card from
      */
     private void useGoblinPile(DirectionDiscardPile pile) {
-        ((Goblin) Game.FIELDS[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
-        Game.FIELDS[chosenFigure.getPos()].getToken().action(activeP);
+        ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
+        model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
         state = State.DRAW;
         toDo.setText("From which pile do you want to draw?");
 
@@ -487,7 +485,7 @@ public class GuiController {
      * @param chosenPos position the player chose for his figure to move to
      */
     private void useSpiral (int chosenPos){
-        Token token = Game.FIELDS[activeP.getLastMovedFigure().getPos()].getToken();
+        Token token = model.getFields()[activeP.getLastMovedFigure().getPos()].getToken();
 
         if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
             ((Spiral) token).setChosenPos(chosenPos);
@@ -510,7 +508,7 @@ public class GuiController {
     }
 
     private void useToken() {
-        Token token = Game.FIELDS[chosenFigure.getPos()].collectToken();
+        Token token = model.getFields()[chosenFigure.getPos()].collectToken();
 
         if (token == null) {
             state = State.DRAW;
@@ -598,34 +596,14 @@ public class GuiController {
      * @param id the piles' id with the color as the last character
      * @return the discard pile from the model
      */
-    public static DiscardPile getDiscardPileFromID(String id) {
+    public DiscardPile getDiscardPileFromID(String id) {
         char[] idArray = id.toCharArray();
         return model.getDiscardPile(idArray[idArray.length - 1]);
-    }
-
-    /**
-     * gets the matching direction discard pile to color in id
-     *
-     * @param id the piles' id with the color as the last character
-     * @return the direction discard pile from the player
-     */
-    private DirectionDiscardPile getPlayedCardsFromID(String id) {
-        char[] idArray = id.toCharArray();
-        return activeP.getPlayedCards(idArray[idArray.length - 1]);
     }
 
     private int getIndex(String id, String elementName) {
         String[] x = id.split(elementName);
         return Integer.parseInt(x[1]);
-    }
-
-    private Player getNextPlayer() {
-        int index = model.getPlayers().indexOf(activeP);
-        if (index == model.getPlayers().size() - 1) {
-            return model.getPlayers().get(0);
-        } else {
-            return model.getPlayers().get(index + 1);
-        }
     }
 
     /**
@@ -634,12 +612,15 @@ public class GuiController {
      */
     @FXML
     public void save(ActionEvent event)  {
-        try {
-            Save.serializeDataOut(model);
-            toDo.setText("Save successful.\n" + toDo.getText());
-        }
-        catch (Exception e){
-            System.out.println("error with save");
+        if(state == PREPARATION || state == CHOOSEHANDCARD || state == TRASHORPLAY) {
+            try {
+                Save.serializeDataOut(model);
+                toDo.setText("Save successful.\n" + toDo.getText());
+            } catch (Exception e) {
+                System.out.println("error with save");
+            }
+        } else {
+            toDo.setText("You can only save before the turn was started.\n" + toDo.getText());
         }
     }
 
@@ -663,5 +644,15 @@ public class GuiController {
         activeP = model.getPlayers().get(0);
         toDo.setText("Click any item to start your turn.");
         updateAll();
+    }
+
+    /**
+     * This method is called when the user clicks on the "Menu" or "Start new Game" button.
+     * @param e the click on the Button
+     * @throws IOException if the FXML file is not found
+     */
+    @FXML
+    public void loadMenu(Event e) throws IOException {
+        loadNewScene(e, "/start.fxml", false, false);
     }
 }

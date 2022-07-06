@@ -1,5 +1,6 @@
 package dhl.controller.player_logic;
 
+import dhl.Constants;
 import dhl.model.*;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Skullpoint;
@@ -9,15 +10,16 @@ import dhl.model.tokens.WishingStone;
 import java.util.ArrayList;
 import java.util.List;
 
-import static dhl.model.Game.FIELDS;
-
 /**
  * The logic for the AI agent
  */
 public class AI implements PlayerLogic {
 
     Card chosenCard;
+    Card chosenCardOracle;
     Figure chosenFigure;
+    boolean playOracle;
+    int oracleSteps;
     Player self;
 
     @Override
@@ -34,8 +36,8 @@ public class AI implements PlayerLogic {
             return true; // always wants to proceed TODO: spiral no if spiral is on first field or so
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return playableCards().size() < 3; // trash a hand card if only 2 of them be played
-        } else if (question.startsWith("Do you want to move a figure?")) {
-            return true; //TODO: if AI wants to move figure or oracle (true=figure; false=oracle)
+        } else if (question.startsWith("Do you want to move a figure?")) { // true = figure; false = oracle
+            return !playOracle;
         } else {
             return question.startsWith("Do you want to play your goblin-special?");// always play if it is possible, because it doesn't occur often
         }
@@ -44,19 +46,21 @@ public class AI implements PlayerLogic {
     @Override
     public int chooseSpiralPosition(String question, int position) {
 
+        Field[] fields = self.getGame().getFields();
+
         int stonesAmount = self.getTokens()[0];
 
         int chosenPosition = position;
         int originalPosition = self.getLastMovedFigure().getLatestPos();
         if(stonesAmount < 3) {
             for(int pos = position; pos > position - 5; pos--) {
-                if(FIELDS[pos].getToken() instanceof WishingStone && pos != originalPosition) {
+                if(fields[pos].getToken() instanceof WishingStone && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
         } else {
             for(int pos = position; pos > 0; pos--) {
-                if(FIELDS[pos].getToken() instanceof Mirror && pos != originalPosition) {
+                if(fields[pos].getToken() instanceof Mirror && pos != originalPosition) {
                     chosenPosition = pos;
                 }
             }
@@ -92,8 +96,7 @@ public class AI implements PlayerLogic {
 
     @Override
     public int chooseOracleSteps(String question, int oracleNumber) {
-        //TODO: how far the AI wants to move the oracle
-        return 1;
+        return oracleSteps;
     }
 
     /**
@@ -125,19 +128,22 @@ public class AI implements PlayerLogic {
     }
 
     /**
-     * checks which playable hand card is the best option according to the AI's played cards
+     * checks which playable hand card and figure is the best option for the AI's next move or if it should
+     * move the oracle (and how far)
      */
     private void calculateNextMove() {
+        Field[] fields = self.getGame().getFields();
+        //best combination card + figure
         int bestOption = -100; //best calculated points by combination of figure and card
         for (Figure figure : self.getFigures()) { //for every figure
             for (Card card : self.getHand()) { //for every card from hand
                 int steps = steps(figure, card.getColor()); //how far the figure would move with the current card
                 if(steps == -100) {break;} // if the card would move the figure too far
-                int pointDifference = FIELDS[figure.getPos() + steps].getPoints() - FIELDS[figure.getPos()].getPoints();
+                int pointDifference = fields[figure.getPos() + steps].getPoints() - fields[figure.getPos()].getPoints();
 
                 int points = steps + pointDifference; //steps plus the gained points due to the steps
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
-                points += tokenWorth(FIELDS[figure.getPos() + steps].getToken()); // plus how good the token on the field is
+                points += tokenWorth(fields[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;
                     chosenFigure = figure;
@@ -145,6 +151,43 @@ public class AI implements PlayerLogic {
                 }
             }
         }
+        //best combination card + oracle
+        int bestOptionOracle = -10; //best calculated points by combination of oracle and card
+        int steps = 0; //steps the oracle has to move to get to one of AI's figures
+        for (Card card: self.getHand()) { //for every card from hand
+            int points = 0; //points of current oracle + card combo
+            steps = figureReachable(self.getGame().getOracle(), card.getOracleNumber());
+            if(steps != 0) {
+                points = 5 - difference(card, self.getPlayedCards(card.getColor())); //5 points if oracle can reach figure and how good card fits
+            }
+            if(points > bestOptionOracle) { //if card is better than current for oracle
+                chosenCardOracle = card;
+                bestOptionOracle = bestOption;
+            }
+        }
+        if(bestOptionOracle > bestOption) { //if playing oracle is better than former figure+card combo
+            playOracle = true;
+            chosenCard = chosenCardOracle;
+            oracleSteps = steps;
+        }
+    }
+
+    /**
+     * checks if oracle can reach at least one of AI's figures
+     * @param oraclePos current position of oracle
+     * @param possibleSteps furthest steps the oracle could move forward
+     * @return int 0: if no figure is reachable, 1-5: how many steps needed
+     */
+    private int figureReachable(int oraclePos, int possibleSteps) {
+        int steps = 0;
+        for(Figure figure: self.getFigures()) {
+            for(int i=1; i<=possibleSteps; i++) {
+                if(figure.getPos() == oraclePos+i && oraclePos+i <= 35) { //if oracle can reach figure (and doesn't move out of bounds)
+                    steps = i; //steps the oracle has to go to reach figure
+                }
+            }
+        }
+        return steps;
     }
 
     /**
@@ -157,7 +200,7 @@ public class AI implements PlayerLogic {
     private int steps(Figure f, char color) {
         int steps = 1;
         try {
-            while (FIELDS[f.getPos() + steps].getColor() != color) {
+            while (Constants.BASIC_FIELD[f.getPos() + steps].getColor() != color) {
                 steps++;
             }
         } catch (Exception e){
@@ -247,7 +290,5 @@ public class AI implements PlayerLogic {
         return playable;
     }
 
-    public void setSelf(Player self) {
-        this.self = self;
-    }
+    public void setSelf(Player self) {this.self = self;}
 }

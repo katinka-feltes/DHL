@@ -405,7 +405,7 @@
     <top>
         <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0">
             <children>
-            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#onClick" prefHeight="29.0" prefWidth="55.0" text="Menu">
+            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#loadMenu" prefHeight="29.0" prefWidth="55.0" text="Menu">
                <font>
                   <Font name="Dead Kansas" size="20.0" />
                </font>
@@ -1149,7 +1149,7 @@
                         <StackPane fx:id="discardingPileb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discradPileb" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
+                                <Label fx:id="discardPileb" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>

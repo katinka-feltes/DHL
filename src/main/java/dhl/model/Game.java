@@ -1,5 +1,6 @@
 package dhl.model;
 
+import dhl.Constants;
 import dhl.controller.player_logic.PlayerLogic;
 import dhl.model.tokens.*;
 
@@ -15,44 +16,7 @@ import java.util.*;
  */
 public class Game implements Serializable {
 
-    public static final Field[] FIELDS = {
-            new LargeField(0, 'w', 0),
-            new Field(-4, 'p'),
-            new Field(-4, 'o'),
-            new Field(-4, 'r'),
-            new Field(-4, 'g'),
-            new Field(-4, 'b'),
-            new Field(-4, 'p'),
-            new LargeField(-3, 'p', 2),
-            new Field(-3, 'o'),
-            new Field(-3, 'r'),
-            new Field(-2, 'g'),
-            new Field(-2, 'b'),
-            new Field(-2, 'p'),
-            new Field(-2, 'o'),
-            new LargeField(1, 'o', 2),
-            new Field(1, 'r'),
-            new Field(1, 'g'),
-            new Field(2, 'b'),
-            new Field(2, 'p'),
-            new Field(2, 'o'),
-            new Field(2, 'r'),
-            new LargeField(3, 'r', 2),
-            new Field(3, 'g'),
-            new Field(3, 'b'),
-            new Field(3, 'p'),
-            new Field(5, 'o'),
-            new Field(5, 'r'),
-            new Field(5, 'g'),
-            new LargeField(5, 'g', 2),
-            new Field(6, 'b'),
-            new Field(6, 'p'),
-            new Field(6, 'o'),
-            new Field(7, 'r'),
-            new Field(7, 'g'),
-            new Field(7, 'b'),
-            new LargeField(10, 'b', 1)
-    };
+    private Field[] fields;
     //the best 3 scores (each one entry): first points, second name, third ai or human
     private List<String> highScores = new ArrayList<>();
     private final DiscardPile discardingPileRed;
@@ -61,8 +25,7 @@ public class Game implements Serializable {
     private final DiscardPile discardingPilePurple;
     private final DiscardPile discardingPileOrange;
     private final DrawingPile drawingPile;
-    private final List<Player> players;
-
+    private final List<Player> players; //first player is the active player
     private final List<Token> tokens;
     private int oracle; // the index of the field the oracle is standing on
 
@@ -97,6 +60,7 @@ public class Game implements Serializable {
         this.players = players;
         oracle = 0;
 
+        fields = Constants.BASIC_FIELD;
         tokens = new ArrayList<>();
 
         for (int i = 1; i <= 3; i++) {
@@ -206,7 +170,7 @@ public class Game implements Serializable {
     private void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
-        for (Field field : FIELDS) {
+        for (Field field : getFields()) {
             if (!(field instanceof LargeField)) {
                 field.setToken(this.tokens.get(i));
                 i++;
@@ -310,6 +274,20 @@ public class Game implements Serializable {
     }
 
     /**
+     * makes the next player the new active one
+     * @return the new active player
+     */
+    public Player nextPlayer(){
+        Player lastActive = players.get(0);
+        //remove the last active player from the front of the list because he is no longer the active one
+        players.remove(lastActive);
+        //add it to the end of the list so that it continues to play
+        players.add(lastActive);
+
+        return players.get(0); //return thr new active player
+    }
+
+    /**
      * returns the size of the list of players
      * @return the amount of players in the game
      */
@@ -325,7 +303,7 @@ public class Game implements Serializable {
      * @throws Exception if the oracle would leave the field
      */
     public void moveOracle(int steps) throws Exception{
-        if(oracle+steps >= FIELDS.length){
+        if(oracle+steps >= getFields().length){
             throw new Exception("The oracle cannot move this far!");
         }
         oracle+=steps;
@@ -333,5 +311,9 @@ public class Game implements Serializable {
 
     public List<String> getHighscores() {
         return highScores;
+    }
+
+    public Field[] getFields() {
+        return fields;
     }
 }

@@ -11,6 +11,5 @@ public enum State {
     SPIDERWEB,
     SPIRAL,
     GOBLIN,
-    DRAW,
-    NEXT
+    DRAW
 }

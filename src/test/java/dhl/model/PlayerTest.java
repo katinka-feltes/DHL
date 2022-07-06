@@ -173,15 +173,15 @@ public class PlayerTest {
     @Test
     public void amountFiguresGoblin(){
         assertEquals(0, player.amountFiguresGoblin());
-        Game.FIELDS[0].setToken(new Goblin());
+        game.getFields()[0].setToken(new Goblin());
         assertEquals(3, player.amountFiguresGoblin());
-        Game.FIELDS[5].setToken(new Goblin());
+        game.getFields()[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         assertEquals(3, player.amountFiguresGoblin());
-        Game.FIELDS[10].setToken(new Goblin());
+        game.getFields()[10].setToken(new Goblin());
         player.getFigures().get(1).setPos(10);
         assertEquals(3,player.amountFiguresGoblin());
-        Game.FIELDS[10].setToken(null);
+        game.getFields()[10].setToken(null);
         assertEquals(2, player.amountFiguresGoblin());
     }
 
@@ -191,15 +191,15 @@ public class PlayerTest {
      */
     @Test
     public void goblinSpecialPoints(){
-        Game.FIELDS[0].setToken(new Goblin());
+        game.getFields()[0].setToken(new Goblin());
         assertEquals(5 , player.goblinSpecialPoints());
-        Game.FIELDS[5].setToken(new Goblin());
+        game.getFields()[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         assertEquals(10 , player.goblinSpecialPoints());
-        Game.FIELDS[10].setToken(new Goblin());
+        game.getFields()[10].setToken(new Goblin());
         player.getFigures().get(1).setPos(10);
         assertEquals(15 , player.goblinSpecialPoints());
-        Game.FIELDS[10].setToken(null);
+        game.getFields()[10].setToken(null);
         assertEquals(0 , player.goblinSpecialPoints());
     }
 
@@ -209,8 +209,8 @@ public class PlayerTest {
     @Test
     public void playGoblinSpecial(){
         assertFalse(player.isGoblinSpecialPlayed());
-        Game.FIELDS[0].setToken(new Goblin());
-        Game.FIELDS[5].setToken(new Goblin());
+        game.getFields()[0].setToken(new Goblin());
+        game.getFields()[5].setToken(new Goblin());
         player.getFigures().get(0).setPos(5);
         player.playGoblinSpecial();
         assertEquals(10 , player.getVictoryPoints());

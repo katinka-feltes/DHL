@@ -9,8 +9,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import static dhl.model.Game.FIELDS;
-
 /**
  * Starting point of the command line interface
  */
@@ -311,6 +309,9 @@ public class Cli implements View, Serializable {
      * @param game the game
      */
     private void printBoardPart(int rowStart, int rowEnd, Game game){
+
+        Field[] fields = game.getFields();
+
         // print index
         for (int i = rowStart; i <= rowEnd; i++){
             System.out.print("(" + i + ") \t");
@@ -319,23 +320,23 @@ public class Cli implements View, Serializable {
 
         // print points of the fields
         for (int i = rowStart; i <= rowEnd; i++) {
-            System.out.print(FIELDS[i].getPoints() + TABULATOR);
+            System.out.print(fields[i].getPoints() + TABULATOR);
         }
         System.out.println();
 
         // print colors of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print(FIELDS[i].getColor() + TABULATOR);
+            System.out.print(fields[i].getColor() + TABULATOR);
         }
         System.out.println();
 
         // print tokens of the fields
         for (int i = rowStart; i <= rowEnd; i++){
-            if(FIELDS[i].getToken() != null) {
-                if (FIELDS[i] instanceof LargeField && ((LargeField) FIELDS[i]).getTokenTwo() != null) {
-                    System.out.print(FIELDS[i].getToken().getSymbol() + " " + FIELDS[i].getToken().getSymbol());
+            if(fields[i].getToken() != null) {
+                if (fields[i] instanceof LargeField && ((LargeField) fields[i]).getTokenTwo() != null) {
+                    System.out.print(fields[i].getToken().getSymbol() + " " + fields[i].getToken().getSymbol());
                 } else {
-                    System.out.print(FIELDS[i].getToken().getSymbol());
+                    System.out.print(fields[i].getToken().getSymbol());
                 }
             }
             System.out.print(TABULATOR);
