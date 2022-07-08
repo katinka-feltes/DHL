@@ -1,6 +1,5 @@
 package dhl.view;
 
-import dhl.Constants;
 import dhl.controller.State;
 import dhl.model.*;
 import javafx.fxml.FXML;
@@ -21,6 +20,9 @@ import java.util.List;
 import static dhl.Constants.*;
 import static dhl.controller.State.PREPARATION;
 
+/**
+ * this class contains most of the update functions for the gui.
+ */
 public class GuiUpdate {
 
     /**
@@ -140,6 +142,11 @@ public class GuiUpdate {
         }
     }
 
+    /**
+     * updates the discard piles in the gui
+     * @param root the parent of all
+     * @param game the current game
+     */
     public static void updateDiscardPiles(BorderPane root, Game game) {
         List<Node> stackPanes = classifyChildren("discardingPile", root);
         for(Node stackPane : stackPanes) {
@@ -170,7 +177,7 @@ public class GuiUpdate {
                 Label cardNumber = (Label) ((StackPane)handCards.get(i)).getChildren().get(1);
                 if (i < sortedHand.size()) {
                     cardNumber.setText(Integer.toString(sortedHand.get(i).getNumber()));
-                    card.setFill(Constants.charToColor(sortedHand.get(i).getColor()));
+                    card.setFill(charToColor(sortedHand.get(i).getColor()));
                 } else {
                     cardNumber.setText("");
                     card.setFill(Color.web("#c8d1d9"));
