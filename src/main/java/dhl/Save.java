@@ -9,7 +9,7 @@ public class Save {
     /**
      * saves the game as a file in resorces
      * @param g the game to serialize
-     * @throws IOException
+     * @throws IOException if a problem occurs while writing the file
      */
     public static void serializeDataOut(Game g) throws IOException {
         FileOutputStream fos = new FileOutputStream("src/main/resources/savedGame.txt");

@@ -1,11 +1,11 @@
 package dhl.view;
 
 import dhl.Constants;
-import dhl.controller.GuiController;
 import dhl.controller.State;
 import dhl.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +15,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static dhl.Constants.*;
@@ -23,9 +24,41 @@ import static dhl.controller.State.PREPARATION;
 public class GuiUpdate {
 
     /**
+     * gets all the children of a given Parent
+     * @param parent the parent you want to get the children from
+     * @return a list of all the children of the parent
+     */
+    public static List<Node> getAllChildren(Parent parent) {
+        ArrayList<Node> children = new ArrayList<>();
+        for (Node node : parent.getChildrenUnmodifiable()) {
+            children.add(node);
+            if (node instanceof Parent)
+                children.addAll(getAllChildren((Parent) node));
+        }
+        return children;
+    }
+
+    /**
+     * classifies all the children of the root pane as per a given String
+     * @param searchId the classification string
+     * @param root the Borderpane to get the nodes from
+     * @return all the matching children that start with the given string
+     */
+    public static List<Node> classifyChildren(String searchId, BorderPane root) {
+        List<Node> nodes = new ArrayList<>();
+        for (Node node : getAllChildren(root)) {
+            if (node.getId() != null && node.getId().startsWith(searchId)) {
+                nodes.add(node);
+            }
+        }
+        return nodes;
+    }
+
+    /**
      * updates the tokens on the field
      */
-    public static void updateTokens(List<Node> tokens, Field[] fields) {
+    public static void updateTokens(BorderPane root, Field[] fields) {
+        List<Node> tokens = classifyChildren("token", root);
         int tokenIndex = 0;
         while (tokenIndex <= 39) {
             for (int i = 1; i <= 35; i++) {
@@ -46,9 +79,10 @@ public class GuiUpdate {
     /**
      * updates the tokens the player has already collected
      * @param activeP the active player
-     * @param tokenBox the box in which the tokens are displayed
+     * @param root the parent of all nodes
      */
-    public static void updateCollectedTokens(Player activeP, HBox tokenBox){
+    public static void updateCollectedTokens(BorderPane root, Player activeP){
+        HBox tokenBox = (HBox)classifyChildren("collectedToken", root).get(0);
         //clear earlier tokens
         tokenBox.getChildren().clear();
         //print every wishing stone
@@ -70,7 +104,8 @@ public class GuiUpdate {
     /**
      * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
      */
-    public static void updateFigures(List<Node> circles, List<Player> players, int oraclePosition) {
+    public static void updateFigures(BorderPane root, List<Player> players, int oraclePosition) {
+        List<Node> circles = classifyChildren("circle", root);
         //clear all fields
         for (Node circle : circles) {
             ((TilePane)circle).getChildren().clear();
@@ -91,7 +126,9 @@ public class GuiUpdate {
     /**
      * updates scores with corresponding player names
      */
-    public static void updateScores(List<Node> scores, List<Node> scoreNames, List<Player> players) {
+    public static void updateScores(BorderPane root, List<Player> players) {
+        List<Node> scores = classifyChildren("scorePlayer", root);
+        List<Node> scoreNames = classifyChildren("scoreName", root);
         for (int i = 0; i < 4; i++) {
             if (i > players.size() - 1) {
                 ((Label)scoreNames.get(i)).setText("");
@@ -103,7 +140,8 @@ public class GuiUpdate {
         }
     }
 
-    public static void updateDiscardPiles(List<Node> stackPanes, Game game) {
+    public static void updateDiscardPiles(BorderPane root, Game game) {
+        List<Node> stackPanes = classifyChildren("discardingPile", root);
         for(Node stackPane : stackPanes) {
 
             //get Discard Pile from ID
@@ -122,7 +160,8 @@ public class GuiUpdate {
     /**
      * updates the hand cards, hand cards grey when players change
      */
-    public static void updateCards(List<Node> handCards, State state , Player activeP) {
+    public static void updateCards(BorderPane root, State state , Player activeP) {
+        List<Node> handCards = classifyChildren("handCard", root);
         if (!state.equals(PREPARATION)) {
             //get sorted hand cards
             List<Card> sortedHand = CardFunction.sortHand(activeP.getHand());
@@ -148,12 +187,26 @@ public class GuiUpdate {
     }
 
     /**
+     * adds the player names on end screen (in order: winning - losing)
+     */
+    public static void createEndScores(List<Player> winnerList, BorderPane root) {
+        List<Node> endScores = classifyChildren("endscores", root);
+        for (int i = 0; i < 4; i++) {
+            if (i > winnerList.size() - 1) {
+                ((Label)endScores.get(i)).setText("");
+            } else {
+                ((Label)endScores.get(i)).setText(winnerList.get(i).getName());
+            }
+        }
+    }
+
+    /**
      * this method resets all effects from all gui objects
      * @param borderPane the parent of all children
      */
     @FXML
     public static void resetEffects(BorderPane borderPane) {
-        for (Node node : GuiController.getAllChildren(borderPane)) {
+        for (Node node : getAllChildren(borderPane)) {
             node.setEffect(null);
         }
     }

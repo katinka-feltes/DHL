@@ -48,7 +48,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -1202,7 +1202,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
+            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#startTurn" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
                <font>
                   <Font name="Ink Free" size="14.0" />
                </font>
