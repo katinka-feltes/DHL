@@ -46,6 +46,7 @@ public class DirectionDiscardPile extends DiscardPile{
      * adds card to top (end) of the pile if the color and direction fit
      * updates the direction if not set yet
      * @param card the card that is added
+     * @throws Exception if the card doesn't fit to the pile
      */
     @Override
     public void add(Card card) throws Exception {

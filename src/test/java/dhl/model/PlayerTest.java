@@ -34,7 +34,7 @@ public class PlayerTest {
      * tests if method placeFigure works
      */
     @Test
-    public void placeFigure() {
+    public void placeFigure() throws Exception {
         Figure fig = FigureFunction.getFigureByPos(1, player.getFigures());
         player.placeFigure('r', fig);
         assertEquals(3, fig.getPos());
@@ -118,7 +118,7 @@ public class PlayerTest {
      * tests if method getLastMovedFigure works
      */
     @Test
-    public void getLastMovedFigure() {
+    public void getLastMovedFigure() throws Exception {
         player.placeFigure('r', FigureFunction.getFigureByPos(1, player.getFigures()));
         assertEquals(FigureFunction.getFigureByPos(1, player.getFigures()), player.getLastMovedFigure());
     }

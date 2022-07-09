@@ -54,4 +54,20 @@ public class CardFunction {
             return false;
         }
     }
+
+    /**
+     * calculates how many cards in player's hand are of given color
+     * @param cardSet the set of card to count
+     * @param color color the cards should have
+     * @return amount of cards of given color
+     */
+    public static int amountOfColoredCards(List<Card> cardSet, char color) {
+        int amount = 0;
+        for(Card card: cardSet) {
+            if(card.getColor() == color) {
+                amount++;
+            }
+        }
+        return amount;
+    }
 }

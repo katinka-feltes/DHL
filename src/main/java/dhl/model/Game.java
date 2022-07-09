@@ -160,7 +160,7 @@ public class Game implements Serializable {
     private void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
-        for (Field field : getFields()) {
+        for (Field field : fields) {
             if (!(field instanceof LargeField)) {
                 field.setToken(this.tokens.get(i));
                 i++;
@@ -281,7 +281,7 @@ public class Game implements Serializable {
      * @throws Exception if the oracle would leave the field
      */
     public void moveOracle(int steps) throws Exception{
-        if(oracle+steps >= getFields().length){
+        if(oracle+steps >= fields.length){
             throw new Exception("The oracle cannot move this far!");
         }
         oracle+=steps;
@@ -316,6 +316,6 @@ public class Game implements Serializable {
     }
 
     public Field[] getFields() {
-        return fields;
+        return fields.clone();
     }
 }
