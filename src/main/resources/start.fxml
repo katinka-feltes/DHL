@@ -51,11 +51,19 @@
    <top>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="🕷DIRE HORROR LAND🕷" textAlignment="CENTER" textFill="#880b0b">
+            <Label alignment="CENTER" prefHeight="73.0" prefWidth="449.0" text="DIRE HORROR LAND" textAlignment="CENTER" textFill="#880b0b">
                <font>
                   <Font name="Dead Kansas" size="50.0" />
                </font>
             </Label>
+            <Button mnemonicParsing="false" onAction="#loadGamemodes" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Gamemodes" textAlignment="CENTER" textFill="#880b0b">
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </top>
@@ -80,14 +88,23 @@
             </ImageView>
             <VBox alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" text="HUMAN PLAYER NAMES:" textAlignment="CENTER">
-                     <font>
-                        <Font name="Ink Free" size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
+                  <HBox prefHeight="22.0" prefWidth="241.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="192.0" text="HUMAN PLAYER NAMES:" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ink Free" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" text="Symbol" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ink Free" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox prefHeight="24.0" prefWidth="221.0">
                      <children>
                         <TextField fx:id="name1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="193.0">

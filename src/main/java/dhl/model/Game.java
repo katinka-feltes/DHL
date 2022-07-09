@@ -96,7 +96,7 @@ public class Game implements Serializable {
      */
     public boolean gameOver() {
         return drawingPile.isEmpty()  // drawing pile is empty
-                || figuresInFinishArea() >= 5 // 5 figures are in finish area
+                || figuresInFinishArea() >= Constants.totalFiguresInFinish // 5 figures are in finish area
                 || allFiguresOfOneInFinishArea(); // or one person has all figures in the finish area
     }
 
@@ -157,7 +157,7 @@ public class Game implements Serializable {
      */
     private boolean allFiguresOfOneInFinishArea() {
         for (Player p : players) {
-            if (FigureFunction.getFigureAmountInFinishArea(p.getFigures()) == 3) {
+            if (FigureFunction.getFigureAmountInFinishArea(p.getFigures()) == Constants.figuresInFinishOfOnePlayer) {
                 return true;
             }
         }

@@ -1,5 +1,6 @@
 package dhl.controller;
 
+import dhl.Constants;
 import dhl.Save;
 import dhl.controller.player_logic.AI;
 import dhl.controller.player_logic.Human;
@@ -376,6 +377,10 @@ public class GuiController {
             scores.getChildren().add(new Label(score));
         }
     }
+    @FXML
+    public void loadGamemodes(ActionEvent event) throws IOException {
+        loadNewScene(event, "/settings.fxml", false, true);
+    }
 
     /**
      * This method is called when the user clicks on the "Menu" or "Start new Game" button.
@@ -387,9 +392,37 @@ public class GuiController {
         loadNewScene(e, "/start.fxml", false, false);
     }
 
+    /**
+     * This method is called when the user clicks on the "Load Highscores" button.
+     * @param event the click on the save
+     * @throws IOException if the FXML file is not found
+    */
+     @FXML
+     public void saveGamemodes(ActionEvent event) throws IOException {
+
+         List<Node> choiceBoxes = GuiUpdate.classifyChildren("choiceBox", root);
+         //list with first choice box for amount of players, one for total figures in finish
+         // and last one for one player's figures in finish area
+
+         int fAmount = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem());
+         int totalFig = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(1)).getSelectionModel().getSelectedItem());
+         int singleFigAmount = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(2)).getSelectionModel().getSelectedItem());
+
+         //TODO: how to know if total fig is accepted?
+         if(totalFig <= fAmount*4 && singleFigAmount <= fAmount) {
+             Constants.figureAmount = fAmount;
+             Constants.totalFiguresInFinish = totalFig;
+             Constants.figuresInFinishOfOnePlayer = singleFigAmount;
+             loadMenu(event);
+         } else {
+            System.out.println("invalid values"); //TODO;
+         }
+     }
 
 
-    private class GuiAction {
+
+
+     private class GuiAction {
         public void action(Node item) throws Exception {
             if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
                 chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));

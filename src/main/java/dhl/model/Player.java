@@ -10,13 +10,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dhl.Constants.figureAmount;
+
 /**
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
  * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),
  * a list of figures and the last played figure and finally a list of tokens.
  */
 public class Player implements Serializable {
-
     private final PlayerLogic playerLogic;
     private final String name;
     private final char symbol;
@@ -52,9 +53,9 @@ public class Player implements Serializable {
         playedCards[3] = new DirectionDiscardPile('p');
         playedCards[4] = new DirectionDiscardPile('o');
         hand = new ArrayList<>();
-        figures.add(new Figure());
-        figures.add(new Figure());
-        figures.add(new Figure());
+        for (int i = 0; i< figureAmount; i++) {
+            figures.add(new Figure());
+        }
     }
 
     /**

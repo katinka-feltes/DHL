@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#saveGamemodes" style="-fx-background-color: #000111; -fx-border-radius: 5;" text="Save" textAlignment="CENTER" textFill="#f5f5f5" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="40.0" />
+         </BorderPane.margin></Button>
+   </bottom>
+   <right>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Gamemodes" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Dead Kansas" size="50.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+               <children>
+                  <Label contentDisplay="CENTER" text="Figures p.p." textAlignment="CENTER" />
+                  <ChoiceBox fx:id="choiceBox1" value="3">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="1" />
+                           <String fx:value="2" />
+                           <String fx:value="3" />
+                           <String fx:value="4" />
+                           <String fx:value="5" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Ending Conditions" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="59.0" prefWidth="397.0">
+                     <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="59.0" prefWidth="183.0">
+                           <children>
+                              <Label text="Total figures in finish area" />
+                              <ChoiceBox fx:id="choiceBox2" maxWidth="1.7976931348623157E308" value="5">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="2" />
+                                       <String fx:value="3" />
+                                       <String fx:value="4" />
+                                       <String fx:value="5" />
+                                       <String fx:value="6" />
+                                       <String fx:value="7" />
+                                       <String fx:value="8" />
+                                       <String fx:value="9" />
+                                       <String fx:value="10" />
+                                       <String fx:value="11" />
+                                       <String fx:value="12" />
+                                       <String fx:value="13" />
+                                       <String fx:value="14" />
+                                       <String fx:value="15" />
+                                       <String fx:value="16" />
+                                    </FXCollections>
+                                 </items>
+                              </ChoiceBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="59.0" prefWidth="188.0">
+                           <children>
+                              <Label text="Single player figures in finish area" />
+                              <ChoiceBox fx:id="choiceBox3" maxWidth="1.7976931348623157E308" value="3">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="1" />
+                                       <String fx:value="2" />
+                                       <String fx:value="3" />
+                                       <String fx:value="4" />
+                                       <String fx:value="5" />
+                                    </FXCollections>
+                                 </items>
+                              </ChoiceBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </VBox>
+            <CheckBox mnemonicParsing="false" text="One-time Token">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </CheckBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <top>
+      <Button alignment="TOP_LEFT" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadMenu" style="-fx-background-color: #000111; -fx-border-radius: 5;" text="Cancel" textAlignment="CENTER" textFill="#f5f5f5" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </top>
+</BorderPane>
