@@ -24,6 +24,8 @@ import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -362,7 +364,7 @@ public class GuiController {
     }
 
     /**
-     * This method is called when the user clicks on the "Load Highscores" button.
+     * This method is called when the user clicks on the "Load Highscores" button
      * @param event the click on the Button
      * @throws IOException if the FXML file is not found
      */
@@ -374,7 +376,10 @@ public class GuiController {
         scores.getChildren().clear();
         List<String> highscores = Game.getHighscores();
         for(String score : highscores) {
-            scores.getChildren().add(new Label(score));
+            Label lb = new Label(score);
+            lb.setTextFill(Color.WHITE);
+            lb.setFont(Font.font("Dead Kansas", 20));
+            scores.getChildren().add(lb);
         }
     }
     @FXML
@@ -596,7 +601,6 @@ public class GuiController {
             }
         }
 
-
         private void draw(Node item) {
             if (item.getId().startsWith("discardingPile")) {
                 try {
@@ -699,4 +703,3 @@ public class GuiController {
         }
     }
 }
-
