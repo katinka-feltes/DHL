@@ -247,11 +247,11 @@ public class   CliController {
                         view.out("You cannot execute the Spiral action since you can't move to the field you came from");
                         break;
                     }
-                    doTokenSpiral(player);
+                    doTokenSpiral(player, token);
                     break;
 
                 case "Goblin":
-                    doTokenGoblin(player);
+                    doTokenGoblin(player, token);
                     doGoblinSpecialAction(player);
                     break;
 
@@ -280,9 +280,8 @@ public class   CliController {
      *
      * @param player the current player
      */
-    private void doTokenSpiral(Player player) {
+    private void doTokenSpiral(Player player, Token token) {
         Figure currentFigure = player.getLastMovedFigure();
-        Token token = model.getFields()[player.getLastMovedFigure().getPos()].collectToken();
 
         if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
                 "Except the field where you came from. Do you want to proceed with your action?")) {
@@ -304,8 +303,7 @@ public class   CliController {
      *
      * @param player the current player
      */
-    private void doTokenGoblin(Player player) {
-        Token token = model.getFields()[player.getLastMovedFigure().getPos()].collectToken();
+    private void doTokenGoblin(Player player, Token token) {
 
         if (player.getPlayerLogic().choose("You can discard a card from one of your discard piles " +
                 "or from your hand. Do you want to proceed with your action?")) {

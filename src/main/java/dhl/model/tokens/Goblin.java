@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.Constants;
 import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
@@ -19,7 +20,7 @@ public class Goblin implements Token {
      */
     @Override
     public boolean isCollectable() {
-        return false;
+        return Constants.singleUseToken;
     }
 
     @Override

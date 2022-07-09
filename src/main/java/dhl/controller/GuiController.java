@@ -380,6 +380,17 @@ public class GuiController {
     @FXML
     public void loadGamemodes(ActionEvent event) throws IOException {
         loadNewScene(event, "/settings.fxml", false, true);
+
+        List<Node> choiceBoxes = GuiUpdate.classifyChildren("box", root);
+        //list with first choice box for amount of players, one for total figures in finish,
+        // one for one player's figures in finish area and checkbox for singe use token
+
+        //load current mode
+        ((ChoiceBox)choiceBoxes.get(0)).setValue(Constants.figureAmount);
+        ((ChoiceBox)choiceBoxes.get(1)).setValue(Constants.totalFiguresInFinish);
+        ((ChoiceBox)choiceBoxes.get(2)).setValue(Constants.figuresInFinishOfOnePlayer);
+        ((CheckBox)choiceBoxes.get(3)).setSelected(Constants.singleUseToken);
+
     }
 
     /**
@@ -400,19 +411,21 @@ public class GuiController {
      @FXML
      public void saveGamemodes(ActionEvent event) throws IOException {
 
-         List<Node> choiceBoxes = GuiUpdate.classifyChildren("choiceBox", root);
-         //list with first choice box for amount of players, one for total figures in finish
-         // and last one for one player's figures in finish area
+         List<Node> choiceBoxes = GuiUpdate.classifyChildren("box", root);
+         //list with first choice box for amount of players, one for total figures in finish,
+         // one for one player's figures in finish area and checkbox for singe use token
 
-         int fAmount = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem());
-         int totalFig = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(1)).getSelectionModel().getSelectedItem());
-         int singleFigAmount = Integer.parseInt((String)((ChoiceBox)choiceBoxes.get(2)).getSelectionModel().getSelectedItem());
+         int fAmount = (Integer)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem();
+         int totalFig = (Integer)((ChoiceBox)choiceBoxes.get(1)).getSelectionModel().getSelectedItem();
+         int singleFigAmount = (Integer)((ChoiceBox)choiceBoxes.get(2)).getSelectionModel().getSelectedItem();
+         boolean checked = ((CheckBox)choiceBoxes.get(3)).isSelected();
 
          //TODO: how to know if total fig is accepted?
          if(totalFig <= fAmount*4 && singleFigAmount <= fAmount) {
              Constants.figureAmount = fAmount;
              Constants.totalFiguresInFinish = totalFig;
              Constants.figuresInFinishOfOnePlayer = singleFigAmount;
+             Constants.singleUseToken = checked;
              loadMenu(event);
          } else {
             System.out.println("invalid values"); //TODO;
@@ -421,9 +434,18 @@ public class GuiController {
 
 
 
+    /**
+     * Class that executes the actions started by an Event in the GUI
+     */
+    private class GuiAction {
 
-     private class GuiAction {
-        public void action(Node item) throws Exception {
+        private Token currentToken;
+
+        /**
+         * calls the method according to the state and clicked item
+         * @param item the item that was clicked to call this method
+         */
+        public void action(Node item) {
             if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
                 chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
                 toDo.setText("Click a figure to move, the zombie at the bottom to move the zombie figure or trash it.");
@@ -463,7 +485,7 @@ public class GuiController {
         }
 
         private void useSpiderweb() {
-            model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
+            currentToken.action(activeP);
             updateCards(root, state, activeP);
             useToken(); // sets the new state
         }
@@ -473,9 +495,9 @@ public class GuiController {
          * @param card the player picked to trash
          */
         private void useGoblinHand(Card card) {
-            ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setPileChoice('h');
-            ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setCardChoice(card);
-            model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
+            ((Goblin) currentToken).setPileChoice('h');
+            ((Goblin) currentToken).setCardChoice(card);
+            currentToken.action(activeP);
             state = DRAW;
             toDo.setText("From which pile do you want to draw?");
         }
@@ -485,8 +507,8 @@ public class GuiController {
          * @param pile the player wants to trash the top card from
          */
         private void useGoblinPile(DirectionDiscardPile pile) {
-            ((Goblin) model.getFields()[chosenFigure.getPos()].getToken()).setPileChoice(pile.getColor());
-            model.getFields()[chosenFigure.getPos()].getToken().action(activeP);
+            ((Goblin) currentToken).setPileChoice(pile.getColor());
+            currentToken.action(activeP);
             state = DRAW;
             toDo.setText("From which pile do you want to draw?");
 
@@ -507,11 +529,9 @@ public class GuiController {
          * @param chosenPos position the player chose for his figure to move to
          */
         private void useSpiral (int chosenPos){
-            Token token = model.getFields()[activeP.getLastMovedFigure().getPos()].getToken();
-
             if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
-                ((Spiral) token).setChosenPos(chosenPos);
-                token.action(activeP);
+                ((Spiral) currentToken).setChosenPos(chosenPos);
+                currentToken.action(activeP);
                 updateCards(root, state, activeP);
                 useToken(); //sets the new state
             } else {
@@ -530,15 +550,15 @@ public class GuiController {
         }
 
         private void useToken() {
-            Token token = model.getFields()[chosenFigure.getPos()].collectToken();
+            currentToken = model.getFields()[chosenFigure.getPos()].collectToken();
 
-            if (token == null) {
+            if (currentToken == null) {
                 state = DRAW;
                 toDo.setText("From which pile do you want to draw?");
                 return;
             }
 
-            switch (token.getName()) {
+            switch (currentToken.getName()) {
 
                 case "Spiral":
                     state = SPIRAL;
@@ -569,9 +589,9 @@ public class GuiController {
                     }
                     break;
                 default:
-                    token.action(activeP);
+                    currentToken.action(activeP);
                     state = DRAW;
-                    toDo.setText("You found a " + token.getName()+ ". From which pile do you want to draw?");
+                    toDo.setText("You found a " + currentToken.getName()+ ". From which pile do you want to draw?");
                     break;
             }
         }
@@ -658,9 +678,8 @@ public class GuiController {
         /**
          * what happens in state oracle after item is clicked
          * @param item the clicked item
-         * @throws Exception if the figure would leave the field or if card does not fit to pile
          */
-        private void oracle(Node item) throws Exception {
+        private void oracle(Node item){
             try{
                 activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
                 activeP.getHand().remove(chosenCard);

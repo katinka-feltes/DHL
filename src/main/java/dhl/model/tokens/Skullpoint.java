@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.Constants;
 import dhl.model.Player;
 
 /**
@@ -25,7 +26,7 @@ public class Skullpoint implements Token{
      */
     @Override
     public boolean isCollectable() {
-        return false;
+        return Constants.singleUseToken;
     }
 
     @Override

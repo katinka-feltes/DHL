@@ -17,8 +17,8 @@ import java.util.*;
 public class Game implements Serializable {
 
     private Field[] fields;
-    //the best 3 scores (each one entry): first points, second name, third ai or human
     private static List<String> highscores = new ArrayList<>();
+    //the best 3 scores (each one entry): first points, second name, third ai or human
     private final DiscardPile discardingPileRed;
     private final DiscardPile discardingPileBlue;
     private final DiscardPile discardingPileGreen;
@@ -96,8 +96,8 @@ public class Game implements Serializable {
      */
     public boolean gameOver() {
         return drawingPile.isEmpty()  // drawing pile is empty
-                || figuresInFinishArea() >= Constants.totalFiguresInFinish // 5 figures are in finish area
-                || allFiguresOfOneInFinishArea(); // or one person has all figures in the finish area
+                || figuresInFinishArea() >= Constants.totalFiguresInFinish // Enough figures to end the game in finish area
+                || enoughFiguresOfOneInFinishArea(); // or one person has enough figures in the finish area
     }
 
     /**
@@ -155,9 +155,9 @@ public class Game implements Serializable {
      * checks if one player has three figures in the finish area.
      * @return true if one player has all his figures in the finish area
      */
-    private boolean allFiguresOfOneInFinishArea() {
+    private boolean enoughFiguresOfOneInFinishArea() {
         for (Player p : players) {
-            if (FigureFunction.getFigureAmountInFinishArea(p.getFigures()) == Constants.figuresInFinishOfOnePlayer) {
+            if (FigureFunction.getFigureAmountInFinishArea(p.getFigures()) >= Constants.figuresInFinishOfOnePlayer) {
                 return true;
             }
         }

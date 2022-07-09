@@ -30,12 +30,16 @@ public class Constants {
     public static final Image IMG_SPIRAL = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/spiral.png")));
     public static final Image IMG_STONE = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/stone.png")));
     public static final Image IMG_WEB = new Image(Objects.requireNonNull(GuiController.class.getResourceAsStream("/web.png")));
+
     public static final char[] symbols = {'\u2660', '\u2663', '\u2665', '\u2666'};
+
     public static int figureAmount = 3;
     public static int figuresInFinishOfOnePlayer = 3;
     //the amount of figures in the finish area of one player to end the game
     public static int totalFiguresInFinish = 5;
     //how many figures in total in the finish area end the game
+    public static boolean singleUseToken = false; //if all token disappear after being used once
+
     public static final Field[] BASIC_FIELD = {
             new LargeField(0, 'w', 0),
             new Field(-4, 'p'),

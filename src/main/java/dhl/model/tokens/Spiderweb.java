@@ -1,5 +1,6 @@
 package dhl.model.tokens;
 
+import dhl.Constants;
 import dhl.model.Figure;
 import dhl.model.Player;
 
@@ -16,7 +17,7 @@ public class Spiderweb implements Token {
      */
     @Override
     public boolean isCollectable() {
-        return false;
+        return Constants.singleUseToken;
     }
 
     @Override

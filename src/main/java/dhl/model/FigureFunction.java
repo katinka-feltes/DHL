@@ -34,7 +34,7 @@ public class FigureFunction {
      */
     public static int getFigureAmountInFinishArea(List<Figure> figures){
         int amount = 0;
-        for(int field = 22; field <= 35; field++){ //should be 22 but for better testing 4
+        for(int field = 22; field <= 35; field++){
             amount += getFigureAmountOnField(field, figures);
         }
         return amount;

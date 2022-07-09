@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<?import java.lang.*?>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#saveGamemodes" style="-fx-background-color: #000111; -fx-border-radius: 5;" text="Save" textAlignment="CENTER" textFill="#f5f5f5" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -37,14 +31,14 @@
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
                <children>
                   <Label contentDisplay="CENTER" text="Figures p.p." textAlignment="CENTER" />
-                  <ChoiceBox fx:id="choiceBox1" value="3">
+                  <ChoiceBox fx:id="box1" value="3">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="1" />
-                           <String fx:value="2" />
-                           <String fx:value="3" />
-                           <String fx:value="4" />
-                           <String fx:value="5" />
+                           <Integer fx:value="1" />
+                           <Integer fx:value="2" />
+                           <Integer fx:value="3" />
+                           <Integer fx:value="4" />
+                           <Integer fx:value="5" />
                         </FXCollections>
                      </items>
                   </ChoiceBox>
@@ -61,24 +55,24 @@
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="59.0" prefWidth="183.0">
                            <children>
                               <Label text="Total figures in finish area" />
-                              <ChoiceBox fx:id="choiceBox2" maxWidth="1.7976931348623157E308" value="5">
+                              <ChoiceBox fx:id="box2" maxWidth="1.7976931348623157E308" value="5">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
-                                       <String fx:value="2" />
-                                       <String fx:value="3" />
-                                       <String fx:value="4" />
-                                       <String fx:value="5" />
-                                       <String fx:value="6" />
-                                       <String fx:value="7" />
-                                       <String fx:value="8" />
-                                       <String fx:value="9" />
-                                       <String fx:value="10" />
-                                       <String fx:value="11" />
-                                       <String fx:value="12" />
-                                       <String fx:value="13" />
-                                       <String fx:value="14" />
-                                       <String fx:value="15" />
-                                       <String fx:value="16" />
+                                       <Integer fx:value="2" />
+                                       <Integer fx:value="3" />
+                                       <Integer fx:value="4" />
+                                       <Integer fx:value="5" />
+                                       <Integer fx:value="6" />
+                                       <Integer fx:value="7" />
+                                       <Integer fx:value="8" />
+                                       <Integer fx:value="9" />
+                                       <Integer fx:value="10" />
+                                       <Integer fx:value="11" />
+                                       <Integer fx:value="12" />
+                                       <Integer fx:value="13" />
+                                       <Integer fx:value="14" />
+                                       <Integer fx:value="15" />
+                                       <Integer fx:value="16" />
                                     </FXCollections>
                                  </items>
                               </ChoiceBox>
@@ -90,14 +84,14 @@
                         <VBox prefHeight="59.0" prefWidth="188.0">
                            <children>
                               <Label text="Single player figures in finish area" />
-                              <ChoiceBox fx:id="choiceBox3" maxWidth="1.7976931348623157E308" value="3">
+                              <ChoiceBox fx:id="box3" maxWidth="1.7976931348623157E308" value="3">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
-                                       <String fx:value="1" />
-                                       <String fx:value="2" />
-                                       <String fx:value="3" />
-                                       <String fx:value="4" />
-                                       <String fx:value="5" />
+                                       <Integer fx:value="1" />
+                                       <Integer fx:value="2" />
+                                       <Integer fx:value="3" />
+                                       <Integer fx:value="4" />
+                                       <Integer fx:value="5" />
                                     </FXCollections>
                                  </items>
                               </ChoiceBox>
@@ -113,7 +107,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </VBox>
-            <CheckBox mnemonicParsing="false" text="One-time Token">
+            <CheckBox fx:id="box4" mnemonicParsing="false" text="One-time Token">
                <padding>
                   <Insets top="10.0" />
                </padding>

@@ -4,6 +4,9 @@ import dhl.model.Game;
 
 import java.io.*;
 
+/**
+ * Class with the methods to save the game and load it from the saved file
+ */
 public class Save {
 
     /**
