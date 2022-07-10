@@ -45,7 +45,7 @@ public class GuiController {
     private Card chosenCard;
     private Figure chosenFigure;
     private Player activeP;
-    private List<Player> staticPlayers = new ArrayList<>();
+    private final List<Player> staticPlayers = new ArrayList<>();
 
     /**
      * This Label shows what the player has to do.

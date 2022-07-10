@@ -120,7 +120,7 @@ public class Player implements Serializable {
             game.getDiscardPile(card.getColor()).add(card);
             lastTrashed = card;
         } catch (Exception e){
-            //do nothing
+            System.out.println("Message:" + e.getMessage());
         }
     }
 

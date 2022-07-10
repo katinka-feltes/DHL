@@ -96,7 +96,7 @@ public class AI implements PlayerLogic {
         for(char color: Constants.COLORS) {
             int currentDrawOption = 10; //how good drawing from current pile would be
             Card topCard = self.getGame().getDiscardPile(color).getTop(); //top card of current pile
-            if(topCard != null) {
+            if(topCard != null && topCard != self.getLastTrashed()) {
                 //calculates how good drawing from discard pile would be:
                 //small difference to (possible) played cards pile is good and if there aren't many of that color on hand
                 currentDrawOption = difference(topCard, self.getPlayedCards(topCard.getColor()))

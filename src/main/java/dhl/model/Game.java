@@ -282,7 +282,7 @@ public class Game implements Serializable {
      */
     public void moveOracle(int steps) throws Exception{
         if(oracle+steps >= fields.length){
-            throw new Exception("The oracle cannot move this far!");
+            throw new Exception("The zombie cannot move this far!");
         }
         oracle+=steps;
     }
