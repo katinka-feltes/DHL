@@ -1,10 +1,9 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
+import dhl.model.Game;
 import dhl.model.Player;
-import dhl.model.tokens.Mirror;
-import dhl.model.tokens.Spiral;
-import dhl.model.tokens.Token;
+import dhl.model.tokens.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +24,7 @@ class AITest {
 
 
     /**
-     * called before each test to initialize players
+     * called before each test to initialize players and a game.
      */
     @BeforeEach
     public void setUp() {
@@ -37,10 +36,11 @@ class AITest {
         List<Player> players = new ArrayList<>();
         players.add(p0);
         players.add(p1);
+        Game game = new Game(players);
     }
 
     /**
-     * this method tests if the ai method "choose" works correct.
+     * this method tests if the AI method "choose" works correct.
      * TODO: The input String 6 still needs to be tested
      */
     @Test
@@ -98,7 +98,7 @@ class AITest {
 
     }
     /**
-     * this method tests if the ai method "bestHandCardToTrash" works correct
+     * this method tests if the AI method "bestHandCardToTrash" works correct
      */
     @Test
     void bestHandCardToTrash() {
@@ -131,7 +131,7 @@ class AITest {
 
     }
     /**
-     * this method tests if the ai method "choosePileColor" works correct
+     * this method tests if the AI method "choosePileColor" works correct
      */
     @Test
     void choosePileColor() {
@@ -198,35 +198,94 @@ class AITest {
         assertEquals('o', ai.choosePileColor(input));
     }
     /**
-     * this method tests if the ai method "chooseSpiralPosition" works correct
+     * this method tests if the AI method "chooseSpiralPosition" partially works correct.
+     * It only checks for positions with no tokens, spirals, mirrors, skullpoints and wishing stones.
      */
     @Test
-    void chooseSpiralPosition() throws Exception {
+    void chooseSpiralPositionOne() throws Exception {
+        // initializing tokens
         Token spiral = new Spiral();
         Token mirror = new Mirror();
-        // checks if the ai makes the default action
+        Token skullPoint4 = new Skullpoint(4);
+
+        // checks if the AI makes the default action
         p0.getGame().getFields()[6].setToken(spiral);
+        p0.getGame().getFields()[5].setToken(null);
+        p0.getGame().getFields()[4].setToken(null);
+        p0.getGame().getFields()[3].setToken(null);
+        p0.getGame().getFields()[2].setToken(null);
+        p0.getGame().getFields()[1].setToken(null);
         p0.placeFigure(p0.getGame().getFields()[1].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(0));
 
-        assertEquals(5, ai.chooseSpiralPosition("test", 6));
-
-        // checks if the ai chooses the wishing stone if it is in close range
+        assertEquals(6, ai.chooseSpiralPosition("test", 6));
+        // checks if the AI chooses the wishing stone
         p0.getGame().getFields()[9].setToken(spiral);
+        p0.getGame().getFields()[8].setToken(null);
         p0.placeFigure(p0.getGame().getFields()[5].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(0));
 
         assertEquals(7, ai.chooseSpiralPosition("test", 9));
+        // checks if the AI chooses the spiral
+        p0.getGame().getFields()[10].setToken(spiral);
+        p0.getGame().getFields()[7].setToken(null);
+        p0.placeFigure(p0.getGame().getFields()[7].getColor(), p0.getFigures().get(0));
+        p0.placeFigure(p0.getGame().getFields()[10].getColor(), p0.getFigures().get(0));
 
-        // checks if the ai chooses the mirror if it is in close range
-        for (int i = 0; i < 3 ; i++){
+        assertEquals(9, ai.chooseSpiralPosition("test", 10));
+        // checks if the AI chooses the skullpoint
+        p0.getGame().getFields()[10].setToken(spiral);
+        p0.getGame().getFields()[8].setToken(skullPoint4);
+        p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(0));
+        p0.placeFigure(p0.getGame().getFields()[10].getColor(), p0.getFigures().get(0));
+
+        assertEquals(8, ai.chooseSpiralPosition("test", 10));
+        // checks if the AI chooses the mirror
+        p0.getGame().getFields()[4].setToken(mirror);
+        for (int i = 0; i < 3; i++) {
             p0.increaseStoneAmount();
         }
-        p0.getGame().getFields()[15].setToken(spiral);
-        p0.getGame().getFields()[1].setToken(mirror);
-        p0.placeFigure(p0.getGame().getFields()[10].getColor(), p0.getFigures().get(0));
-        p0.placeFigure(p0.getGame().getFields()[15].getColor(), p0.getFigures().get(0));
+        p0.getFigures().get(0).setPos(0);
+        p0.placeFigure(p0.getGame().getFields()[1].getColor(), p0.getFigures().get(0));
+        p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(0));
 
-        assertEquals(1, ai.chooseSpiralPosition("test", 15));
+        assertEquals(4, ai.chooseSpiralPosition("test", 6));
     }
+
+    /**
+     * this method tests if the AI method "chooseSpiralPosition" works correct.
+     * It only checks for positions with goblins and spiderwebs.
+     */
+    @Test
+    void chooseSpiralPositionTwo() throws Exception {
+        // initializing the tokens
+        Token spiral = new Spiral();
+        Token goblin = new Goblin();
+        Token spiderweb = new Spiderweb();
+
+        // checks if the AI chooses the goblin and the spiderweb
+        p0.getGame().getFields()[9].setToken(spiral);
+        p0.getGame().getFields()[8].setToken(spiderweb);
+        p0.getGame().getFields()[13].setToken(goblin);
+        p0.getGame().getFields()[14].setToken(null);
+        p0.getGame().getFields()[15].setToken(null);
+        p0.getGame().getFields()[16].setToken(spiral);
+
+        p0.getFigures().get(0).setPos(13);
+        p0.getFigures().get(1).setPos(11);
+        p0.placeFigure(p0.getGame().getFields()[12].getColor(), p0.getFigures().get(1));
+        p0.placeFigure(p0.getGame().getFields()[16].getColor(), p0.getFigures().get(1));
+
+        assertEquals(13, ai.chooseSpiralPosition("test", 16));
+        p0.getGame().getFields()[8].setToken(spiderweb);
+        p0.getFigures().get(2).setPos(5);
+        p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(2));
+        p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(2));
+
+        assertEquals(8, ai.chooseSpiralPosition("test", 9));
+
+
+
+    }
+
 }
