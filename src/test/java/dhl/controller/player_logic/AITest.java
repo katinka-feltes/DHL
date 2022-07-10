@@ -283,8 +283,21 @@ class AITest {
         p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(2));
 
         assertEquals(8, ai.chooseSpiralPosition("test", 9));
+    }
+    /**
+     * this method tests if the AI method "chooseCard" works correct
+     */
+    @Test
+    void chooseCard() throws Exception{
+        p0.getHand().clear();
+        p0.getHand().add(new Card(10, 'p'));
+        p0.getHand().add(new Card(0, 'b'));
+        p0.getPlayedCards('p').add(new Card(0, 'p'));
+        p0.getPlayedCards('p').add(new Card(1, 'p'));
 
-
+        assertEquals(p0.getHand().get(1), ai.chooseCard("What card do you want to play?", p0.getHand()));
+        assertEquals(p0.getHand().get(0), ai.chooseCard("What card do you want to trash?", p0.getHand()));
+        assertEquals(p0.getHand().get(0), ai.chooseCard("test", p0.getHand()));
 
     }
 
