@@ -19,11 +19,7 @@ public class Game implements Serializable {
     private Field[] fields;
     private static List<String> highscores = new ArrayList<>();
     //the best 3 scores (each one entry): first points, second name, third ai or human
-    private final DiscardPile discardingPileRed;
-    private final DiscardPile discardingPileBlue;
-    private final DiscardPile discardingPileGreen;
-    private final DiscardPile discardingPilePurple;
-    private final DiscardPile discardingPileOrange;
+    private final DiscardPile[] discardingPiles = new DiscardPile[5];
     private final DrawingPile drawingPile;
     private final List<Player> players; //first player is the active player
     private final List<Token> tokens;
@@ -51,11 +47,12 @@ public class Game implements Serializable {
     public Game(List<Player> players) {
         readHighscores();
         //initializing discard piles, the players list and the oracle
-        discardingPileRed = new DiscardPile('r');
-        discardingPileBlue = new DiscardPile('b');
-        discardingPileGreen = new DiscardPile('g');
-        discardingPilePurple = new DiscardPile('p');
-        discardingPileOrange = new DiscardPile('o');
+        discardingPiles[0] = new DiscardPile('r');
+        discardingPiles[1] = new DiscardPile('g');
+        discardingPiles[2] = new DiscardPile('b');
+        discardingPiles[3] = new DiscardPile('p');
+        discardingPiles[4] = new DiscardPile('o');
+
         drawingPile = new DrawingPile();
         this.players = players;
         oracle = 0;
@@ -101,19 +98,12 @@ public class Game implements Serializable {
     }
 
     /**
-     * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)
-     *
-     * @param trashCard in this turn trashed card
-     * @return true if drawing from any discarding pile is possible
+     * reads and returns highscores
+     * @return highscores
      */
-    public boolean canDrawFromDiscarding(Card trashCard) {
-        return !(discardingPileRed.isEmpty() && discardingPileGreen.isEmpty() && discardingPileBlue.isEmpty()
-                && discardingPilePurple.isEmpty() && discardingPileOrange.isEmpty()
-                // can't draw if all piles are empty
-                || trashCard!=null && !getDiscardPile(trashCard.getColor()).isEmpty()
-                && getDiscardPile(trashCard.getColor()).getTop() == trashCard
-                && allPilesEmptyExcept(trashCard.getColor()));
-                //if there is a trashed card and all other piles are empty
+    public static List<String> getHighscores() {
+        readHighscores();
+        return highscores;
     }
 
     /**
@@ -170,7 +160,7 @@ public class Game implements Serializable {
     private void placeTokens() {
         Collections.shuffle(this.tokens);
         int i = 0;
-        for (Field field : getFields()) {
+        for (Field field : fields) {
             if (!(field instanceof LargeField)) {
                 field.setToken(this.tokens.get(i));
                 i++;
@@ -205,9 +195,20 @@ public class Game implements Serializable {
         }
     }
 
-    public static List<String> getHighscores() {
-        readHighscores();
-        return highscores;
+    /**
+     * checks if drawing from any discarding pile is possible (can't draw if pile is empty or top card = in this turn trashed card)
+     *
+     * @param trashCard in this turn trashed card
+     * @return true if drawing from any discarding pile is possible
+     */
+    public boolean canDrawFromDiscarding(Card trashCard) {
+        return !(discardingPiles[0].isEmpty() && discardingPiles[1].isEmpty() && discardingPiles[2].isEmpty()
+                && discardingPiles[3].isEmpty() && discardingPiles[4].isEmpty()
+                // can't draw if all piles are empty
+                || trashCard!=null && !getDiscardPile(trashCard.getColor()).isEmpty()
+                && getDiscardPile(trashCard.getColor()).getTop() == trashCard
+                && allPilesEmptyExcept(trashCard.getColor()));
+                //if there is a trashed card and all other piles are empty
     }
 
     /**
@@ -228,15 +229,15 @@ public class Game implements Serializable {
     public DiscardPile getDiscardPile(char color){
         switch (color) {
             case 'r':
-                return discardingPileRed;
+                return discardingPiles[0];
             case 'g':
-                return discardingPileGreen;
+                return discardingPiles[1];
             case 'b':
-                return discardingPileBlue;
+                return discardingPiles[2];
             case 'p':
-                return discardingPilePurple;
+                return discardingPiles[3];
             case 'o':
-                return discardingPileOrange;
+                return discardingPiles[4];
             default:
                 return null;
         }
@@ -280,7 +281,7 @@ public class Game implements Serializable {
      * @throws Exception if the oracle would leave the field
      */
     public void moveOracle(int steps) throws Exception{
-        if(oracle+steps >= getFields().length){
+        if(oracle+steps >= fields.length){
             throw new Exception("The oracle cannot move this far!");
         }
         oracle+=steps;
@@ -315,6 +316,6 @@ public class Game implements Serializable {
     }
 
     public Field[] getFields() {
-        return fields;
+        return fields.clone();
     }
 }

@@ -14,6 +14,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Tests for the methods in the class Human
+ */
 class HumanTest {
 
     private Human h;
@@ -88,14 +92,13 @@ class HumanTest {
     void chooseFigure() {
         String input;
         InputStream bytes;
-        int i;
 
         input = "e\n1";
         bytes = new ByteArrayInputStream(input.getBytes());
         System.setIn(bytes);
 
         Figure first = p.getFigures().get(0);
-        first.move('b');
+        assertThrows(Exception.class, () -> first.move('b'));
 
         Figure result = h.chooseFigure("", p.getFigures());
         assertEquals("Input must be an integer!\n", errContent.toString());
@@ -107,6 +110,7 @@ class HumanTest {
         result = h.chooseFigure("", p.getFigures());
         assertEquals(0, result.getPos());
     }
+
 
     @Test
     void choosePileColor() {

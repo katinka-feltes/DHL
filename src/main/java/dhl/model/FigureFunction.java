@@ -13,6 +13,26 @@ public class FigureFunction {
     }
 
     /**
+     * calculates how far the given figure would move to the given color
+     *
+     * @param figurePos     the position of the figure to move
+     * @param color the color to move to
+     * @return the amount of steps the figure would make (int)
+     * @throws Exception if the figure would leave the field
+     */
+    public static int steps(int figurePos, char color) throws Exception {
+        int steps = 1;
+        try {
+            while (Constants.BASIC_FIELD[figurePos + steps].getColor() != color) {
+                steps++;
+            }
+        } catch (Exception e){
+            throw new Exception("The figure can't move this far.");
+        }
+        return steps;
+    }
+
+    /**
      * @param fieldIndex the index of the field to get the figure-amount from
      * @param figures the figures to take into account
      * @return the amount of figures on the field as an int

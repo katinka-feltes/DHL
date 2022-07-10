@@ -24,6 +24,8 @@ import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -162,7 +164,7 @@ public class GuiController {
         if(item == null){
             return;
         }
-        if (state == PREPARATION && item.getId().startsWith("nextButton") ||(state == CHOOSEHANDCARD && item.getId().startsWith("handCard")) ||
+        if (state == PREPARATION && item.getId().startsWith("nextButton") || state == CHOOSEHANDCARD && item.getId().startsWith("handCard") ||
                 state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle"))
                 || (state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle")
                 || state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile"))
@@ -354,7 +356,7 @@ public class GuiController {
     }
 
     /**
-     * This method is called when the user clicks on the "Load Highscores" button.
+     * This method is called when the user clicks on the "Load Highscores" button
      * @param event the click on the Button
      * @throws IOException if the FXML file is not found
      */
@@ -366,9 +368,18 @@ public class GuiController {
         scores.getChildren().clear();
         List<String> highscores = Game.getHighscores();
         for(String score : highscores) {
-            scores.getChildren().add(new Label(score));
+            Label lb = new Label(score);
+            lb.setTextFill(Color.WHITE);
+            lb.setFont(Font.font("Dead Kansas", 20));
+            scores.getChildren().add(lb);
         }
     }
+
+    /**
+     * This method is called when the user clicks on the "Gamemodes" button to load the new scene
+     * @param event the click on the Button
+     * @throws IOException if the FXML file is not found
+     */
     @FXML
     public void loadGamemodes(ActionEvent event) throws IOException {
         loadNewScene(event, "/settings.fxml", false, true);
@@ -382,7 +393,6 @@ public class GuiController {
         ((ChoiceBox)choiceBoxes.get(1)).setValue(Constants.totalFiguresInFinish);
         ((ChoiceBox)choiceBoxes.get(2)).setValue(Constants.figuresInFinishOfOnePlayer);
         ((CheckBox)choiceBoxes.get(3)).setSelected(Constants.singleUseToken);
-
     }
 
     /**
@@ -407,13 +417,12 @@ public class GuiController {
          //list with first choice box for amount of players, one for total figures in finish,
          // one for one player's figures in finish area and checkbox for singe use token
 
-         int fAmount = (Integer)((ChoiceBox)choiceBoxes.get(0)).getSelectionModel().getSelectedItem();
-         int totalFig = (Integer)((ChoiceBox)choiceBoxes.get(1)).getSelectionModel().getSelectedItem();
-         int singleFigAmount = (Integer)((ChoiceBox)choiceBoxes.get(2)).getSelectionModel().getSelectedItem();
+         int fAmount = ((ChoiceBox<Integer>)choiceBoxes.get(0)).getSelectionModel().getSelectedItem();
+         int totalFig = ((ChoiceBox<Integer>)choiceBoxes.get(1)).getSelectionModel().getSelectedItem();
+         int singleFigAmount = ((ChoiceBox<Integer>)choiceBoxes.get(2)).getSelectionModel().getSelectedItem();
          boolean checked = ((CheckBox)choiceBoxes.get(3)).isSelected();
 
-         //TODO: how to know if total fig is accepted?
-         if(totalFig <= fAmount*4 && singleFigAmount <= fAmount) {
+         if(totalFig <= (fAmount-1)*4+1 && singleFigAmount <= fAmount) {
              Constants.figureAmount = fAmount;
              Constants.totalFiguresInFinish = totalFig;
              Constants.figuresInFinishOfOnePlayer = singleFigAmount;
@@ -458,18 +467,17 @@ public class GuiController {
         }
 
         private void play() {
-            toDo.setText("it's your turn. Click any card to start.");
             try {
+                //if it is certain that the next line of code will not throw an exception
+                if(activeP.getPlayedCards(chosenCard.getColor()).cardFitsToPile(chosenCard)) {
+                    activeP.placeFigure(chosenCard.getColor(), chosenFigure);
+                }
+
                 activeP.getPlayedCards(chosenCard.getColor()).add(chosenCard);
                 activeP.getHand().remove(chosenCard);
 
-                activeP.placeFigure(chosenCard.getColor(), chosenFigure);
-
                 useToken();
 
-            } catch (IndexOutOfBoundsException indexE) {
-                toDo.setText("This figure can't move this far! \nChoose a different one or trash.");
-                state = TRASHORPLAY; //choose again what to do with the chosen card
             } catch (Exception e) {
                 state = TRASHORPLAY;
                 toDo.setText(e.getMessage());
@@ -588,7 +596,6 @@ public class GuiController {
             }
         }
 
-
         private void draw(Node item) {
             if (item.getId().startsWith("discardingPile")) {
                 try {
@@ -691,4 +698,3 @@ public class GuiController {
         }
     }
 }
-

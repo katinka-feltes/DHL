@@ -2,10 +2,8 @@ package dhl.controller.player_logic;
 
 import dhl.Constants;
 import dhl.model.*;
-import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Skullpoint;
 import dhl.model.tokens.Token;
-import dhl.model.tokens.WishingStone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,29 +16,24 @@ public class AI implements PlayerLogic {
     Card chosenCard;
     Card chosenCardOracle;
     Figure chosenFigure;
-    boolean playOracle;
     int oracleSteps;
     char chosenDiscard;
     Player self;
 
     @Override
     public boolean choose(String question) {
-        if (question.endsWith("Are you ready to play?")) {
-            return true;
-        } else if (question.equals("Are you done with your turn?")) {
-            return true;
-        } else if (question.startsWith("Do you want to play a card?")) {
+        if (question.startsWith("Do you want to play a card?")) {
             return playableCards().size() > 2; // play a card if there are more than two cards to play
         } else if (question.startsWith("Do you want to draw your card from one of the discarding piles?")) {
             return chooseDrawing(); // decides which pile to draw from
-        } else if (question.endsWith("Do you want to proceed with your action?")) {
-            return true; // always wants to proceed
         } else if (question.startsWith("Do you want to trash one from your hand?")) {
             return playableCards().size() < 3; // trash a hand card if only 2 of them can be played
         } else if (question.startsWith("Do you want to move a figure?")) { // true = figure; false = oracle
-            return !playOracle;
-        } else {
-            return question.startsWith("Do you want to play your goblin-special?"); // always play if possible, because it doesn't occur often
+            return oracleSteps == 0; //if steps = 0, a figure shall be moved
+        } else { //return true to the following questions, false to all others
+            return question.endsWith("Are you ready to play?") || question.equals("Are you done with your turn?")
+                    || question.startsWith("Do you want to play your goblin-special?") // always play if possible, because it doesn't occur often
+                    || question.endsWith("Do you want to proceed with your action?"); // always wants to proceed
         }
     }
 
@@ -49,26 +42,18 @@ public class AI implements PlayerLogic {
 
         Field[] fields = self.getGame().getFields();
 
-        int stonesAmount = self.getTokens()[0];
-
         int chosenPosition = position;
-        int originalPosition = self.getLastMovedFigure().getLatestPos();
-        if(stonesAmount < 3) {
-            for(int pos = position; pos > position - 5; pos--) {
-                if(fields[pos].getToken() instanceof WishingStone && pos != originalPosition) {
-                    chosenPosition = pos;
-                }
-            }
-        } else {
-            for(int pos = position; pos > 0; pos--) {
-                if(fields[pos].getToken() instanceof Mirror && pos != originalPosition) {
-                    chosenPosition = pos;
-                }
+        int bestOption = 0;
+
+        for(int i = 1; i < 6; i++){
+            int thisOption = tokenWorth(fields, position-i);
+            //if the option is better and not the figures last position
+            if (thisOption > bestOption && position-i != self.getLastMovedFigure().getLatestPos()) {
+                bestOption = thisOption;
+                chosenPosition = position-i;
             }
         }
-        while(chosenPosition == position || chosenPosition == originalPosition) {
-            chosenPosition--;
-        }
+
         return chosenPosition;
     }
 
@@ -115,7 +100,7 @@ public class AI implements PlayerLogic {
                 //calculates how good drawing from discard pile would be:
                 //small difference to (possible) played cards pile is good and if there aren't many of that color on hand
                 currentDrawOption = difference(topCard, self.getPlayedCards(topCard.getColor()))
-                        + amountOfColoredCards(topCard.getColor());
+                        + CardFunction.amountOfColoredCards(self.getHand(), topCard.getColor());
             }
             if(currentDrawOption < bestDrawOption) { //if drawing from current pile is best option
                 bestDrawOption = currentDrawOption;
@@ -127,21 +112,6 @@ public class AI implements PlayerLogic {
             return true;
         }
         return false;
-    }
-
-    /**
-     * calculates how many cards in player's hand are of given color
-     * @param color color the cards should have
-     * @return amount of cards of given color
-     */
-    private int amountOfColoredCards(char color) {
-        int amount = 0;
-        for(Card card: self.getHand()) {
-            if(card.getColor() == color) {
-                amount++;
-            }
-        }
-        return amount;
     }
 
     /**
@@ -166,10 +136,7 @@ public class AI implements PlayerLogic {
             }
             return chosenPile;
         }
-        else if (question.equals("From what colored pile do you want to draw?")) {
-            return chosenDiscard;
-        }
-        return 'r';
+        return chosenDiscard; // "From what colored pile do you want to draw?"
     }
 
     /**
@@ -177,18 +144,13 @@ public class AI implements PlayerLogic {
      * move the oracle (and how far)
      */
     private void calculateNextMove() {
-        Field[] fields = self.getGame().getFields();
+        oracleSteps = 0;
         //best combination card + figure
         int bestOption = -100; //best calculated points by combination of figure and card
         for (Figure figure : self.getFigures()) { //for every figure
             for (Card card : self.getHand()) { //for every card from hand
-                int steps = steps(figure, card.getColor()); //how far the figure would move with the current card
-                if(steps == -100) {break;} // if the card would move the figure too far
-                int pointDifference = fields[figure.getPos() + steps].getPoints() - fields[figure.getPos()].getPoints();
-
-                int points = steps + pointDifference; //steps plus the gained points due to the steps
+                int points = valueOfMove(figure.getPos(), card.getColor());
                 points -= difference(card, self.getPlayedCards(card.getColor())); // plus how good the card would fit to the played cards pile
-                points += tokenWorth(fields[figure.getPos() + steps].getToken()); // plus how good the token on the field is
                 if (points > bestOption) { // if combo of figure and card is better than the current one
                     chosenCard = card;
                     chosenFigure = figure;
@@ -211,10 +173,34 @@ public class AI implements PlayerLogic {
             }
         }
         if(bestOptionOracle > bestOption) { //if playing oracle is better than former figure+card combo
-            playOracle = true;
             chosenCard = chosenCardOracle;
             oracleSteps = steps;
         }
+    }
+
+
+    /**
+     * calculates the worth of the simulated move
+     * (not taking a difference to played cards into account)
+     *
+     * @param figurePos the position of the figure that would be moved
+     * @param color     the color of the filed to goo to
+     * @return the calculated points (int)
+     */
+    private int valueOfMove(int figurePos, char color) {
+        Field[] fields = self.getGame().getFields();
+        int steps;
+        try {
+            steps = FigureFunction.steps(figurePos, color);
+            //how far the figure would move with the current card
+        } catch (Exception e) {
+            return -100;
+        }
+        int pointDifference = fields[figurePos + steps].getPoints() - fields[figurePos].getPoints();
+
+        int points = steps + pointDifference; //steps plus the gained points due to the steps
+        points += tokenWorth(fields, figurePos+steps); // plus how good the token on the field is
+        return points;
     }
 
     /**
@@ -231,25 +217,6 @@ public class AI implements PlayerLogic {
                     steps = i; //steps the oracle has to go to reach figure
                 }
             }
-        }
-        return steps;
-    }
-
-    /**
-     * calculates how far the given figure would move to the given color
-     *
-     * @param f     the figure to move
-     * @param color the color to move to
-     * @return the amount of steps the figure would make (int)
-     */
-    private int steps(Figure f, char color) {
-        int steps = 1;
-        try {
-            while (Constants.BASIC_FIELD[f.getPos() + steps].getColor() != color) {
-                steps++;
-            }
-        } catch (Exception e){
-            return -100;
         }
         return steps;
     }
@@ -277,25 +244,23 @@ public class AI implements PlayerLogic {
 
     /**
      * calculates how important the token is
-     * @param token the token which worth to calculate
+     * @param fields the field where the token lays
+     * @param tokenPos the pos of the token which worth to calculate
      * @return int worth of the token
      */
-    private int tokenWorth(Token token) {
+    private int tokenWorth(Field[]fields, int tokenPos) {
+        Token token = fields[tokenPos].getToken();
         if (token != null) {
             switch (token.getName()) {
                 case "Goblin":
-                    if (self.amountFiguresGoblin() == 2 || playableCards().size() < 5) {
-                        return 10; //if both other figures are on a goblin field already or hand cards are very bad
-                    } else if (self.amountFiguresGoblin() == 1 || playableCards().size() < 4) {
-                        return 3; //if one figure already is on a goblin or hand cards are bad
-                    }
-                    break;
+                    return goblinWorth();
                 case "Mirror":
                     return self.calcTokenPoints(); // return current token points because they would be doubled
                 case "Skullpoint":
                     return ((Skullpoint) token).getPoints();
                 case "Spiderweb":
-                    return 4; // on average, you move about 4 steps forward
+                    return valueOfMove(tokenPos, fields[tokenPos].getColor());
+                    // the value of the move the spiderweb would give
                 case "Spiral":
                     return 1;
                 case "WishingStone":
@@ -303,6 +268,15 @@ public class AI implements PlayerLogic {
                 default:
                     //do nothing
             }
+        }
+        return 0;
+    }
+
+    private int goblinWorth() {
+        if (self.amountFiguresGoblin() == 2 || playableCards().size() < 5) {
+            return 10;
+        } else if (self.amountFiguresGoblin() == 1 || playableCards().size() < 4) {
+            return 3;
         }
         return 0;
     }

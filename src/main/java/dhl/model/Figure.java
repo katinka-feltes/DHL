@@ -1,7 +1,5 @@
 package dhl.model;
 
-import dhl.Constants;
-
 import java.io.Serializable;
 
 /**
@@ -21,14 +19,11 @@ public class Figure implements Serializable {
     /**
      * moves this figure to the next correctly colored field
      * @param color the color of the field that the figure should move to
+     * @throws Exception if the figure would leave the field
      */
-    public void move(char color) {
-        int steps = 1;
-        while (Constants.BASIC_FIELD[pos + steps].getColor() != color) {
-            steps++;
-        }
+    public void move(char color) throws Exception{
         latestPos = pos;
-        pos+=steps; //move this figure the calculated amount of steps forward
+        pos+=FigureFunction.steps(pos, color); //move this figure the calculated amount of steps forward
     }
 
     public int getPos() {

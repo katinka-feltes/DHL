@@ -1,7 +1,6 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 import dhl.model.tokens.Mirror;
 import dhl.model.tokens.Spiral;
@@ -14,6 +13,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the methods of the class AI
+ */
 class AITest {
 
     private AI ai;
@@ -21,6 +23,10 @@ class AITest {
     private Player p0;
     private Player p1;
 
+
+    /**
+     * called before each test to initialize players
+     */
     @BeforeEach
     public void setUp() {
         ai = new AI();
@@ -31,9 +37,6 @@ class AITest {
         List<Player> players = new ArrayList<>();
         players.add(p0);
         players.add(p1);
-        Game game = new Game(players);
-
-
     }
 
     /**
@@ -198,7 +201,7 @@ class AITest {
      * this method tests if the ai method "chooseSpiralPosition" works correct
      */
     @Test
-    void chooseSpiralPosition() {
+    void chooseSpiralPosition() throws Exception {
         Token spiral = new Spiral();
         Token mirror = new Mirror();
         // checks if the ai makes the default action

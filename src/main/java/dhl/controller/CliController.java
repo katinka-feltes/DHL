@@ -46,9 +46,9 @@ public class CliController {
         Player activeP = model.getPlayers().get(0);
         while (!model.gameOver()) {
             takeTurn(activeP);
-            activeP =  model.nextPlayer(); //set the next player as turn is done
 
-            if (view.promptPlayersChoice("exit and save?")){
+            if (activeP.getPlayerLogic().choose("exit and save?")){
+                model.nextPlayer(); //set the next player as turn is done so the correct person starts next time
                 try {Save.serializeDataOut(model);}
                 catch (Exception e){
                     System.out.println("error with save");
@@ -56,6 +56,9 @@ public class CliController {
                 }
                 return;
             }
+
+            activeP =  model.nextPlayer(); //set the next player as turn is done
+
         }
         // calculate final victory points and update highscore if necessary
         for (Player p : model.getPlayers()) {
@@ -181,8 +184,6 @@ public class CliController {
                         "(1, 2 or 3 - the figure the furthest away from the start is 1)", player.getFigures());
                 player.placeFigure(card.getColor(), chosenFig);
                 break;
-            } catch (IndexOutOfBoundsException indexE) {
-                view.error("This figure can't move this far.");
             } catch (Exception e) {
                 view.error(e.getMessage());
             }
@@ -282,19 +283,15 @@ public class CliController {
      */
     private void doTokenSpiral(Player player, Token token) {
         Figure currentFigure = player.getLastMovedFigure();
-
-        if (player.getPlayerLogic().choose("You can move this figure backwards as far as you want. " +
-                "Except the field where you came from. Do you want to proceed with your action?")) {
-            int chosenPos = player.getPlayerLogic().chooseSpiralPosition("Where do you want to place your figure?", currentFigure.getPos());
-            if (chosenPos != currentFigure.getLatestPos()) {
-                ((Spiral) token).setChosenPos(chosenPos);
-                token.action(player);
-                view.printCurrentBoard(model);
-                usingToken(player);
-            } else {
-                view.error("You can not go to the field you came from!");
-                //recursion?
-            }
+        int chosenPos = player.getPlayerLogic().chooseSpiralPosition("You can move this figure backwards as far as you want. " +
+                "Except the field where you came from. Where do you want to place your figure?", currentFigure.getPos());
+        if (chosenPos == currentFigure.getLatestPos()) {
+            view.error("You can not go to the field you came from!");
+        } else if (chosenPos != currentFigure.getPos()) {
+            ((Spiral) token).setChosenPos(chosenPos);
+            token.action(player);
+            view.printCurrentBoard(model);
+            usingToken(player);
         }
     }
 
