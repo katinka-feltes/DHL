@@ -5,7 +5,6 @@ import dhl.model.CardFunction;
 import dhl.model.Figure;
 import dhl.model.FigureFunction;
 import dhl.view.Cli;
-import dhl.view.View;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public class Human implements PlayerLogic {
 
-    private View view = new Cli();
+    private Cli view = new Cli();
 
     @Override
     public int chooseSpiralPosition(String question, int position) {

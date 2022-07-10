@@ -1,7 +1,6 @@
 package dhl;
 
 import dhl.controller.CliController;
-import dhl.view.Cli;
 import dhl.view.Gui;
 
 import java.util.Arrays;
@@ -21,10 +20,8 @@ public class Main {
 
         boolean cli = Arrays.asList(args).contains("--no-gui");
         if (cli) {
-            c.setView(new Cli());
             c.startGame();
         } else {
-            //c.setView(new Gui());
             Gui.main(args);
         }
     }

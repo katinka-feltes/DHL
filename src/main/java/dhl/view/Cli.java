@@ -12,14 +12,13 @@ import java.util.Scanner;
 /**
  * Starting point of the command line interface
  */
-public class Cli implements View, Serializable {
+public class Cli implements Serializable {
 
     private static final String TABULATOR = "\t\t";
 
     /** This method ask how many players are going to play.
      * @return result an Integer which says how many players are going to play.
      */
-    @Override
     public int promptInt(int start, int end, String prompt) {
         System.out.println(prompt + " (" + start + "-" + end + ")");
         Scanner scanner = new Scanner(System.in);
@@ -45,7 +44,6 @@ public class Cli implements View, Serializable {
      * @param prompt the prompt that is printed to the user
      * @return String of the Card that the user selected
      */
-    @Override
     public String promptCardString(String prompt){
         System.out.println(prompt);
         Scanner scanner = new Scanner(System.in);
@@ -75,7 +73,6 @@ public class Cli implements View, Serializable {
      * @param playerAmount the amount of players that will compete at the game
      * @return playersNames a String Array filled with the Names of the Players
      */
-    @Override
     public String[] inputPlayersNames(int playerAmount){
         Scanner scanner = new Scanner(System.in);
         String [] playersNames = new String[playerAmount];
@@ -103,7 +100,6 @@ public class Cli implements View, Serializable {
      * @param prompt the question the player is asked.
      * @return a boolean that transfers to yes(true) and no(false).
      */
-    @Override
     public boolean promptPlayersChoice(String prompt){
         Scanner scanner = new Scanner(System.in);
         System.out.println(prompt + " [y/n]");
@@ -130,7 +126,6 @@ public class Cli implements View, Serializable {
      * @param prompt the message that the player is asked
      * @return the input char (r, g, b, o or p)
      */
-    @Override
     public char promptColor(String prompt) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(prompt + " [r, g, b, o, or p]");
@@ -163,7 +158,7 @@ public class Cli implements View, Serializable {
      * this method pints an error in the terminal.
      * @param str Error Message
      */
-    @Override
+
     public void error(String str) {
         System.err.println(str);
     }
@@ -172,7 +167,6 @@ public class Cli implements View, Serializable {
      * prints the hand card of the player.
      * @param player the active player whose hand cards to show
      */
-    @Override
     public void printHand(Player player) {
         System.out.println(player.getName() + "'s Hand Cards:");
         for (Card card : CardFunction.sortHand(player.getHand())){
@@ -186,7 +180,7 @@ public class Cli implements View, Serializable {
      * prints the top card of the players directional discarding piles.
      * @param player the active player whose top cards to show
      */
-    @Override
+
     public void printTopCards(Player player) {
         System.out.println(player.getName() + "'s Top Card:");
         printTop(player.getPlayedCards('b'));
@@ -202,7 +196,7 @@ public class Cli implements View, Serializable {
      * prints out the results when the game is over
      * @param game the game that ended
      */
-    @Override
+
     public void printResults(Game game) {
         System.out.println();
         Player winner = game.getSortedPlayers().get(0);
@@ -220,7 +214,7 @@ public class Cli implements View, Serializable {
      * prints the top cards of all discarding piles
      * @param game the current game
      */
-    @Override
+
     public void printDiscardingPiles(Game game) {
         System.out.println();
         System.out.println("Top Cards of all Discarding Piles: ");
@@ -236,7 +230,7 @@ public class Cli implements View, Serializable {
      * prints a message in the terminal.
      * @param str the message as a string
      */
-    @Override
+
     public void out(String str) {
         System.out.println(str);
     }
@@ -274,7 +268,7 @@ public class Cli implements View, Serializable {
      * Prints out the current state of the board to the console
      * @param game the currently running game
      */
-    @Override
+
     public void printCurrentBoard(Game game){
 
         List<Player> players = game.getPlayers();

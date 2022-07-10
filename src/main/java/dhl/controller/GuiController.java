@@ -43,7 +43,7 @@ public class GuiController {
     private Card chosenCard;
     private Figure chosenFigure;
     private Player activeP;
-    private List<Player> staticPlayers = new ArrayList<>();
+    private final List<Player> staticPlayers = new ArrayList<>();
 
     /**
      * This Label shows what the player has to do.
@@ -234,12 +234,11 @@ public class GuiController {
             } else {
                 activeP.drawFromDrawingPile();
             }
+            updateAll();
             activeP = model.nextPlayer();
             state = PREPARATION;
             toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
             //startTurn(null);
-
-            updateAll();
         } catch (Exception e) {
             System.err.println("The ai made a incorrect choice that should not occur.");
         }
@@ -266,15 +265,8 @@ public class GuiController {
         }
     }
 
-
-
     private void updatePlayedCardsAndNames() {
-        int currentPlayerIndex = 0;
-        for (int i = 0; i < staticPlayers.size(); i++) {
-            if (staticPlayers.get(i).getName().equals(activeP.getName())){
-                currentPlayerIndex = i + 1;
-            }
-        }
+        int currentPlayerIndex = staticPlayers.indexOf(activeP) + 1;
 
         if (chosenCard != null && activeP.getPlayedCards(chosenCard.getColor()).getTop() != null &&
                 (state == DRAW || state == SPIRAL || state == SPIDERWEB || state == GOBLIN)) {
@@ -618,7 +610,7 @@ public class GuiController {
         }
 
         private void goblin(Node item) {
-            if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3 ) {
+            if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3) {
                 activeP.playGoblinSpecial();
                 toDo.setText("Click on a card you want to discard, either from your hand\nor from your played cards." +
                         " To say no click one discarding pile.");

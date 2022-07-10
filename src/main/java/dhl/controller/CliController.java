@@ -8,7 +8,7 @@ import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
-import dhl.view.View;
+import dhl.view.Cli;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import java.util.List;
  * This Class is the Controller of the MVC pattern when the game is played on the CLI.
  * It is responsible for the communication between the Model and the View.
  */
-public class   CliController {
-    View view;
+public class CliController {
     Game model;
+    Cli view = new Cli();
 
     /**
      * This method starts and keeps the game running.
@@ -357,10 +357,4 @@ public class   CliController {
             player.playGoblinSpecial();
         }
     }
-
-    public void setView(View view) {
-        this.view = view;
-    }
-
-
 }

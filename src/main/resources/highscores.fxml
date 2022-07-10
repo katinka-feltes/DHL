@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16">
    <top>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
