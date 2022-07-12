@@ -58,6 +58,8 @@ public class GuiUpdate {
 
     /**
      * updates the tokens on the field
+     * @param root the BorderPane parent of all nodes
+     * @param fields the fields of the game
      */
     public static void updateTokens(BorderPane root, Field[] fields) {
         List<Node> tokens = classifyChildren("token", root);
@@ -105,6 +107,9 @@ public class GuiUpdate {
 
     /**
      * updates figures on field by adding player's symbol (as a label) to corresponding tilepane
+     * @param root the BorderPane parent of all nodes
+     * @param players list of all players
+     * @param oraclePosition position of oracle
      */
     public static void updateFigures(BorderPane root, List<Player> players, int oraclePosition) {
         List<Node> circles = classifyChildren("circle", root);
@@ -127,6 +132,8 @@ public class GuiUpdate {
 
     /**
      * updates scores with corresponding player names
+     * @param root BorderPane parent of all nodes
+     * @param players list of all players
      */
     public static void updateScores(BorderPane root, List<Player> players) {
         List<Node> scores = classifyChildren("scorePlayer", root);
@@ -166,6 +173,9 @@ public class GuiUpdate {
 
     /**
      * updates the hand cards, hand cards grey when players change
+     * @param root parent of all nodes
+     * @param state current state the game is in
+     * @param activeP the active player
      */
     public static void updateCards(BorderPane root, State state , Player activeP) {
         List<Node> handCards = classifyChildren("handCard", root);
@@ -195,6 +205,8 @@ public class GuiUpdate {
 
     /**
      * adds the player names on end screen (in order: winning - losing)
+     * @param winnerList list of players sorted by victory points
+     * @param root the parent of all nodes
      */
     public static void createEndScores(List<Player> winnerList, BorderPane root) {
         List<Node> endScores = classifyChildren("endscores", root);
@@ -219,4 +231,3 @@ public class GuiUpdate {
     }
 
 }
-

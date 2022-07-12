@@ -179,6 +179,9 @@ public class GuiController {
         }
     }
 
+    /**
+     * calls all the methods for updating the elements on the field
+     */
     private void updateAll() {
         //update cards
         updateCards(root, state, activeP);
@@ -267,6 +270,9 @@ public class GuiController {
         }
     }
 
+    /**
+     * updates the played cards
+     */
     private void updatePlayedCardsAndNames() {
         int currentPlayerIndex = staticPlayers.indexOf(activeP) + 1;
 
@@ -289,6 +295,12 @@ public class GuiController {
         }
     }
 
+    /**
+     * splits the id of an element and returns only the index
+     * @param id id of the element (javafx)
+     * @param elementName name of the element
+     * @return index of the element as an int
+     */
     private int getIndex(String id, String elementName) {
         String[] x = id.split(elementName);
         return Integer.parseInt(x[1]);
@@ -449,7 +461,7 @@ public class GuiController {
         public void action(Node item) {
             if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
                 chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-                toDo.setText("Click a figure to move, the zombie at the bottom to move the zombie figure or trash it.");
+                toDo.setText("Click a figure to move, the zombie at the bottom\nto move the zombie figure or trash it.");
                 state = TRASHORPLAY;
             } else if (state == TRASHORPLAY) {
                 trashOrPlay(item);
@@ -466,6 +478,9 @@ public class GuiController {
             }
         }
 
+        /**
+         * executes the player's action of playing a card
+         */
         private void play() {
             try {
                 //if it is certain that the next line of code will not throw an exception
@@ -484,6 +499,9 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when spiderweb token shall be executed
+         */
         private void useSpiderweb() {
             currentToken.action(activeP);
             updateCards(root, state, activeP);
@@ -549,6 +567,9 @@ public class GuiController {
             toDo.setText("From which pile do you want to draw?");
         }
 
+        /**
+         * is called when figure is moved to a field and checks if a token is to be executed
+         */
         private void useToken() {
             currentToken = model.getFields()[chosenFigure.getPos()].collectToken();
 
@@ -596,6 +617,10 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when player has to draw a card
+         * @param item item the player has clicked on
+         */
         private void draw(Node item) {
             if (item.getId().startsWith("discardingPile")) {
                 try {
@@ -616,6 +641,11 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when the player lands on a field with a goblin token
+         * executes the goblin action
+         * @param item item the player has clicked on
+         */
         private void goblin(Node item) {
             if (item.getId().startsWith("circle") && activeP.amountFiguresGoblin() == 3) {
                 activeP.playGoblinSpecial();
@@ -636,6 +666,10 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when a player lands on a field with a spiderweb token
+         * @param item item the player has clicked on
+         */
         private void spiderweb(Node item) {
             if (item.getId().startsWith("circle")) {
                 useSpiderweb();
@@ -645,6 +679,10 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when player lands on a field with a spiral token
+         * @param item item the player has clicked on
+         */
         private void spiral(Node item) {
             if(item.getId().startsWith("circle")) {
                 int chosenPos = getIndex(item.getId(), "circle");
@@ -657,6 +695,10 @@ public class GuiController {
             }
         }
 
+        /**
+         * is called when a player has to decide between trashing and playing a card
+         * @param item item the player has clicked on
+         */
         private void trashOrPlay(Node item) {
             if (item.getId().startsWith("discardingPile")) {
                 trash(chosenCard);

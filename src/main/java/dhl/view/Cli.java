@@ -16,7 +16,11 @@ public class Cli implements Serializable {
 
     private static final String TABULATOR = "\t\t";
 
-    /** This method ask how many players are going to play.
+    /**
+     * This method asks the player a question that expects an int as an answer
+     * @param start min the int can be
+     * @param end max the int can be
+     * @param prompt the question to ask the player
      * @return result an Integer which says how many players are going to play.
      */
     public int promptInt(int start, int end, String prompt) {
@@ -158,7 +162,6 @@ public class Cli implements Serializable {
      * this method pints an error in the terminal.
      * @param str Error Message
      */
-
     public void error(String str) {
         System.err.println(str);
     }
@@ -180,7 +183,6 @@ public class Cli implements Serializable {
      * prints the top card of the players directional discarding piles.
      * @param player the active player whose top cards to show
      */
-
     public void printTopCards(Player player) {
         System.out.println(player.getName() + "'s Top Card:");
         printTop(player.getPlayedCards('b'));
@@ -196,7 +198,6 @@ public class Cli implements Serializable {
      * prints out the results when the game is over
      * @param game the game that ended
      */
-
     public void printResults(Game game) {
         System.out.println();
         Player winner = game.getSortedPlayers().get(0);
@@ -214,7 +215,6 @@ public class Cli implements Serializable {
      * prints the top cards of all discarding piles
      * @param game the current game
      */
-
     public void printDiscardingPiles(Game game) {
         System.out.println();
         System.out.println("Top Cards of all Discarding Piles: ");
@@ -230,7 +230,6 @@ public class Cli implements Serializable {
      * prints a message in the terminal.
      * @param str the message as a string
      */
-
     public void out(String str) {
         System.out.println(str);
     }
@@ -268,7 +267,6 @@ public class Cli implements Serializable {
      * Prints out the current state of the board to the console
      * @param game the currently running game
      */
-
     public void printCurrentBoard(Game game){
 
         List<Player> players = game.getPlayers();

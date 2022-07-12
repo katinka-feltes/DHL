@@ -107,7 +107,7 @@ public class AI implements PlayerLogic {
                 colorOfBestOption = color;
             }
         }
-        if(bestDrawOption < 5) { //if <=5 drawing from discarding is a good option and AI chooses this
+        if(bestDrawOption < 5) { //if <5 drawing from discarding is a good option and AI chooses this
             chosenDiscard = colorOfBestOption;
             return true;
         }

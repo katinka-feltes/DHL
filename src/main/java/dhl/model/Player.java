@@ -86,6 +86,7 @@ public class Player implements Serializable {
      *
      * @param fieldColor color of the field to place the figure on
      * @param figure the figure to move
+     * @throws Exception if the figure would leave the field
      */
     public void placeFigure(char fieldColor, Figure figure) throws Exception{
         victoryPoints -= Constants.BASIC_FIELD[figure.getPos()].getPoints();
