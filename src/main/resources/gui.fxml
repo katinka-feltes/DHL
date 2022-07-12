@@ -65,7 +65,7 @@
                   <Image url="@spiderweb.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER" prefHeight="110.0" prefWidth="515.0">
+            <VBox alignment="CENTER" prefHeight="122.0" prefWidth="515.0">
                <children>
                   <HBox prefHeight="64.0" prefWidth="458.0">
                      <children>
@@ -76,7 +76,7 @@
                               </Label>
                      </children>
                   </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="458.0" spacing="5.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="515.0" spacing="5.0">
                             <padding>
                                 <Insets top="5.0" />
                             </padding>
@@ -94,7 +94,7 @@
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" prefHeight="20.0" prefWidth="397.0" text="this is what you gotta do&quot;" textFill="#d34a41">
+                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" prefHeight="44.0" prefWidth="397.0" text="this is what you gotta do&quot;" textFill="#d34a41">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
