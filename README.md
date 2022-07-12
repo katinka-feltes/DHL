@@ -1,14 +1,22 @@
 # DHL - Dire Horror Land
 
+<br>
+
 # Anforderungsdokumentation
+
+Die Anforderungen des Produkts sollen übersichtlich in einem **Anwendungsfalldiagramm** dargestellt werden. Die einzelnen Anforderungen sollen detailliert auf **Story-Cards** festgehalten werden, auf die während des Praktikums zurückgegriffen werden soll.
 
 ## Anwendungsfalldiagramm
 
 https://md.isp.uni-luebeck.de/CmioeQyMRYS00nuryhVgZg#
 
+<br>
+
 # Bedienungsanleitung
 
 In diesem Dokument sollen alle Funktionen des Systems kurz vorgestellt werden und erklärt sein, wie diese angesteuert werden können.
+
+<br>
 
 # Architekturdokumentation
 
@@ -21,6 +29,8 @@ https://md.isp.uni-luebeck.de/NtSg37ifQ2yYPsb06Ve10Q?both
 ## Zustandsdiagramm
 
 https://md.isp.uni-luebeck.de/Y3-Xzz5kTii3JAN-Yl34tA?view
+
+<br>
 
 # Maven
 
