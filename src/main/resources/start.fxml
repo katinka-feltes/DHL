@@ -49,7 +49,7 @@
                   <Font name="Dead Kansas" size="50.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#loadGamemodes" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Gamemodes" textAlignment="CENTER" textFill="#880b0b">
+            <Button mnemonicParsing="false" onAction="#loadGamemodes" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Gamemodes" textAlignment="CENTER" textFill="#880b0b">
                <font>
                   <Font size="12.0" />
                </font>
@@ -236,7 +236,7 @@
    </center>
    <bottom>
       <HBox alignment="CENTER" fillHeight="false">
-         <Button mnemonicParsing="false" onAction="#loadFromSaved" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Load last saved Game" textAlignment="CENTER" textFill="#880b0b" BorderPane.alignment="CENTER">
+         <Button mnemonicParsing="false" onAction="#loadFromSaved" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Load last saved Game" textAlignment="CENTER" textFill="#880b0b" BorderPane.alignment="CENTER">
             <font>
                <Font name="Ink Free" size="15.0" />
             </font>
@@ -244,7 +244,7 @@
                <Insets bottom="20.0" />
             </BorderPane.margin>
          </Button>
-         <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+         <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" style="-fx-background-color: #880b0b;" text="Start Game" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
             <font>
                <Font name="Ink Free" size="15.0" />
             </font>
@@ -255,7 +255,7 @@
                <Insets left="50.0" right="50.0" />
             </HBox.margin>
          </Button>
-         <Button mnemonicParsing="false" onAction="#loadHighscores" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Show Highscores" textAlignment="CENTER" textFill="#880b0b">
+         <Button mnemonicParsing="false" onAction="#loadHighscores" style="-fx-background-color: #ffffff; -fx-border-color: #880b0b #880b0b; -fx-border-radius: 5;" text="Show Highscores" textAlignment="CENTER" textFill="#880b0b">
             <font>
                <Font name="Ink Free" size="15.0" />
             </font>

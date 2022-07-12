@@ -24,6 +24,7 @@ import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -32,6 +33,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import static dhl.controller.State.*;
 import static dhl.view.GuiUpdate.updateCards;
@@ -160,24 +162,34 @@ public class GuiController {
      * @param e the hovering cursor
      */
     @FXML
-    private void highlightWhileHover(MouseEvent e){
+    private void setGlow(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
-        if(item == null){
+        if (item == null) {
             return;
         }
-        if (state == PREPARATION && item.getId().startsWith("nextButton") || state == CHOOSEHANDCARD && item.getId().startsWith("handCard") ||
-                state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle"))
-                || (state == SPIDERWEB || state == SPIRAL) && item.getId().startsWith("circle")
-                || state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("discardingPile"))
-                || state == DRAW && item.getId().startsWith("drawingPile")) {
-            Glow glow = new Glow();
-            glow.setLevel(0.6);
-            if (item.getEffect() == null){
-                item.setEffect(glow);
-            }else {
-                item.setEffect(null);
+        Glow glow = new Glow();
+        glow.setLevel(0.6);
+        /**
+         * a class to make PMD happy
+         */
+        class Conditions {
+            private boolean conditions() {
+                return state == CHOOSEHANDCARD && item.getId().startsWith("handCard")
+                        || state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle") || item.getId().startsWith("handCard"))
+                        || state == SPIDERWEB || state == SPIRAL && item.getId().startsWith("circle")
+                        || state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("playedCards"))
+                        || state == DRAW && item.getId().startsWith("drawingPile");
             }
         }
+        if (new Conditions().conditions()) {
+            item.setEffect(glow);
+        }
+    }
+
+    @FXML
+    private void removeGlow(MouseEvent e) {
+        Node item = (Node) e.getSource();
+        item.setEffect(null);
     }
 
     /**
@@ -283,7 +295,7 @@ public class GuiController {
             List<Node> currentDiscardPileNumber = GuiUpdate.classifyChildren("playedCardsNumber" + currentPlayerIndex + currentCardColor, root);
             List<Node> currentDiscardPileDir = GuiUpdate.classifyChildren("playedCardsDir" + currentPlayerIndex + currentCardColor, root);
 
-            ((Label) currentDiscardPileNumber.get(0)).setText("" + chosenCard.getNumber());
+            ((Label) ((StackPane) currentDiscardPileNumber.get(0)).getChildren().get(1)).setText("" + chosenCard.getNumber());
             ((Label) currentDiscardPileDir.get(0)).setText("" + activeP.getPlayedCards(currentCardColor).getDirectionString());
         }
         List<Node> namesPlayedCards = GuiUpdate.classifyChildren("namePlayedCards", root);
@@ -546,14 +558,16 @@ public class GuiController {
             state = DRAW;
             toDo.setText("From which pile do you want to draw?");
 
-            int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
+
+            int currentPlayerIndex = staticPlayers.indexOf(activeP) + 1;
             List<Node> currentDiscardPileName = GuiUpdate.classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor(), root);
             List<Node> currentDiscardPileDir = GuiUpdate.classifyChildren("playedCardsDir" +currentPlayerIndex + pile.getColor(), root);
+            Label discardPile = ((Label)((StackPane) currentDiscardPileName.get(0)).getChildren().get(1));
             ((Label) currentDiscardPileDir.get(0)).setText("" + pile.getDirectionString());
             if (pile.isEmpty()) {
-                ((Label) currentDiscardPileName.get(0)).setText("");
+                discardPile.setText("");
             } else {
-                ((Label) currentDiscardPileName.get(0)).setText("" + pile.getTop().getNumber());
+                discardPile.setText("" + pile.getTop().getNumber());
             }
 
         }

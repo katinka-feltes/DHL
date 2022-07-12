@@ -48,7 +48,357 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <children>
+                <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TilePane>
+                <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2" />
+                <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2" />
+                <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2" />
+                <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2" />
+                <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2" />
+                <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" />
+                <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45" />
+                <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2" />
+                <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2" />
+                <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7" />
+                <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12" />
+                <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18" />
+                <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23" />
+                <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16" />
+                <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16" />
+                <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18" />
+                <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18" />
+                <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18" />
+                <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18" />
+                <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18" />
+                <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18" />
+                <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16" />
+                <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16" />
+                <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23" />
+                <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28" />
+                <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33" />
+                <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38" />
+                <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33" />
+                <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33" />
+                <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31" />
+                <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31" />
+                <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33" />
+                <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33" />
+                <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33" />
+                <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33" />
+                <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33" />
+                <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33" />
+                <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
+                <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
+            </children>
+        </GridPane>
+    </center>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -65,18 +415,14 @@
                   <Image url="@spiderweb.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER" prefHeight="122.0" prefWidth="515.0">
-               <children>
-                  <HBox prefHeight="64.0" prefWidth="458.0">
-                     <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="399.0" text="DIRE HORROR LAND" textAlignment="CENTER">
-                                  <font>
-                                      <Font name="Dead Kansas" size="40.0" />
-                                  </font>
-                              </Label>
-                     </children>
-                  </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="515.0" spacing="5.0">
+                <VBox maxHeight="120.0" minHeight="70.0" prefHeight="110.0" prefWidth="502.0">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER">
+                            <font>
+                                <Font name="Dead Kansas" size="40.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
                             <padding>
                                 <Insets top="5.0" />
                             </padding>
@@ -94,7 +440,7 @@
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" prefHeight="44.0" prefWidth="397.0" text="this is what you gotta do&quot;" textFill="#d34a41">
+                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#d34a41">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
@@ -107,9 +453,9 @@
                                 </Label>
                      </children>
                         </HBox>
-               </children>
-            </VBox>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="246.0">
+                    </children>
+                </VBox>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="250.0">
                <children>
                   <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
                      <font>
@@ -193,21 +539,32 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox prefHeight="110.0" prefWidth="250.0">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
+            <VBox prefHeight="110.0" prefWidth="146.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="140.0" text="Collected Token:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <HBox fx:id="collectedToken" prefHeight="100.0" prefWidth="270.0" />
+                  <HBox fx:id="collectedToken" prefHeight="100.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </VBox>
             </children>
         </HBox>
@@ -227,10 +584,10 @@
                                 <Label fx:id="namePlayedCards1" text="PlayerName" />
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
-                                        <StackPane>
+                                        <StackPane fx:id="playedCardsNumber1p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="playedCardsNumber1p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -249,10 +606,10 @@
                                 </HBox>
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
-                                        <StackPane>
+                                        <StackPane fx:id="playedCardsNumber1g" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="playedCardsNumber1g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -271,14 +628,14 @@
                                 </HBox>
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
-                                        <StackPane>
+                                        <StackPane fx:id="playedCardsNumber1r" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets />
                                                     </StackPane.margin>
                                                 </Rectangle>
-                                                <Label fx:id="playedCardsNumber1r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -300,10 +657,10 @@
                                 </HBox>
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
-                                        <StackPane>
+                                        <StackPane fx:id="playedCardsNumber1b" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="playedCardsNumber1b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -322,10 +679,10 @@
                                 </HBox>
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
-                                        <StackPane>
+                                        <StackPane fx:id="playedCardsNumber1o" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                                <Label fx:id="playedCardsNumber1o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
@@ -349,10 +706,10 @@
                         <Label fx:id="namePlayedCards2" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber2p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber2p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -371,10 +728,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber2g" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber2g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -393,14 +750,14 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber2r" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                        <StackPane.margin>
                                           <Insets />
                                        </StackPane.margin>
                                     </Rectangle>
-                                    <Label fx:id="playedCardsNumber2r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -422,10 +779,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber2b" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber2b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -444,10 +801,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber2o" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber2o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -471,10 +828,10 @@
                         <Label fx:id="namePlayedCards3" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber3p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber3p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -493,10 +850,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber3g" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber3g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -515,14 +872,14 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber3r" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                        <StackPane.margin>
                                           <Insets />
                                        </StackPane.margin>
                                     </Rectangle>
-                                    <Label fx:id="playedCardsNumber3r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -544,10 +901,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber3b" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber3b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -566,10 +923,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber3o" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber3o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -593,10 +950,10 @@
                         <Label fx:id="namePlayedCards4" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber4p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" onMouseClicked="#onClick" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber4p" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -615,10 +972,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber4g" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber4g" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -637,14 +994,14 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber4r" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" onMouseClicked="#onClick" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" StackPane.alignment="CENTER">
                                        <StackPane.margin>
                                           <Insets />
                                        </StackPane.margin>
                                     </Rectangle>
-                                    <Label fx:id="playedCardsNumber4r" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0" textAlignment="JUSTIFY" StackPane.alignment="CENTER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -666,10 +1023,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber4b" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber4b" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -688,10 +1045,10 @@
                         </HBox>
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
-                              <StackPane>
+                              <StackPane fx:id="playedCardsNumber4o" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" onMouseClicked="#onClick" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                    <Label fx:id="playedCardsNumber4o" alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="80.0" prefWidth="25.0">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="110.0" maxWidth="-Infinity" minHeight="75.0" minWidth="-Infinity" prefHeight="80.0" prefWidth="25.0">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -728,10 +1085,10 @@
                 </Label>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPiler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
+                        <StackPane fx:id="discardingPiler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d34a41" height="45.0" stroke="#813531" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discardPiler" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0" textAlignment="JUSTIFY">
+                                <Label fx:id="discardPiler" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="75.0" prefWidth="30.0" textAlignment="JUSTIFY">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -748,10 +1105,10 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
+                        <StackPane fx:id="discardingPileg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6a9a3d" height="45.0" stroke="#52762e" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discardPileg" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
+                                <Label fx:id="discardPileg" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="75.0" prefWidth="30.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -768,10 +1125,10 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
+                        <StackPane fx:id="discardingPileb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#424ebc" height="45.0" stroke="#2b3479" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discardPileb" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
+                                <Label fx:id="discardPileb" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="75.0" prefWidth="30.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -788,10 +1145,10 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPilep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
+                        <StackPane fx:id="discardingPilep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a45ab9" height="45.0" stroke="#784289" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discardPilep" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
+                                <Label fx:id="discardPilep" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="75.0" prefWidth="30.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -808,10 +1165,10 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
                     <children>
-                        <StackPane fx:id="discardingPileo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" style="-fx-pref-height: 45; -fx-pref-width: 30;">
+                        <StackPane fx:id="discardingPileo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" style="-fx-pref-height: 45; -fx-pref-width: 30;">
                             <children>
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2af4b" height="45.0" stroke="#99692b" strokeType="INSIDE" strokeWidth="3.0" width="30.0" />
-                                <Label fx:id="discardPileo" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" prefHeight="75.0" prefWidth="30.0">
+                                <Label fx:id="discardPileo" alignment="CENTER" contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="70.0" minWidth="-Infinity" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="75.0" prefWidth="30.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
@@ -845,7 +1202,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#startTurn" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
+            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#startTurn" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
                <font>
                   <Font name="Ink Free" size="14.0" />
                </font>
@@ -864,7 +1221,7 @@
                         </Label>
                         <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1200.0" minHeight="75.0" minWidth="320.0" prefHeight="75.0" prefWidth="652.0">
                             <children>
-                                <StackPane fx:id="handCard0" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard0" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -877,7 +1234,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard1" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard1" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -890,7 +1247,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard2" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-width: 50; -fx-pref-height: 75;">
+                                <StackPane fx:id="handCard2" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-width: 50; -fx-pref-height: 75;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -903,7 +1260,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard3" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard3" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -916,7 +1273,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard4" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard4" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -929,7 +1286,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard5" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard5" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -942,7 +1299,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard6" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard6" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -955,7 +1312,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </StackPane>
-                                <StackPane fx:id="handCard7" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
+                                <StackPane fx:id="handCard7" maxHeight="-Infinity" maxWidth="55.0" minHeight="-Infinity" minWidth="10.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="40.0" style="-fx-pref-height: 75; -fx-pref-width: 50;">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" text="0">
@@ -979,7 +1336,7 @@
                                 <Font name="Ink Free" size="18.0" />
                             </font>
                         </Label>
-                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0">
+                        <Rectangle id="drawingPile" fx:id="drawingPile" arcHeight="5.0" arcWidth="5.0" fill="#c8d1d9" height="75.0" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" stroke="#81888e" strokeType="INSIDE" strokeWidth="3.0" width="50.0">
                      <VBox.margin>
                         <Insets right="35.0" />
                      </VBox.margin></Rectangle>
@@ -994,363 +1351,4 @@
             </children>
         </HBox>
     </bottom>
-   <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="479.0" fitWidth="552.0" style="-fx-opacity: 20%;">
-               <image>
-                  <Image url="@clown.png" />
-               </image>
-            </ImageView>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-               <columnConstraints>
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <children>
-                  <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#highlightWhileHover" onMouseExited="#highlightWhileHover" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TilePane>
-                  <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" />
-                  <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45" />
-                  <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2" />
-                  <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7" />
-                  <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12" />
-                  <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23" />
-                  <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16" />
-                  <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16" />
-                  <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18" />
-                  <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16" />
-                  <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16" />
-                  <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23" />
-                  <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28" />
-                  <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38" />
-                  <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31" />
-                  <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31" />
-                  <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33" />
-                  <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
-                  <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
-               </children>
-            </GridPane>
-         </children>
-      </StackPane>
-   </center>
 </BorderPane>
