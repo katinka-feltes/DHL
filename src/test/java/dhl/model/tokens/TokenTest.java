@@ -1,6 +1,6 @@
 package dhl.model.tokens;
 
-import dhl.controller.player_logic.Human;
+import dhl.player_logic.Human;
 import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Game;

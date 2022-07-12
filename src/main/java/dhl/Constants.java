@@ -13,7 +13,6 @@ import java.util.Objects;
  * The Class to save all the constants used in the game.
  */
 public class Constants {
-    public static final int PORT_NUMBER = 4444;
     public static final char[] COLORS = {'r','g','b','p','o'};
     public static final String RED = "#d34a41";
     public static final String GREEN = "#6a9a3d";
@@ -131,5 +130,45 @@ public class Constants {
                 // do nothing
         }
         return null;
+    }
+
+    public static Field[] newBasicField(){
+        return new Field[]{
+                new LargeField(0, 'w', 0),
+                new Field(-4, 'p'),
+                new Field(-4, 'o'),
+                new Field(-4, 'r'),
+                new Field(-4, 'g'),
+                new Field(-4, 'b'),
+                new Field(-4, 'p'),
+                new LargeField(-3, 'p', 2),
+                new Field(-3, 'o'),
+                new Field(-3, 'r'),
+                new Field(-2, 'g'),
+                new Field(-2, 'b'),
+                new Field(-2, 'p'),
+                new Field(-2, 'o'),
+                new LargeField(1, 'o', 2),
+                new Field(1, 'r'),
+                new Field(1, 'g'),
+                new Field(2, 'b'),
+                new Field(2, 'p'),
+                new Field(2, 'o'),
+                new Field(2, 'r'),
+                new LargeField(3, 'r', 2),
+                new Field(3, 'g'),
+                new Field(3, 'b'),
+                new Field(3, 'p'),
+                new Field(5, 'o'),
+                new Field(5, 'r'),
+                new Field(5, 'g'),
+                new LargeField(5, 'g', 2),
+                new Field(6, 'b'),
+                new Field(6, 'p'),
+                new Field(6, 'o'),
+                new Field(7, 'r'),
+                new Field(7, 'g'),
+                new Field(7, 'b'),
+                new LargeField(10, 'b', 1)};
     }
 }

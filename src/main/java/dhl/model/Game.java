@@ -1,7 +1,7 @@
 package dhl.model;
 
 import dhl.Constants;
-import dhl.controller.player_logic.PlayerLogic;
+import dhl.player_logic.PlayerLogic;
 import dhl.model.tokens.*;
 
 import java.io.File;
@@ -57,7 +57,7 @@ public class Game implements Serializable {
         this.players = players;
         oracle = 0;
 
-        fields = Constants.BASIC_FIELD;
+        fields = Constants.newBasicField();
         tokens = new ArrayList<>();
 
         for (int i = 1; i <= 3; i++) {

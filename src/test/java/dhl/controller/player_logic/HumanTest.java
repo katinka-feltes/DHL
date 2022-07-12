@@ -3,6 +3,7 @@ package dhl.controller.player_logic;
 import dhl.model.Card;
 import dhl.model.Figure;
 import dhl.model.Player;
+import dhl.player_logic.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

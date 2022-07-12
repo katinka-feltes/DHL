@@ -4,6 +4,8 @@ import dhl.model.Card;
 import dhl.model.Game;
 import dhl.model.Player;
 import dhl.model.tokens.*;
+import dhl.player_logic.AI;
+import dhl.player_logic.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AITest {
 
     private AI ai;
-    private  Human h;
+    private Human h;
     private Player p0;
     private Player p1;
 

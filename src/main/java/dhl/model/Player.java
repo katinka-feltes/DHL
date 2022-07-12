@@ -1,8 +1,8 @@
 package dhl.model;
 
 import dhl.Constants;
-import dhl.controller.player_logic.AI;
-import dhl.controller.player_logic.PlayerLogic;
+import dhl.player_logic.AI;
+import dhl.player_logic.PlayerLogic;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.WishingStone;
 

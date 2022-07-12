@@ -2,8 +2,8 @@ package dhl.controller;
 
 import dhl.Constants;
 import dhl.Save;
-import dhl.controller.player_logic.AI;
-import dhl.controller.player_logic.Human;
+import dhl.player_logic.AI;
+import dhl.player_logic.Human;
 import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;

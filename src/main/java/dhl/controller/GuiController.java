@@ -2,9 +2,9 @@ package dhl.controller;
 
 import dhl.Constants;
 import dhl.Save;
-import dhl.controller.player_logic.AI;
-import dhl.controller.player_logic.Human;
-import dhl.controller.player_logic.PlayerLogic;
+import dhl.player_logic.AI;
+import dhl.player_logic.Human;
+import dhl.player_logic.PlayerLogic;
 import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;
@@ -21,6 +21,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -346,6 +347,19 @@ public class GuiController {
     }
 
     /**
+     * This method is called when the user types something into the name input field.
+     * It limits the name length to 10 characters
+     * @param e the pressed key event
+     */
+    @FXML
+    public void limitTo10Characters(KeyEvent e){
+        TextField tf = (TextField)e.getSource();
+        if(tf.getText().length() > 10) {
+            tf.setText(tf.getText().substring(0, 10));
+        }
+    }
+
+    /**
      * This method is called when the user clicks on the "Load last saved Game" button.
      * @param event the click on the Button
      * @throws IOException if the FXML file is not found
@@ -360,6 +374,8 @@ public class GuiController {
         }
 
         loadNewScene(event, "/gui.fxml", true, true);
+
+        guiAction = new GuiAction();
 
         state = PREPARATION;
         activeP = model.getPlayers().get(0);

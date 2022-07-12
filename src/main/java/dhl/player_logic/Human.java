@@ -1,4 +1,4 @@
-package dhl.controller.player_logic;
+package dhl.player_logic;
 
 import dhl.model.Card;
 import dhl.model.CardFunction;

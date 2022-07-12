@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.controller.player_logic.Human;
+import dhl.player_logic.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -82,6 +82,8 @@ public class GameTest {
             player1.putCardOnDiscardingPile(card);
         }
         assertEquals(5, getSizeOfDiscardingPiles());
+
+        assertNull( game.getDiscardPile('x'));
     }
 
     /**
@@ -177,5 +179,27 @@ public class GameTest {
         assertEquals(player1, game.getSortedPlayers().get(0));
         player2.setVictoryPoints(30);
         assertEquals(player2, game.getSortedPlayers().get(0));
+    }
+
+    /**
+     * tests if method nextPlayer works
+     */
+    @Test
+    public void nextPlayer() {
+        assertEquals(player2, game.nextPlayer());
+        game.nextPlayer(); //player 3
+        assertEquals(player1, game.nextPlayer());
+    }
+
+    /**
+     * tests if method moveOracle works
+     */
+    @Test
+    void moveOracle() throws Exception {
+        assertThrows( Exception.class, () -> game.moveOracle(36));
+
+        assertEquals(0, game.getOracle());
+        game.moveOracle(3);
+        assertEquals(3, game.getOracle());
     }
 }

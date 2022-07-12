@@ -1,4 +1,4 @@
-package dhl.controller.player_logic;
+package dhl.player_logic;
 
 import dhl.Constants;
 import dhl.model.*;
@@ -162,7 +162,7 @@ public class AI implements PlayerLogic {
         int bestOptionOracle = -10; //best calculated points by combination of oracle and card
         int steps = 0; //steps the oracle has to move to get to one of AI's figures
         for (Card card: self.getHand()) { //for every card from hand
-            int points = 0; //points of current oracle + card combo
+            int points = -100; //points of current oracle + card combo
             steps = figureReachable(self.getGame().getOracle(), card.getOracleNumber());
             if(steps != 0) {
                 points = 5 - difference(card, self.getPlayedCards(card.getColor())); //5 points if oracle can reach figure and how good card fits
@@ -262,9 +262,10 @@ public class AI implements PlayerLogic {
                     return valueOfMove(tokenPos, fields[tokenPos].getColor());
                     // the value of the move the spiderweb would give
                 case "Spiral":
-                    return 1;
+                    return tokenWorth(fields, chooseSpiralPosition("", tokenPos));
+                    //returns the worth of the token the spiral would achieve
                 case "WishingStone":
-                    return 3; // on average 2,8 points
+                    return (int)(2.8 * self.getTokens()[1]); // on average 2,8 points * amount of mirrors owned
                 default:
                     //do nothing
             }

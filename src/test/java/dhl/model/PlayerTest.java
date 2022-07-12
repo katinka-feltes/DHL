@@ -1,6 +1,6 @@
 package dhl.model;
 
-import dhl.controller.player_logic.Human;
+import dhl.player_logic.Human;
 import dhl.model.tokens.Goblin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

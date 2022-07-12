@@ -9,6 +9,8 @@ import java.io.*;
  */
 public class Save {
 
+    private Save(){}
+
     /**
      * saves the game as a file in resorces
      * @param g the game to serialize
