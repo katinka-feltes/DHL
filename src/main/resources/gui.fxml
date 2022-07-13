@@ -178,7 +178,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" style="-fx-font: 'Ink Free';" text="100">
+                              <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="100">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
