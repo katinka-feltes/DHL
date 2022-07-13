@@ -1004,7 +1004,7 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="481.0" fitWidth="575.0" style="-fx-opacity: 35%;">
+            <ImageView fitHeight="481.0" fitWidth="575.0" style="-fx-opacity: 20%;">
                <image>
                   <Image url="@clown.png" />
                </image>
