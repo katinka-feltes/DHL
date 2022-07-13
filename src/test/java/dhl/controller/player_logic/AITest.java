@@ -263,6 +263,10 @@ class AITest {
         Token spiderweb = new Spiderweb();
 
         // checks if the AI chooses the goblin and the spiderweb
+        p0.getGame().getFields()[4].setToken(null);
+        p0.getGame().getFields()[5].setToken(null);
+        p0.getGame().getFields()[6].setToken(null);
+        p0.getGame().getFields()[7].setToken(null);
         p0.getGame().getFields()[9].setToken(spiral);
         p0.getGame().getFields()[8].setToken(spiderweb);
         p0.getGame().getFields()[13].setToken(goblin);
@@ -295,6 +299,7 @@ class AITest {
         p0.getHand().add(new Card(0, 'b'));
         p0.getPlayedCards('p').add(new Card(0, 'p'));
         p0.getPlayedCards('p').add(new Card(1, 'p'));
+        p0.getGame().getFields()[1].setToken(null);
 
         assertEquals(p0.getHand().get(1), ai.chooseCard("What card do you want to play?", p0.getHand()));
         assertEquals(p0.getHand().get(0), ai.chooseCard("What card do you want to trash?", p0.getHand()));
