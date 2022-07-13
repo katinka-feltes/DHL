@@ -55,7 +55,7 @@
     <top>
         <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1176.0" BorderPane.alignment="TOP_RIGHT">
             <children>
-            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#loadMenu" prefHeight="29.0" prefWidth="55.0" text="Menu">
+            <Label fx:id="menu" accessibleRole="BUTTON" onMouseClicked="#loadMenu" prefHeight="29.0" prefWidth="55.0" style="-fx-font-family: 'Dead Kansas';" text="Menu">
                <font>
                   <Font name="Dead Kansas" size="20.0" />
                </font>
@@ -67,9 +67,9 @@
             </ImageView>
                 <VBox maxHeight="120.0" minHeight="70.0" prefHeight="110.0" prefWidth="502.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="DIRE HORROR LAND" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Dead Kansas';" text="DIRE HORROR LAND" textAlignment="CENTER">
                             <font>
-                                <Font name="Dead Kansas" size="40.0" />
+                                <Font name="Arial" size="40.0" />
                             </font>
                         </Label>
                         <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -77,7 +77,7 @@
                                 <Insets top="5.0" />
                             </padding>
                      <children>
-                                <Label graphicTextGap="50.0" text="Player: ">
+                                <Label graphicTextGap="50.0" style="-fx-font-family: 'Ink Free';" text="Player: ">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
@@ -85,12 +85,12 @@
                                         <Insets />
                                     </opaqueInsets>
                                 </Label>
-                                <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" text="playerName">
+                                <Label fx:id="playerName" alignment="CENTER" graphicTextGap="50.0" style="-fx-font-family: 'Ink Free';" text="playerName">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" text="this is what you gotta do&quot;" textFill="#d34a41">
+                                <Label fx:id="toDo" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="50.0" style="-fx-font-family: 'Ink Free';" text="this is what you gotta do&quot;" textFill="#d34a41">
                                     <font>
                                         <Font name="Ink Free" size="12.0" />
                                     </font>
@@ -107,7 +107,7 @@
                 </VBox>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="250.0">
                <children>
-                  <Label prefHeight="29.0" prefWidth="80.0" text="Scores:">
+                  <Label prefHeight="29.0" prefWidth="80.0" style="-fx-font-family: 'Dead Kansas';" text="Scores:">
                      <font>
                         <Font name="Dead Kansas" size="20.0" />
                      </font>
@@ -119,7 +119,7 @@
                      <children>
                         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
                            <children>
-                              <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="name">
+                              <Label fx:id="scoreName1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" style="-fx-font-family: 'Ink Free';" text="name">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -127,7 +127,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" text="100">
+                              <Label fx:id="scorePlayer1" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="100">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -136,7 +136,7 @@
                         </HBox>
                         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
                            <children>
-                              <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                              <Label fx:id="scoreName2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" style="-fx-font-family: 'Ink Free';" text="Beispielplayername">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -144,7 +144,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" text="100">
+                              <Label fx:id="scorePlayer2" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="100">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -153,7 +153,7 @@
                         </HBox>
                         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
                            <children>
-                              <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                              <Label fx:id="scoreName3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" style="-fx-font-family: 'Ink Free';" text="Beispielplayername">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -161,7 +161,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" text="100">
+                              <Label fx:id="scorePlayer3" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="100">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -170,7 +170,7 @@
                         </HBox>
                         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="150.0" style="-fx-fill-width: true;">
                            <children>
-                              <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" text="Beispielplayername">
+                              <Label fx:id="scoreName4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0" style="-fx-font-family: 'Ink Free';" text="Beispielplayername">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -178,7 +178,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" text="100">
+                              <Label fx:id="scorePlayer4" alignment="CENTER" contentDisplay="CENTER" style="-fx-font: 'Ink Free';" text="100">
                                  <font>
                                     <Font name="Ink Free" size="12.0" />
                                  </font>
@@ -191,9 +191,9 @@
             </HBox>
             <VBox prefHeight="110.0" prefWidth="146.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="140.0" text="Collected Token:">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="140.0" style="-fx-font-family: 'Dead Kansas';" text="Collected Token:">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <HBox fx:id="collectedToken" prefHeight="100.0" prefWidth="200.0">
@@ -222,7 +222,7 @@
     <left>
         <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="PLAYED CARDS">
+                <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="PLAYED CARDS">
                     <font>
                         <Font name="Ink Free" size="18.0" />
                     </font>
@@ -231,7 +231,7 @@
                     <children>
                         <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                             <children>
-                                <Label fx:id="namePlayedCards1" text="PlayerName" />
+                                <Label fx:id="namePlayedCards1" style="-fx-font-family: 'Ink Free';" text="PlayerName" />
                                 <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                                     <children>
                                         <StackPane fx:id="playedCardsNumber1p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
@@ -353,7 +353,7 @@
                         </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                      <children>
-                        <Label fx:id="namePlayedCards2" text="PlayerName" />
+                        <Label fx:id="namePlayedCards2" style="-fx-font-family: 'Ink Free';" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
                               <StackPane fx:id="playedCardsNumber2p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
@@ -475,7 +475,7 @@
                   </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                      <children>
-                        <Label fx:id="namePlayedCards3" text="PlayerName" />
+                        <Label fx:id="namePlayedCards3" style="-fx-font-family: 'Ink Free';" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
                               <StackPane fx:id="playedCardsNumber3p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
@@ -597,7 +597,7 @@
                   </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="120.0" minHeight="-Infinity" minWidth="65.0" prefHeight="400.0" prefWidth="80.0">
                      <children>
-                        <Label fx:id="namePlayedCards4" text="PlayerName" />
+                        <Label fx:id="namePlayedCards4" style="-fx-font-family: 'Ink Free';" text="PlayerName" />
                         <HBox maxHeight="90.0" maxWidth="100.0" minHeight="60.0" minWidth="65.0" prefHeight="70.0" prefWidth="80.0">
                            <children>
                               <StackPane fx:id="playedCardsNumber4p" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow">
@@ -728,7 +728,7 @@
     <right>
         <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="DISCARD PILES">
+                <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="DISCARD PILES">
                     <font>
                         <Font name="Ink Free" size="18.0" />
                     </font>
@@ -852,7 +852,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#startTurn" prefHeight="36.0" prefWidth="135.0" text="NEXT PLAYER">
+            <Button fx:id="nextButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#startTurn" prefHeight="36.0" prefWidth="135.0" style="-fx-font-family: 'Ink Free';" text="NEXT PLAYER">
                <font>
                   <Font name="Ink Free" size="14.0" />
                </font>
@@ -864,7 +864,7 @@
             </ImageView>
                 <VBox alignment="CENTER" prefHeight="104.0" prefWidth="718.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="HAND CARDS ">
+                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="HAND CARDS ">
                             <font>
                                 <Font name="Ink Free" size="18.0" />
                             </font>
@@ -981,7 +981,7 @@
                 </VBox>
                 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="130.0" prefHeight="104.0" prefWidth="175.0">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="DRAWING PILE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: 'Ink Free';" text="DRAWING PILE">
                             <font>
                                 <Font name="Ink Free" size="18.0" />
                             </font>
