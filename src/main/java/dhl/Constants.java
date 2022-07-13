@@ -132,6 +132,10 @@ public class Constants {
         return null;
     }
 
+    /**
+     * method to get a new basic field with new field instances but no token
+     * @return a new basic field array
+     */
     public static Field[] newBasicField(){
         return new Field[]{
                 new LargeField(0, 'w', 0),

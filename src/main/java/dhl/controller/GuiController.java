@@ -40,7 +40,12 @@ import static dhl.view.GuiUpdate.updateCards;
 /**
  * This Class is the Controller of the MVC pattern when the game is played on the GUI.
  * It is responsible for the communication between the Model and the View.
+ *
+ * Reason for the exclusion of the rule "AvoidDuplicateLiterals":
+ * We get our nodes from javaFx by addressing them over their id thus the id names are called several times.
+ * It would be useless and create too many fields to introduce a constant for each one.
  */
+@SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public class GuiController {
     private State state;
     private GuiAction guiAction;
@@ -136,9 +141,14 @@ public class GuiController {
 
     /**
      * This method is called when the user clicks on any clickable item in the Game.
+     *
+     * Exclude the rule "UnusedPrivateMethod" because the controller for
+     * the fxml-scene that uses them isn't loaded at the beginning
+     *
      * @param e the click on the item
      * @throws IOException if the FXML file is not found
      */
+    @SuppressWarnings("PMD.UnusedPrivateMethod")
     @FXML
     public void onClick(MouseEvent e) throws Exception {
         Node item = (Node) e.getSource();
@@ -158,8 +168,13 @@ public class GuiController {
 
     /**
      * this method highlights the items that are clickable in each state
+     *
+     * Exclude the rule "UnusedPrivateMethod" because the controller for
+     * the fxml-scene that uses them isn't loaded at the beginning
+     *
      * @param e the hovering cursor
      */
+    @SuppressWarnings("PMD.UnusedPrivateMethod")
     @FXML
     private void setGlow(MouseEvent e) {
         Node item = (Node) e.getSource();
@@ -185,6 +200,16 @@ public class GuiController {
         }
     }
 
+
+    /**
+     * Method to remove the highlight when the mouse doesn't hover over the elem any move
+     *
+     * Exclude the rule "UnusedPrivateMethod" because the controller for
+     * the fxml-scene that uses them isn't loaded at the beginning
+     *
+     * @param e
+     */
+    @SuppressWarnings("PMD.UnusedPrivateMethod")
     @FXML
     private void removeGlow(MouseEvent e) {
         Node item = (Node) e.getSource();
@@ -258,6 +283,7 @@ public class GuiController {
             //startTurn(null);
         } catch (Exception e) {
             System.err.println("The ai made a incorrect choice that should not occur.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -561,7 +587,7 @@ public class GuiController {
             int currentPlayerIndex = staticPlayers.indexOf(activeP) + 1;
             List<Node> currentDiscardPileName = GuiUpdate.classifyChildren("playedCardsNumber" +currentPlayerIndex + pile.getColor(), root);
             List<Node> currentDiscardPileDir = GuiUpdate.classifyChildren("playedCardsDir" +currentPlayerIndex + pile.getColor(), root);
-            Label discardPile = ((Label)((StackPane) currentDiscardPileName.get(0)).getChildren().get(1));
+            Label discardPile = (Label)((StackPane) currentDiscardPileName.get(0)).getChildren().get(1);
             ((Label) currentDiscardPileDir.get(0)).setText("" + pile.getDirectionString());
             if (pile.isEmpty()) {
                 discardPile.setText("");

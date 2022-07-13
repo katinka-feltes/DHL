@@ -142,12 +142,6 @@
                     <rulesets>
                         <!-- We are using a custom PMD rule set -->
                         <ruleset>https://projects.isp.uni-luebeck.de/isp2022/pmd/-/raw/master/rules.xml</ruleset>
-                        <!--Exclude the rule "UnusedPrivateMethod" because  there are unused private methods in the
-                        gui controller as the fxml-scene that uses them isn't loaded at the beginning-->
-                        <!-- Reason for the exclusion of the rule "AvoidDuplicateLiterals":
-                        We get our nodes from javaFx by addressing them over their id thus the id names are called several times.
-                        It would be useless and create too many fields to introduce a constant for each one.-->
-
                     </rulesets>
                 </configuration>
             </plugin>
