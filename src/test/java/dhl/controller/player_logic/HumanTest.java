@@ -90,7 +90,7 @@ class HumanTest {
     }
 
     @Test
-    void chooseFigure() {
+    void chooseFigure() throws Exception {
         String input;
         InputStream bytes;
 
@@ -99,7 +99,7 @@ class HumanTest {
         System.setIn(bytes);
 
         Figure first = p.getFigures().get(0);
-        assertThrows(Exception.class, () -> first.move('b'));
+        first.move('b');
 
         Figure result = h.chooseFigure("", p.getFigures());
         assertEquals("Input must be an integer!\n", errContent.toString());

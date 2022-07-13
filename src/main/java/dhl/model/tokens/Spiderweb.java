@@ -28,8 +28,14 @@ public class Spiderweb implements Token {
 
     /**
      * the last moved figure of the player is moved to the next field with thew same color it stands on.
+     *
+     * The CatchBlock is necessary for the case that the spiderweb would move the figure too far
+     * that case can be simply ignored. Another options would be to throw the Exception here and catch it elsewhere,
+     * but then the interface would need to throw the exception as well. Thus, it is easier to ignore the rule once.
+     *
      * @param player the player that will execute the action
      */
+    @SuppressWarnings("PMD.EmptyCatchBlock")
     @Override
     public void action(Player player) {
         Figure lastMoved = player.getLastMovedFigure();

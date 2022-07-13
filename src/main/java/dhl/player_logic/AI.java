@@ -265,7 +265,7 @@ public class AI implements PlayerLogic {
                     return 1;
                     //returns the worth of the token the spiral would achieve
                 case "WishingStone":
-                    return (int)(2.8 * self.getTokens()[1]); // on average 2,8 points * amount of mirrors owned
+                    return (int)(2.8 * (self.getTokens()[1] + 1)); // on average 2,8 points * amount of mirrors owned
                 default:
                     //do nothing
             }

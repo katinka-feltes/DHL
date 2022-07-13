@@ -16,7 +16,12 @@ import static dhl.Constants.figureAmount;
  * This Class represents a Player. A Player has a name, a symbol to recognize him by, a game (the current game he is playing),
  * DirectionalDiscardingPiles to discard his colored cards, a hand (8 cards drawn from the games drawing pile),
  * a list of figures and the last played figure and finally a list of tokens.
+ *
+ * All fields are relevant. According to PMD it is one more that accepted.
+ * That is such a small difference that refactoring everything would only make things more complicated.
+ * That is why the PMD rule is ignored.
  */
+@SuppressWarnings("PMD.TooManyFields")
 public class Player implements Serializable {
     private final PlayerLogic playerLogic;
     private final String name;

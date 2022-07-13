@@ -2,6 +2,7 @@ package dhl.view;
 
 //Suppressed warnings for the following import:
 
+import dhl.Constants;
 import dhl.model.*;
 
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class Cli implements Serializable {
      * @return result an Integer which says how many players are going to play.
      */
     public int promptInt(int start, int end, String prompt) {
-        System.out.println(prompt + " (" + start + "-" + end + ")");
+        System.out.print(prompt + " (" + start + "-" + end + ")" + TABULATOR);
         Scanner scanner = new Scanner(System.in);
 
         while(true){ //checks if the input is an integer and if it is inbound
@@ -49,27 +50,23 @@ public class Cli implements Serializable {
      * @return String of the Card that the user selected
      */
     public String promptCardString(String prompt){
-        System.out.println(prompt);
+        System.out.print(prompt + TABULATOR);
         Scanner scanner = new Scanner(System.in);
 
-        while(true) { //checks if the input is an integer and if it is inbound
             try {
                 String result = scanner.next();
                 char[] resultChars = result.toCharArray();
-                if (resultChars.length >= 2 && "rgbop".contains(Character.toString(resultChars[0])) && "0123456789".contains(Character.toString(resultChars[1]))) {
-                    if (resultChars.length == 3 && resultChars[2] != '0' && resultChars[1] == '1') {
-                        throw new Exception("There is no card greater than 10");
-                    } else if (resultChars.length > 3) {
-                        throw new Exception("Please enter one of the options above (max. length 3)");
-                    }
+                if ("rgbop".contains(Character.toString(resultChars[0])) &&
+                        (resultChars.length == 2 &&  "0123456789".contains(Character.toString(resultChars[1])) ||
+                        resultChars.length == 3 && resultChars[2] == '0' && resultChars[1] == '1')) {
                     return result;
                 } else {
                     error("Please enter one of the options above");
                 }
-            } catch (Exception e) {
+            } catch (Exception e) { //checks if the input is an integer and if it is inbound
                 error(e.getMessage());
             }
-        }
+        return promptCardString(""); //call method again if no correct card was entered
     }
 
     /**
@@ -106,7 +103,7 @@ public class Cli implements Serializable {
      */
     public boolean promptPlayersChoice(String prompt){
         Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt + " [y/n]");
+        System.out.print(prompt + " [y/n]" + TABULATOR);
 
         while(true){
             try {
@@ -277,12 +274,13 @@ public class Cli implements Serializable {
         }
         System.out.println();
 
+        Print print = new Print();
         //print the boards first row (from 0-11)
-        printBoardPart(0,11, game);
+        print.boardPart(0,11, game);
         //print the boards first row (from 12-23)
-        printBoardPart(12,23, game);
+        print.boardPart(12,23, game);
         //print the boards first row (from 24-35)
-        printBoardPart(24,35, game);
+        print.boardPart(24,35, game);
 
         //print points
         System.out.print("Points: ");
@@ -294,71 +292,86 @@ public class Cli implements Serializable {
     }
 
     /**
-     * prints the filed index, points, color, tokens and figures on the board.
-     *
-     * @param rowStart the first field of the board that will be printed
-     * @param rowEnd the last field of the board that will be printed
-     * @param game the game
+     * contains the methods that print the board
      */
-    private void printBoardPart(int rowStart, int rowEnd, Game game){
+    private class Print {
 
-        Field[] fields = game.getFields();
-
-        // print index
-        for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print("(" + i + ") \t");
+        /**
+         * Prints a part of the board onto the cli
+         * with the field index, points, color, figures, token and oracle
+         * @param rowStart
+         * @param rowEnd
+         * @param game
+         */
+        public void boardPart(int rowStart, int rowEnd, Game game){
+            basic(rowStart, rowEnd);
+            token(rowStart, rowEnd, game.getFields());
+            figures(rowStart, rowEnd, game.getPlayers());
+            oracle(rowStart, rowEnd, game.getOracle());
         }
-        System.out.println();
+        private void basic(int rowStart, int rowEnd) {
 
-        // print points of the fields
-        for (int i = rowStart; i <= rowEnd; i++) {
-            System.out.print(fields[i].getPoints() + TABULATOR);
-        }
-        System.out.println();
+            Field[] fields = Constants.BASIC_FIELD;
 
-        // print colors of the fields
-        for (int i = rowStart; i <= rowEnd; i++){
-            System.out.print(fields[i].getColor() + TABULATOR);
-        }
-        System.out.println();
-
-        // print tokens of the fields
-        for (int i = rowStart; i <= rowEnd; i++){
-            if(fields[i].getToken() != null) {
-                if (fields[i] instanceof LargeField && ((LargeField) fields[i]).getTokenTwo() != null) {
-                    System.out.print(fields[i].getToken().getSymbol() + " " + fields[i].getToken().getSymbol());
-                } else {
-                    System.out.print(fields[i].getToken().getSymbol());
-                }
+            //print index
+            for (int i = rowStart; i <= rowEnd; i++) {
+                System.out.print("(" + i + ") \t");
             }
-            System.out.print(TABULATOR);
-        }
-        System.out.println();
+            System.out.println();
 
-        //print figures of the players
-        for (Player p: game.getPlayers()) {
-            for (int i = rowStart; i <= rowEnd; i++){
-                int figureAmount = FigureFunction.getFigureAmountOnField(i, p.getFigures());
-                for (int j = 0; j < figureAmount; j++){
-                    System.out.print(p.getSymbol() + " ");
+            // print points of the fields
+            for (int i = rowStart; i <= rowEnd; i++) {
+                System.out.print(fields[i].getPoints() + TABULATOR);
+            }
+            System.out.println();
+
+            // print colors of the fields
+            for (int i = rowStart; i <= rowEnd; i++) {
+                System.out.print(fields[i].getColor() + TABULATOR);
+            }
+            System.out.println();
+        }
+
+        private void token(int rowStart, int rowEnd, Field[] fields) {
+            for (int i = rowStart; i <= rowEnd; i++) {
+                if (fields[i].getToken() != null) {
+                    if (fields[i] instanceof LargeField && ((LargeField) fields[i]).getTokenTwo() != null) {
+                        System.out.print(fields[i].getToken().getSymbol() + " " + fields[i].getToken().getSymbol());
+                    } else {
+                        System.out.print(fields[i].getToken().getSymbol());
+                    }
                 }
-                if (figureAmount > 1) {
-                    System.out.print("\t");
+                System.out.print(TABULATOR);
+            }
+            System.out.println();
+        }
+
+        private void figures(int rowStart, int rowEnd, List<Player> players) {
+            for (Player p : players) {
+                for (int i = rowStart; i <= rowEnd; i++) {
+                    int figureAmount = FigureFunction.getFigureAmountOnField(i, p.getFigures());
+                    for (int j = 0; j < figureAmount; j++) {
+                        System.out.print(p.getSymbol() + " ");
+                    }
+                    if (figureAmount > 1) {
+                        System.out.print("\t");
+                    } else {
+                        System.out.print(TABULATOR);
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+        private void oracle(int rowStart, int rowEnd, int oraclePos) {
+            for (int i = rowStart; i <= rowEnd; i++) {
+                if (i == oraclePos) {
+                    System.out.print("♛");
                 } else {
                     System.out.print(TABULATOR);
                 }
             }
             System.out.println();
         }
-
-        //print oracle
-        for(int i = rowStart; i <= rowEnd; i++) {
-            if(i == game.getOracle()) {
-                System.out.print("♛");
-            } else {
-                System.out.print(TABULATOR);
-            }
-        }
-        System.out.println();
     }
 }

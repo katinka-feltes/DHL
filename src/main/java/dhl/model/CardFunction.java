@@ -33,8 +33,9 @@ public class CardFunction {
         char[] cardValue = cardAsString.toCharArray();
         for (Card handCard : hand) {
             // if number and color match current card from hand (if the length of value is 3, the number always is 10)
-            if (cardValue.length == 2 && handCard.getColor() == cardValue[0] && handCard.getNumber() == Character.getNumericValue(cardValue[1]) ||
-                    cardValue.length == 3 && handCard.getNumber() == 10) {
+            if (handCard.getColor() == cardValue[0] &&
+                    (cardValue.length == 2 && handCard.getNumber() == Character.getNumericValue(cardValue[1]) ||
+                    cardValue.length == 3 && handCard.getNumber() == 10)) {
                 return handCard;
             }
         }

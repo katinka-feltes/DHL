@@ -1,6 +1,7 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
+import dhl.model.Game;
 import dhl.model.Player;
 import dhl.model.tokens.*;
 import dhl.player_logic.AI;
@@ -37,6 +38,8 @@ class AITest {
         List<Player> players = new ArrayList<>();
         players.add(p0);
         players.add(p1);
+
+        new Game(players);
     }
 
     /**
