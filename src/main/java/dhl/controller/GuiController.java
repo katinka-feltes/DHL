@@ -162,7 +162,7 @@ public class GuiController {
      * @param e the hovering cursor
      */
     @FXML
-    private void setGlow(MouseEvent e) throws Exception {
+    private void setGlow(MouseEvent e) {
         Node item = (Node) e.getSource();
         if (item == null) {
             return;
