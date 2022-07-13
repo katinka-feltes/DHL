@@ -2,13 +2,13 @@ package dhl.controller;
 
 import dhl.Constants;
 import dhl.Save;
-import dhl.player_logic.AI;
-import dhl.player_logic.Human;
-import dhl.player_logic.PlayerLogic;
 import dhl.model.*;
 import dhl.model.tokens.Goblin;
 import dhl.model.tokens.Spiral;
 import dhl.model.tokens.Token;
+import dhl.player_logic.AI;
+import dhl.player_logic.Human;
+import dhl.player_logic.PlayerLogic;
 import dhl.view.GuiUpdate;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import static dhl.controller.State.*;
 import static dhl.view.GuiUpdate.updateCards;
