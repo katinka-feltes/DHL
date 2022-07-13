@@ -49,356 +49,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-    <center>
-        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </padding>
-            <children>
-                <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TilePane>
-                <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-                <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2" />
-                <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2" />
-                <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2" />
-                <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2" />
-                <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2" />
-                <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" />
-                <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45" />
-                <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2" />
-                <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2" />
-                <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7" />
-                <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12" />
-                <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18" />
-                <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23" />
-                <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16" />
-                <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16" />
-                <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18" />
-                <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18" />
-                <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18" />
-                <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18" />
-                <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18" />
-                <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18" />
-                <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16" />
-                <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16" />
-                <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23" />
-                <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28" />
-                <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33" />
-                <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38" />
-                <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33" />
-                <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33" />
-                <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31" />
-                <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31" />
-                <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33" />
-                <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33" />
-                <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33" />
-                <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33" />
-                <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33" />
-                <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33" />
-                <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
-                <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
-            </children>
-        </GridPane>
-    </center>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -1351,4 +1001,363 @@
             </children>
         </HBox>
     </bottom>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="479.0" fitWidth="557.0" style="-fx-opacity: 20%;">
+               <image>
+                  <Image url="@clown.png" />
+               </image>
+            </ImageView>
+            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <TilePane fx:id="circle0" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle1" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="10" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle2" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="15" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle3" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle4" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle5" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle6" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle7" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="5">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle8" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="50" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle9" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="55" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle10" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="7">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle11" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="12">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle12" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="60" GridPane.rowIndex="18">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle13" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="60" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle14" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="51" GridPane.rowIndex="21">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle15" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="46" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle16" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle17" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="36" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle18" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle19" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="26" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle20" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="20" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle21" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="11" GridPane.rowIndex="21">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle22" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="23">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle23" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="28">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle24" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9 #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="6" GridPane.rowIndex="33">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle25" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="6" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle26" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41 #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="11" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle27" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="16" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle28" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="22" GridPane.rowIndex="36">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle29" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="31" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle30" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #a45ab9; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="36" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle31" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #f2af4b; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="41" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle32" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d34a41; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="46" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle33" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #6a9a3d; -fx-border-radius: 100; -fx-border-width: 2;" GridPane.columnIndex="51" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle34" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="56" GridPane.rowIndex="38">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <TilePane fx:id="circle35" accessibleRole="BUTTON" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#setGlow" onMouseExited="#removeGlow" prefHeight="80.0" prefWidth="80.0" style="-fx-border-color: #424ebc; -fx-border-radius: 100; -fx-border-width: 2" GridPane.columnIndex="61" GridPane.rowIndex="36">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+                  <ImageView fx:id="token1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" />
+                  <ImageView fx:id="token8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="45" />
+                  <ImageView fx:id="token9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="50" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="2" />
+                  <ImageView fx:id="token11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="7" />
+                  <ImageView fx:id="token12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="12" />
+                  <ImageView fx:id="token13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="65" GridPane.rowIndex="23" />
+                  <ImageView fx:id="token15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="55" GridPane.rowIndex="16" />
+                  <ImageView fx:id="token16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="16" />
+                  <ImageView fx:id="token17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token18" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token19" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token20" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token21" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token22" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="20" GridPane.rowIndex="18" />
+                  <ImageView fx:id="token23" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="15" GridPane.rowIndex="16" />
+                  <ImageView fx:id="token24" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="16" />
+                  <ImageView fx:id="token25" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="23" />
+                  <ImageView fx:id="token26" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="28" />
+                  <ImageView fx:id="token27" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token28" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="38" />
+                  <ImageView fx:id="token29" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="11" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token30" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="16" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token31" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="22" GridPane.rowIndex="31" />
+                  <ImageView fx:id="token32" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="26" GridPane.rowIndex="31" />
+                  <ImageView fx:id="token33" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="31" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token34" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="36" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token35" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="41" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token36" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="46" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token37" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="51" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token39" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="56" GridPane.rowIndex="33" />
+                  <ImageView fx:id="token40" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
+                  <ImageView fx:id="token41" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" GridPane.columnIndex="63" GridPane.rowIndex="31" />
+               </children>
+            </GridPane>
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>
