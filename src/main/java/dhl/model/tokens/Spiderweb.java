@@ -31,12 +31,12 @@ public class Spiderweb implements Token {
      * @param player the player that will execute the action
      */
     @Override
-    public void action( Player player) {
+    public void action(Player player) {
         Figure lastMoved = player.getLastMovedFigure();
         try {
             player.placeFigure(player.getGame().getFields()[lastMoved.getPos()].getColor(), lastMoved);
         } catch (Exception e) {
-            //ignore that the figure cannot move far enough to execute the action
+            System.err.println(e.getMessage());
         }
     }
 

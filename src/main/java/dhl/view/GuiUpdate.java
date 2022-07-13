@@ -1,10 +1,14 @@
 package dhl.view;
 
+import dhl.controller.GuiController;
 import dhl.controller.State;
 import dhl.model.*;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +17,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -228,6 +234,26 @@ public class GuiUpdate {
         for (Node node : getAllChildren(borderPane)) {
             node.setEffect(null);
         }
+    }
+
+    /**
+     * loads a new scene
+     * @param event event that triggers the new scene
+     * @param sceneFile scene that should be loaded
+     * @param max if setMaximized should be set or not
+     * @throws IOException if the FXML file is not found
+     */
+    public static BorderPane loadNewScene(Event event, String sceneFile, boolean max, GuiController controller) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(GuiUpdate.class.getResource(sceneFile));
+        fxmlLoader.setController(controller);
+        BorderPane root = fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 640, 400);
+        stage.setScene(scene);
+        stage.show();
+        stage.setMaximized(max);
+        stage.centerOnScreen();
+        return root;
     }
 
 }

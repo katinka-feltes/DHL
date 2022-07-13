@@ -13,9 +13,7 @@ import dhl.view.GuiUpdate;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -28,7 +26,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -110,7 +107,7 @@ public class GuiController {
         model = new Game(players);
         guiAction = new GuiAction();
 
-        loadNewScene(event, "/gui.fxml", true, true);
+        root = GuiUpdate.loadNewScene(event, "/gui.fxml", true, this);
         staticPlayers.addAll(players);
         state = PREPARATION;
         activeP = model.getPlayers().get(0);
@@ -118,26 +115,7 @@ public class GuiController {
         updateAll();
     }
 
-    /**
-     * loads a new scene
-     * @param event event that triggers the new scene
-     * @param sceneFile scene that should be loaded
-     * @param max if setMaximized should be set or not
-     * @throws IOException if the FXML file is not found
-     */
-    private void loadNewScene(Event event, String sceneFile, boolean max, boolean setController) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneFile));
-        if (setController) {
-            fxmlLoader.setController(this);
-        }
-        root = fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 640, 400);
-        stage.setScene(scene);
-        stage.show();
-        stage.setMaximized(max);
-        stage.centerOnScreen();
-    }
+
 
     /**
      * This method is called when the user clicks on any clickable item in the Game.
@@ -157,7 +135,7 @@ public class GuiController {
                 p.calcTokenPoints();
                 model.updateHighscore(p.getVictoryPoints(), p.getName(), p.getPlayerLogic());
             }
-            loadNewScene(e, "/end.fxml", false, true);
+            root = GuiUpdate.loadNewScene(e, "/end.fxml", false, this);
             GuiUpdate.createEndScores(model.getSortedPlayers(), root);
             return;
         } else {
@@ -191,7 +169,7 @@ public class GuiController {
                 return state == CHOOSEHANDCARD && item.getId().startsWith("handCard")
                         || state == TRASHORPLAY && (item.getId().startsWith("discardingPile") || item.getId().startsWith("circle") || item.getId().startsWith("handCard"))
                         || state == SPIDERWEB || state == SPIRAL && item.getId().startsWith("circle")
-                        || state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("playedCards"))
+                        || state == GOBLIN && (item.getId().startsWith("handCard") || item.getId().startsWith("playedCardsNumber"))
                         || state == DRAW && item.getId().startsWith("drawingPile");
             }
         }
@@ -304,7 +282,7 @@ public class GuiController {
 
             int currentPlayerIndex = model.getPlayers().indexOf(activeP) + 1;
             List<Node> currentDiscardPile = GuiUpdate.classifyChildren("playedCardsNumber" +currentPlayerIndex + pilecolor, root);
-            ((Label)currentDiscardPile.get(0)).setText("");
+            ((Label) ((StackPane) currentDiscardPile.get(0)).getChildren().get(1)).setText("");
         }
     }
 
@@ -410,7 +388,7 @@ public class GuiController {
             return;
         }
 
-        loadNewScene(event, "/gui.fxml", true, true);
+        root = GuiUpdate.loadNewScene(event, "/gui.fxml", true, this);
 
         guiAction = new GuiAction();
 
@@ -427,7 +405,7 @@ public class GuiController {
      */
     @FXML
     public void loadHighscores(ActionEvent event) throws IOException {
-        loadNewScene(event, "/highscores.fxml", false, true);
+        root = GuiUpdate.loadNewScene(event, "/highscores.fxml", false, this);
         List<Node> scoresInList = GuiUpdate.classifyChildren("scoresField", root);
         VBox scores = (VBox)scoresInList.get(0);
         scores.getChildren().clear();
@@ -447,7 +425,7 @@ public class GuiController {
      */
     @FXML
     public void loadGamemodes(ActionEvent event) throws IOException {
-        loadNewScene(event, "/settings.fxml", false, true);
+        root = GuiUpdate.loadNewScene(event, "/settings.fxml", false, this);
 
         List<Node> choiceBoxes = GuiUpdate.classifyChildren("box", root);
         //list with first choice box for amount of players, one for total figures in finish,
@@ -467,7 +445,7 @@ public class GuiController {
      */
     @FXML
     public void loadMenu(Event e) throws IOException {
-        loadNewScene(e, "/start.fxml", false, false);
+        root = GuiUpdate.loadNewScene(e, "/start.fxml", false, this);
     }
 
     /**
@@ -506,30 +484,6 @@ public class GuiController {
     private class GuiAction {
 
         private Token currentToken;
-
-        /**
-         * calls the method according to the state and clicked item
-         * @param item the item that was clicked to call this method
-         */
-        public void action(Node item) {
-            if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
-                chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
-                toDo.setText("Click a figure to move, the zombie at the bottom\nto move the zombie figure or trash it.");
-                state = TRASHORPLAY;
-            } else if (state == TRASHORPLAY) {
-                trashOrPlay(item);
-            } else if (state == ORACLE) {
-                oracle(item);
-            } else if (state == SPIRAL) {
-                spiral(item);
-            } else if (state == SPIDERWEB) {
-                spiderweb(item);
-            } else if (state == GOBLIN) {
-                goblin(item);
-            } else if (state == DRAW) {
-                draw(item);
-            }
-        }
 
         /**
          * executes the player's action of playing a card
@@ -677,7 +631,7 @@ public class GuiController {
          * @param item item the player has clicked on
          */
         private void draw(Node item) {
-            if (item.getId().startsWith("discardingPile")) {
+            if (item.getId().startsWith("discardingPile") && state == DRAW) {
                 try {
                     //get discard pile from id
                     char[] idArray = item.getId().toCharArray();
@@ -791,6 +745,29 @@ public class GuiController {
             } catch (Exception e) {
                 state = TRASHORPLAY;
                 toDo.setText(e.getMessage());
+            }
+        }
+        /**
+         * calls the method according to the state and clicked item
+         * @param item the item that was clicked to call this method
+         */
+        public void action(Node item) {
+            if ((state == CHOOSEHANDCARD || state == TRASHORPLAY) && item.getId().startsWith("handCard")) {
+                chosenCard = activeP.getHand().get(getIndex(item.getId(), "handCard"));
+                toDo.setText("Click a figure to move, the zombie at the bottom\nto move the zombie figure or trash it.");
+                state = TRASHORPLAY;
+            } else if (state == TRASHORPLAY) {
+                trashOrPlay(item);
+            } else if (state == ORACLE) {
+                oracle(item);
+            } else if (state == SPIRAL) {
+                spiral(item);
+            } else if (state == SPIDERWEB) {
+                spiderweb(item);
+            } else if (state == GOBLIN) {
+                goblin(item);
+            } else {
+                draw(item);
             }
         }
     }
