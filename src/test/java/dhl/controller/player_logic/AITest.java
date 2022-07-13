@@ -266,14 +266,16 @@ class AITest {
         p0.getGame().getFields()[9].setToken(spiral);
         p0.getGame().getFields()[8].setToken(spiderweb);
         p0.getGame().getFields()[13].setToken(goblin);
+        p0.getGame().getFields()[11].setToken(null);
+        p0.getGame().getFields()[12].setToken(null);
         p0.getGame().getFields()[14].setToken(null);
         p0.getGame().getFields()[15].setToken(null);
         p0.getGame().getFields()[16].setToken(spiral);
 
-        p0.getFigures().get(0).setPos(13);
-        p0.getFigures().get(1).setPos(11);
-        p0.placeFigure(p0.getGame().getFields()[12].getColor(), p0.getFigures().get(1));
-        p0.placeFigure(p0.getGame().getFields()[16].getColor(), p0.getFigures().get(1));
+        p0.getFigures().get(1).setPos(13);
+        p0.getFigures().get(0).setPos(11);
+        p0.placeFigure(p0.getGame().getFields()[12].getColor(), p0.getFigures().get(0));
+        p0.placeFigure(p0.getGame().getFields()[16].getColor(), p0.getFigures().get(0));
 
         assertEquals(13, ai.chooseSpiralPosition("", 16));
         p0.getGame().getFields()[8].setToken(spiderweb);
