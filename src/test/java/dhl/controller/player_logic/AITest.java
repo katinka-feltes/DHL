@@ -1,7 +1,6 @@
 package dhl.controller.player_logic;
 
 import dhl.model.Card;
-import dhl.model.Game;
 import dhl.model.Player;
 import dhl.model.tokens.*;
 import dhl.player_logic.AI;
@@ -38,7 +37,6 @@ class AITest {
         List<Player> players = new ArrayList<>();
         players.add(p0);
         players.add(p1);
-        Game game = new Game(players);
     }
 
     /**
@@ -50,7 +48,6 @@ class AITest {
         String [] input = {"Are you ready to play?", "Are you done with your turn?", "Do you want to proceed with your action?", "Do you want to play your goblin-special?"};
         String input4 = "Do you want to play a card?";
         String input5 = "Do you want to trash one from your hand?";
-        String input6 = "Do you want to move a figure?";
         String input7 = "Do you want to draw your card from one of the discarding piles?";
         for (int i = 0; i < 4; i++) {
             assertTrue(ai.choose(input[i]));
@@ -94,9 +91,6 @@ class AITest {
         p0.getHand().add(new Card(3, 'b'));
         //playable cards need to be less than 3
         assertFalse(ai.choose(input5));
-
-
-
 
     }
     /**
@@ -220,28 +214,28 @@ class AITest {
         p0.placeFigure(p0.getGame().getFields()[1].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(0));
 
-        assertEquals(6, ai.chooseSpiralPosition("test", 6));
+        assertEquals(6, ai.chooseSpiralPosition("", 6));
         // checks if the AI chooses the wishing stone
         p0.getGame().getFields()[9].setToken(spiral);
         p0.getGame().getFields()[8].setToken(null);
         p0.placeFigure(p0.getGame().getFields()[5].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(0));
 
-        assertEquals(7, ai.chooseSpiralPosition("test", 9));
+        assertEquals(7, ai.chooseSpiralPosition("", 9));
         // checks if the AI chooses the spiral
         p0.getGame().getFields()[10].setToken(spiral);
         p0.getGame().getFields()[7].setToken(null);
         p0.placeFigure(p0.getGame().getFields()[7].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[10].getColor(), p0.getFigures().get(0));
 
-        assertEquals(9, ai.chooseSpiralPosition("test", 10));
+        assertEquals(9, ai.chooseSpiralPosition("", 10));
         // checks if the AI chooses the skullpoint
         p0.getGame().getFields()[10].setToken(spiral);
         p0.getGame().getFields()[8].setToken(skullPoint4);
         p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[10].getColor(), p0.getFigures().get(0));
 
-        assertEquals(8, ai.chooseSpiralPosition("test", 10));
+        assertEquals(8, ai.chooseSpiralPosition("", 10));
         // checks if the AI chooses the mirror
         p0.getGame().getFields()[4].setToken(mirror);
         for (int i = 0; i < 3; i++) {
@@ -251,7 +245,7 @@ class AITest {
         p0.placeFigure(p0.getGame().getFields()[1].getColor(), p0.getFigures().get(0));
         p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(0));
 
-        assertEquals(4, ai.chooseSpiralPosition("test", 6));
+        assertEquals(4, ai.chooseSpiralPosition("", 6));
     }
 
     /**
@@ -278,13 +272,13 @@ class AITest {
         p0.placeFigure(p0.getGame().getFields()[12].getColor(), p0.getFigures().get(1));
         p0.placeFigure(p0.getGame().getFields()[16].getColor(), p0.getFigures().get(1));
 
-        assertEquals(13, ai.chooseSpiralPosition("test", 16));
+        assertEquals(13, ai.chooseSpiralPosition("", 16));
         p0.getGame().getFields()[8].setToken(spiderweb);
         p0.getFigures().get(2).setPos(5);
         p0.placeFigure(p0.getGame().getFields()[6].getColor(), p0.getFigures().get(2));
         p0.placeFigure(p0.getGame().getFields()[9].getColor(), p0.getFigures().get(2));
 
-        assertEquals(8, ai.chooseSpiralPosition("test", 9));
+        assertEquals(8, ai.chooseSpiralPosition("", 9));
     }
     /**
      * this method tests if the AI method "chooseCard" works correct
@@ -299,7 +293,7 @@ class AITest {
 
         assertEquals(p0.getHand().get(1), ai.chooseCard("What card do you want to play?", p0.getHand()));
         assertEquals(p0.getHand().get(0), ai.chooseCard("What card do you want to trash?", p0.getHand()));
-        assertEquals(p0.getHand().get(0), ai.chooseCard("test", p0.getHand()));
+        assertEquals(p0.getHand().get(0), ai.chooseCard("", p0.getHand()));
 
     }
 

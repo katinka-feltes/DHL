@@ -15,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class SaveTest {
 
+
+    /**
+     * method to test serialize in and out
+     * @throws Exception if error while saving
+     */
     @Test
     public void save() throws Exception {
         Game previouslySaved = Save.serializeDataIn();

@@ -262,7 +262,7 @@ public class AI implements PlayerLogic {
                     return valueOfMove(tokenPos, fields[tokenPos].getColor());
                     // the value of the move the spiderweb would give
                 case "Spiral":
-                    return tokenWorth(fields, chooseSpiralPosition("", tokenPos));
+                    return 1;
                     //returns the worth of the token the spiral would achieve
                 case "WishingStone":
                     return (int)(2.8 * self.getTokens()[1]); // on average 2,8 points * amount of mirrors owned
