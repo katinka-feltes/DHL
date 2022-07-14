@@ -380,6 +380,9 @@ public class GuiController {
             return;
         }
 
+        staticPlayers.clear();
+        staticPlayers.addAll(model.getPlayers());
+
         root = GuiUpdate.loadNewScene(event, "/gui.fxml", true, this);
 
         guiAction = new GuiAction();
