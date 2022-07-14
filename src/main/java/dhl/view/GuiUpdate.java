@@ -241,6 +241,8 @@ public class GuiUpdate {
      * @param event event that triggers the new scene
      * @param sceneFile scene that should be loaded
      * @param max if setMaximized should be set or not
+     * @param controller the controller to set in the new scene
+     * @return the new Scene (borderpane)
      * @throws IOException if the FXML file is not found
      */
     public static BorderPane loadNewScene(Event event, String sceneFile, boolean max, GuiController controller) throws IOException {

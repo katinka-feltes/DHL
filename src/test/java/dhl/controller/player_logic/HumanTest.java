@@ -27,10 +27,10 @@ class HumanTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    @BeforeEach
     /**
      * creates a new Cli and a Game with 2 players
      */
+    @BeforeEach
     public void setUp() {
         h = new Human();
 

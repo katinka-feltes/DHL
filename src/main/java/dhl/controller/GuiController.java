@@ -108,6 +108,8 @@ public class GuiController {
         guiAction = new GuiAction();
 
         root = GuiUpdate.loadNewScene(event, "/gui.fxml", true, this);
+
+        staticPlayers.clear();
         staticPlayers.addAll(players);
         state = PREPARATION;
         activeP = model.getPlayers().get(0);
@@ -248,17 +250,18 @@ public class GuiController {
                 guiAction.trash(ai.chooseCard("What card do you want to trash?", null));
             }
             // draw to end turn
-            if(activeP.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles?")) {
-                activeP.drawFromDiscardingPile(model.getDiscardPile(
-                        activeP.getPlayerLogic().choosePileColor("From what colored pile do you want to draw?")));
-            } else {
-                activeP.drawFromDrawingPile();
+            while(activeP.getHand().size() < 8) {
+                if (activeP.getPlayerLogic().choose("Do you want to draw your card from one of the discarding piles?")) {
+                    activeP.drawFromDiscardingPile(model.getDiscardPile(
+                            activeP.getPlayerLogic().choosePileColor("From what colored pile do you want to draw?")));
+                } else {
+                    activeP.drawFromDrawingPile();
+                }
             }
             updateAll();
             activeP = model.nextPlayer();
             state = PREPARATION;
             toDo.setText("The AI is done with its turn. Press 'NEXT PLAYER' to continue.");
-            //startTurn(null);
         } catch (Exception e) {
             System.err.println("The ai made a incorrect choice that should not occur.");
             System.out.println(e.getMessage());
@@ -309,17 +312,6 @@ public class GuiController {
                 ((Label)namesPlayedCards.get(i)).setText(staticPlayers.get(i).getName());
             }
         }
-    }
-
-    /**
-     * splits the id of an element and returns only the index
-     * @param id id of the element (javafx)
-     * @param elementName name of the element
-     * @return index of the element as an int
-     */
-    private int getIndex(String id, String elementName) {
-        String[] x = id.split(elementName);
-        return Integer.parseInt(x[1]);
     }
 
     /**
@@ -472,7 +464,7 @@ public class GuiController {
              Constants.singleUseToken = checked;
              loadMenu(event);
          } else {
-            System.out.println("invalid values"); //TODO;
+            System.out.println("invalid values");
          }
      }
 
@@ -556,7 +548,10 @@ public class GuiController {
          * @param chosenPos position the player chose for his figure to move to
          */
         private void useSpiral (int chosenPos){
-            if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
+            if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
+                state = DRAW;
+                toDo.setText("From which pile do you want to draw?");
+            } else if (chosenPos != chosenFigure.getLatestPos() && chosenPos < chosenFigure.getPos()) { //correct field chosen
                 ((Spiral) currentToken).setChosenPos(chosenPos);
                 currentToken.action(activeP);
                 updateCards(root, state, activeP);
@@ -631,17 +626,19 @@ public class GuiController {
          * @param item item the player has clicked on
          */
         private void draw(Node item) {
-            if (item.getId().startsWith("discardingPile") && state == DRAW) {
-                try {
-                    //get discard pile from id
-                    char[] idArray = item.getId().toCharArray();
-                    DiscardPile chosenPile = model.getDiscardPile(idArray[idArray.length - 1]);
-                    activeP.drawFromDiscardingPile(chosenPile); //draw one card from chosen pile
-                } catch (Exception exc) {
-                    toDo.setText(exc.getMessage());
+            if(state == DRAW && activeP.getHand().size() < 8) {
+                if (item.getId().startsWith("discardingPile")) {
+                    try {
+                        //get discard pile from id
+                        char[] idArray = item.getId().toCharArray();
+                        DiscardPile chosenPile = model.getDiscardPile(idArray[idArray.length - 1]);
+                        activeP.drawFromDiscardingPile(chosenPile); //draw one card from chosen pile
+                    } catch (Exception exc) {
+                        toDo.setText(exc.getMessage());
+                    }
+                } else if (item.getId().equals("drawingPile")) {
+                    activeP.drawFromDrawingPile();
                 }
-            } else if (item.getId().equals("drawingPile")) {
-                activeP.drawFromDrawingPile();
             }
             if(activeP.getHand().size() == 8){
                 state = PREPARATION;
@@ -695,12 +692,7 @@ public class GuiController {
         private void spiral(Node item) {
             if(item.getId().startsWith("circle")) {
                 int chosenPos = getIndex(item.getId(), "circle");
-                if (chosenPos == chosenFigure.getPos()) { //click the current field to not use the spiral
-                    state = DRAW;
-                    toDo.setText("From which pile do you want to draw?");
-                } else {
-                    useSpiral(chosenPos);
-                }
+                useSpiral(chosenPos);
             }
         }
 
@@ -747,6 +739,18 @@ public class GuiController {
                 toDo.setText(e.getMessage());
             }
         }
+
+        /**
+         * splits the id of an element and returns only the index
+         * @param id id of the element (javafx)
+         * @param elementName name of the element
+         * @return index of the element as an int
+         */
+        private int getIndex(String id, String elementName) {
+            String[] x = id.split(elementName);
+            return Integer.parseInt(x[1]);
+        }
+
         /**
          * calls the method according to the state and clicked item
          * @param item the item that was clicked to call this method

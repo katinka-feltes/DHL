@@ -46,6 +46,7 @@ public class AI implements PlayerLogic {
         int bestOption = 0;
 
         for(int i = 1; i < 6; i++){
+            if(position-i<0) break; //if it would go too far back
             int thisOption = tokenWorth(fields, position-i);
             //if the option is better and not the figures last position
             if (thisOption > bestOption && position-i != self.getLastMovedFigure().getLatestPos()) {

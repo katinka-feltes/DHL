@@ -32,6 +32,7 @@ public class PlayerTest {
 
     /**
      * tests if method placeFigure works
+     * @throws Exception from place Figure
      */
     @Test
     public void placeFigure() throws Exception {
@@ -116,6 +117,7 @@ public class PlayerTest {
 
     /**
      * tests if method getLastMovedFigure works
+     * @throws Exception from place figure
      */
     @Test
     public void getLastMovedFigure() throws Exception {
@@ -125,6 +127,7 @@ public class PlayerTest {
 
     /**
      * tests if method drawFromDiscardingPile works
+     * @throws Exception from add to played cards
      */
     @Test
     public void drawFromDiscardingPile() throws Exception {
@@ -279,6 +282,7 @@ public class PlayerTest {
 
     /**
      * tests if method getCardFromHand works
+     * @throws Exception from getCardFromHand
      */
     @Test
     public void getCardFromHand() throws Exception {

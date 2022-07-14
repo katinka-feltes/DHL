@@ -20,9 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AITest {
 
     private AI ai;
-    private Human h;
     private Player p0;
-    private Player p1;
 
 
     /**
@@ -31,9 +29,9 @@ class AITest {
     @BeforeEach
     public void setUp() {
         ai = new AI();
-        h = new Human();
+        Human h = new Human();
         p0 = new Player("p0", 'x', ai);
-        p1 = new Player("p1", 'y', h);
+        Player p1 = new Player("p1", 'y', h);
 
         List<Player> players = new ArrayList<>();
         players.add(p0);

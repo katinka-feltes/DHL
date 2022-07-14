@@ -113,6 +113,7 @@ public class TokenTest {
 
     /**
      * tests if action of spiderweb works
+     * @throws Exception from place figure
      */
     @Test
     public void actionSpiderweb() throws Exception{
@@ -129,6 +130,7 @@ public class TokenTest {
 
     /**
      * tests if action of spiral works
+     * @throws Exception from place figure
      */
     @Test
     public void actionSpiral() throws Exception{
@@ -145,6 +147,7 @@ public class TokenTest {
 
     /**
      * tests if action of goblin works when player chooses a pile
+     * @throws Exception from add to played cards
      */
     @Test
     public void goblinActionChosePile() throws Exception{

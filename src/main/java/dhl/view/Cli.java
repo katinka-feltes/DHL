@@ -294,14 +294,14 @@ public class Cli implements Serializable {
     /**
      * contains the methods that print the board
      */
-    private class Print {
+    private static class Print {
 
         /**
          * Prints a part of the board onto the cli
          * with the field index, points, color, figures, token and oracle
-         * @param rowStart
-         * @param rowEnd
-         * @param game
+         * @param rowStart the index of the first field dto print
+         * @param rowEnd index of the last field to print
+         * @param game the game to print the game from
          */
         public void boardPart(int rowStart, int rowEnd, Game game){
             basic(rowStart, rowEnd);
